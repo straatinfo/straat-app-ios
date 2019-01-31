@@ -172,6 +172,14 @@
             </objects>
             <point key="canvasLocation" x="983" y="32"/>
         </scene>
+        <!--RegistrationData-->
+        <scene sceneID="uiL-hY-QsU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Registration" referencedIdentifier="RegistrationData" id="MR1-Xc-JYz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ps6-xi-3Df" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1662" y="573"/>
+        </scene>
         <!--Second Screen-->
         <scene sceneID="e1p-Dd-TpD">
             <objects>
@@ -274,8 +282,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Znj-f4-PUs" userLabel="Login Container">
                                         <rect key="frame" x="0.0" y="180" width="375" height="467"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FIj-vg-ygf">
-                                                <rect key="frame" x="16" y="25" width="167" height="33"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="FIj-vg-ygf">
+                                                <rect key="frame" x="16" y="25" width="169" height="33"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFv-ex-TKI">
                                                         <rect key="frame" x="0.0" y="0.0" width="83.5" height="33"/>
@@ -284,11 +292,14 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xth-Nl-U7Z">
-                                                        <rect key="frame" x="83.5" y="0.0" width="83.5" height="33"/>
+                                                        <rect key="frame" x="85.5" y="0.0" width="83.5" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="Click Here">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="MR1-Xc-JYz" kind="show" id="JkP-9D-N4C"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>

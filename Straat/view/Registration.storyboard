@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O9O-pR-1m0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="IVN-GE-xuA">
             <objects>
-                <viewController id="O9O-pR-1m0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationData" id="O9O-pR-1m0" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yhb-Rq-fE8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,6 +57,9 @@
                                                         <state key="normal" title="Report">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="zHT-sU-djj" kind="show" id="Grl-9X-Vol"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-vX-naG">
                                                         <rect key="frame" x="230" y="0.0" width="115" height="35"/>
@@ -64,6 +67,9 @@
                                                         <state key="normal" title="Team">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="Rs7-qQ-TUZ" kind="show" id="1fz-wu-Iew"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -382,6 +388,9 @@
                                                                 <integer key="value" value="15"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <segue destination="zHT-sU-djj" kind="show" id="Kq8-Qv-3gw"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfv-RM-8ej">
                                                         <rect key="frame" x="0.0" y="35" width="343" height="35"/>
@@ -523,6 +532,9 @@
                                                         <state key="normal" title="Yes">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="Rs7-qQ-TUZ" kind="show" id="Iwp-oK-Big"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUC-w2-rzj">
                                                         <rect key="frame" x="0.0" y="35" width="260" height="30"/>
@@ -530,6 +542,9 @@
                                                         <state key="normal" title="No">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="Rs7-qQ-TUZ" kind="show" id="mcr-1N-n6a"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -593,7 +608,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FvX-Kn-3hf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1578" y="15"/>
+            <point key="canvasLocation" x="1491" y="389"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GH3-Td-phw">
@@ -766,4 +781,8 @@
     <resources>
         <image name="logo" width="115" height="121"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Iwp-oK-Big"/>
+        <segue reference="Grl-9X-Vol"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -37,17 +37,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main VIew" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcI-u6-SWF">
-                                <rect key="frame" x="121" y="315.5" width="133.5" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="y5V-It-MCc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvi-De-0YS">
+                                <rect key="frame" x="15" y="602" width="345" height="35"/>
+                                <color key="backgroundColor" red="0.15031168719999999" green="0.48254700420000002" blue="0.91147665519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="i5d-kK-061"/>
+                                </constraints>
+                                <state key="normal" title="SEND REPORT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zcI-u6-SWF" firstAttribute="centerX" secondItem="hLH-bq-Zdp" secondAttribute="centerX" id="5ld-hq-Xst"/>
-                            <constraint firstItem="zcI-u6-SWF" firstAttribute="centerY" secondItem="hLH-bq-Zdp" secondAttribute="centerY" id="hBx-2c-gNi"/>
+                            <constraint firstItem="XaE-Wr-SzA" firstAttribute="trailing" secondItem="nvi-De-0YS" secondAttribute="trailing" constant="15" id="6jc-kO-a6F"/>
+                            <constraint firstItem="y5V-It-MCc" firstAttribute="centerX" secondItem="hLH-bq-Zdp" secondAttribute="centerX" id="81V-q5-a9T"/>
+                            <constraint firstItem="y5V-It-MCc" firstAttribute="trailing" secondItem="XaE-Wr-SzA" secondAttribute="trailing" id="Rwl-gN-EKS"/>
+                            <constraint firstItem="nvi-De-0YS" firstAttribute="leading" secondItem="XaE-Wr-SzA" secondAttribute="leading" constant="15" id="SNw-B8-PbR"/>
+                            <constraint firstItem="y5V-It-MCc" firstAttribute="top" secondItem="XaE-Wr-SzA" secondAttribute="top" id="eAt-jZ-3g4"/>
+                            <constraint firstItem="XaE-Wr-SzA" firstAttribute="bottom" secondItem="nvi-De-0YS" secondAttribute="bottom" constant="30" id="hdj-EF-BRQ"/>
+                            <constraint firstItem="y5V-It-MCc" firstAttribute="leading" secondItem="XaE-Wr-SzA" secondAttribute="leading" id="u0v-E8-FXE"/>
+                            <constraint firstItem="nvi-De-0YS" firstAttribute="centerX" secondItem="hLH-bq-Zdp" secondAttribute="centerX" id="uRL-Oy-Kjh"/>
+                            <constraint firstItem="y5V-It-MCc" firstAttribute="bottom" secondItem="XaE-Wr-SzA" secondAttribute="bottom" id="whQ-Tp-NHh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XaE-Wr-SzA"/>
                     </view>

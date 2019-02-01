@@ -389,12 +389,15 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <segue destination="zHT-sU-djj" kind="show" id="Kq8-Qv-3gw"/>
+                                                            <segue destination="zHT-sU-djj" kind="show" id="UyM-M8-UPe"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfv-RM-8ej">
                                                         <rect key="frame" x="0.0" y="35" width="343" height="35"/>
                                                         <state key="normal" title="Are you an exisiting User?"/>
+                                                        <connections>
+                                                            <segue destination="M43-Jw-4RM" kind="show" id="7NM-G2-JAZ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -445,6 +448,14 @@
             </objects>
             <point key="canvasLocation" x="132.1875" y="14.788732394366198"/>
         </scene>
+        <!--loginVC-->
+        <scene sceneID="A3r-Qi-bSu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Initial" referencedIdentifier="loginVC" id="M43-Jw-4RM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vN1-GR-Sum" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="458" y="884"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="800-Mi-OB8">
             <objects>
@@ -485,6 +496,9 @@
                                                         <state key="normal" title="Data">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="O9O-pR-1m0" kind="show" id="gIb-xv-959"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ie-c6-Vhw">
                                                         <rect key="frame" x="96.5" y="0.0" width="97" height="35"/>
@@ -499,6 +513,9 @@
                                                         <state key="normal" title="Team">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="Rs7-qQ-TUZ" kind="show" id="AHF-5u-K8X"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -650,6 +667,9 @@
                                                         <state key="normal" title="Data">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="O9O-pR-1m0" kind="show" id="NUV-xW-xjc"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTJ-Wg-N9w">
                                                         <rect key="frame" x="96.5" y="0.0" width="97" height="35"/>
@@ -657,6 +677,9 @@
                                                         <state key="normal" title="Report">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="zHT-sU-djj" kind="show" id="CUy-Y3-mFN"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-md-wCY">
                                                         <rect key="frame" x="193.5" y="0.0" width="96.5" height="35"/>
@@ -784,5 +807,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="1fz-wu-Iew"/>
         <segue reference="Grl-9X-Vol"/>
+        <segue reference="NUV-xW-xjc"/>
     </inferredMetricsTieBreakers>
 </document>

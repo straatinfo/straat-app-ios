@@ -336,7 +336,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="asO-2Y-Wb2" kind="show" id="M6m-Ec-wf5"/>
+                                                    <segue destination="JIV-fd-5v1" kind="show" id="fOx-FY-k8W"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lLd-8f-ODd">
@@ -404,20 +404,13 @@
             </objects>
             <point key="canvasLocation" x="1973.5999999999999" y="31.934032983508249"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="DhD-pv-pfS">
+        <!--SWRevealViewControllerID-->
+        <scene sceneID="MzF-oz-v2X">
             <objects>
-                <viewController id="asO-2Y-Wb2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kdv-0x-Ifd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="tbu-Oe-XEb"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8hl-P4-BCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="SWRevealViewControllerID" id="JIV-fd-5v1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r6X-Rn-etC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3391" y="32"/>
+            <point key="canvasLocation" x="3146" y="28"/>
         </scene>
     </scenes>
     <resources>

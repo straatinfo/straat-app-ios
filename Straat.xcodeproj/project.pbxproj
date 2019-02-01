@@ -7,27 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4316BB4722037B3C00A168BE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4522037B3B00A168BE /* SWRevealViewController.m */; };
+		4316BB4922037DD000A168BE /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* Main.swift */; };
 		435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */; };
 		435CCB1E21FF66CB00E87AD6 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB1D21FF66CB00E87AD6 /* SplashScreen.swift */; };
-		435CCB2121FF66CB00E87AD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB1F21FF66CB00E87AD6 /* Main.storyboard */; };
+		435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */; };
 		435CCB2321FF66CD00E87AD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB2221FF66CD00E87AD6 /* Assets.xcassets */; };
 		435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */; };
 		435CCB3521FF78F000E87AD6 /* EnterCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB3421FF78F000E87AD6 /* EnterCode.swift */; };
 		4386825921FF8C06008F65D0 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUser.swift */; };
 		4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4386825A21FF8F39008F65D0 /* Registration.storyboard */; };
+		43B078EB2203739C001BF643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B078EA2203739C001BF643 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Straat-Bridging-Header.h"; sourceTree = "<group>"; };
+		4316BB4522037B3B00A168BE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
+		4316BB4622037B3C00A168BE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
+		4316BB4822037DD000A168BE /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		435CCB1821FF66CB00E87AD6 /* Straat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Straat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435CCB1D21FF66CB00E87AD6 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		435CCB2021FF66CB00E87AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		435CCB2021FF66CB00E87AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Initial.storyboard; sourceTree = "<group>"; };
 		435CCB2221FF66CD00E87AD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		435CCB2521FF66CD00E87AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		435CCB2721FF66CD00E87AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		435CCB3421FF78F000E87AD6 /* EnterCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCode.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		4386825A21FF8F39008F65D0 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		43B078EA2203739C001BF643 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +49,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4316BB4322037B1800A168BE /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4316BB4622037B3C00A168BE /* SWRevealViewController.h */,
+				4316BB4522037B3B00A168BE /* SWRevealViewController.m */,
+				4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		435CCB0F21FF66CB00E87AD6 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +78,7 @@
 		435CCB1A21FF66CB00E87AD6 /* Straat */ = {
 			isa = PBXGroup;
 			children = (
+				4316BB4322037B1800A168BE /* lib */,
 				435CCB2F21FF66DD00E87AD6 /* controller */,
 				435CCB2E21FF66DA00E87AD6 /* model */,
 				435CCB2D21FF66D400E87AD6 /* view */,
@@ -71,10 +90,11 @@
 		435CCB2D21FF66D400E87AD6 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				435CCB1F21FF66CB00E87AD6 /* Main.storyboard */,
+				435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */,
 				435CCB2221FF66CD00E87AD6 /* Assets.xcassets */,
 				435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */,
 				4386825A21FF8F39008F65D0 /* Registration.storyboard */,
+				43B078EA2203739C001BF643 /* Main.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -93,6 +113,7 @@
 				435CCB1D21FF66CB00E87AD6 /* SplashScreen.swift */,
 				435CCB3421FF78F000E87AD6 /* EnterCode.swift */,
 				4386825821FF8C06008F65D0 /* LoginUser.swift */,
+				4316BB4822037DD000A168BE /* Main.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -128,6 +149,7 @@
 				TargetAttributes = {
 					435CCB1721FF66CB00E87AD6 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -155,9 +177,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */,
+				43B078EB2203739C001BF643 /* Main.storyboard in Resources */,
 				4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */,
 				435CCB2321FF66CD00E87AD6 /* Assets.xcassets in Resources */,
-				435CCB2121FF66CB00E87AD6 /* Main.storyboard in Resources */,
+				435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,8 +191,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4316BB4922037DD000A168BE /* Main.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCode.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreen.swift in Sources */,
+				4316BB4722037B3C00A168BE /* SWRevealViewController.m in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUser.swift in Sources */,
 				435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */,
 			);
@@ -178,12 +203,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		435CCB1F21FF66CB00E87AD6 /* Main.storyboard */ = {
+		435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				435CCB2021FF66CB00E87AD6 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Initial.storyboard;
 			sourceTree = "<group>";
 		};
 		435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */ = {
@@ -317,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Straat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,6 +351,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = global.array.Straat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -334,6 +362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Straat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -342,6 +371,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = global.array.Straat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

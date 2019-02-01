@@ -46,7 +46,9 @@ class Main: UIViewController {
     
     func navColor() {
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = UIColor.gray
+        navigationController?.navigationBar.barTintColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1)
+//        navigationController?.navigationBar.tintColor = UIColor.init(displayP3Red: 79, green: 106, blue: 133, alpha: 1)
+//        navigationController?.navigationBar.barTintColor = UIColor.init(displayP3Red: 110, green: 133, blue: 161, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         navigationItem.title = "Straat.info"

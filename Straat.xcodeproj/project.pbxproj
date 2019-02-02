@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4302C1102206085400A9865D /* MsgMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C10F2206085400A9865D /* MsgMainTabBarController.swift */; };
 		4316BB4722037B3C00A168BE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4522037B3B00A168BE /* SWRevealViewController.m */; };
 		4316BB4922037DD000A168BE /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* Main.swift */; };
 		435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */; };
@@ -16,13 +17,13 @@
 		435CCB3521FF78F000E87AD6 /* EnterCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB3421FF78F000E87AD6 /* EnterCode.swift */; };
 		4386825921FF8C06008F65D0 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUser.swift */; };
 		4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4386825A21FF8F39008F65D0 /* Registration.storyboard */; };
-		439DFC182205A79A001688F6 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439DFC172205A79A001688F6 /* Messages.swift */; };
 		439DFC1A2205A833001688F6 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439DFC192205A833001688F6 /* BaseController.swift */; };
 		43B078EB2203739C001BF643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B078EA2203739C001BF643 /* Main.storyboard */; };
 		43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B4BFD52205CA1B004C8EAD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4302C10F2206085400A9865D /* MsgMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgMainTabBarController.swift; sourceTree = "<group>"; };
 		4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Straat-Bridging-Header.h"; sourceTree = "<group>"; };
 		4316BB4522037B3B00A168BE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
 		4316BB4622037B3C00A168BE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
@@ -36,7 +37,6 @@
 		435CCB3421FF78F000E87AD6 /* EnterCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCode.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		4386825A21FF8F39008F65D0 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
-		439DFC172205A79A001688F6 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		439DFC192205A833001688F6 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		43B078EA2203739C001BF643 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		43B4BFD52205CA1B004C8EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 				435CCB3421FF78F000E87AD6 /* EnterCode.swift */,
 				4386825821FF8C06008F65D0 /* LoginUser.swift */,
 				4316BB4822037DD000A168BE /* Main.swift */,
-				439DFC172205A79A001688F6 /* Messages.swift */,
 				439DFC192205A833001688F6 /* BaseController.swift */,
+				4302C10F2206085400A9865D /* MsgMainTabBarController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -200,9 +200,9 @@
 				4316BB4922037DD000A168BE /* Main.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCode.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreen.swift in Sources */,
-				439DFC182205A79A001688F6 /* Messages.swift in Sources */,
 				4316BB4722037B3C00A168BE /* SWRevealViewController.m in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUser.swift in Sources */,
+				4302C1102206085400A9865D /* MsgMainTabBarController.swift in Sources */,
 				439DFC1A2205A833001688F6 /* BaseController.swift in Sources */,
 				435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */,
 			);

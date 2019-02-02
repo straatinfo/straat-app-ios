@@ -185,10 +185,10 @@
             </objects>
             <point key="canvasLocation" x="3294" y="1631"/>
         </scene>
-        <!--Msg Main Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="l09-LP-Bxs">
             <objects>
-                <tabBarController id="qVb-t9-npT" customClass="MsgMainTabBarController" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="qVb-t9-npT" customClass="CustomTabBarController" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9ur-yJ-jId">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

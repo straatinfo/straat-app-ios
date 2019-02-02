@@ -1,20 +1,18 @@
 //
-//  Main.swift
+//  Messages.swift
 //  Straat
 //
-//  Created by Global Array on 01/02/2019.
+//  Created by Global Array on 02/02/2019.
 //
 
 import UIKit
 
-class Main: UIViewController {
+class Messages: UIViewController {
 
-    @IBOutlet weak var menu: UIBarButtonItem!
-    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createMenu()
         navColor()
         // Do any additional setup after loading the view.
     }
@@ -30,12 +28,13 @@ class Main: UIViewController {
     }
     */
 
+    
     func createMenu() {
         if revealViewController() != nil {
             
-            menu.target = revealViewController()
-            menu.action = #selector(SWRevealViewController.rightRevealToggle(_:))
-            revealViewController().rightViewRevealWidth = UIScreen.main.bounds.size.width - 100
+            menuButton.target = revealViewController()
+            menuButton.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+            revealViewController().rightViewRevealWidth = 275
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             
@@ -51,10 +50,6 @@ class Main: UIViewController {
         //        navigationController?.navigationBar.barTintColor = UIColor.init(displayP3Red: 110, green: 133, blue: 161, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
-        navigationItem.title = "Straat.info"
+        navigationItem.title = "Messages"
     }
-
-
-    
-    
 }

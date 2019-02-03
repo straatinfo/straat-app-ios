@@ -20,6 +20,9 @@
 		4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4386825A21FF8F39008F65D0 /* Registration.storyboard */; };
 		43B078EB2203739C001BF643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B078EA2203739C001BF643 /* Main.storyboard */; };
 		43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B4BFD52205CA1B004C8EAD /* Assets.xcassets */; };
+		43C4ABE42207685C0055D4EF /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE32207685C0055D4EF /* RegistrationData.swift */; };
+		43C4ABE622077D880055D4EF /* TermsAndCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE522077D880055D4EF /* TermsAndCondition.swift */; };
+		43C4ABE822078B3A0055D4EF /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE722078B3A0055D4EF /* ForgotPass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		4386825A21FF8F39008F65D0 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		43B078EA2203739C001BF643 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		43B4BFD52205CA1B004C8EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		43C4ABE32207685C0055D4EF /* RegistrationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
+		43C4ABE522077D880055D4EF /* TermsAndCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndCondition.swift; sourceTree = "<group>"; };
+		43C4ABE722078B3A0055D4EF /* ForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,9 @@
 				4316BB4822037DD000A168BE /* Main.swift */,
 				4302C10F2206085400A9865D /* CustomTabBarController.swift */,
 				4302C1132206137A00A9865D /* SendReport.swift */,
+				43C4ABE32207685C0055D4EF /* RegistrationData.swift */,
+				43C4ABE522077D880055D4EF /* TermsAndCondition.swift */,
+				43C4ABE722078B3A0055D4EF /* ForgotPass.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -198,7 +207,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4316BB4922037DD000A168BE /* Main.swift in Sources */,
+				43C4ABE822078B3A0055D4EF /* ForgotPass.swift in Sources */,
+				43C4ABE622077D880055D4EF /* TermsAndCondition.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCode.swift in Sources */,
+				43C4ABE42207685C0055D4EF /* RegistrationData.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreen.swift in Sources */,
 				4316BB4722037B3C00A168BE /* SWRevealViewController.m in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUser.swift in Sources */,

@@ -11,6 +11,9 @@
 		4302C1142206137A00A9865D /* SendReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C1132206137A00A9865D /* SendReport.swift */; };
 		4316BB4722037B3C00A168BE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4522037B3B00A168BE /* SWRevealViewController.m */; };
 		4316BB4922037DD000A168BE /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* Main.swift */; };
+		434C3B55220A287800843000 /* ApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B54220A287800843000 /* ApiHandler.swift */; };
+		434C3B57220A2B4D00843000 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B56220A2B4D00843000 /* URL.swift */; };
+		434C3B59220A2DE800843000 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B58220A2DE800843000 /* UserModel.swift */; };
 		435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */; };
 		435CCB1E21FF66CB00E87AD6 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB1D21FF66CB00E87AD6 /* SplashScreen.swift */; };
 		435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */; };
@@ -23,15 +26,20 @@
 		43C4ABE42207685C0055D4EF /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE32207685C0055D4EF /* RegistrationData.swift */; };
 		43C4ABE622077D880055D4EF /* TermsAndCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE522077D880055D4EF /* TermsAndCondition.swift */; };
 		43C4ABE822078B3A0055D4EF /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE722078B3A0055D4EF /* ForgotPass.swift */; };
+		830756348BBE455B8F1C2B70 /* Pods_Straat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4302C10F2206085400A9865D /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		4302C1132206137A00A9865D /* SendReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReport.swift; sourceTree = "<group>"; };
 		4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Straat-Bridging-Header.h"; sourceTree = "<group>"; };
 		4316BB4522037B3B00A168BE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
 		4316BB4622037B3C00A168BE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
 		4316BB4822037DD000A168BE /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		434C3B54220A287800843000 /* ApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHandler.swift; sourceTree = "<group>"; };
+		434C3B56220A2B4D00843000 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		434C3B58220A2DE800843000 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		435CCB1821FF66CB00E87AD6 /* Straat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Straat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435CCB1D21FF66CB00E87AD6 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -46,6 +54,8 @@
 		43C4ABE32207685C0055D4EF /* RegistrationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
 		43C4ABE522077D880055D4EF /* TermsAndCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndCondition.swift; sourceTree = "<group>"; };
 		43C4ABE722078B3A0055D4EF /* ForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPass.swift; sourceTree = "<group>"; };
+		4DB15AC11A35962DC0F48E20 /* Pods-Straat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.debug.xcconfig"; sourceTree = "<group>"; };
+		D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830756348BBE455B8F1C2B70 /* Pods_Straat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,11 +80,30 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		434C3B52220A284F00843000 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				434C3B53220A286300843000 /* api */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		434C3B53220A286300843000 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				434C3B54220A287800843000 /* ApiHandler.swift */,
+				434C3B56220A2B4D00843000 /* URL.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
 		435CCB0F21FF66CB00E87AD6 = {
 			isa = PBXGroup;
 			children = (
 				435CCB1A21FF66CB00E87AD6 /* Straat */,
 				435CCB1921FF66CB00E87AD6 /* Products */,
+				43ED29F47F127A1B5C2D88D4 /* Pods */,
+				EEACA2CDDBF457DD596BC4F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +118,7 @@
 		435CCB1A21FF66CB00E87AD6 /* Straat */ = {
 			isa = PBXGroup;
 			children = (
+				434C3B52220A284F00843000 /* services */,
 				4316BB4322037B1800A168BE /* lib */,
 				435CCB2F21FF66DD00E87AD6 /* controller */,
 				435CCB2E21FF66DA00E87AD6 /* model */,
@@ -112,6 +143,7 @@
 		435CCB2E21FF66DA00E87AD6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				434C3B58220A2DE800843000 /* UserModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -133,6 +165,23 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		43ED29F47F127A1B5C2D88D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DB15AC11A35962DC0F48E20 /* Pods-Straat.debug.xcconfig */,
+				D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EEACA2CDDBF457DD596BC4F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,9 +189,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 435CCB2A21FF66CD00E87AD6 /* Build configuration list for PBXNativeTarget "Straat" */;
 			buildPhases = (
+				97883C154EBD84EF64ED4853 /* [CP] Check Pods Manifest.lock */,
 				435CCB1421FF66CB00E87AD6 /* Sources */,
 				435CCB1521FF66CB00E87AD6 /* Frameworks */,
 				435CCB1621FF66CB00E87AD6 /* Resources */,
+				9E81F25575871A7166C31FA8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +252,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		97883C154EBD84EF64ED4853 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Straat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E81F25575871A7166C31FA8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		435CCB1421FF66CB00E87AD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -211,8 +309,11 @@
 				43C4ABE622077D880055D4EF /* TermsAndCondition.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCode.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationData.swift in Sources */,
+				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreen.swift in Sources */,
 				4316BB4722037B3C00A168BE /* SWRevealViewController.m in Sources */,
+				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,
+				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUser.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				4302C1142206137A00A9865D /* SendReport.swift in Sources */,
@@ -360,6 +461,7 @@
 		};
 		435CCB2B21FF66CD00E87AD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DB15AC11A35962DC0F48E20 /* Pods-Straat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -380,6 +482,7 @@
 		};
 		435CCB2C21FF66CD00E87AD6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

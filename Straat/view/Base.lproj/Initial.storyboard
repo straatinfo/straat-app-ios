@@ -344,7 +344,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="JIV-fd-5v1" kind="show" id="fOx-FY-k8W"/>
+                                                    <action selector="loginUser:" destination="lQh-D8-Ivu" eventType="touchUpInside" id="cVO-nm-BrW"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lLd-8f-ODd">
@@ -421,6 +421,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b3T-m5-Jl2"/>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="PPt-VT-8ml" id="QWs-Ov-aXW"/>
+                        <outlet property="password" destination="f4M-4u-nv0" id="KaH-JG-nqx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCc-gU-xnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -6,5 +6,5 @@ target 'Straat' do
   use_frameworks!
 
   # Pods for Straat
-
+  pod 'Alamofire', '~> 4.7'
 end

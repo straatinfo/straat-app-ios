@@ -217,23 +217,23 @@
                         <sections>
                             <tableViewSection id="rSo-Po-0X3">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Uji-za-BOz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5xF-eZ-WSp">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uji-za-BOz" id="QTg-O5-JuU">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5xF-eZ-WSp" id="pw9-lu-gmC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6du-6u-Syk">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfq-BP-MuX">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uVe-ez-qW4">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2ry-eA-ebD">
                                                             <rect key="frame" x="80" y="11.5" width="104.5" height="20.5"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="street" translatesAutoresizingMaskIntoConstraints="NO" id="OH7-g5-dvG">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="street" translatesAutoresizingMaskIntoConstraints="NO" id="EKt-fh-Zx3">
                                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="20.5"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRy-CP-fpP">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjE-ke-lQ1">
                                                                     <rect key="frame" x="25" y="0.0" width="79.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -241,23 +241,23 @@
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20.5" id="znt-ec-SlF"/>
+                                                                <constraint firstAttribute="height" constant="20.5" id="yJj-cs-ndX"/>
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="uVe-ez-qW4" firstAttribute="top" secondItem="6du-6u-Syk" secondAttribute="top" constant="11.5" id="ZJv-CR-vlc"/>
-                                                        <constraint firstAttribute="bottom" secondItem="uVe-ez-qW4" secondAttribute="bottom" constant="11.5" id="enw-0g-6UO"/>
-                                                        <constraint firstItem="uVe-ez-qW4" firstAttribute="leading" secondItem="6du-6u-Syk" secondAttribute="leading" constant="80" id="x1V-BF-Ll2"/>
+                                                        <constraint firstItem="2ry-eA-ebD" firstAttribute="leading" secondItem="Vfq-BP-MuX" secondAttribute="leading" constant="80" id="GZW-lX-SA3"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2ry-eA-ebD" secondAttribute="bottom" constant="11.5" id="YPO-54-hv6"/>
+                                                        <constraint firstItem="2ry-eA-ebD" firstAttribute="top" secondItem="Vfq-BP-MuX" secondAttribute="top" constant="11.5" id="s5s-Sk-W7f"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="6du-6u-Syk" secondAttribute="trailing" id="EWg-JR-Iy9"/>
-                                                <constraint firstAttribute="bottom" secondItem="6du-6u-Syk" secondAttribute="bottom" id="W5Q-WY-yog"/>
-                                                <constraint firstItem="6du-6u-Syk" firstAttribute="leading" secondItem="QTg-O5-JuU" secondAttribute="leading" id="YAa-oa-jDB"/>
-                                                <constraint firstItem="6du-6u-Syk" firstAttribute="top" secondItem="QTg-O5-JuU" secondAttribute="top" id="xad-P0-6mr"/>
+                                                <constraint firstItem="Vfq-BP-MuX" firstAttribute="top" secondItem="pw9-lu-gmC" secondAttribute="top" id="1La-ak-Tp8"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vfq-BP-MuX" secondAttribute="bottom" id="aOh-gL-iSR"/>
+                                                <constraint firstItem="Vfq-BP-MuX" firstAttribute="leading" secondItem="pw9-lu-gmC" secondAttribute="leading" id="kGX-xm-YY4"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vfq-BP-MuX" secondAttribute="trailing" id="t5T-jc-Rz3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

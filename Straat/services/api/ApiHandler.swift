@@ -16,6 +16,7 @@ class ApiHandler {
     
     func execute (_ url: URL, parameters: Parameters?, method: HTTPMethod, completion: @escaping ApiResponse) {
         
+        
         Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding(destination: .queryString), headers: nil)
             .validate().responseJSON
             { response in

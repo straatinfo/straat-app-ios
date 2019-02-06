@@ -54,6 +54,7 @@ class MainVC: UIViewController {
     }
     
     func loadInfo() {
+        
         self.fname = UserDefaults.standard.object(forKey: "user_fname") as! String
         
         let alert = UIAlertController(title: "Welcome to Straat.info", message: "Welcome \(self.fname)", preferredStyle: .alert)

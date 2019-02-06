@@ -1,13 +1,13 @@
 //
-//  SendReport.swift
+//  TermsAndCondition.swift
 //  Straat
 //
-//  Created by Global Array on 03/02/2019.
+//  Created by Global Array on 04/02/2019.
 //
 
 import UIKit
 
-class SendReport: UIViewController {
+class TermsAndConditionVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,8 @@ class SendReport: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    @IBAction func dismiss(_ sender: Any) {
+    @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
 }

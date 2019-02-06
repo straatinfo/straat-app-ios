@@ -7,15 +7,16 @@
 
 import UIKit
 
-class Main: UIViewController {
+class MainVC: UIViewController {
 
     @IBOutlet weak var menu: UIBarButtonItem!
-    
+    var fname : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createMenu()
         navColor()
+        loadInfo()
         // Do any additional setup after loading the view.
     }
     
@@ -47,11 +48,21 @@ class Main: UIViewController {
     func navColor() {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.barTintColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1)
-        //        navigationController?.navigationBar.tintColor = UIColor.init(displayP3Red: 79, green: 106, blue: 133, alpha: 1)
-        //        navigationController?.navigationBar.barTintColor = UIColor.init(displayP3Red: 110, green: 133, blue: 161, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         navigationItem.title = "Straat.info"
+    }
+    
+    func loadInfo() {
+        self.fname = UserDefaults.standard.object(forKey: "user_fname") as! String
+        
+        let alert = UIAlertController(title: "Welcome to Straat.info", message: "Welcome \(self.fname)", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    
     }
 
 

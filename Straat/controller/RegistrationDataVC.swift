@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegistrationData: UIViewController {
+class RegistrationDataVC: UIViewController {
     
     @IBOutlet weak var male: UIButton!
     @IBOutlet weak var female: UIButton!

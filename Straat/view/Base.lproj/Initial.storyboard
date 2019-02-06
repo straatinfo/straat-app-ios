@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Splash Screen-->
+        <!--Splash ScreenVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SplashScreen" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SplashScreenVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="-1204" y="43"/>
         </scene>
-        <!--Enter Code-->
+        <!--Enter CodeVC-->
         <scene sceneID="BuX-k9-vmF">
             <objects>
-                <viewController id="rb9-9R-lFz" customClass="EnterCode" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rb9-9R-lFz" customClass="EnterCodeVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zxb-i0-J2w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -279,10 +279,10 @@
             </objects>
             <point key="canvasLocation" x="17" y="307"/>
         </scene>
-        <!--Login User-->
+        <!--Login UserVC-->
         <scene sceneID="nZY-J7-8Ff">
             <objects>
-                <viewController storyboardIdentifier="loginVC" id="lQh-D8-Ivu" customClass="LoginUser" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="lQh-D8-Ivu" customClass="LoginUserVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gvy-c2-T2m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -438,10 +438,10 @@
             </objects>
             <point key="canvasLocation" x="3146" y="28"/>
         </scene>
-        <!--Forgot Pass-->
+        <!--Forgot PassVC-->
         <scene sceneID="7J8-cM-bcc">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="q7l-Qo-mST" customClass="ForgotPass" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="q7l-Qo-mST" customClass="ForgotPassVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hLw-ft-e9X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

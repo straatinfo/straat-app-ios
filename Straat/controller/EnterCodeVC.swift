@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class EnterCode: UIViewController {
+class EnterCodeVC: UIViewController {
     
     @IBOutlet weak var tfCode: UITextField!
     

@@ -35,7 +35,7 @@ class LoginUserVC: UIViewController {
             
         } else {
             // creates an alert for this result
-            dialog(vc: self, title: "Login", message: "Please fill up all the empty fields")
+            defaultDialog(vc: self, title: "Login", message: "Please fill up all the empty fields")
             print("false")
         }
         
@@ -48,7 +48,7 @@ class LoginUserVC: UIViewController {
 
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
-                dialog(vc: self, title: "Error Response", message: error.localizedDescription)
+                defaultDialog(vc: self, title: "Error Response", message: error.localizedDescription)
                 loadingDismiss()
                 // creates an alert for this error response
                 

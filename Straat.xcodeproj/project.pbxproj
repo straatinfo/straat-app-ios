@@ -27,7 +27,7 @@
 		43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */; };
 		43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */; };
 		43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */; };
-		43EA2B13220B01FD0088B5FC /* Loading&Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B12220B01FD0088B5FC /* Loading&Alert.swift */; };
+		43EA2B13220B01FD0088B5FC /* LoadingAndAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B12220B01FD0088B5FC /* LoadingAndAlert.swift */; };
 		830756348BBE455B8F1C2B70 /* Pods_Straat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +57,7 @@
 		43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataVC.swift; sourceTree = "<group>"; };
 		43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionVC.swift; sourceTree = "<group>"; };
 		43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
-		43EA2B12220B01FD0088B5FC /* Loading&Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading&Alert.swift"; sourceTree = "<group>"; };
+		43EA2B12220B01FD0088B5FC /* LoadingAndAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAndAlert.swift; sourceTree = "<group>"; };
 		4DB15AC11A35962DC0F48E20 /* Pods-Straat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.debug.xcconfig"; sourceTree = "<group>"; };
 		D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,7 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				439B1EB0220ACBE1007A6F4E /* Validation.swift */,
-				43EA2B12220B01FD0088B5FC /* Loading&Alert.swift */,
+				43EA2B12220B01FD0088B5FC /* LoadingAndAlert.swift */,
 			);
 			path = classes;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
-				43EA2B13220B01FD0088B5FC /* Loading&Alert.swift in Sources */,
+				43EA2B13220B01FD0088B5FC /* LoadingAndAlert.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
 				4316BB4722037B3C00A168BE /* SWRevealViewController.m in Sources */,
 				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,

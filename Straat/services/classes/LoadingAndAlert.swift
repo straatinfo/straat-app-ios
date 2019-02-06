@@ -36,8 +36,10 @@ func loadingDismiss() {
     
 }
 
-func dialog( vc: UIViewController, title : String? , message : String?) {
+func defaultDialog( vc: UIViewController, title : String? , message : String?) {
+    
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
     vc.present(alertController, animated: true)
+    
 }

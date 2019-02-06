@@ -24,7 +24,7 @@ class LoginUserVC: UIViewController {
         
         let tf : [UITextField] = [email, password]
         
-        if textField(tf: tf) {
+        if validateTextField(tf: tf) {
             
             loadingShow(vc: self)
             
@@ -68,7 +68,7 @@ class LoginUserVC: UIViewController {
 
                 //saving user model to loca data
                 self.saveToLocalData(usermodel: userModel)
-                self.pushToNextVC()
+                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
                 
             }
 
@@ -76,23 +76,15 @@ class LoginUserVC: UIViewController {
         
     }
     
-    func pushToNextVC() {
-        
-        let sb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = sb.instantiateViewController(withIdentifier: "SWRevealViewControllerID") as! SWRevealViewController
-        self.show(mainVC, sender: self)
-        
-    }
-    
     func saveToLocalData( usermodel : UserModel ) {
         
-        UserDefaults.standard.set( usermodel.firstname!, forKey: "user_fname")
-        UserDefaults.standard.set( usermodel.lastname!, forKey: "user_lname")
-        UserDefaults.standard.set( usermodel.email!, forKey: "user_email")
-        UserDefaults.standard.set( usermodel.username!, forKey: "user_name")
+        let uds = UserDefaults.standard
+        
+        uds.set( usermodel.firstname!, forKey: "user_fname")
+        uds.set( usermodel.lastname!, forKey: "user_lname")
+        uds.set( usermodel.email!, forKey: "user_email")
+        uds.set( usermodel.username!, forKey: "user_name")
         
     }
-    
-    
     
 }

@@ -11,7 +11,7 @@ import Foundation
 // this class will handle all the func of diff validations and masking
 
 // will improve this validation
-    func textField( tf : [UITextField] ) -> Bool {
+    func validateTextField( tf : [UITextField] ) -> Bool {
         var countT : Int = 0
         var countF : Int = 0
         var ret : Bool = false

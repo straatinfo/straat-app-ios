@@ -22,7 +22,7 @@ class ApiHandler {
             { response in
                 
                 if let error = response.error {
-                    
+                
                     completion(nil, error)
                     
                 } else if let jsonArr =  response.result.value as? Dictionary <String, Any> {
@@ -34,7 +34,8 @@ class ApiHandler {
                     completion(jsonDict, nil)
                     
                 }
-                
+             
+                debugPrint(response.result.error)
             }
         
         

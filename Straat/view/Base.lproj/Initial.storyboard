@@ -121,7 +121,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="btnOkay:" destination="rb9-9R-lFz" eventType="touchUpInside" id="cKq-Bs-hnT"/>
-                                                    <segue destination="lQh-D8-Ivu" kind="show" id="ctn-ds-zZG"/>
+                                                    <segue destination="lQh-D8-Ivu" kind="show" id="IR9-OB-EBr"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOJ-jr-BRb">
@@ -366,7 +366,7 @@
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" smartDashesType="yes" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" smartDashesType="yes" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>

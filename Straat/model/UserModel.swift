@@ -15,6 +15,7 @@ class UserModel {
     var email: String?
     var username: String?
     
+    
     init (firstname fname: String?, lastname lname: String?, email emailAddress: String?, username user: String?) {
         
         firstname = fname
@@ -22,5 +23,7 @@ class UserModel {
         email = emailAddress
         username = user
     }
+    
+    
     
 }

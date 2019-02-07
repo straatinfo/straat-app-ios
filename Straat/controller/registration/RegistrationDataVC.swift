@@ -11,12 +11,16 @@ class RegistrationDataVC: UIViewController {
     
     @IBOutlet weak var male: UIButton!
     @IBOutlet weak var female: UIButton!
+    @IBOutlet weak var termsAndCondition: UIButton!
     
+    var isSelected : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        termsAndCondition.isSelected = isSelected
     }
     
 
@@ -33,31 +37,32 @@ class RegistrationDataVC: UIViewController {
     @IBAction func selectedGender(_ sender: UIButton) {
         
         
-//        var gender: UIButton!
-        
+        var buttonSelected: UIButton!
 //
 //        if sender.isSelected {
 //
-//            if sender.tag == 1 {
-//                sender.isSelected = true
-////                gender = female
-//            } else if sender.tag == 2{
-//                sender.isSelected = true
-////                gender = male
-//            }
+            if sender.tag == 1 {
+                sender.isSelected = true
+                buttonSelected = female
+                print("male")
+            } else if sender.tag == 2{
+                sender.isSelected = true
+                buttonSelected = male
+                print("female")
+            }
 //
 //        } else {
 //            sender.isSelected = false
 //        }
 //
 
-//        diselect(sender: gender)
+        diselect(sender: buttonSelected)
     }
     
     
     func diselect(sender: UIButton) {
         sender.isSelected = false
     }
-    
+
     
 }

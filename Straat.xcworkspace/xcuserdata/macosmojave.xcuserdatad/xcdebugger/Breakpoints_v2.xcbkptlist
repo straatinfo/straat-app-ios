@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Straat/controller/registration/RegistrationTeamVC.swift"
-            timestampString = "571181069.456931"
+            timestampString = "571248105.685979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "RegistrationTeamVC"
             landmarkType = "3">
          </BreakpointContent>

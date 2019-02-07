@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="983" y="32"/>
         </scene>
-        <!--RegistrationData-->
+        <!--RegistrationDataID-->
         <scene sceneID="uiL-hY-QsU">
             <objects>
-                <viewControllerPlaceholder storyboardName="Registration" referencedIdentifier="RegistrationData" id="MR1-Xc-JYz" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Registration" referencedIdentifier="RegistrationDataID" id="MR1-Xc-JYz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ps6-xi-3Df" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1662" y="573"/>

@@ -15,9 +15,24 @@ class RegistrationTeamVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadDropDown()
-        loadDropDown()
-        loadDropDown()
+//        loadDropDown(teamName: "team 1")
+//        loadDropDown(teamName: "team 2")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+//        loadDropDown(teamName: "team 3")
+
         // Do any additional setup after loading the view.
     }
     
@@ -33,17 +48,21 @@ class RegistrationTeamVC: UIViewController {
     */
     
     
-    func loadDropDown() {
+    func loadDropDown( teamName : String ) {
         // add width, action
         
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
-        button.setTitle("pota", for: .normal)
+        button.setTitle( teamName , for: .normal)
         button.backgroundColor = UIColor.white
         button.setTitleColor(UIColor.blue, for: .normal)
-        button.frame.size = CGSize(width: 200, height: 30)
+        button.addTarget(self, action: #selector(getAction(sender:)), for: .touchUpInside)
         
         self.teamSV.addArrangedSubview(button)
         
+    }
+    
+    @objc func getAction( sender : UIButton) {
+        print("button-name: " + sender.currentTitle!)
     }
 }

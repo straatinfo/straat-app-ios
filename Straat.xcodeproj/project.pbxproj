@@ -167,9 +167,7 @@
 				435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */,
 				4386825821FF8C06008F65D0 /* LoginUserVC.swift */,
 				4316BB4822037DD000A168BE /* MainVC.swift */,
-				4302C10F2206085400A9865D /* CustomTabBarController.swift */,
 				4302C1132206137A00A9865D /* SendReportVC.swift */,
-				43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */,
 				43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */,
 			);
 			path = controller;
@@ -180,6 +178,7 @@
 			children = (
 				43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */,
 				439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */,
+				43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */,
 			);
 			path = registration;
 			sourceTree = "<group>";
@@ -189,6 +188,7 @@
 			children = (
 				439B1EB0220ACBE1007A6F4E /* Validation.swift */,
 				43EA2B12220B01FD0088B5FC /* Generics.swift */,
+				4302C10F2206085400A9865D /* CustomTabBarController.swift */,
 			);
 			path = classes;
 			sourceTree = "<group>";

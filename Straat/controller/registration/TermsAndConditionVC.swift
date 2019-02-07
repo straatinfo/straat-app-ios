@@ -9,6 +9,8 @@ import UIKit
 
 class TermsAndConditionVC: UIViewController {
 
+    
+
     @IBOutlet weak var mainContainer: UIView!
     
     
@@ -32,8 +34,19 @@ class TermsAndConditionVC: UIViewController {
     }
     */
     
+    @IBAction func accept(_ sender: Any) {
+        performSegue(withIdentifier: "acceptSegue", sender: self)
+    }
+    
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! RegistrationDataVC
+        vc.isSelected = true
+        
     }
     
 }

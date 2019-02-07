@@ -14,7 +14,8 @@ class ForgotPassVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadVIew()
+        loadBorderedVIew(viewContainer: mainVIew, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
         // Do any additional setup after loading the view.
     }
     
@@ -33,10 +34,4 @@ class ForgotPassVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func loadVIew() {
-        mainVIew.layer.borderWidth = 1
-        mainVIew.layer.borderColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1).cgColor
-
-        
-    }
 }

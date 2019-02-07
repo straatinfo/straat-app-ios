@@ -21,6 +21,7 @@
 		4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUserVC.swift */; };
 		4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4386825A21FF8F39008F65D0 /* Registration.storyboard */; };
 		439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */ = {isa = PBXBuildFile; fileRef = 439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */; };
+		439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */; };
 		439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B1EB0220ACBE1007A6F4E /* Validation.swift */; };
 		43B078EB2203739C001BF643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B078EA2203739C001BF643 /* Main.storyboard */; };
 		43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B4BFD52205CA1B004C8EAD /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		4386825A21FF8F39008F65D0 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SWRevealViewController 02-32-09-600.m"; sourceTree = "<group>"; };
 		439470ED220B5FDD00CEC63E /* SWRevealViewController 02-32-09-986.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController 02-32-09-986.h"; sourceTree = "<group>"; };
+		439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTeamVC.swift; sourceTree = "<group>"; };
 		439B1EB0220ACBE1007A6F4E /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		43B078EA2203739C001BF643 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		43B4BFD52205CA1B004C8EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		435CCB2F21FF66DD00E87AD6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				439470EF220B73CC00CEC63E /* registration */,
 				435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */,
 				435CCB1D21FF66CB00E87AD6 /* SplashScreenVC.swift */,
 				435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */,
@@ -166,11 +169,19 @@
 				4316BB4822037DD000A168BE /* MainVC.swift */,
 				4302C10F2206085400A9865D /* CustomTabBarController.swift */,
 				4302C1132206137A00A9865D /* SendReportVC.swift */,
-				43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */,
 				43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */,
 				43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		439470EF220B73CC00CEC63E /* registration */ = {
+			isa = PBXGroup;
+			children = (
+				43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */,
+				439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */,
+			);
+			path = registration;
 			sourceTree = "<group>";
 		};
 		439B1EAF220ACBCE007A6F4E /* classes */ = {
@@ -337,6 +348,7 @@
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				4302C1142206137A00A9865D /* SendReportVC.swift in Sources */,
 				439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */,
+				439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */,
 				435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

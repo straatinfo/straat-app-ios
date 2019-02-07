@@ -9,8 +9,14 @@ import UIKit
 
 class TermsAndConditionVC: UIViewController {
 
+    @IBOutlet weak var mainContainer: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadBorderedVIew(viewContainer: mainContainer, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
 
         // Do any additional setup after loading the view.
     }
@@ -25,6 +31,7 @@ class TermsAndConditionVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

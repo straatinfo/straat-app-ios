@@ -34,7 +34,6 @@ class LoginUserVC: UIViewController {
                 ])
             
         } else {
-            // creates an alert for this result
             defaultDialog(vc: self, title: "Login", message: "Please fill up all the empty fields")
             print("false")
         }
@@ -50,11 +49,8 @@ class LoginUserVC: UIViewController {
                 print("error reponse: \(error.localizedDescription)")
                 defaultDialog(vc: self, title: "Error Response", message: error.localizedDescription)
                 loadingDismiss()
-                // creates an alert for this error response
                 
             } else if let data = response {
-                
-                loadingDismiss()
                 
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 let userObject = dataObject?["user"] as? Dictionary <String, Any>
@@ -68,6 +64,7 @@ class LoginUserVC: UIViewController {
 
                 //saving user model to loca data
                 self.saveToLocalData(usermodel: userModel)
+                loadingDismiss()
                 pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
                 
             }

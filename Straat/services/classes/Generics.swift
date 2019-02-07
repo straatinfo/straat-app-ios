@@ -56,3 +56,9 @@ import UIKit
         
     }
     
+    // creates borders lines of container
+    func loadBorderedVIew( viewContainer : UIView , borderWidth : CGFloat , color : UIColor) {
+        viewContainer.layer.borderWidth = borderWidth
+        viewContainer.layer.borderColor = color.cgColor
+        
+    }

@@ -37,7 +37,7 @@ class EnterCodeVC: UIViewController {
     
     func code( params : Parameters ) {
         
-        apiHandler.execute(URL(string: request_host)!, parameters: params, method: .post) { (response, err) in
+        apiHandler.execute(URL(string: request_host)!, parameters: params, method: .post, destination: .httpBody) { (response, err) in
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")

@@ -43,7 +43,7 @@ class LoginUserVC: UIViewController {
     
     func login( params: Parameters) {
 
-        apiHandler.execute(URL(string: auth)!, parameters: params, method: .post) { (response, err) in
+        apiHandler.execute(URL(string: auth)!, parameters: params, method: .post, destination: .queryString) { (response, err) in
 
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")

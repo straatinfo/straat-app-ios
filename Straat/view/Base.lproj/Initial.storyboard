@@ -121,7 +121,6 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="btnOkay:" destination="rb9-9R-lFz" eventType="touchUpInside" id="cKq-Bs-hnT"/>
-                                                    <segue destination="lQh-D8-Ivu" kind="show" id="IR9-OB-EBr"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOJ-jr-BRb">

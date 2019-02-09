@@ -19,7 +19,6 @@
 		435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */; };
 		435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */; };
 		4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUserVC.swift */; };
-		4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4386825A21FF8F39008F65D0 /* Registration.storyboard */; };
 		439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */ = {isa = PBXBuildFile; fileRef = 439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */; };
 		439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */; };
 		439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B1EB0220ACBE1007A6F4E /* Validation.swift */; };
@@ -31,6 +30,7 @@
 		43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B12220B01FD0088B5FC /* Generics.swift */; };
 		43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B14220B495E0088B5FC /* HostModel.swift */; };
 		830756348BBE455B8F1C2B70 /* Pods_Straat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */; };
+		9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE18354220DE74C00981F3F /* Registration.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +50,6 @@
 		435CCB2721FF66CD00E87AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeVC.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserVC.swift; sourceTree = "<group>"; };
-		4386825A21FF8F39008F65D0 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SWRevealViewController 02-32-09-600.m"; sourceTree = "<group>"; };
 		439470ED220B5FDD00CEC63E /* SWRevealViewController 02-32-09-986.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController 02-32-09-986.h"; sourceTree = "<group>"; };
 		439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTeamVC.swift; sourceTree = "<group>"; };
@@ -63,6 +62,10 @@
 		43EA2B12220B01FD0088B5FC /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
 		43EA2B14220B495E0088B5FC /* HostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostModel.swift; sourceTree = "<group>"; };
 		4DB15AC11A35962DC0F48E20 /* Pods-Straat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.debug.xcconfig"; sourceTree = "<group>"; };
+		9BE18350220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Initial.strings; sourceTree = "<group>"; };
+		9BE18351220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9BE18355220DE75B00981F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
+		9BE18356220DE78600981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Registration.strings; sourceTree = "<group>"; };
 		D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +146,7 @@
 				43B4BFD52205CA1B004C8EAD /* Assets.xcassets */,
 				435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */,
 				435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */,
-				4386825A21FF8F39008F65D0 /* Registration.storyboard */,
+				9BE18354220DE74C00981F3F /* Registration.storyboard */,
 				43B078EA2203739C001BF643 /* Main.storyboard */,
 			);
 			path = view;
@@ -272,7 +275,7 @@
 			files = (
 				435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */,
 				43B078EB2203739C001BF643 /* Main.storyboard in Resources */,
-				4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */,
+				9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */,
 				435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */,
 				43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */,
 			);
@@ -360,6 +363,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				435CCB2021FF66CB00E87AD6 /* Base */,
+				9BE18350220DE73D00981F3F /* nl */,
 			);
 			name = Initial.storyboard;
 			sourceTree = "<group>";
@@ -368,8 +372,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				435CCB2521FF66CD00E87AD6 /* Base */,
+				9BE18351220DE73D00981F3F /* nl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9BE18354220DE74C00981F3F /* Registration.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BE18355220DE75B00981F3F /* Base */,
+				9BE18356220DE78600981F3F /* nl */,
+			);
+			name = Registration.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -379,6 +393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -440,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

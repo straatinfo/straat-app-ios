@@ -9,10 +9,9 @@ import UIKit
 
 class TermsAndConditionVC: UIViewController {
 
-    
 
     @IBOutlet weak var mainContainer: UIView!
-    
+    var acceptTACDele : acceptTACDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,30 +22,24 @@ class TermsAndConditionVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     @IBAction func accept(_ sender: Any) {
-        performSegue(withIdentifier: "acceptSegue", sender: self)
+
+        self.acceptTACDele?.state(state: true)
+        dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func cancel(_ sender: Any) {
+        self.acceptTACDele?.state(state: false)
         dismiss(animated: true, completion: nil)
     }
+
     
+}
+
+
+protocol acceptTACDelegate {
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! RegistrationDataVC
-        vc.isSelected = true
-        
-    }
+    func state( state : Bool)
     
 }

@@ -9,60 +9,61 @@ import UIKit
 
 class RegistrationDataVC: UIViewController {
     
+    
     @IBOutlet weak var male: UIButton!
     @IBOutlet weak var female: UIButton!
     @IBOutlet weak var termsAndCondition: UIButton!
-    
-    var isSelected : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        termsAndCondition.isSelected = isSelected
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     @IBAction func selectedGender(_ sender: UIButton) {
         
-        
         var buttonSelected: UIButton!
-//
-//        if sender.isSelected {
-//
-            if sender.tag == 1 {
-                sender.isSelected = true
-                buttonSelected = female
-                print("male")
-            } else if sender.tag == 2{
-                sender.isSelected = true
-                buttonSelected = male
-                print("female")
-            }
-//
-//        } else {
-//            sender.isSelected = false
-//        }
-//
+        
+        // Conditional statement to identify the selected button
+        // if has a tag 1 (Male) or 2 (female)
+        if sender.tag == 1 {
+            sender.isSelected = true
+            buttonSelected = female
+            print("male")
+        } else if sender.tag == 2{
+            sender.isSelected = true
+            buttonSelected = male
+            print("female")
+        }
 
         diselect(sender: buttonSelected)
     }
     
+    @IBAction func selectTAC(_ sender: Any) {
+        let tacVC = storyboard?.instantiateViewController(withIdentifier: "TermsAndConditionID") as! TermsAndConditionVC
+        tacVC.acceptTACDele = self
+        present(tacVC, animated: true, completion: nil)
+    }
+
+    
+}
+
+
+//for implementating delegate
+extension RegistrationDataVC : acceptTACDelegate {
+    func state(state: Bool) {
+        self.termsAndCondition.isSelected = state
+        print("state: \(state)" )
+    }
+}
+
+
+// for implementing functions
+extension RegistrationDataVC {
     
     func diselect(sender: UIButton) {
         sender.isSelected = false
     }
-
     
 }

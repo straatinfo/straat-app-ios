@@ -34,7 +34,7 @@ class RegistrationTeamVC: UIViewController {
     
     func loadTeamData() {
         
-        apiHandler.execute(URL(string: request_team)!, parameters: nil, method: .get) { (response, err) in
+        apiHandler.execute(URL(string: request_team)!, parameters: nil, method: .get, destination: .queryString) { (response, err) in
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")

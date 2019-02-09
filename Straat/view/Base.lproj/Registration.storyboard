@@ -285,13 +285,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qBb-qe-gK4" userLabel="Street2SV">
                                                                         <rect key="frame" x="0.0" y="524" width="315" height="55.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBT-q1-Zea" userLabel="Street 2">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="61" height="20.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Town" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBT-q1-Zea" userLabel="Street 2">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="40.5" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.43137254901960786" green="0.52156862745098043" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TAD-eu-Zua">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Town" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TAD-eu-Zua">
                                                                                 <rect key="frame" x="0.0" y="25.5" width="315" height="30"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -385,7 +385,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                                 <connections>
-                                                                                    <segue destination="HmP-dA-VKh" kind="presentation" id="ytm-hy-KE0"/>
+                                                                                    <action selector="selectTAC:" destination="O9O-pR-1m0" eventType="touchUpInside" id="u0q-Ye-u8H"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -543,7 +543,7 @@
         <!--Terms And ConditionVC-->
         <scene sceneID="iSL-n5-Z7K">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="HmP-dA-VKh" customClass="TermsAndConditionVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="TermsAndConditionID" storyboardIdentifier="TermsAndConditionID" modalPresentationStyle="overCurrentContext" id="HmP-dA-VKh" customClass="TermsAndConditionVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZiU-w2-gTc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -634,7 +634,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="accept:" destination="HmP-dA-VKh" eventType="touchUpInside" id="lzA-dp-cic"/>
-                                                    <segue destination="O9O-pR-1m0" kind="show" identifier="acceptSegue" id="1Hf-uZ-xBD"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1089,7 +1088,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1fz-wu-Iew"/>
-        <segue reference="CUy-Y3-mFN"/>
+        <segue reference="Grl-9X-Vol"/>
         <segue reference="NUV-xW-xjc"/>
     </inferredMetricsTieBreakers>
 </document>

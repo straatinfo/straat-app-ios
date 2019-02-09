@@ -26,6 +26,8 @@ class EnterCodeVC: UIViewController {
 
             loadingShow(vc: self)
             code(params: [ "code" : tfCode.text! ])
+            
+            
             print("code: " + tfCode.text!)
         } else {
             // creates an alert for this result

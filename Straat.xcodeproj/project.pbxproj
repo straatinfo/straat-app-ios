@@ -180,7 +180,6 @@
 			children = (
 				4316BB4822037DD000A168BE /* MainVC.swift */,
 				4302C1132206137A00A9865D /* SendReportVC.swift */,
-				4388ED7E220DE8E6002A008A /* SelectReportTypeVC.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -355,7 +354,6 @@
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
-				4388ED7F220DE8E6002A008A /* SelectReportTypeVC.swift in Sources */,
 				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,
 				439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,

@@ -164,16 +164,25 @@
 		435CCB2F21FF66DD00E87AD6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				4388ED7D220DE8BC002A008A /* main */,
 				439470EF220B73CC00CEC63E /* registration */,
 				435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */,
 				435CCB1D21FF66CB00E87AD6 /* SplashScreenVC.swift */,
 				435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */,
 				4386825821FF8C06008F65D0 /* LoginUserVC.swift */,
-				4316BB4822037DD000A168BE /* MainVC.swift */,
-				4302C1132206137A00A9865D /* SendReportVC.swift */,
 				43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		4388ED7D220DE8BC002A008A /* main */ = {
+			isa = PBXGroup;
+			children = (
+				4316BB4822037DD000A168BE /* MainVC.swift */,
+				4302C1132206137A00A9865D /* SendReportVC.swift */,
+				4388ED7E220DE8E6002A008A /* SelectReportTypeVC.swift */,
+			);
+			path = main;
 			sourceTree = "<group>";
 		};
 		439470EF220B73CC00CEC63E /* registration */ = {
@@ -316,12 +325,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -344,6 +355,7 @@
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
+				4388ED7F220DE8E6002A008A /* SelectReportTypeVC.swift in Sources */,
 				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,
 				439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,

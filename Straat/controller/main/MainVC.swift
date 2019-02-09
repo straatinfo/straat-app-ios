@@ -16,7 +16,7 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         createMenu()
         navColor()
-        loadInfo()
+//        loadInfo()
         // Do any additional setup after loading the view.
     }
     

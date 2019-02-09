@@ -9,10 +9,16 @@ import UIKit
 
 class SendReportVC: UIViewController {
 
+    @IBOutlet weak var mainView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        loadBorderedVIew(viewContainer: mainView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
     }
     
 
@@ -29,4 +35,5 @@ class SendReportVC: UIViewController {
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+
 }

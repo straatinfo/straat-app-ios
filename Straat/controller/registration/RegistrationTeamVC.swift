@@ -6,33 +6,18 @@
 //
 
 import UIKit
+import iOSDropDown
 
 class RegistrationTeamVC: UIViewController {
 
-    @IBOutlet weak var teamSV: UIStackView!
-    
+    @IBOutlet weak var teamDropdown: DropDown!
+    var apiHandler = ApiHandler()
+    var teamList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        loadDropDown(teamName: "team 1")
-//        loadDropDown(teamName: "team 2")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-//        loadDropDown(teamName: "team 3")
-
+        loadTeamData()
         // Do any additional setup after loading the view.
     }
     
@@ -47,22 +32,44 @@ class RegistrationTeamVC: UIViewController {
     }
     */
     
-    
-    func loadDropDown( teamName : String ) {
-        // add width, action
+    func loadTeamData() {
         
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
-        
-        button.setTitle( teamName , for: .normal)
-        button.backgroundColor = UIColor.white
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.addTarget(self, action: #selector(getAction(sender:)), for: .touchUpInside)
-        
-        self.teamSV.addArrangedSubview(button)
+        apiHandler.execute(URL(string: request_team)!, parameters: nil, method: .get) { (response, err) in
+            
+            if let error = err {
+                print("error reponse: \(error.localizedDescription)")
+                defaultDialog(vc: self, title: "Error Response", message: error.localizedDescription)
+                loadingDismiss()
+                
+            } else if let data = response {
+                
+                let dataObject = data["data"] as! [[String: Any]]
+
+                for teams in dataObject {
+                    let team = teams["teamName"] as? String
+                    let teamID = teams["_id"] as? Int
+                    self.teamList.append(team!)
+
+                }
+                
+                loadingDismiss()
+                
+            }
+
+            self.loadDropDown(teamList: self.teamList)
+//            print("team list: \(String(describing: self.teamList))" )
+        }
         
     }
     
-    @objc func getAction( sender : UIButton) {
-        print("button-name: " + sender.currentTitle!)
+    
+    func loadDropDown(teamList : [String]!) {
+        
+        teamDropdown.optionArray = teamList
+        teamDropdown.selectedRowColor = UIColor.lightGray
+        
+        teamDropdown.didSelect { (selectedItem, index, id) in
+            self.title = "selected id: \(id)"
+        }
     }
 }

@@ -9,12 +9,12 @@ import UIKit
 
 class ForgotPassVC: UIViewController {
 
-    @IBOutlet weak var mainVIew: UIView!
+    @IBOutlet weak var mainView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadBorderedVIew(viewContainer: mainVIew, borderWidth: 1,
+        loadBorderedVIew(viewContainer: mainView, borderWidth: 1,
                          color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
         // Do any additional setup after loading the view.
     }

@@ -538,7 +538,7 @@
                 <viewControllerPlaceholder storyboardName="Initial" referencedIdentifier="loginVC" id="M43-Jw-4RM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vN1-GR-Sum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="578"/>
+            <point key="canvasLocation" x="132" y="981"/>
         </scene>
         <!--Terms And ConditionVC-->
         <scene sceneID="iSL-n5-Z7K">
@@ -672,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ta9-Vt-vhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-767" y="1468"/>
+            <point key="canvasLocation" x="132" y="1788"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="800-Mi-OB8">
@@ -848,7 +848,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FvX-Kn-3hf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1491" y="389"/>
+            <point key="canvasLocation" x="1449" y="45"/>
         </scene>
         <!--Registration TeamVC-->
         <scene sceneID="GH3-Td-phw">
@@ -972,6 +972,9 @@
                                                                 <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <segue destination="ESZ-MO-LCQ" kind="show" id="iVE-ie-BB5"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -1076,7 +1079,157 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQi-sc-49h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647.1999999999998" y="14.392803598200901"/>
+            <point key="canvasLocation" x="2703" y="45"/>
+        </scene>
+        <!--Create TeamVC-->
+        <scene sceneID="5mh-Jo-yj5">
+            <objects>
+                <viewController id="ESZ-MO-LCQ" customClass="CreateTeamVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cEn-72-dwh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUL-LR-tdS" userLabel="Main Container">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL9-KF-QJ4">
+                                        <rect key="frame" x="15" y="40" width="345" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h65-mT-bVL">
+                                        <rect key="frame" x="15" y="250" width="345" height="30"/>
+                                        <color key="backgroundColor" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Select Team Logo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ohk-AD-KAY">
+                                        <rect key="frame" x="15" y="562" width="345" height="65"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sno-Td-Ecf">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
+                                                <color key="backgroundColor" red="0.47843137250000001" green="0.68235294120000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Register">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkk-2g-jca">
+                                                <rect key="frame" x="0.0" y="35" width="345" height="30"/>
+                                                <color key="backgroundColor" red="0.85098039219999999" green="0.3294117647" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancel:" destination="ESZ-MO-LCQ" eventType="touchUpInside" id="Abx-lU-VdZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uEc-gL-VlZ">
+                                        <rect key="frame" x="15" y="96" width="345" height="134"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hMO-AO-7b9" userLabel="TeamNameSV">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="62"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N13-iQ-ZlS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSL-ik-Xk6">
+                                                        <rect key="frame" x="0.0" y="32" width="345" height="30"/>
+                                                        <color key="textColor" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="haU-jg-ztg" userLabel="TeamEmailSV">
+                                                <rect key="frame" x="0.0" y="72" width="345" height="62"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DvB-LW-hyj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="154" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcP-lg-MaR">
+                                                        <rect key="frame" x="0.0" y="32" width="345" height="30"/>
+                                                        <color key="textColor" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="pcP-lg-MaR" firstAttribute="width" secondItem="haU-jg-ztg" secondAttribute="width" id="Wh8-X7-ivu"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="haU-jg-ztg" firstAttribute="width" secondItem="uEc-gL-VlZ" secondAttribute="width" id="gnp-Pt-NWt"/>
+                                            <constraint firstItem="hMO-AO-7b9" firstAttribute="width" secondItem="uEc-gL-VlZ" secondAttribute="width" id="rPs-MJ-d2X"/>
+                                        </constraints>
+                                    </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yYN-tY-eGh">
+                                        <rect key="frame" x="87.5" y="300" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="o2N-6r-PRP"/>
+                                            <constraint firstAttribute="width" constant="200" id="oTX-A7-kdB"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="h65-mT-bVL" firstAttribute="leading" secondItem="RUL-LR-tdS" secondAttribute="leading" constant="15" id="KeQ-2u-Fdr"/>
+                                    <constraint firstItem="uEc-gL-VlZ" firstAttribute="top" secondItem="fL9-KF-QJ4" secondAttribute="bottom" constant="20" id="MYl-06-wr5"/>
+                                    <constraint firstAttribute="trailing" secondItem="yYN-tY-eGh" secondAttribute="trailing" constant="87.5" id="VAs-Eq-qgi"/>
+                                    <constraint firstAttribute="trailing" secondItem="fL9-KF-QJ4" secondAttribute="trailing" constant="15" id="VpP-U4-4kr"/>
+                                    <constraint firstItem="yYN-tY-eGh" firstAttribute="top" secondItem="h65-mT-bVL" secondAttribute="bottom" constant="20" id="Xs6-Nh-d8z"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ohk-AD-KAY" secondAttribute="trailing" constant="15" id="YSS-ZY-SM5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ohk-AD-KAY" secondAttribute="bottom" constant="20" id="dqM-uf-qp5"/>
+                                    <constraint firstItem="h65-mT-bVL" firstAttribute="top" secondItem="uEc-gL-VlZ" secondAttribute="bottom" constant="20" id="eac-Rl-2XH"/>
+                                    <constraint firstItem="yYN-tY-eGh" firstAttribute="centerX" secondItem="RUL-LR-tdS" secondAttribute="centerX" id="fDw-qw-gbA"/>
+                                    <constraint firstItem="yYN-tY-eGh" firstAttribute="leading" secondItem="RUL-LR-tdS" secondAttribute="leading" constant="87.5" id="hvG-k8-BwS"/>
+                                    <constraint firstAttribute="trailing" secondItem="h65-mT-bVL" secondAttribute="trailing" constant="15" id="lk1-Nh-Mnq"/>
+                                    <constraint firstItem="fL9-KF-QJ4" firstAttribute="top" secondItem="RUL-LR-tdS" secondAttribute="top" constant="40" id="mPS-6i-BhS"/>
+                                    <constraint firstItem="fL9-KF-QJ4" firstAttribute="leading" secondItem="RUL-LR-tdS" secondAttribute="leading" constant="15" id="mZH-LQ-4eA"/>
+                                    <constraint firstAttribute="trailing" secondItem="uEc-gL-VlZ" secondAttribute="trailing" constant="15" id="rbG-yP-c8t"/>
+                                    <constraint firstItem="Ohk-AD-KAY" firstAttribute="leading" secondItem="RUL-LR-tdS" secondAttribute="leading" constant="15" id="rr7-lM-4Sk"/>
+                                    <constraint firstItem="uEc-gL-VlZ" firstAttribute="leading" secondItem="RUL-LR-tdS" secondAttribute="leading" constant="15" id="vk9-fA-Iwt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RUL-LR-tdS" firstAttribute="leading" secondItem="kyC-JE-nRJ" secondAttribute="leading" id="QEZ-xl-wVq"/>
+                            <constraint firstAttribute="trailing" secondItem="RUL-LR-tdS" secondAttribute="trailing" id="azY-fP-0RQ"/>
+                            <constraint firstItem="RUL-LR-tdS" firstAttribute="top" secondItem="kyC-JE-nRJ" secondAttribute="top" id="kIg-zq-L4g"/>
+                            <constraint firstAttribute="bottom" secondItem="RUL-LR-tdS" secondAttribute="bottom" id="nfH-ym-Agk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kyC-JE-nRJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2OS-kY-Nca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3748" y="45"/>
         </scene>
     </scenes>
     <resources>
@@ -1087,8 +1240,8 @@
         <image name="selected-radio" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1fz-wu-Iew"/>
-        <segue reference="Grl-9X-Vol"/>
+        <segue reference="Iwp-oK-Big"/>
+        <segue reference="CUy-Y3-mFN"/>
         <segue reference="NUV-xW-xjc"/>
     </inferredMetricsTieBreakers>
 </document>

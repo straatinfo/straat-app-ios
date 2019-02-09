@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C10F2206085400A9865D /* CustomTabBarController.swift */; };
-		4302C1142206137A00A9865D /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C1132206137A00A9865D /* SendReportVC.swift */; };
+		4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C1132206137A00A9865D /* CreateReportVC.swift */; };
 		4316BB4922037DD000A168BE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* MainVC.swift */; };
 		434C3B55220A287800843000 /* ApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B54220A287800843000 /* ApiHandler.swift */; };
 		434C3B57220A2B4D00843000 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B56220A2B4D00843000 /* URL.swift */; };
@@ -21,9 +21,12 @@
 		4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUserVC.swift */; };
 		439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */ = {isa = PBXBuildFile; fileRef = 439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */; };
 		439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */; };
+		4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */; };
+		4397D19C220F6B26004788B6 /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D19B220F6B26004788B6 /* SendReportVC.swift */; };
 		439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B1EB0220ACBE1007A6F4E /* Validation.swift */; };
 		43B078EB2203739C001BF643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B078EA2203739C001BF643 /* Main.storyboard */; };
 		43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B4BFD52205CA1B004C8EAD /* Assets.xcassets */; };
+		43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */; };
 		43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */; };
 		43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */; };
 		43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */; };
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4302C10F2206085400A9865D /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		4302C1132206137A00A9865D /* SendReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportVC.swift; sourceTree = "<group>"; };
+		4302C1132206137A00A9865D /* CreateReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportVC.swift; sourceTree = "<group>"; };
 		4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Straat-Bridging-Header.h"; sourceTree = "<group>"; };
 		4316BB4822037DD000A168BE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		434C3B54220A287800843000 /* ApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHandler.swift; sourceTree = "<group>"; };
@@ -53,9 +56,12 @@
 		439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SWRevealViewController 02-32-09-600.m"; sourceTree = "<group>"; };
 		439470ED220B5FDD00CEC63E /* SWRevealViewController 02-32-09-986.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController 02-32-09-986.h"; sourceTree = "<group>"; };
 		439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTeamVC.swift; sourceTree = "<group>"; };
+		4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectReportTypeVC.swift; sourceTree = "<group>"; };
+		4397D19B220F6B26004788B6 /* SendReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportVC.swift; sourceTree = "<group>"; };
 		439B1EB0220ACBE1007A6F4E /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		43B078EA2203739C001BF643 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		43B4BFD52205CA1B004C8EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamVC.swift; sourceTree = "<group>"; };
 		43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataVC.swift; sourceTree = "<group>"; };
 		43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionVC.swift; sourceTree = "<group>"; };
 		43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
@@ -178,8 +184,10 @@
 		4388ED7D220DE8BC002A008A /* main */ = {
 			isa = PBXGroup;
 			children = (
+				4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */,
 				4316BB4822037DD000A168BE /* MainVC.swift */,
-				4302C1132206137A00A9865D /* SendReportVC.swift */,
+				4302C1132206137A00A9865D /* CreateReportVC.swift */,
+				4397D19B220F6B26004788B6 /* SendReportVC.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 				43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */,
 				439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */,
 				43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */,
+				43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */,
 			);
 			path = registration;
 			sourceTree = "<group>";
@@ -351,15 +360,18 @@
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
+				4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
 				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,
 				439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */,
+				4397D19C220F6B26004788B6 /* SendReportVC.swift in Sources */,
+				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
-				4302C1142206137A00A9865D /* SendReportVC.swift in Sources */,
+				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,
 				439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */,
 				439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */,
 				435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */,

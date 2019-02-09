@@ -22,16 +22,15 @@ class RegistrationTeamVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
+}
+
+
+// for implementing functions
+extension RegistrationTeamVC {
+    
+    
+    // loadinng data of team list
     func loadTeamData() {
         
         apiHandler.execute(URL(string: request_team)!, parameters: nil, method: .get, destination: .queryString) { (response, err) in
@@ -44,25 +43,27 @@ class RegistrationTeamVC: UIViewController {
             } else if let data = response {
                 
                 let dataObject = data["data"] as! [[String: Any]]
-
+                
                 for teams in dataObject {
                     let team = teams["teamName"] as? String
                     let teamID = teams["_id"] as? Int
                     self.teamList.append(team!)
-
+                    
                 }
                 
                 loadingDismiss()
                 
             }
-
+            
             self.loadDropDown(teamList: self.teamList)
-//            print("team list: \(String(describing: self.teamList))" )
+            //            print("team list: \(String(describing: self.teamList))" )
         }
         
     }
     
     
+    
+    // populate team list data to dropdown
     func loadDropDown(teamList : [String]!) {
         
         teamDropdown.optionArray = teamList
@@ -72,4 +73,5 @@ class RegistrationTeamVC: UIViewController {
             self.title = "selected id: \(id)"
         }
     }
+    
 }

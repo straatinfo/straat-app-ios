@@ -17,20 +17,16 @@ class MainVC: UIViewController {
         createMenu()
         navColor()
 //        loadInfo()
-        // Do any additional setup after loading the view.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
+// for implementing functions
+extension MainVC {
+    
+    // for revealing side bar menu
     func createMenu() {
         if revealViewController() != nil {
             
@@ -45,6 +41,7 @@ class MainVC: UIViewController {
         }
     }
     
+    // setting navigation bar colors
     func navColor() {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.barTintColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1)
@@ -53,6 +50,8 @@ class MainVC: UIViewController {
         navigationItem.title = "Straat.info"
     }
     
+    
+    // loading partial user information
     func loadInfo() {
         
         self.fname = UserDefaults.standard.object(forKey: "user_fname") as! String
@@ -63,10 +62,7 @@ class MainVC: UIViewController {
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
-    
+        
     }
-
-
-    
     
 }

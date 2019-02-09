@@ -38,8 +38,7 @@ class TermsAndConditionVC: UIViewController {
 }
 
 
+// protocol for changing button terms and condition status
 protocol acceptTACDelegate {
-    
     func state( state : Bool)
-    
 }

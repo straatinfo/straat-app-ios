@@ -9,21 +9,55 @@ import UIKit
 
 class SendReportVC: UIViewController {
 
+    
+    @IBOutlet weak var ChooseCategView: UIView!
+    @IBOutlet weak var EmergencyView: UIView!
+    @IBOutlet weak var DescriptionView: UIView!
+    @IBOutlet weak var DescriptionTextView: UIView!
+    @IBOutlet weak var PersonalInvolvedView: UIView!
+    @IBOutlet weak var PersonsVehiclesView: UIView!
+    
+    @IBOutlet weak var ImgView1: UIView!
+    @IBOutlet weak var ImgView2: UIView!
+    @IBOutlet weak var ImgView3: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadBorderedVIew(viewContainer: ChooseCategView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: EmergencyView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: DescriptionView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: DescriptionTextView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: PersonalInvolvedView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: PersonsVehiclesView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: ImgView1, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: ImgView2, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: ImgView3, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func sendRequest(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    */
+    
 
 }

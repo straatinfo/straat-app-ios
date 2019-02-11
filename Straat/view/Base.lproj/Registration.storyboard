@@ -952,7 +952,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAU-q2-aF1">
                                                         <rect key="frame" x="0.0" y="35" width="315" height="30"/>
                                                         <color key="backgroundColor" red="0.47843137254901957" green="0.68235294117647061" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="I want happy to join an existing team">
+                                                        <state key="normal" title="I want to join to an existing team">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -960,6 +960,9 @@
                                                                 <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="joinExistingTeam:" destination="Rs7-qQ-TUZ" eventType="touchUpInside" id="zfB-wd-m2c"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTH-jF-dCP">
                                                         <rect key="frame" x="0.0" y="70" width="315" height="30"/>
@@ -1009,7 +1012,6 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.47843137250000001" green="0.68235294120000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="3Kp-7z-kiu" firstAttribute="leading" secondItem="plB-Hg-yiT" secondAttribute="leading" id="2VA-vE-g5e"/>
                                                     <constraint firstItem="3Kp-7z-kiu" firstAttribute="top" secondItem="plB-Hg-yiT" secondAttribute="top" id="5Es-fE-TMD"/>
@@ -1075,6 +1077,7 @@
                     </view>
                     <connections>
                         <outlet property="teamDropdown" destination="3Kp-7z-kiu" id="rjY-Bf-bCb"/>
+                        <outlet property="teamListView" destination="plB-Hg-yiT" id="yhe-dR-0vM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQi-sc-49h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1109,6 +1112,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="importTeamLogo:" destination="ESZ-MO-LCQ" eventType="touchUpInside" id="hxX-3c-Caz"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ohk-AD-KAY">
                                         <rect key="frame" x="15" y="562" width="345" height="65"/>
@@ -1188,7 +1194,7 @@
                                             <constraint firstItem="hMO-AO-7b9" firstAttribute="width" secondItem="uEc-gL-VlZ" secondAttribute="width" id="rPs-MJ-d2X"/>
                                         </constraints>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yYN-tY-eGh">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="yYN-tY-eGh">
                                         <rect key="frame" x="87.5" y="300" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="o2N-6r-PRP"/>
@@ -1226,6 +1232,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kyC-JE-nRJ"/>
                     </view>
+                    <connections>
+                        <outlet property="imageTeamLogo" destination="yYN-tY-eGh" id="hsI-dM-4Fg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2OS-kY-Nca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1238,6 +1247,7 @@
         <image name="radio" width="22" height="22"/>
         <image name="selected-checkbox" width="24" height="24"/>
         <image name="selected-radio" width="22" height="22"/>
+        <image name="upload-img" width="192" height="192"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1fz-wu-Iew"/>

@@ -11,17 +11,23 @@ import iOSDropDown
 class RegistrationTeamVC: UIViewController {
 
     @IBOutlet weak var teamDropdown: DropDown!
+    @IBOutlet weak var teamListView: UIView!
+    
     var apiHandler = ApiHandler()
     var teamList = [String]()
+    var teamListModel = [TeamListModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadTeamData()
+        self.defaultView()
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func joinExistingTeam(_ sender: Any) {
+        self.showTeamList()
+    }
+    
     
 }
 
@@ -29,8 +35,18 @@ class RegistrationTeamVC: UIViewController {
 // for implementing functions
 extension RegistrationTeamVC {
     
+    // executing default view of registration team section
+    func defaultView() {
+        teamListView.isHidden = true
+    }
     
-    // loadinng data of team list
+    // show team list and fetch team list data
+    func showTeamList() {
+        self.loadTeamData()
+        teamListView.isHidden = false
+    }
+    
+    // loading data of team list
     func loadTeamData() {
         
         apiHandler.execute(URL(string: request_team)!, parameters: nil, method: .get, destination: .queryString) { (response, err) in
@@ -45,9 +61,12 @@ extension RegistrationTeamVC {
                 let dataObject = data["data"] as! [[String: Any]]
                 
                 for teams in dataObject {
-                    let team = teams["teamName"] as? String
-                    let teamID = teams["_id"] as? Int
-                    self.teamList.append(team!)
+                    let teamID = teams["_id"] as? String
+                    let teamName = teams["teamName"] as? String
+                    let teamEmail = teams["teamEmail"] as? String
+                   
+                    self.teamListModel.append(TeamListModel(teamID: teamID, teamName: teamName, teamEmail: teamEmail))
+                    self.teamList.append(teamName!)
                     
                 }
                 
@@ -55,7 +74,7 @@ extension RegistrationTeamVC {
                 
             }
             
-            self.loadDropDown(teamList: self.teamList)
+            self.loadDropDown(teamList: self.teamList, teamListModel: self.teamListModel)
             //            print("team list: \(String(describing: self.teamList))" )
         }
         
@@ -64,13 +83,13 @@ extension RegistrationTeamVC {
     
     
     // populate team list data to dropdown
-    func loadDropDown(teamList : [String]!) {
+    func loadDropDown(teamList : [String]!, teamListModel : [TeamListModel]!) {
         
         teamDropdown.optionArray = teamList
         teamDropdown.selectedRowColor = UIColor.lightGray
         
         teamDropdown.didSelect { (selectedItem, index, id) in
-            self.title = "selected id: \(id)"
+            print("selected team_id: \(String(describing: teamListModel[index].id))")
         }
     }
     

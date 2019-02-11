@@ -378,18 +378,16 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF0-Pe-VwZ" userLabel="ImgView1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="106.5" height="150"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wel-e4-eqJ">
+                                                                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="2yc-Lq-OBK">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="106.5" height="150"/>
-                                                                                <inset key="imageEdgeInsets" minX="15" minY="40" maxX="15" maxY="40"/>
-                                                                                <state key="normal" image="upload-img"/>
-                                                                            </button>
+                                                                            </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstItem="Wel-e4-eqJ" firstAttribute="top" secondItem="bF0-Pe-VwZ" secondAttribute="top" id="3Av-Vh-Jnl"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="Wel-e4-eqJ" secondAttribute="bottom" id="AYc-gb-Fqb"/>
-                                                                            <constraint firstItem="Wel-e4-eqJ" firstAttribute="leading" secondItem="bF0-Pe-VwZ" secondAttribute="leading" id="Vqd-z8-UW9"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="Wel-e4-eqJ" secondAttribute="trailing" id="yHH-hs-alj"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="2yc-Lq-OBK" secondAttribute="bottom" id="53L-gC-mw6"/>
+                                                                            <constraint firstItem="2yc-Lq-OBK" firstAttribute="top" secondItem="bF0-Pe-VwZ" secondAttribute="top" id="5zi-a6-67X"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="2yc-Lq-OBK" secondAttribute="trailing" id="Fjb-qK-H1s"/>
+                                                                            <constraint firstItem="2yc-Lq-OBK" firstAttribute="leading" secondItem="bF0-Pe-VwZ" secondAttribute="leading" id="SHC-xT-A6Y"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -400,18 +398,16 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8y-jI-dRt" userLabel="ImgView2">
                                                                         <rect key="frame" x="109.5" y="0.0" width="106" height="150"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHy-cZ-wkj">
+                                                                            <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="If8-B6-AUW">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="150"/>
-                                                                                <inset key="imageEdgeInsets" minX="15" minY="40" maxX="15" maxY="40"/>
-                                                                                <state key="normal" image="upload-img"/>
-                                                                            </button>
+                                                                            </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstItem="MHy-cZ-wkj" firstAttribute="top" secondItem="V8y-jI-dRt" secondAttribute="top" id="Did-BA-vct"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="MHy-cZ-wkj" secondAttribute="bottom" id="LjX-SH-Iop"/>
-                                                                            <constraint firstItem="MHy-cZ-wkj" firstAttribute="leading" secondItem="V8y-jI-dRt" secondAttribute="leading" id="XhQ-EC-1h9"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="MHy-cZ-wkj" secondAttribute="trailing" id="xrc-vQ-wx3"/>
+                                                                            <constraint firstItem="If8-B6-AUW" firstAttribute="leading" secondItem="V8y-jI-dRt" secondAttribute="leading" id="7bg-v6-10I"/>
+                                                                            <constraint firstItem="If8-B6-AUW" firstAttribute="top" secondItem="V8y-jI-dRt" secondAttribute="top" id="AOn-U3-roh"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="If8-B6-AUW" secondAttribute="bottom" id="uHE-4g-cvI"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="If8-B6-AUW" secondAttribute="trailing" id="uwW-J2-G7p"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -422,18 +418,16 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDk-Ro-Geo" userLabel="ImageView3">
                                                                         <rect key="frame" x="218.5" y="0.0" width="106.5" height="150"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-VJ-nXw">
+                                                                            <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="LXS-UA-FnG">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="106.5" height="150"/>
-                                                                                <inset key="imageEdgeInsets" minX="15" minY="40" maxX="15" maxY="40"/>
-                                                                                <state key="normal" image="upload-img"/>
-                                                                            </button>
+                                                                            </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="trailing" secondItem="ISv-VJ-nXw" secondAttribute="trailing" id="5Td-2d-wjP"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="ISv-VJ-nXw" secondAttribute="bottom" id="gF9-W3-uaG"/>
-                                                                            <constraint firstItem="ISv-VJ-nXw" firstAttribute="leading" secondItem="kDk-Ro-Geo" secondAttribute="leading" id="rFK-tD-Osw"/>
-                                                                            <constraint firstItem="ISv-VJ-nXw" firstAttribute="top" secondItem="kDk-Ro-Geo" secondAttribute="top" id="u2g-CD-8At"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="LXS-UA-FnG" secondAttribute="trailing" id="6FT-4z-KYl"/>
+                                                                            <constraint firstItem="LXS-UA-FnG" firstAttribute="leading" secondItem="kDk-Ro-Geo" secondAttribute="leading" id="Dd8-3k-akT"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="LXS-UA-FnG" secondAttribute="bottom" id="Q9e-0d-SZw"/>
+                                                                            <constraint firstItem="LXS-UA-FnG" firstAttribute="top" secondItem="kDk-Ro-Geo" secondAttribute="top" id="kLV-VA-wH6"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -531,11 +525,14 @@
                         <outlet property="DescriptionTextView" destination="jkc-Xh-X4x" id="7cy-p9-vBn"/>
                         <outlet property="DescriptionView" destination="FAR-1M-WMo" id="3XK-3D-U21"/>
                         <outlet property="EmergencyView" destination="5e9-Kg-ZUl" id="b9B-yJ-hbN"/>
-                        <outlet property="ImgView1" destination="bF0-Pe-VwZ" id="KpU-jz-pbI"/>
-                        <outlet property="ImgView2" destination="V8y-jI-dRt" id="Cw1-Qh-NTo"/>
-                        <outlet property="ImgView3" destination="kDk-Ro-Geo" id="KTJ-zt-Vm3"/>
+                        <outlet property="ImgUIView1" destination="bF0-Pe-VwZ" id="KpU-jz-pbI"/>
+                        <outlet property="ImgUIView2" destination="V8y-jI-dRt" id="Cw1-Qh-NTo"/>
+                        <outlet property="ImgUIView3" destination="kDk-Ro-Geo" id="KTJ-zt-Vm3"/>
                         <outlet property="PersonalInvolvedView" destination="8e9-cc-QfP" id="4YZ-jv-X0d"/>
                         <outlet property="PersonsVehiclesView" destination="XQ5-9e-GKj" id="x1P-OW-Tgb"/>
+                        <outlet property="imgView1" destination="2yc-Lq-OBK" id="GLj-fU-7Ah"/>
+                        <outlet property="imgView2" destination="If8-B6-AUW" id="HGl-4Q-rqg"/>
+                        <outlet property="imgView3" destination="LXS-UA-FnG" id="7SX-oh-eaR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wq-XZ-sZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1288,7 +1285,7 @@
                                         </constraints>
                                         <state key="normal" image="cancel"/>
                                         <connections>
-                                            <action selector="dismiss:" destination="mBY-UZ-iIE" eventType="touchUpInside" id="61v-QJ-32i"/>
+                                            <action selector="dismiss:" destination="mBY-UZ-iIE" eventType="touchUpInside" id="hhc-RY-6HE"/>
                                         </connections>
                                     </button>
                                 </subviews>

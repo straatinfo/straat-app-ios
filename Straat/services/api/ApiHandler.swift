@@ -35,7 +35,7 @@ class ApiHandler {
                     
                 }
              
-                debugPrint(response.result.error)
+                debugPrint(response.result.error ?? "An erro occured")
             }
         
         

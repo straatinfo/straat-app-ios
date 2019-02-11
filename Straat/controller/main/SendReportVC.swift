@@ -1,15 +1,14 @@
 //
-//  SendReportVC.swift
+//  SendReport.swift
 //  Straat
 //
-//  Created by Global Array on 10/02/2019.
+//  Created by Global Array on 03/02/2019.
 //
 
 import UIKit
 
 class SendReportVC: UIViewController {
 
-    
     @IBOutlet weak var ChooseCategView: UIView!
     @IBOutlet weak var EmergencyView: UIView!
     @IBOutlet weak var DescriptionView: UIView!
@@ -25,8 +24,6 @@ class SendReportVC: UIViewController {
     @IBOutlet weak var imgView2: UIImageView!
     @IBOutlet weak var imgView3: UIImageView!
     
-    var selectedImageView : UIImageView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,17 +62,19 @@ class SendReportVC: UIViewController {
         imgView3.isUserInteractionEnabled = true
         
         imgView1.addGestureRecognizer(gesture)
-//        imgView2.addGestureRecognizer(gesture)
-//        imgView3.addGestureRecognizer(gesture)
-        
+        //        imgView2.addGestureRecognizer(gesture)
+        //        imgView3.addGestureRecognizer(gesture)
         // Do any additional setup after loading the view.
+        
     }
-    
     
     @IBAction func sendRequest(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
 }
 
@@ -93,9 +92,9 @@ extension SendReportVC : UINavigationControllerDelegate, UIImagePickerController
         img.delegate = self
         img.sourceType = UIImagePickerController.SourceType.photoLibrary
         img.allowsEditing = false
-    
+        
         self.present(img, animated: true, completion: nil)
-//        print("sender: \(sender.tag)")
+        //        print("sender: \(sender.tag)")
     }
     
     
@@ -114,5 +113,3 @@ extension SendReportVC : UINavigationControllerDelegate, UIImagePickerController
     }
     
 }
-
-

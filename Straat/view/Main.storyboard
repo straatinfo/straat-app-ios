@@ -139,6 +139,9 @@
                                                 <rect key="frame" x="322" y="8" width="15" height="15"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="cancel"/>
+                                                <connections>
+                                                    <action selector="dismiss:" destination="x5u-ZR-Kxm" eventType="touchUpInside" id="VgF-Uu-4yA"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIK-QD-Mci">
                                                 <rect key="frame" x="8" y="8" width="71" height="21"/>

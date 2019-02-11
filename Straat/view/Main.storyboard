@@ -381,7 +381,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF0-Pe-VwZ" userLabel="ImgView1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="106.5" height="150"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="2yc-Lq-OBK">
+                                                                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="2yc-Lq-OBK">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="106.5" height="150"/>
                                                                             </imageView>
                                                                         </subviews>
@@ -401,7 +401,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8y-jI-dRt" userLabel="ImgView2">
                                                                         <rect key="frame" x="109.5" y="0.0" width="106" height="150"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="If8-B6-AUW">
+                                                                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="If8-B6-AUW">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="150"/>
                                                                             </imageView>
                                                                         </subviews>
@@ -421,7 +421,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDk-Ro-Geo" userLabel="ImageView3">
                                                                         <rect key="frame" x="218.5" y="0.0" width="106.5" height="150"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="LXS-UA-FnG">
+                                                                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="LXS-UA-FnG">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="106.5" height="150"/>
                                                                             </imageView>
                                                                         </subviews>

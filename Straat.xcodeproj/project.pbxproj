@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C10F2206085400A9865D /* CustomTabBarController.swift */; };
-		4302C1142206137A00A9865D /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C1132206137A00A9865D /* SendReportVC.swift */; };
+		4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C1132206137A00A9865D /* CreateReportVC.swift */; };
 		4316BB4922037DD000A168BE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* MainVC.swift */; };
 		434C3B55220A287800843000 /* ApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B54220A287800843000 /* ApiHandler.swift */; };
 		434C3B57220A2B4D00843000 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B56220A2B4D00843000 /* URL.swift */; };
@@ -19,24 +19,29 @@
 		435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */; };
 		435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */; };
 		4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUserVC.swift */; };
-		4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4386825A21FF8F39008F65D0 /* Registration.storyboard */; };
+		43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43907A312210A5B60063DC16 /* TeamListModel.swift */; };
 		439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */ = {isa = PBXBuildFile; fileRef = 439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */; };
 		439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */; };
+		4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */; };
+		4397D19C220F6B26004788B6 /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D19B220F6B26004788B6 /* SendReportVC.swift */; };
 		439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B1EB0220ACBE1007A6F4E /* Validation.swift */; };
 		43B078EB2203739C001BF643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B078EA2203739C001BF643 /* Main.storyboard */; };
 		43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B4BFD52205CA1B004C8EAD /* Assets.xcassets */; };
+		43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */; };
 		43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */; };
 		43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */; };
 		43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */; };
+		43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7C920220FF747004A9AFD /* SelectReportVC.swift */; };
 		43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B12220B01FD0088B5FC /* Generics.swift */; };
 		43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B14220B495E0088B5FC /* HostModel.swift */; };
 		830756348BBE455B8F1C2B70 /* Pods_Straat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */; };
+		9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE18354220DE74C00981F3F /* Registration.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4302C10F2206085400A9865D /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		4302C1132206137A00A9865D /* SendReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportVC.swift; sourceTree = "<group>"; };
+		4302C1132206137A00A9865D /* CreateReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportVC.swift; sourceTree = "<group>"; };
 		4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Straat-Bridging-Header.h"; sourceTree = "<group>"; };
 		4316BB4822037DD000A168BE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		434C3B54220A287800843000 /* ApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHandler.swift; sourceTree = "<group>"; };
@@ -50,19 +55,27 @@
 		435CCB2721FF66CD00E87AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeVC.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserVC.swift; sourceTree = "<group>"; };
-		4386825A21FF8F39008F65D0 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		43907A312210A5B60063DC16 /* TeamListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListModel.swift; sourceTree = "<group>"; };
 		439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SWRevealViewController 02-32-09-600.m"; sourceTree = "<group>"; };
 		439470ED220B5FDD00CEC63E /* SWRevealViewController 02-32-09-986.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController 02-32-09-986.h"; sourceTree = "<group>"; };
 		439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTeamVC.swift; sourceTree = "<group>"; };
+		4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectReportTypeVC.swift; sourceTree = "<group>"; };
+		4397D19B220F6B26004788B6 /* SendReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportVC.swift; sourceTree = "<group>"; };
 		439B1EB0220ACBE1007A6F4E /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		43B078EA2203739C001BF643 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		43B4BFD52205CA1B004C8EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamVC.swift; sourceTree = "<group>"; };
 		43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataVC.swift; sourceTree = "<group>"; };
 		43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionVC.swift; sourceTree = "<group>"; };
 		43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
+		43E7C920220FF747004A9AFD /* SelectReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReportVC.swift; sourceTree = "<group>"; };
 		43EA2B12220B01FD0088B5FC /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
 		43EA2B14220B495E0088B5FC /* HostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostModel.swift; sourceTree = "<group>"; };
 		4DB15AC11A35962DC0F48E20 /* Pods-Straat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.debug.xcconfig"; sourceTree = "<group>"; };
+		9BE18350220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Initial.strings; sourceTree = "<group>"; };
+		9BE18351220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9BE18355220DE75B00981F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
+		9BE18356220DE78600981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Registration.strings; sourceTree = "<group>"; };
 		D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +156,7 @@
 				43B4BFD52205CA1B004C8EAD /* Assets.xcassets */,
 				435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */,
 				435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */,
-				4386825A21FF8F39008F65D0 /* Registration.storyboard */,
+				9BE18354220DE74C00981F3F /* Registration.storyboard */,
 				43B078EA2203739C001BF643 /* Main.storyboard */,
 			);
 			path = view;
@@ -154,6 +167,7 @@
 			children = (
 				434C3B58220A2DE800843000 /* UserModel.swift */,
 				43EA2B14220B495E0088B5FC /* HostModel.swift */,
+				43907A312210A5B60063DC16 /* TeamListModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -161,16 +175,27 @@
 		435CCB2F21FF66DD00E87AD6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				4388ED7D220DE8BC002A008A /* main */,
 				439470EF220B73CC00CEC63E /* registration */,
 				435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */,
 				435CCB1D21FF66CB00E87AD6 /* SplashScreenVC.swift */,
 				435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */,
 				4386825821FF8C06008F65D0 /* LoginUserVC.swift */,
-				4316BB4822037DD000A168BE /* MainVC.swift */,
-				4302C1132206137A00A9865D /* SendReportVC.swift */,
 				43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		4388ED7D220DE8BC002A008A /* main */ = {
+			isa = PBXGroup;
+			children = (
+				4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */,
+				4316BB4822037DD000A168BE /* MainVC.swift */,
+				4302C1132206137A00A9865D /* CreateReportVC.swift */,
+				4397D19B220F6B26004788B6 /* SendReportVC.swift */,
+				43E7C920220FF747004A9AFD /* SelectReportVC.swift */,
+			);
+			path = main;
 			sourceTree = "<group>";
 		};
 		439470EF220B73CC00CEC63E /* registration */ = {
@@ -179,6 +204,7 @@
 				43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */,
 				439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */,
 				43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */,
+				43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */,
 			);
 			path = registration;
 			sourceTree = "<group>";
@@ -272,7 +298,7 @@
 			files = (
 				435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */,
 				43B078EB2203739C001BF643 /* Main.storyboard in Resources */,
-				4386825B21FF8F39008F65D0 /* Registration.storyboard in Resources */,
+				9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */,
 				435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */,
 				43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */,
 			);
@@ -313,12 +339,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -338,15 +366,20 @@
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
+				4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
+				43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
 				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,
 				439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */,
+				4397D19C220F6B26004788B6 /* SendReportVC.swift in Sources */,
+				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
+				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
-				4302C1142206137A00A9865D /* SendReportVC.swift in Sources */,
+				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,
 				439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */,
 				439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */,
 				435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */,
@@ -360,6 +393,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				435CCB2021FF66CB00E87AD6 /* Base */,
+				9BE18350220DE73D00981F3F /* nl */,
 			);
 			name = Initial.storyboard;
 			sourceTree = "<group>";
@@ -368,8 +402,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				435CCB2521FF66CD00E87AD6 /* Base */,
+				9BE18351220DE73D00981F3F /* nl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9BE18354220DE74C00981F3F /* Registration.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BE18355220DE75B00981F3F /* Base */,
+				9BE18356220DE78600981F3F /* nl */,
+			);
+			name = Registration.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -379,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -440,6 +485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

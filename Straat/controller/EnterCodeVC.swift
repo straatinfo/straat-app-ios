@@ -26,6 +26,8 @@ class EnterCodeVC: UIViewController {
 
             loadingShow(vc: self)
             code(params: [ "code" : tfCode.text! ])
+            
+            
             print("code: " + tfCode.text!)
         } else {
             // creates an alert for this result
@@ -35,9 +37,16 @@ class EnterCodeVC: UIViewController {
     }
     
     
+}
+
+
+// for implementing functions
+extension EnterCodeVC {
+ 
+    // fetching data based on access code of user input
     func code( params : Parameters ) {
         
-        apiHandler.execute(URL(string: request_host)!, parameters: params, method: .post) { (response, err) in
+        apiHandler.execute(URL(string: request_host)!, parameters: params, method: .post, destination: .httpBody) { (response, err) in
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
@@ -50,19 +59,20 @@ class EnterCodeVC: UIViewController {
                 loadingDismiss()
                 
                 let dataObject = data["data"] as? Dictionary <String, Any>
-//                let userObject = dataObject?["user"] as? Dictionary <String, Any>
+                //                let userObject = dataObject?["user"] as? Dictionary <String, Any>
                 
                 print("response:  \(String(describing: dataObject))")
-
+                
                 //saving user model to loca data
-//                self.saveToLocalData()
-//                self.pushToNextVC()
+                //                self.saveToLocalData()
+                //                self.pushToNextVC()
                 
             }
             
         }
         
     }
+    
     
     
     

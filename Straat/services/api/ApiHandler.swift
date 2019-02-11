@@ -14,10 +14,10 @@ class ApiHandler {
     typealias ApiResponse = ( Dictionary <String, Any>?, Error?) -> Void
     
     
-    func execute (_ url: URL, parameters: Parameters?, method: HTTPMethod, completion: @escaping ApiResponse) {
+    func execute (_ url: URL, parameters: Parameters?, method: HTTPMethod, destination: URLEncoding.Destination, completion: @escaping ApiResponse) {
         
         
-        Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding(destination: .queryString), headers: nil)
+        Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding(destination: destination), headers: nil)
             .validate().responseJSON
             { response in
                 

@@ -7,4 +7,5 @@ target 'Straat' do
 
   # Pods for Straat
   pod 'Alamofire', '~> 4.7'
+  pod 'iOSDropDown'
 end

@@ -9,6 +9,7 @@ import Foundation
 
 class HostModel {
     var id : String?
+<<<<<<< HEAD
     var lat : String?
     var long : String?
     var email : String?
@@ -36,6 +37,27 @@ class HostModel {
         isVolunteer: Bool?,
         language: String?
     ) {
+=======
+    var lat : Double?
+    var long : Double?
+    var email : String?
+    var streetName : String?
+    var city: String?
+    var country : String?
+    var postalCode : String?
+    
+    
+    init( hostID : String?, hostLat : Double?, hostLong : Double?, hostEmail : String?, hostStreet : String?, hostCity : String?, hostCountry : String?, hostPostalCode: String?) {
+        
+        id = hostID
+        lat = hostLat
+        long = hostLong
+        email = hostEmail
+        streetName = hostStreet
+        city = hostCity
+        country = hostCountry
+        postalCode = hostPostalCode
+>>>>>>> added saving host data to local data and shorten the code of loading view in send report vc
         
         self.id = hostID
         self.lat = hostLat

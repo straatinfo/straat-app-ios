@@ -57,7 +57,6 @@ extension SendReportVC : UINavigationControllerDelegate, UIImagePickerController
             loadBorderedVIew(viewContainer: view, borderWidth: 1,
                              color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
         }
-
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.importImage(gesture:)) )
         let gesture2 = UITapGestureRecognizer(target: self, action: #selector(self.importImage(gesture:)) )

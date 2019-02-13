@@ -9,25 +9,33 @@ import Foundation
 
 class HostModel {
     var id : String?
-    var lat : Double?
-    var long : Double?
+    var lat : String?
+    var long : String?
     var email : String?
-    var streetName : String?
+    var hostName : String?
+    var username: String?
+    var streetName: String?
     var city: String?
-    var country : String?
-    var postalCode : String?
+    var country: String?
+    var postalCode: String?
+    var phoneNumber: String?
+    var isVolunteer: Bool?
+    var language: String? = "en"
     
-    
-    init( hostID : String?, hostLat : Double?, hostLong : Double?, hostEmail : String?, hostStreet : String?, hostCity : String?, hostCountry : String?, hostPostalCode: String?) {
-        
-        id = hostID
-        lat = hostLat
-        long = hostLong
-        email = hostEmail
-        streetName = hostStreet
-        city = hostCity
-        country = hostCountry
-        postalCode = hostPostalCode
+    init(
+        hostID : String?,
+        hostLat : String?,
+        hostLong : String?,
+        hostEmail : String?,
+        username: String?,
+        streetName: String?,
+        city: String?,
+        country: String?,
+        postalCode: String?,
+        phoneNumber: String?,
+        isVolunteer: Bool?,
+        language: String?
+    ) {
         
         self.id = hostID
         self.lat = hostLat

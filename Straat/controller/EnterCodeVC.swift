@@ -56,23 +56,6 @@ extension EnterCodeVC {
                 
                 loadingDismiss()
                 
-<<<<<<< HEAD
-                let dataObject = data["data"] as? Dictionary <String, Any>
-                
-                let id = dataObject?["_id"] as? String
-                let lat = dataObject?["_lat"] as? String
-                let long = dataObject?["long"] as? String
-                let email = dataObject?["email"] as? String
-                let hostName = dataObject?["hostName"] as? String
-                let username = dataObject?["username"] as? String
-                let streetName = dataObject?["streetName"] as? String
-                let city = dataObject?["city"] as? String
-                let country = dataObject?["country"] as? String
-                let postalCode = dataObject?["postalCode"] as? String
-                let phoneNumber = dataObject?["phoneNumber"] as? String
-                let isVolunteer = dataObject?["isVolunteer"] as? Bool
-                let language = dataObject?["language"] as? String
-=======
                 let dataObject = data["data"] as! Dictionary <String, Any>
                 let host_id = dataObject["_id"] as! String
                 let host_lat = dataObject["lat"] as! Double
@@ -82,31 +65,16 @@ extension EnterCodeVC {
                 let host_city = dataObject["city"] as! String
                 let host_country = dataObject["country"] as! String
                 let host_postal = dataObject["postalCode"] as! String
->>>>>>> added saving host data to local data and shorten the code of loading view in send report vc
                 
                 print("host_id:  \(String(describing: host_id))")
                 print("host_long:  \(String(describing: host_long))")
                 print("host_lat:  \(String(describing: host_lat))")
             
                 
-<<<<<<< HEAD
-                
-                let host = HostModel(hostID: id, hostLat: lat, hostLong: long, hostEmail: email, username: username, streetName: streetName, city: city, country: country, postalCode: postalCode, phoneNumber: phoneNumber, isVolunteer: isVolunteer, language: language)
-                
-                self.saveToLocalData(host: host) {success, message in
-                    if success {
-                        // go to login view controller
-                        pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
-                    } else {
-                        print(message ?? "An error occured")
-                    }
-                }
-=======
                 //saving user model to loca data
                 self.saveToLocalData(hostModel: HostModel(hostID: host_id, hostLat: host_lat, hostLong: host_long, hostEmail: host_email, hostStreet: host_street, hostCity: host_city, hostCountry: host_country, hostPostalCode: host_postal))
                 
                 pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
->>>>>>> added saving host data to local data and shorten the code of loading view in send report vc
                 
             }
             

@@ -1,14 +1,15 @@
 //
-//  SendReport.swift
+//  SendReportVC.swift
 //  Straat
 //
-//  Created by Global Array on 03/02/2019.
+//  Created by Global Array on 10/02/2019.
 //
 
 import UIKit
 
 class SendReportVC: UIViewController {
 
+    
     @IBOutlet weak var ChooseCategView: UIView!
     @IBOutlet weak var EmergencyView: UIView!
     @IBOutlet weak var DescriptionView: UIView!
@@ -24,71 +25,77 @@ class SendReportVC: UIViewController {
     @IBOutlet weak var imgView2: UIImageView!
     @IBOutlet weak var imgView3: UIImageView!
     
-    var imgViewTag : Int!
-    
+    var selectedImageView : UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadBorderedVIew(viewContainer: ChooseCategView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
         
-        defaultView()
-        // Do any additional setup after loading the view.
+        loadBorderedVIew(viewContainer: EmergencyView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
         
-    }
-    
-    @IBAction func sendRequest(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func dismiss(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-
-}
-
-
-extension SendReportVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    // executing default view of registration team section
-    func defaultView() {
-
-        var uiViews = [UIView]()
-        uiViews = [ChooseCategView, EmergencyView, DescriptionView, DescriptionTextView, PersonalInvolvedView, PersonsVehiclesView, ImgUIView1, ImgUIView2, ImgUIView3]
+        loadBorderedVIew(viewContainer: DescriptionView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
         
-        for view in uiViews {
-            loadBorderedVIew(viewContainer: view, borderWidth: 1,
-                             color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
-        }
+        loadBorderedVIew(viewContainer: DescriptionTextView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
         
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.importImage(gesture:)) )
-        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(self.importImage(gesture:)) )
-        let gesture3 = UITapGestureRecognizer(target: self, action: #selector(self.importImage(gesture:)) )
+        loadBorderedVIew(viewContainer: PersonalInvolvedView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: PersonsVehiclesView, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: ImgUIView1, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: ImgUIView2, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        loadBorderedVIew(viewContainer: ImgUIView3, borderWidth: 1,
+                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.importImage(_:)))
         
         imgView1.isUserInteractionEnabled = true
         imgView2.isUserInteractionEnabled = true
         imgView3.isUserInteractionEnabled = true
         
         imgView1.addGestureRecognizer(gesture)
-        imgView2.addGestureRecognizer(gesture2)
-        imgView3.addGestureRecognizer(gesture3)
+//        imgView2.addGestureRecognizer(gesture)
+//        imgView3.addGestureRecognizer(gesture)
         
+        // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func sendRequest(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+
+}
+
+
+extension SendReportVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @objc func tappedImageView() {
         print("tapped image view")
     }
     
     
-    @objc func importImage ( gesture : UITapGestureRecognizer) {
+    @objc func importImage (_ sender : UIImageView) {
         
         let img = UIImagePickerController()
-        let view = gesture.view!
-        let tag = view.tag
-        
         img.delegate = self
         img.sourceType = UIImagePickerController.SourceType.photoLibrary
         img.allowsEditing = false
-        
+    
         self.present(img, animated: true, completion: nil)
-        self.imgViewTag = tag
+//        print("sender: \(sender.tag)")
     }
     
     
@@ -97,20 +104,7 @@ extension SendReportVC : UINavigationControllerDelegate, UIImagePickerController
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
-            switch(self.imgViewTag) {
-                case 1:
-                    imgView1.image = image
-                break;
-                case 2:
-                    imgView2.image = image
-                break;
-                case 3:
-                    imgView3.image = image
-                break
-                default:
-                    print("error in importing image")
-                break
-            }
+            imgView1.image = image
             
         } else {
             print("importing img: error in uploading image")
@@ -120,3 +114,5 @@ extension SendReportVC : UINavigationControllerDelegate, UIImagePickerController
     }
     
 }
+
+

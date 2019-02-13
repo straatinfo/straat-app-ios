@@ -22,6 +22,7 @@
 		43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43907A312210A5B60063DC16 /* TeamListModel.swift */; };
 		439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */ = {isa = PBXBuildFile; fileRef = 439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */; };
 		439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */; };
+		4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */; };
 		4397D19C220F6B26004788B6 /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D19B220F6B26004788B6 /* SendReportVC.swift */; };
 		439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B1EB0220ACBE1007A6F4E /* Validation.swift */; };
 		43B078EB2203739C001BF643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B078EA2203739C001BF643 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SWRevealViewController 02-32-09-600.m"; sourceTree = "<group>"; };
 		439470ED220B5FDD00CEC63E /* SWRevealViewController 02-32-09-986.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController 02-32-09-986.h"; sourceTree = "<group>"; };
 		439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTeamVC.swift; sourceTree = "<group>"; };
+		4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectReportTypeVC.swift; sourceTree = "<group>"; };
 		4397D19B220F6B26004788B6 /* SendReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportVC.swift; sourceTree = "<group>"; };
 		439B1EB0220ACBE1007A6F4E /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		43B078EA2203739C001BF643 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		4388ED7D220DE8BC002A008A /* main */ = {
 			isa = PBXGroup;
 			children = (
+				4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */,
 				4316BB4822037DD000A168BE /* MainVC.swift */,
 				4302C1132206137A00A9865D /* CreateReportVC.swift */,
 				4397D19B220F6B26004788B6 /* SendReportVC.swift */,
@@ -375,6 +378,8 @@
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
+				9B0948BC2212AD47004CE4CB /* UserRegistrationModel.swift in Sources */,
+				4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				9B0948BE2212BC15004CE4CB /* RegistrationStep2VCViewController.swift in Sources */,
 				43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */,

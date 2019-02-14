@@ -58,7 +58,7 @@
                                                             <color key="titleColor" red="0.30980392156862746" green="0.41568627450980389" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="zHT-sU-djj" kind="show" id="Grl-9X-Vol"/>
+                                                            <action selector="onReportTabPress:" destination="O9O-pR-1m0" eventType="touchUpInside" id="DvV-ZA-JzO"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-vX-naG">
@@ -236,6 +236,9 @@
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
+                                                                                <connections>
+                                                                                    <action selector="getPostCode:" destination="O9O-pR-1m0" eventType="editingDidEnd" id="8LE-oh-9UV"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -256,6 +259,9 @@
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
+                                                                                <connections>
+                                                                                    <action selector="sendPostNumber:" destination="O9O-pR-1m0" eventType="editingDidEnd" id="qJ8-0z-RDu"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -466,7 +472,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <segue destination="zHT-sU-djj" kind="show" id="UyM-M8-UPe"/>
+                                                            <action selector="onStep2Press:" destination="O9O-pR-1m0" eventType="touchUpInside" id="xpr-OW-8Rd"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfv-RM-8ej">
@@ -523,9 +529,19 @@
                     </view>
                     <size key="freeformSize" width="375" height="1300"/>
                     <connections>
+                        <outlet property="emailTxtBox" destination="vbh-0T-0M0" id="QEZ-dW-Vs7"/>
                         <outlet property="female" destination="ssL-JQ-uvh" id="2Bj-Mo-khA"/>
+                        <outlet property="firstnameTxtBox" destination="2y4-9d-kI4" id="5i9-BK-agF"/>
+                        <outlet property="lastnameTxtBox" destination="L8Y-wK-edr" id="KHL-jW-7Xl"/>
                         <outlet property="male" destination="j9e-e1-HgV" id="GQk-aL-F2M"/>
+                        <outlet property="mobileNumberTxtBox" destination="VXz-o9-eil" id="sDG-XC-IfI"/>
+                        <outlet property="passwordTxtBox" destination="RHX-1b-msE" id="wP0-Kh-iUK"/>
+                        <outlet property="postCodeTxtBox" destination="nYG-vD-h8Y" id="0jy-o7-f5K"/>
+                        <outlet property="postNumberTxtBox" destination="HtW-kA-MhW" id="5Cg-Ib-Px8"/>
+                        <outlet property="streetTxtBox" destination="uMT-z0-L9r" id="dWB-3J-1fo"/>
                         <outlet property="termsAndCondition" destination="O3f-iw-1Wn" id="dgA-yI-jDq"/>
+                        <outlet property="townTxtBox" destination="TAD-eu-Zua" id="dSp-UC-FRs"/>
+                        <outlet property="usernameTxtBox" destination="Isj-CG-fME" id="g9x-di-IIL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmZ-hP-xlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -674,10 +690,10 @@
             </objects>
             <point key="canvasLocation" x="132" y="1788"/>
         </scene>
-        <!--View Controller-->
+        <!--Registration Step2VC View Controller-->
         <scene sceneID="800-Mi-OB8">
             <objects>
-                <viewController id="zHT-sU-djj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="step2VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zHT-sU-djj" customClass="RegistrationStep2VCViewController" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ick-TL-MyQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -715,6 +731,7 @@
                                                             <color key="titleColor" red="0.30980392156862746" green="0.41568627450980389" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
+                                                            <action selector="onStep1TabPress:" destination="zHT-sU-djj" eventType="touchUpInside" id="6RX-Ui-P3V"/>
                                                             <segue destination="O9O-pR-1m0" kind="show" id="gIb-xv-959"/>
                                                         </connections>
                                                     </button>
@@ -731,9 +748,6 @@
                                                         <state key="normal" title="Team">
                                                             <color key="titleColor" red="0.30980392156862746" green="0.41568627450980389" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <connections>
-                                                            <segue destination="Rs7-qQ-TUZ" kind="show" id="AHF-5u-K8X"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -773,6 +787,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="onAsVolunteerPress:" destination="zHT-sU-djj" eventType="touchUpInside" id="wdF-df-zsA"/>
                                                             <segue destination="Rs7-qQ-TUZ" kind="show" id="Iwp-oK-Big"/>
                                                         </connections>
                                                     </button>
@@ -788,6 +803,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="onAsNonVolunteerPress:" destination="zHT-sU-djj" eventType="touchUpInside" id="EYo-Tm-Won"/>
                                                             <segue destination="Rs7-qQ-TUZ" kind="show" id="mcr-1N-n6a"/>
                                                         </connections>
                                                     </button>
@@ -853,7 +869,7 @@
         <!--Registration TeamVC-->
         <scene sceneID="GH3-Td-phw">
             <objects>
-                <viewController id="Rs7-qQ-TUZ" customClass="RegistrationTeamVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="step3VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rs7-qQ-TUZ" customClass="RegistrationTeamVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FwH-Yd-ql6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1030,6 +1046,9 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onRegisterPress:" destination="Rs7-qQ-TUZ" eventType="touchUpInside" id="Vlv-vW-g8R"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1087,7 +1106,7 @@
         <!--Create TeamVC-->
         <scene sceneID="5mh-Jo-yj5">
             <objects>
-                <viewController id="ESZ-MO-LCQ" customClass="CreateTeamVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createTeamVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ESZ-MO-LCQ" customClass="CreateTeamVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cEn-72-dwh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1130,6 +1149,9 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onRegisterPress:" destination="ESZ-MO-LCQ" eventType="touchUpInside" id="bAN-y1-EvA"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkk-2g-jca">
                                                 <rect key="frame" x="0.0" y="35" width="345" height="30"/>
@@ -1234,6 +1256,8 @@
                     </view>
                     <connections>
                         <outlet property="imageTeamLogo" destination="yYN-tY-eGh" id="hsI-dM-4Fg"/>
+                        <outlet property="teamEmailTxtBox" destination="pcP-lg-MaR" id="8eq-QC-jlj"/>
+                        <outlet property="teamNameTxtBox" destination="vSL-ik-Xk6" id="P7F-pO-kRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2OS-kY-Nca" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1251,7 +1275,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1fz-wu-Iew"/>
-        <segue reference="Grl-9X-Vol"/>
         <segue reference="NUV-xW-xjc"/>
     </inferredMetricsTieBreakers>
 </document>

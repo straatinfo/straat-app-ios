@@ -35,6 +35,10 @@
 		43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B12220B01FD0088B5FC /* Generics.swift */; };
 		43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B14220B495E0088B5FC /* HostModel.swift */; };
 		830756348BBE455B8F1C2B70 /* Pods_Straat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */; };
+		9B0948BC2212AD47004CE4CB /* UserRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BB2212AD47004CE4CB /* UserRegistrationModel.swift */; };
+		9B0948BE2212BC15004CE4CB /* RegistrationStep2VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BD2212BC15004CE4CB /* RegistrationStep2VCViewController.swift */; };
+		9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BF2212D0A8004CE4CB /* TeamModel.swift */; };
+		9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B69A50722123C95001BBFE8 /* PostalModel.swift */; };
 		9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE18354220DE74C00981F3F /* Registration.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,10 @@
 		43EA2B12220B01FD0088B5FC /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
 		43EA2B14220B495E0088B5FC /* HostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostModel.swift; sourceTree = "<group>"; };
 		4DB15AC11A35962DC0F48E20 /* Pods-Straat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.debug.xcconfig"; sourceTree = "<group>"; };
+		9B0948BB2212AD47004CE4CB /* UserRegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationModel.swift; sourceTree = "<group>"; };
+		9B0948BD2212BC15004CE4CB /* RegistrationStep2VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStep2VCViewController.swift; sourceTree = "<group>"; };
+		9B0948BF2212D0A8004CE4CB /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
+		9B69A50722123C95001BBFE8 /* PostalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalModel.swift; sourceTree = "<group>"; };
 		9BE18350220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Initial.strings; sourceTree = "<group>"; };
 		9BE18351220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9BE18355220DE75B00981F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
@@ -168,6 +176,9 @@
 				434C3B58220A2DE800843000 /* UserModel.swift */,
 				43EA2B14220B495E0088B5FC /* HostModel.swift */,
 				43907A312210A5B60063DC16 /* TeamListModel.swift */,
+				9B69A50722123C95001BBFE8 /* PostalModel.swift */,
+				9B0948BB2212AD47004CE4CB /* UserRegistrationModel.swift */,
+				9B0948BF2212D0A8004CE4CB /* TeamModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -205,6 +216,7 @@
 				439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */,
 				43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */,
 				43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */,
+				9B0948BD2212BC15004CE4CB /* RegistrationStep2VCViewController.swift */,
 			);
 			path = registration;
 			sourceTree = "<group>";
@@ -248,6 +260,7 @@
 				435CCB1521FF66CB00E87AD6 /* Frameworks */,
 				435CCB1621FF66CB00E87AD6 /* Resources */,
 				9E81F25575871A7166C31FA8 /* [CP] Embed Pods Frameworks */,
+				371B4D39C6DD28AFBE2432E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -307,6 +320,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		371B4D39C6DD28AFBE2432E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		97883C154EBD84EF64ED4853 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,9 +403,12 @@
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
+				9B0948BC2212AD47004CE4CB /* UserRegistrationModel.swift in Sources */,
 				4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
+				9B0948BE2212BC15004CE4CB /* RegistrationStep2VCViewController.swift in Sources */,
 				43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */,
+				9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
 				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,
@@ -376,6 +416,7 @@
 				4397D19C220F6B26004788B6 /* SendReportVC.swift in Sources */,
 				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
+				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,

@@ -35,11 +35,75 @@ class ApiHandler {
                     
                 }
              
-                debugPrint(response.result.error)
+                debugPrint(response.result.error ?? "An erro occured")
             }
         
         
     }
     
+    func executeWithHeaders (_ url: URL, parameters: Parameters?, method: HTTPMethod, destination: URLEncoding.Destination, headers: HTTPHeaders, completion: @escaping ApiResponse) {
+        
+        Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding(destination: destination), headers: headers)
+            .validate().responseJSON
+            { response in
+                
+                if let error = response.error {
+                    
+                    completion(nil, error)
+                    
+                } else if let jsonArr =  response.result.value as? Dictionary <String, Any> {
+                    
+                    completion(jsonArr, nil)
+                    
+                } else if let jsonDict = response.result.value as? Dictionary <String, Any> {
+                    
+                    completion(jsonDict, nil)
+                    
+                }
+                
+                debugPrint(response.result.error ?? "No Errors")
+        }
+    }
+
+    func executeMultiPart (_ url: URL, parameters: Parameters?, imageData: Data?, fileName: String?, photoFieldName: String?, pathExtension: String?, headers: HTTPHeaders?, completion: @escaping ApiResponse) {
+        var heads = headers
+
+        heads?["Content-type"] = "multipart/form-data"
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            for (key, value) in parameters! {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            }
+            
+            if let data = imageData {
+                multipartFormData.append(data, withName: photoFieldName!, fileName: "\(fileName!).\(pathExtension!)", mimeType: "\(fileName!)/\(pathExtension!)")
+            }
+        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: heads) { (result) in
+            
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    if let error = response.error {
+                        
+                        completion(nil, error)
+                        
+                    } else if let jsonArr =  response.result.value as? Dictionary <String, Any> {
+                        
+                        completion(jsonArr, nil)
+                        
+                    } else if let jsonDict = response.result.value as? Dictionary <String, Any> {
+                        
+                        completion(jsonDict, nil)
+                        
+                    }
+                    
+                }
+            case .failure(let error):
+                print("Error in upload: \(error.localizedDescription)")
+                completion(nil, error)
+            }
+        }
+
+    }
     
 }

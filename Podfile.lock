@@ -1,20 +1,33 @@
 PODS:
   - Alamofire (4.8.1)
+  - GoogleMaps (3.0.2):
+    - GoogleMaps/Maps (= 3.0.2)
+  - GoogleMaps/Base (3.0.2)
+  - GoogleMaps/Maps (3.0.2):
+    - GoogleMaps/Base
+  - GooglePlaces (3.0.2):
+    - GoogleMaps/Base (= 3.0.2)
   - iOSDropDown (0.2.7)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - GoogleMaps
+  - GooglePlaces
   - iOSDropDown
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - GoogleMaps
+    - GooglePlaces
     - iOSDropDown
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  GoogleMaps: 941cd655e009b4d8e42df19a3d749bc3fccec973
+  GooglePlaces: c086e0055dc5f0177d7c9d65fc77a1734f9a4825
   iOSDropDown: 7a4cfc67d5166f319858747b63cd2f7760c4fb4b
 
-PODFILE CHECKSUM: cc7e0f803cd5af679ad40cda317cdeadd3866a0a
+PODFILE CHECKSUM: cb7977058271bfa8872e3d98b1aede3b1163fff0
 
 COCOAPODS: 1.5.3

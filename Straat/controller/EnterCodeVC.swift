@@ -59,62 +59,21 @@ extension EnterCodeVC {
                 loadingDismiss()
                 
                 let dataObject = data["data"] as? Dictionary <String, Any>
-                
-                let id = dataObject?["_id"] as? String
-                let lat = dataObject?["_lat"] as? String
-                let long = dataObject?["long"] as? String
-                let email = dataObject?["email"] as? String
-                let hostName = dataObject?["hostName"] as? String
-                let username = dataObject?["username"] as? String
-                let streetName = dataObject?["streetName"] as? String
-                let city = dataObject?["city"] as? String
-                let country = dataObject?["country"] as? String
-                let postalCode = dataObject?["postalCode"] as? String
-                let phoneNumber = dataObject?["phoneNumber"] as? String
-                let isVolunteer = dataObject?["isVolunteer"] as? Bool
-                let language = dataObject?["language"] as? String
+                //                let userObject = dataObject?["user"] as? Dictionary <String, Any>
                 
                 print("response:  \(String(describing: dataObject))")
                 
-                
-                let host = HostModel(hostID: id, hostLat: lat, hostLong: long, hostEmail: email, username: username, streetName: streetName, city: city, country: country, postalCode: postalCode, phoneNumber: phoneNumber, isVolunteer: isVolunteer, language: language)
-                
-                self.saveToLocalData(host: host) {success, message in
-                    if success {
-                        // go to login view controller
-                        pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
-                    } else {
-                        print(message ?? "An error occured")
-                    }
-                }
+                //saving user model to loca data
+                //                self.saveToLocalData()
+                //                self.pushToNextVC()
                 
             }
             
         }
         
     }
-    typealias OnFinish = ( Bool, String?) -> Void
-    func saveToLocalData (host: HostModel, completion: @escaping OnFinish) {
-        let uds = UserDefaults.standard;
-        
-        let prefix = "host-reg"
-        
-        uds.set(host.id, forKey: prefix + "id")
-        uds.set(host.lat, forKey: prefix + "lat")
-        uds.set(host.long, forKey: prefix + "long")
-        uds.set(host.email, forKey: prefix + "email")
-        uds.set(host.city, forKey: prefix + "city")
-        uds.set(host.country, forKey: prefix + "country")
-        uds.set(host.hostName, forKey: prefix + "hostName")
-        uds.set(host.isVolunteer, forKey: prefix + "isVolunteer")
-        uds.set(host.postalCode, forKey: prefix + "postalCode")
-        uds.set(host.phoneNumber, forKey: prefix + "phoneNumber")
-        uds.set(host.language, forKey: prefix + "language")
-        completion(true, "Success")
-    }
     
     
     
     
 }
-

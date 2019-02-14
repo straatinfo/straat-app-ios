@@ -8,6 +8,11 @@ target 'Straat' do
   # Pods for Straat
   pod 'Alamofire', '~> 4.7'
   pod 'iOSDropDown'
+  # Pods for GoogleMapiOS
+  source 'https://github.com/CocoaPods/Specs.git'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  
 end
 
 post_install do |installer|

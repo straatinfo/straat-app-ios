@@ -63,3 +63,10 @@ import UIKit
         viewContainer.layer.borderColor = color.cgColor
         
     }
+
+    //animates layout
+    func animateLayout (view : UIView , timeInterval : TimeInterval) {
+        UIView.animate(withDuration: timeInterval) {
+            view.layoutIfNeeded()
+        }
+    }

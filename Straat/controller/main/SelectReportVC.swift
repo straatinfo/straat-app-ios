@@ -16,16 +16,10 @@ class SelectReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        var views : [UIView]
+        views = [infoSS, infoPS, mainView]
         
-        loadBorderedVIew(viewContainer: infoSS, borderWidth: 1,
-                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
-        
-        loadBorderedVIew(viewContainer: infoPS, borderWidth: 1,
-                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
-        
-        loadBorderedVIew(viewContainer: mainView, borderWidth: 1,
-                         color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        self.setBorders(views: views)
         
     }
     
@@ -34,5 +28,17 @@ class SelectReportVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+
+}
+
+extension SelectReportVC {
+
+    // creating border for array of uiviews
+    func setBorders(views : [UIView]) -> Void {
+        for view in views {
+            loadBorderedVIew(viewContainer: view, borderWidth: 1,
+                             color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        }
+    }
 
 }

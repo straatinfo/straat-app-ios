@@ -10,18 +10,70 @@ import GoogleMaps
 
 class MainVC: UIViewController {
 
+    // constraint for make notif and select report type initialisation
+    @IBOutlet weak var makeNotifConstraint: NSLayoutConstraint!
+    @IBOutlet weak var selecReportTypeConstraint: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var menu: UIBarButtonItem!
+    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var sendReport: UIButton!
+
+    
+    // for make notification ui view initialisation
+    @IBOutlet weak var location: UILabel!
+    
+    
+    //location manager
+    let locationManager = CLLocationManager()
+    
     var fname : String = ""
     let marker = GMSMarker()
+    let circle = GMSCircle()
+    var mapCamera = GMSCameraPosition()
+    
+    //coordinates
+    var userLat : Double!
+    var userLong : Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createMenu()
         navColor()
         initMapView()
-//        loadInfo()
+        //loadInfo()
     }
     
+    @IBAction func showSendReport(_ sender: Any) {
+        requestPermission()
+    }
+    
+    @IBAction func makeNotifDismiss(_ sender: Any) {
+        self.makeNotifConstraint.constant = 400
+        sendReport.isHidden = false
+        
+        animateLayout(view: self.view, timeInterval: 0.6)
+    }
+    
+    @IBAction func makeNotif(_ sender: Any) {
+        //saving location to local data
+        let uds = UserDefaults.standard
+        uds.set(location.text!, forKey: "user_loc_address")
+        uds.set(userLat, forKey: "user_loc_lat")
+        uds.set(userLong, forKey: "user_loc_long")
+
+        self.makeNotifConstraint.constant = 400
+        self.selecReportTypeConstraint.constant = 0
+        
+        animateLayout(view: self.view, timeInterval: 0.6)
+    }
+    
+    @IBAction func selectReportTypeDismiss(_ sender: UIButton) {
+        self.selecReportTypeConstraint.constant = 400
+        sendReport.isHidden = false
+        
+        animateLayout(view: self.view, timeInterval: 0.6)
+    }
 }
 
 
@@ -30,7 +82,7 @@ class MainVC: UIViewController {
 extension MainVC {
     
     // for revealing side bar menu
-    func createMenu() {
+    func createMenu() -> Void {
         if revealViewController() != nil {
             
             menu.target = revealViewController()
@@ -45,7 +97,7 @@ extension MainVC {
     }
     
     // setting navigation bar colors
-    func navColor() {
+    func navColor() -> Void {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.barTintColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -55,7 +107,7 @@ extension MainVC {
     
     
     // loading partial user information
-    func loadInfo() {
+    func loadInfo() -> Void {
         
         self.fname = UserDefaults.standard.object(forKey: "user_fname") as! String
         
@@ -69,60 +121,52 @@ extension MainVC {
     }
     
     
-    func initMapView() {
+    func initMapView() -> Void {
         
-        let camera = GMSCameraPosition.camera(withLatitude: 52.077646, longitude: 4.315667, zoom: 16.0)
-        let mv = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height * 0.93), camera: camera)
-        mv.delegate = self
-        self.view.addSubview(mv)
-        
-        customMarker (mView : mv, marker: marker, address : "sample title", lat : 52.077646, long : 4.315667)
-        
-        //Creates a circle shape in the center of the map
-        let circle = GMSCircle()
-        circle.radius = 130 // Meters
-        circle.fillColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 0.5)
-        circle.position = CLLocationCoordinate2D(latitude: 52.077646, longitude: 4.315667) // Your CLLocationCoordinate2D  position
-        circle.strokeWidth = 1;
-        circle.strokeColor = UIColor.black
-        circle.map = mv; // Add it to the map
-        
-        
-        let sendReportButton = UIButton(frame:  CGRect.init(x: 20, y: self.view.frame.size.height * 0.90, width: self.view.bounds.width * 0.90, height: 35))
-        sendReportButton.backgroundColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1)
-        sendReportButton.setTitle("send report", for: .normal)
-        sendReportButton.tintColor = UIColor.white
-        sendReportButton.addTarget(self, action: #selector(self.clickedSendReport), for: .touchUpInside)
-
-//        self.view.addSubview(sendReportButton)
-        
+        self.initMapCamera(lat: 52.077646, long: 4.315667)
+        self.initMapRadius(lat: 52.077646, long: 4.315667)
         
     }
     
+    //Creates a camera position that will focus on the indicated coordinate
+    func initMapCamera(lat : Double, long : Double) -> Void {
+        mapCamera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16.0)
+        mapView.camera = mapCamera
+        mapView.delegate = self
+    }
     
-    func customMarker (mView : GMSMapView, marker : GMSMarker, address : String, lat : Double, long : Double)  {
-        // Creates a marker in the center of the map.
-        
+    //Creates a circle shape in the center of the map
+    func initMapRadius(lat : Double, long : Double) -> Void {
+    
+        circle.radius = 130 // Meters
+        circle.fillColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 0.5)
+        circle.position = CLLocationCoordinate2D(latitude: lat, longitude: long) // Your CLLocationCoordinate2D  position
+        circle.strokeWidth = 1;
+        circle.strokeColor = UIColor.black
+        circle.map = mapView; // Add it to the map
+    }
+    
+    
+    func customMarker (mView : GMSMapView, marker : GMSMarker, address : String, lat : Double, long : Double) -> Void {
+        // Creates a marker in the center of the map.        
         marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
         marker.title = address
         marker.snippet = address
         marker.isDraggable = true
         marker.map = mView
         
+        location.text = address
+        userLat = lat
+        userLong = long
+        
     }
-    
-    
-    //for sending report
-    @objc func clickedSendReport()  {
-        print("send report clicked")
-    }
-    
     
 }
 
 // dedicated for google maps delegates
-extension MainVC : GMSMapViewDelegate {
+extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
  
+    // getting coordinatas after end dragging the GMSMarker
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         
         getAddressFromLatLon(pdblLatitude: marker.position.latitude, withLongitude: marker.position.longitude, completion: { hasAdd , response in
@@ -131,12 +175,15 @@ extension MainVC : GMSMapViewDelegate {
             
             if  hasAdd {
                 self.customMarker (mView : mapView, marker: marker, address : response, lat : marker.position.latitude , long : marker.position.longitude)
+            } else {
+                defaultDialog(vc: self, title: "Unidentified Location", message: "This location is unindentified")
             }
             
         })
         
     }
     
+    // creating custom marker
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: self.view.bounds.width * 0.70, height: 100))
@@ -172,7 +219,7 @@ extension MainVC : GMSMapViewDelegate {
         return view
     }
     
-    
+    // getting the address from coordinates
     func getAddressFromLatLon(pdblLatitude: Double , withLongitude pdblLongitude: Double, completion: @escaping ( Bool, String) -> Void ) {
         
         var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
@@ -220,7 +267,65 @@ extension MainVC : GMSMapViewDelegate {
                 }
         })
         
+    }
+    
+    //getting user's location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        
+        getAddressFromLatLon(pdblLatitude: locValue.latitude, withLongitude: locValue.longitude, completion: { hasAdd , response in
+            print("has address: \(hasAdd)")
+            print("response: \(response)")
+            
+            if  hasAdd {
+                self.initMapCamera(lat: locValue.latitude, long: locValue.longitude)
+                self.customMarker (mView : self.mapView, marker: self.marker, address : response, lat : locValue.latitude , long : locValue.longitude)
+            } else {
+                defaultDialog(vc: self, title: "Unidentified Location", message: "Your location is unindentified")
+            }
+            
+            self.locationManager.stopUpdatingLocation()
+            
+        })
+    }
+    
+    // permission for getting user's location
+    func requestPermission() -> Void {
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            
+            switch CLLocationManager.authorizationStatus() {
+                case .authorizedAlways, .authorizedWhenInUse:
+                    locationManager.delegate = self
+                    locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                    locationManager.startUpdatingLocation()
+                break
+                case .notDetermined, .restricted, .denied:
+                    
+                    defaultDialog(vc: self, title: "Location permission denied", message: "This will the be default location")
+                    
+                    self.customMarker (mView : mapView, marker: marker, address : "initial address", lat : 52.077646 , long : 4.315667)
+                break
+            }
+         
+            self.makeNotifConstraint.constant = 0
+            sendReport.isHidden = true
+
+            animateLayout(view: self.view, timeInterval: 0.6)
+        } else {
+            defaultDialog(vc: self, title: "", message: "Location service not enabled")
+            print("Location service not enabled")
+        }
         
     }
+    
+    
     
 }

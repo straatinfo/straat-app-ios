@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMaps
+import CoreLocation
 
 class MainVC: UIViewController {
 
@@ -45,7 +46,23 @@ class MainVC: UIViewController {
     }
     
     @IBAction func showSendReport(_ sender: Any) {
-        requestPermission()
+        self.requestPermission { (hasGranted, result) in
+            
+            if hasGranted {
+                
+                self.makeNotifConstraint.constant = 0
+                self.sendReport.isHidden = true
+                animateLayout(view: self.view, timeInterval: 0.6)
+                
+            } else {
+                
+                defaultDialog(vc: self, title: "Permission", message: result)
+                self.customMarker (mView : self.mapView, marker: self.marker, address : "initial address", lat : 52.077646 , long : 4.315667)
+                
+            }
+            
+        }
+        
     }
     
     @IBAction func makeNotifDismiss(_ sender: Any) {
@@ -79,7 +96,7 @@ class MainVC: UIViewController {
 
 
 // for implementing functions
-extension MainVC {
+extension MainVC  {
     
     // for revealing side bar menu
     func createMenu() -> Void {
@@ -281,6 +298,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             if  hasAdd {
                 self.initMapCamera(lat: locValue.latitude, long: locValue.longitude)
                 self.customMarker (mView : self.mapView, marker: self.marker, address : response, lat : locValue.latitude , long : locValue.longitude)
+                self.initMapRadius(lat: locValue.latitude, long: locValue.longitude)
             } else {
                 defaultDialog(vc: self, title: "Unidentified Location", message: "Your location is unindentified")
             }
@@ -291,36 +309,40 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
     }
     
     // permission for getting user's location
-    func requestPermission() -> Void {
+    func requestPermission( completion : @escaping ( Bool, String? ) -> Void ) -> Void {
         
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
+        
+        self.locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
             
             switch CLLocationManager.authorizationStatus() {
                 case .authorizedAlways, .authorizedWhenInUse:
-                    locationManager.delegate = self
                     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
                     locationManager.startUpdatingLocation()
-                break
-                case .notDetermined, .restricted, .denied:
-                    
-                    defaultDialog(vc: self, title: "Location permission denied", message: "This will the be default location")
-                    
-                    self.customMarker (mView : mapView, marker: marker, address : "initial address", lat : 52.077646 , long : 4.315667)
-                break
+
+                    completion(true, "granted")
+                    print("granted")
+                case .notDetermined:
+
+                    self.locationManager.requestAlwaysAuthorization()
+                    self.locationManager.requestWhenInUseAuthorization()
+                    completion(false, "User not determined")
+                    print("not determined")
+                case .restricted:
+                    completion(false, "Restricted")
+                    print("restricted")
+                case .denied:
+                    completion(false, "Permission denied")
+                    print("denied")
             }
          
-            self.makeNotifConstraint.constant = 0
-            sendReport.isHidden = true
 
-            animateLayout(view: self.view, timeInterval: 0.6)
         } else {
-            defaultDialog(vc: self, title: "", message: "Location service not enabled")
+            completion(false, "Location not enabled")
             print("Location service not enabled")
         }
         

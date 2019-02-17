@@ -7,6 +7,7 @@
 
 import UIKit
 import iOSDropDown
+import Photos
 
 class SendPublicSpaceReportVC: UIViewController {
 
@@ -35,7 +36,9 @@ class SendPublicSpaceReportVC: UIViewController {
     
     @IBOutlet weak var emergencyNotifConstraint: NSLayoutConstraint!
     
-    var selectedImageView : UIImageView!
+
+    //image view tags
+    var imgViewTag : Int!
     
     // dummy data
     var sampleArr : [String] = ["main categ 1", "main categ 2", "main categ 3", "main categ 4", "main categ 5", "main categ 6"]
@@ -91,13 +94,18 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
     
     // setting tap gesture recognizer for imageview
     func setImageTapGestures() -> Void {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.importImage(_:)))
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.importImage(gesture:)) )
+        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(self.importImage(gesture:)) )
+        let gesture3 = UITapGestureRecognizer(target: self, action: #selector(self.importImage(gesture:)) )
         
         imgView1.isUserInteractionEnabled = true
         imgView2.isUserInteractionEnabled = true
         imgView3.isUserInteractionEnabled = true
         
         imgView1.addGestureRecognizer(gesture)
+        imgView2.addGestureRecognizer(gesture2)
+        imgView3.addGestureRecognizer(gesture3)
         
     }
     
@@ -117,14 +125,49 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
     }
     
     // import image via photo library
-    @objc func importImage (_ sender : UIImageView) {
+    @objc func importImage ( gesture : UITapGestureRecognizer) {
         
         let img = UIImagePickerController()
+        let view = gesture.view!
         img.delegate = self
-        img.sourceType = UIImagePickerController.SourceType.photoLibrary
-        img.allowsEditing = false
         
-        self.present(img, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Image Source", message: "Please choose where to take your image", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            //some shitty code
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+                img.sourceType = UIImagePickerController.SourceType.camera
+                self.present(img, animated: true, completion: nil)
+                self.imgViewTag = view.tag
+            } else {
+                defaultDialog(vc: self, title: "Camera not available", message: nil)
+            }
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            //some shitty code
+            
+            self.importImagePermission { (hasGranted, result) in
+                
+                if hasGranted {
+                    img.sourceType = UIImagePickerController.SourceType.photoLibrary
+                    img.allowsEditing = false
+                    
+                    self.present(img, animated: true, completion: nil)
+                    self.imgViewTag = view.tag
+                } else {
+                    defaultDialog(vc: self, title: "Permission denied", message: result)
+                }
+                
+            }
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     // getting user selected image via photo library
@@ -132,14 +175,74 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
-            imgView1.image = image
+            switch(self.imgViewTag) {
+                
+            case 1:
+                imgView1.image = image
+                break;
+            case 2:
+                imgView2.image = image
+                break;
+            case 3:
+                imgView3.image = image
+                break
+            default:
+                print("error in importing image")
+                break
+            }
             
         } else {
             print("importing img: error in uploading image")
         }
         
-        self.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
+    
+    //photo library image permission
+    func importImagePermission( completion: @escaping (Bool , String?) -> Void) -> Void {
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        
+        switch photoAuthorizationStatus {
+        case .authorized:
+            completion(true, "Access granted")
+            print("Access is granted by user")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { status in
+                switch status {
+                case .authorized:
+                    completion(true, "Access granted")
+                    
+                case .denied:
+                    completion(false, "User has denied the permission.")
+                    
+                case .restricted:
+                    completion(false, "User do not have access to photo album.")
+                    
+                case .notDetermined:
+                    completion(false, "It is not determined until now")
+                    
+                }
+            }
+            
+            completion(false, "It is not determined until now")
+            print("It is not determined until now")
+            
+        case .restricted:
+            // same same
+            completion(false, "User do not have access to photo album.")
+            print("User do not have access to photo album.")
+            
+        case .denied:
+            // same same
+            completion(false, "User has denied the permission.")
+            print("User has denied the permission.")
+            
+            
+        }
+        
+        
+    }
+
     
     // populate main categ list data to dropdown
     func loadMainCategDropDown(mainCategList : [String]!) {

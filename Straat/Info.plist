@@ -20,14 +20,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please allow this permission to get your current location that will be use for creating a notification</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Please allow this permission to always get your current location</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow this permission in order to upload your image to Straat.info</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow this permission in order to capture your image to Straat.info</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Please allow this permission to always get your current location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please allow this permission to get your current location that will be use for creating a notification</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow this permission in order to upload your image to Straat.info</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Initial</string>
 	<key>UIMainStoryboardFile</key>

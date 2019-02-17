@@ -17,6 +17,19 @@ class LoginUserVC: UIViewController {
     
     override func viewDidLoad() {
         //some shitty code
+        let categoryService = CategoryService()
+
+        categoryService.getMainCategoryA(hostId: "5a7b485a039e2860cf9dd19a", language: "nl") { (success, message, mainCategories) in
+            if success == true {
+                print("MAIN CAT", mainCategories)
+            }
+        }
+
+        categoryService.getMainCategoryB(language: "nl") { (success, message, mainCategories) in
+            if success == true {
+                print("MAIN CAT B", mainCategories)
+            }
+        }
     }
     
     

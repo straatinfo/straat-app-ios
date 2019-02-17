@@ -44,6 +44,9 @@
 		9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BF2212D0A8004CE4CB /* TeamModel.swift */; };
 		9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B69A50722123C95001BBFE8 /* PostalModel.swift */; };
 		9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE18354220DE74C00981F3F /* Registration.storyboard */; };
+		9BE5D8EB22195A9F0041FE8A /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */; };
+		9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */; };
+		9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +95,9 @@
 		9BE18351220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9BE18355220DE75B00981F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
 		9BE18356220DE78600981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Registration.strings; sourceTree = "<group>"; };
+		9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
+		9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryModel.swift; sourceTree = "<group>"; };
+		9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryModel.swift; sourceTree = "<group>"; };
 		D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +126,7 @@
 		434C3B52220A284F00843000 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				9BE5D8E9221958130041FE8A /* util */,
 				439B1EAF220ACBCE007A6F4E /* classes */,
 				434C3B53220A286300843000 /* api */,
 			);
@@ -187,6 +194,8 @@
 				9B69A50722123C95001BBFE8 /* PostalModel.swift */,
 				9B0948BB2212AD47004CE4CB /* UserRegistrationModel.swift */,
 				9B0948BF2212D0A8004CE4CB /* TeamModel.swift */,
+				9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */,
+				9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -266,6 +275,14 @@
 				D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9BE5D8E9221958130041FE8A /* util */ = {
+			isa = PBXGroup;
+			children = (
+				9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		EEACA2CDDBF457DD596BC4F4 /* Frameworks */ = {
@@ -439,6 +456,7 @@
 				43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */,
 				43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */,
 				9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */,
+				9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
 				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,
@@ -449,6 +467,7 @@
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */,
+				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,
@@ -456,6 +475,7 @@
 				439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */,
 				43440D6D2215C2D7008A777E /* PublicSpaceVC.swift in Sources */,
 				435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */,
+				9BE5D8EB22195A9F0041FE8A /* CategoryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = global.array.Straat;
+				PRODUCT_BUNDLE_IDENTIFIER = "straat-info.Straat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -645,7 +665,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = global.array.Straat;
+				PRODUCT_BUNDLE_IDENTIFIER = "straat-info.Straat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

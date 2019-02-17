@@ -13,6 +13,9 @@ let request_host = root + "registration/validation/host"
 let request_team = root + "team"
 let signup_v3 = root + "registration/signupV3"
 let create_team = root + ""
+let get_categories_by_host = root + "category/app/mainCategory/withGeneral/hostId/" // + hostId + queryStrings language=nl
+
+let get_default_categories = root + "category/app/mainCategory/general"
 
 // postcode
 let POST_CODE_API = "https://api.postcodeapi.nu/v2/addresses"

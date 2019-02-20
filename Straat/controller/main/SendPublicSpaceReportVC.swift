@@ -44,12 +44,17 @@ class SendPublicSpaceReportVC: UIViewController {
     var sampleArr : [String] = ["main categ 1", "main categ 2", "main categ 3", "main categ 4", "main categ 5", "main categ 6"]
     var sampleArr2 : [String] = ["sub categ 1", "sub categ 2", "sub categ 3"]
     
+    
+    var mainCategoryName = [String]() // for dropdown
+    var subCategory = [SubCategoryModel]()
+    var subCategoryName = [String]() // for dropdown
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
-        // Do any additional setup after loading the view.
+        self.initCategories()
     }
-
+    
     @IBAction func emergencyNotif(_ sender: UIButton) {
         if sender.isSelected {
             emergencyNotifButton.isSelected = false
@@ -69,6 +74,14 @@ class SendPublicSpaceReportVC: UIViewController {
 }
 
 
+
+
+
+
+
+
+
+
 // for implement functions
 extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -86,10 +99,49 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         self.setBorders(views: views)
         self.viewAppearance(views: hideViews, isHidden: true)
         self.setImageTapGestures()
-        self.loadMainCategDropDown(mainCategList: self.sampleArr)
         
         self.emergencyNotifConstraint.constant = -150
         userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
+    }
+    
+    func initCategories() -> Void {
+        
+        let categoryService = CategoryService()
+        
+        categoryService.getMainCategoryA(hostId: "5a7b485a039e2860cf9dd19a", language: "nl") { (success, message, mainCategories) in
+            if success == true {
+
+                
+                for mainCategory in mainCategories {
+                    let mainCateg : MainCategoryModel = mainCategory
+                    let name = mainCateg.name!
+                    
+                    self.mainCategoryName.append(name)
+                    self.subCategory = mainCateg.subCategories
+
+//                    if mainCateg.subCategories.count > 0 {
+//                        for subCateg in mainCateg.subCategories {
+//                            self.extractSubCategory(subCateg: self.subCategory, categoryName: name )
+//                        }
+//                    }
+                    
+//                    print("MAIN CAT", mainCateg.name!)
+                }
+                
+                self.loadMainCategDropDown(mainCategList: self.mainCategoryName, subCategories: self.subCategory)
+                
+            }
+        }
+        
+        //        categoryService.getMainCategoryB(language: "nl") { (success, message, mainCategories) in
+        //            if success == true {
+        //                print("MAIN CAT B", mainCategories)
+        //            }
+        //        }
+    }
+    
+    func extractSubCategory (subCateg : SubCategoryModel , categoryName : String) {
+        print("main categ: \(categoryName) => sub category: \(String(describing: subCateg.name))")
     }
     
     // setting tap gesture recognizer for imageview
@@ -109,6 +161,8 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         
     }
     
+    
+    
     // creating border for array of uiviews
     func setBorders(views : [UIView]) -> Void {
         for view in views {
@@ -117,12 +171,16 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         }
     }
     
+    
+    
     // change appearance for array of uiviews
     func viewAppearance (views : [UIView], isHidden : Bool) -> Void {
         for view in views {
             view.isHidden = isHidden
         }
     }
+    
+    
     
     // import image via photo library
     @objc func importImage ( gesture : UITapGestureRecognizer) {
@@ -170,6 +228,8 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         
     }
     
+    
+    
     // getting user selected image via photo library
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -197,6 +257,8 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    
     
     //photo library image permission
     func importImagePermission( completion: @escaping (Bool , String?) -> Void) -> Void {
@@ -240,12 +302,11 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
             
         }
         
-        
     }
 
     
     // populate main categ list data to dropdown
-    func loadMainCategDropDown(mainCategList : [String]!) {
+    func loadMainCategDropDown(mainCategList : [String]! , subCategories : [SubCategoryModel]!) {
         
         mainCategDropDown.optionArray = mainCategList
         mainCategDropDown.selectedRowColor = UIColor.lightGray
@@ -254,15 +315,36 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
             print("selectedItem: \(selectedItem)" )
             // insert code to identify the main category item if it has
             // sub category then show sub categ dropdown
+            
+            self.subCategoryName.removeAll()
+            for checkSubCateg in subCategories {
+                if selectedItem == checkSubCateg.mainCategoryName! {
+                    self.subCategoryName.append(checkSubCateg.name!)
+                    print("meron sub categ")
+                } else {
+                    print("wala sub categ")
+                }
+                print("sub categ -> main categ name: \(String(describing: checkSubCateg.mainCategoryName))")
+            }
 
-            //code for appearing sub categ
             let showViews : [UIView] = [self.SubCategView]
-            self.viewAppearance(views: showViews, isHidden: false)
-            self.loadsubCategDropDown(subCategList: self.sampleArr2)
-            self.emergencyNotifConstraint.constant = 20
-            animateLayout(view: self.view, timeInterval: 0.8)
+            
+            if self.subCategoryName.count > 0 {
+                //code for appearing sub categ
+                self.viewAppearance(views: showViews, isHidden: false)
+                self.loadsubCategDropDown(subCategList: self.subCategoryName)
+                self.emergencyNotifConstraint.constant = 20
+                animateLayout(view: self.view, timeInterval: 0.8)
+            } else {
+                self.viewAppearance(views: showViews, isHidden: true)
+                self.emergencyNotifConstraint.constant = -150
+                animateLayout(view: self.view, timeInterval: 0.8)
+            }
+
         }
     }
+    
+    
     
     // populate main categ list data to dropdown
     func loadsubCategDropDown(subCategList : [String]!) {

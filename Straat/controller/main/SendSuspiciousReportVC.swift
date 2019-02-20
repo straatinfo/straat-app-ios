@@ -49,10 +49,12 @@ class SendSuspiciousReportVC: UIViewController {
     //image view tags
     var imgViewTag : Int!
 
+    var mainCategoryName = [String]() // for dropdown
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
+        self.initCategories()
         // Do any additional setup after loading the view.
     }
     
@@ -122,13 +124,34 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         self.setBorders(views: views)
         self.viewAppearance(views: hideViews, isHidden: true)
         self.setImageTapGestures()
-        self.loadMainCategDropDown(mainCategList: sampleArr)
         
         self.vehiclesConstraint.constant = -265
         self.uploadImageConstraint.constant = 20
         
         userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
         
+    }
+    
+    func initCategories() -> Void {
+        
+        let categoryService = CategoryService()
+        
+        
+        categoryService.getMainCategoryB(language: "nl") { (success, message, mainCategories) in
+            if success == true {
+                print("MAIN CAT B", mainCategories)
+
+                for mainCategory in mainCategories {
+                    let mainCateg : MainCategoryModel = mainCategory
+                    let name = mainCateg.name!
+                    
+                    self.mainCategoryName.append(name)
+                }
+                
+                self.loadMainCategDropDown(mainCategList: self.mainCategoryName)
+
+            }
+        }
     }
     
     // setting tap gesture recognizer for imageview

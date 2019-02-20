@@ -23,6 +23,7 @@
 		435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */; };
 		435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */; };
 		4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUserVC.swift */; };
+		438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A0311221C0B6A00ECE252 /* ReportMapModel.swift */; };
 		43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43907A312210A5B60063DC16 /* TeamListModel.swift */; };
 		439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */ = {isa = PBXBuildFile; fileRef = 439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */; };
 		439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */; };
@@ -35,6 +36,8 @@
 		43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */; };
 		43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */; };
 		43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */; };
+		43DB4CA5221AE55000E0F88E /* ViewReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4CA4221AE55000E0F88E /* ViewReportVC.swift */; };
+		43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4CA6221B527000E0F88E /* ReportMapService.swift */; };
 		43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7C920220FF747004A9AFD /* SelectReportVC.swift */; };
 		43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B12220B01FD0088B5FC /* Generics.swift */; };
 		43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B14220B495E0088B5FC /* HostModel.swift */; };
@@ -70,6 +73,7 @@
 		435CCB2721FF66CD00E87AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeVC.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserVC.swift; sourceTree = "<group>"; };
+		438A0311221C0B6A00ECE252 /* ReportMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMapModel.swift; sourceTree = "<group>"; };
 		43907A312210A5B60063DC16 /* TeamListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListModel.swift; sourceTree = "<group>"; };
 		439470EC220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SWRevealViewController 02-32-09-600.m"; sourceTree = "<group>"; };
 		439470ED220B5FDD00CEC63E /* SWRevealViewController 02-32-09-986.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SWRevealViewController 02-32-09-986.h"; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataVC.swift; sourceTree = "<group>"; };
 		43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionVC.swift; sourceTree = "<group>"; };
 		43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
+		43DB4CA4221AE55000E0F88E /* ViewReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReportVC.swift; sourceTree = "<group>"; };
+		43DB4CA6221B527000E0F88E /* ReportMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMapService.swift; sourceTree = "<group>"; };
 		43E7C920220FF747004A9AFD /* SelectReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReportVC.swift; sourceTree = "<group>"; };
 		43EA2B12220B01FD0088B5FC /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
 		43EA2B14220B495E0088B5FC /* HostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostModel.swift; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 				9B0948BF2212D0A8004CE4CB /* TeamModel.swift */,
 				9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */,
 				9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */,
+				438A0311221C0B6A00ECE252 /* ReportMapModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				4397D19B220F6B26004788B6 /* SendSuspiciousReportVC.swift */,
 				43E7C920220FF747004A9AFD /* SelectReportVC.swift */,
 				4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */,
+				43DB4CA4221AE55000E0F88E /* ViewReportVC.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */,
+				43DB4CA6221B527000E0F88E /* ReportMapService.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -421,6 +430,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -428,6 +438,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,9 +454,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */,
+				438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */,
 				4309F8EE22174B21001C29A9 /* SendPublicSpaceReportVC.swift in Sources */,
 				4316BB4922037DD000A168BE /* MainVC.swift in Sources */,
 				43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */,
+				43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */,
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
@@ -465,6 +478,7 @@
 				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
+				43DB4CA5221AE55000E0F88E /* ViewReportVC.swift in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */,
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
@@ -639,6 +653,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 46BKCK9BUH;
 				INFOPLIST_FILE = Straat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,6 +676,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 46BKCK9BUH;
 				INFOPLIST_FILE = Straat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

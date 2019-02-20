@@ -20,3 +20,5 @@ let get_default_categories = root + "category/app/mainCategory/general"
 // postcode
 let POST_CODE_API = "https://api.postcodeapi.nu/v2/addresses"
 let POST_CODE_KEY = "gvuwmtomsB8eRf5Zgsfnj7zs8DE2ihC79DlEbQnb"
+
+let report_map = root + "report/?user_id=5c63e92035086200156f93e0&fbclid=IwAR1AF8aK8tmFpI5RfNYuNfjXoXNoCFdV_U-OcB649R1Y0Ijh-ZqMzCXen9w"

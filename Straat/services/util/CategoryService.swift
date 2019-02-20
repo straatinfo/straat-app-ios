@@ -15,7 +15,8 @@ class CategoryService {
     
     let apiHandler = ApiHandler()
     
-    func getMainCategoryA (hostId: String, language: String?, completion: @escaping (Bool, String?, [MainCategoryModel]?) -> Void) {
+    func getMainCategoryA (hostId: String, language: String?, completion: @escaping (Bool, String?, [MainCategoryModel]) -> Void) {
+        
         var parameters: Parameters = [:]
         parameters["language"] = language ?? "nl"
  
@@ -40,7 +41,8 @@ class CategoryService {
         }
     }
     
-    func getMainCategoryB (language: String?, completion: @escaping (Bool, String, [MainCategoryModel]?) -> Void) {
+    func getMainCategoryB (language: String?, completion: @escaping (Bool, String, [MainCategoryModel]) -> Void) {
+
         var parameters: Parameters = [:]
         parameters["language"] = language ?? "nl"
         parameters["code"] = "ABC"
@@ -85,7 +87,7 @@ extension CategoryService { // helper functions
             let subCatName = subCat["name"] as? String
             let subCatDescription = subCat["description"] as? String
             
-            let subCategory = SubCategoryModel(id: subCatId, name: subCatName, description: subCatDescription)
+            let subCategory = SubCategoryModel(id: subCatId, name: subCatName, description: subCatDescription, mainCategoryName: name)
             
             subCategories.append(subCategory)
         }

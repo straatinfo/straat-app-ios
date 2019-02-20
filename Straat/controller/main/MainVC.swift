@@ -8,6 +8,7 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import Kingfisher
 
 class MainVC: UIViewController {
 
@@ -19,7 +20,6 @@ class MainVC: UIViewController {
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var sendReport: UIButton!
-
     
     // for make notification ui view initialisation
     @IBOutlet weak var location: UILabel!
@@ -43,6 +43,23 @@ class MainVC: UIViewController {
         navColor()
         initMapView()
         //loadInfo()
+        
+        let reportMapService = ReportMapService()
+        
+        loadingShow(vc: self)
+        reportMapService.getUserReport(userID: "5c63452335086200156f93d4") { (success, message, reportMapModel)  in
+            
+            if success == true {
+                for reportMap in reportMapModel {
+                    self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+                }
+                print("reportMap: \(reportMapModel)")
+                loadingDismiss()
+            } else {
+                defaultDialog(vc: self, title: "Fetching Reports", message: message)
+            }
+            
+        }
     }
     
     @IBAction func showSendReport(_ sender: Any) {
@@ -55,9 +72,8 @@ class MainVC: UIViewController {
                 animateLayout(view: self.view, timeInterval: 0.6)
                 
             } else {
-                
-                defaultDialog(vc: self, title: "Permission", message: result)
-                self.customMarker (mView : self.mapView, marker: self.marker, address : "initial address", lat : 52.077646 , long : 4.315667)
+//                defaultDialog(vc: self, title: "Permission", message: result)
+                self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : "initial address", lat : 52.077646 , long : 4.315667)
                 
             }
             
@@ -90,6 +106,15 @@ class MainVC: UIViewController {
         sendReport.isHidden = false
         
         animateLayout(view: self.view, timeInterval: 0.6)
+    }
+    
+    
+    @IBAction func suspiciousInfo(_ sender: UIButton) {
+        defaultDialog(vc: self, title: "Suspicious Situation", message: "Here you're able to share a situation that might be suspicious with other members of your team. At the moment other members agree with you. that is needed looks suspicious call the police or other relevant organisation. Emergency? First call 112 before continuing to use this app.")
+    }
+    
+    @IBAction func publicSpaceInfo(_ sender: UIButton) {
+        defaultDialog(vc: self, title: "Public Space", message: "Here you're able to make a report on public space (e.g. trash on the street, broken street light etc). This report will be send to the local government")
     }
 }
 
@@ -129,15 +154,13 @@ extension MainVC  {
         self.fname = UserDefaults.standard.object(forKey: "user_fname") as! String
         
         let alert = UIAlertController(title: "Welcome to Straat.info", message: "Welcome \(self.fname)", preferredStyle: .alert)
-        
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        
         self.present(alert, animated: true)
         
     }
     
-    
+    // initialised map view
     func initMapView() -> Void {
         
         self.initMapCamera(lat: 52.077646, long: 4.315667)
@@ -164,17 +187,38 @@ extension MainVC  {
     }
     
     
-    func customMarker (mView : GMSMapView, marker : GMSMarker, address : String, lat : Double, long : Double) -> Void {
-        // Creates a marker in the center of the map.        
+    func customMarker (mView : GMSMapView, marker : GMSMarker, title : String?, address : String, lat : Double, long : Double) -> Void {
+        // Creates a marker in the center of the map.
         marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        marker.title = address
+        marker.title = title!
         marker.snippet = address
+
+        marker.icon = UIImage(named: "pin-new")
         marker.isDraggable = true
-        marker.map = mView
-        
+        marker.map = mView        
         location.text = address
         userLat = lat
         userLong = long
+        
+    }
+    
+    func reportMarker (mView : GMSMapView, reportMapModel : ReportMapModel?) -> Void {
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: (reportMapModel?.lat)!, longitude: (reportMapModel?.long)!)
+        
+        marker.title = reportMapModel?.category
+        marker.snippet = reportMapModel?.address
+        marker.icon = UIImage(named: "pin-new")
+        marker.isDraggable = true
+        marker.map = mView
+        
+        // data for report view
+        marker.reportMapModel = reportMapModel!
+        
+        location.text = reportMapModel?.address
+        userLat = reportMapModel?.lat
+        userLong = reportMapModel?.long
         
     }
     
@@ -186,12 +230,10 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
     // getting coordinatas after end dragging the GMSMarker
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         
-        getAddressFromLatLon(pdblLatitude: marker.position.latitude, withLongitude: marker.position.longitude, completion: { hasAdd , response in
-            print("has address: \(hasAdd)")
-            print("response: \(response)")
+        getAddressFromLatLon(lat: marker.position.latitude, long: marker.position.longitude, completion: { hasAdd , response in
             
             if  hasAdd {
-                self.customMarker (mView : mapView, marker: marker, address : response, lat : marker.position.latitude , long : marker.position.longitude)
+                self.customMarker (mView : mapView, marker: marker, title: "Report Category", address : response, lat : marker.position.latitude , long : marker.position.longitude)
             } else {
                 defaultDialog(vc: self, title: "Unidentified Location", message: "This location is unindentified")
             }
@@ -211,7 +253,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
         let lbl1 = UILabel(frame: CGRect.init(x: 8, y: 0, width: view.frame.size.width * 0.50
             , height: 70))
-        lbl1.text = "Report Category"
+        lbl1.text = marker.title
         lbl1.lineBreakMode = .byWordWrapping
         lbl1.numberOfLines = 3
         view.addSubview(lbl1)
@@ -226,7 +268,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
         let img = UIImageView(frame: CGRect.init(x: lbl1.frame.size.width + 20, y: 0, width: view.frame.size.width * 0.40, height: view.frame.height))
         
-        img.image = UIImage(named: "AppIcon")
+
         img.contentMode = .scaleToFill
         img.layer.cornerRadius = 6
         img.layer.borderColor = UIColor.init(red: 200 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1).cgColor
@@ -235,15 +277,19 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
         return view
     }
+
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        self.saveToUserDefault(reportMapModel: marker.reportMapModel)
+        let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewReportVC
+        self.present(viewReportVC, animated: true, completion: nil)
+    }
     
     // getting the address from coordinates
-    func getAddressFromLatLon(pdblLatitude: Double , withLongitude pdblLongitude: Double, completion: @escaping ( Bool, String) -> Void ) {
+    func getAddressFromLatLon(lat: Double , long: Double, completion: @escaping ( Bool, String) -> Void ) {
         
         var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
-        let lat: Double = pdblLatitude
-        //21.228124
-        let lon: Double = pdblLongitude
-        //72.833770
+        let lat: Double = lat
+        let lon: Double = long
         let ceo: CLGeocoder = CLGeocoder()
         center.latitude = lat
         center.longitude = lon
@@ -291,13 +337,12 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         
-        getAddressFromLatLon(pdblLatitude: locValue.latitude, withLongitude: locValue.longitude, completion: { hasAdd , response in
-            print("has address: \(hasAdd)")
-            print("response: \(response)")
+        getAddressFromLatLon(lat: locValue.latitude, long: locValue.longitude, completion: { hasAdd , response in
+
             
             if  hasAdd {
                 self.initMapCamera(lat: locValue.latitude, long: locValue.longitude)
-                self.customMarker (mView : self.mapView, marker: self.marker, address : response, lat : locValue.latitude , long : locValue.longitude)
+                self.customMarker (mView : self.mapView, marker: self.marker, title: "Report Category", address : response, lat : locValue.latitude , long : locValue.longitude)
                 self.initMapRadius(lat: locValue.latitude, long: locValue.longitude)
             } else {
                 defaultDialog(vc: self, title: "Unidentified Location", message: "Your location is unindentified")
@@ -314,7 +359,6 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
-        
         self.locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
@@ -348,6 +392,23 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
     }
     
-    
+    func saveToUserDefault(reportMapModel : ReportMapModel) -> Void {
+        let uds = UserDefaults.standard
+        uds.set(reportMapModel.category, forKey: "report-category")
+        uds.set(reportMapModel.status, forKey: "report-status")
+        uds.set(reportMapModel.message, forKey: "report-message")
+        uds.set(reportMapModel.message, forKey: "report-address")
+        uds.set(reportMapModel.message, forKey: "report-lat")
+        uds.set(reportMapModel.message, forKey: "report-long")
+    }
     
 }
+
+
+extension GMSMarker {
+    var reportMapModel : ReportMapModel {
+        set(reportMapModel) { self.userData = reportMapModel }
+        get { return self.userData as! ReportMapModel}
+    }
+}
+

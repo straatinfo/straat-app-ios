@@ -10,19 +10,37 @@ import UIKit
 
 
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    var view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    var parentView = UIView()
+    var loadingLabel = UILabel(frame: CGRect(x: 0, y: 70, width: view.frame.width, height: 20))
 
     // show loading
     func loadingShow(vc : UIViewController) {
         
         //    activityIndicator = UIActivityIndicatorView(frame: alertController.view.bounds)
         //    activityIndicator!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        parentView = vc.view
         
-        activityIndicator.center = vc.view.center
+        view.backgroundColor = UIColor.black
+        view.layer.cornerRadius = 10
+        view.alpha = 0.5
+        view.tag = 101
+        
+        loadingLabel.text = "Please Wait"
+        loadingLabel.textColor = UIColor.white
+        loadingLabel.font = loadingLabel.font.withSize(15)
+        loadingLabel.textAlignment = .center
+        
+        activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        activityIndicator.style = UIActivityIndicatorView.Style.white
         activityIndicator.isUserInteractionEnabled = false
         
-        vc.view.addSubview(activityIndicator)
+        view.addSubview(activityIndicator)
+        view.addSubview(loadingLabel)
+        vc.view.addSubview(view)
+        view.center = vc.view.center
+        
         activityIndicator.startAnimating()
         
         //    vc.present(alertController, animated: true)
@@ -32,7 +50,12 @@ import UIKit
     // dismiss loading
     func loadingDismiss() {
         
-        activityIndicator.stopAnimating()
+        if let removeViewTag = parentView.viewWithTag(101) {
+            activityIndicator.stopAnimating()
+            removeViewTag.removeFromSuperview()
+        }
+        
+
         //    alertController.dismiss(animated: true, completion: nil)
         
     }
@@ -42,7 +65,7 @@ import UIKit
     func defaultDialog( vc: UIViewController, title : String? , message : String? ) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
         vc.present(alertController, animated: true)
         
     }

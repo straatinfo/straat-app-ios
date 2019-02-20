@@ -8,12 +8,14 @@ PODS:
   - GooglePlaces (3.0.2):
     - GoogleMaps/Base (= 3.0.2)
   - iOSDropDown (0.2.7)
+  - Kingfisher (5.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - GoogleMaps
   - GooglePlaces
   - iOSDropDown
+  - Kingfisher (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -21,13 +23,15 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - iOSDropDown
+    - Kingfisher
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   GoogleMaps: 941cd655e009b4d8e42df19a3d749bc3fccec973
   GooglePlaces: c086e0055dc5f0177d7c9d65fc77a1734f9a4825
   iOSDropDown: 7a4cfc67d5166f319858747b63cd2f7760c4fb4b
+  Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
 
-PODFILE CHECKSUM: cb7977058271bfa8872e3d98b1aede3b1163fff0
+PODFILE CHECKSUM: ad216970eaa2f6180a7af7a81e78574e2894ce90
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

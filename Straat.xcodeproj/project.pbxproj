@@ -45,7 +45,13 @@
 		9B0948BC2212AD47004CE4CB /* UserRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BB2212AD47004CE4CB /* UserRegistrationModel.swift */; };
 		9B0948BE2212BC15004CE4CB /* RegistrationStep2VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BD2212BC15004CE4CB /* RegistrationStep2VCViewController.swift */; };
 		9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BF2212D0A8004CE4CB /* TeamModel.swift */; };
+		9B2F486C221F17A100B2BF91 /* SendReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F486B221F17A100B2BF91 /* SendReportModel.swift */; };
 		9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B69A50722123C95001BBFE8 /* PostalModel.swift */; };
+		9BBABA9E221F29B300DBC284 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABA9D221F29B300DBC284 /* ReportService.swift */; };
+		9BBABAA0221F2E4E00DBC284 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABA9F221F2E4E00DBC284 /* ReportModel.swift */; };
+		9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */; };
+		9BBABAA4221F414100DBC284 /* ReportTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABAA3221F414100DBC284 /* ReportTypeModel.swift */; };
+		9BBABAA6221F4AE000DBC284 /* MediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABAA5221F4AE000DBC284 /* MediaService.swift */; };
 		9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE18354220DE74C00981F3F /* Registration.storyboard */; };
 		9BE5D8EB22195A9F0041FE8A /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */; };
 		9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */; };
@@ -96,7 +102,13 @@
 		9B0948BB2212AD47004CE4CB /* UserRegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationModel.swift; sourceTree = "<group>"; };
 		9B0948BD2212BC15004CE4CB /* RegistrationStep2VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStep2VCViewController.swift; sourceTree = "<group>"; };
 		9B0948BF2212D0A8004CE4CB /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
+		9B2F486B221F17A100B2BF91 /* SendReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportModel.swift; sourceTree = "<group>"; };
 		9B69A50722123C95001BBFE8 /* PostalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalModel.swift; sourceTree = "<group>"; };
+		9BBABA9D221F29B300DBC284 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
+		9BBABA9F221F2E4E00DBC284 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
+		9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		9BBABAA3221F414100DBC284 /* ReportTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportTypeModel.swift; path = ../../../../ReportTypeModel.swift; sourceTree = "<group>"; };
+		9BBABAA5221F4AE000DBC284 /* MediaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaService.swift; sourceTree = "<group>"; };
 		9BE18350220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Initial.strings; sourceTree = "<group>"; };
 		9BE18351220DE73D00981F3F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9BE18355220DE75B00981F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
@@ -203,6 +215,10 @@
 				9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */,
 				9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */,
 				438A0311221C0B6A00ECE252 /* ReportMapModel.swift */,
+				9B2F486B221F17A100B2BF91 /* SendReportModel.swift */,
+				9BBABA9F221F2E4E00DBC284 /* ReportModel.swift */,
+				9BBABAA3221F414100DBC284 /* ReportTypeModel.swift */,
+				9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -290,6 +306,8 @@
 			children = (
 				9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */,
 				43DB4CA6221B527000E0F88E /* ReportMapService.swift */,
+				9BBABA9D221F29B300DBC284 /* ReportService.swift */,
+				9BBABAA5221F4AE000DBC284 /* MediaService.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -458,6 +476,7 @@
 				43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */,
 				438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */,
 				4309F8EE22174B21001C29A9 /* SendPublicSpaceReportVC.swift in Sources */,
+				9BBABA9E221F29B300DBC284 /* ReportService.swift in Sources */,
 				4316BB4922037DD000A168BE /* MainVC.swift in Sources */,
 				43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */,
 				43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */,
@@ -470,7 +489,9 @@
 				9B0948BE2212BC15004CE4CB /* RegistrationStep2VCViewController.swift in Sources */,
 				43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */,
 				43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */,
+				9BBABAA6221F4AE000DBC284 /* MediaService.swift in Sources */,
 				9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */,
+				9BBABAA0221F2E4E00DBC284 /* ReportModel.swift in Sources */,
 				9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
@@ -486,6 +507,9 @@
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
+				9BBABAA4221F414100DBC284 /* ReportTypeModel.swift in Sources */,
+				9B2F486C221F17A100B2BF91 /* SendReportModel.swift in Sources */,
+				9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */,
 				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,
 				439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */,
 				439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */,

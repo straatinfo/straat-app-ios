@@ -14,7 +14,11 @@ class MainCategoryModel {
     var codeName: String?
     var codeId: String?
     var description: String?
-    var subCategories: [SubCategoryModel]
+    var subCategories: [SubCategoryModel]?
+    
+    init () {
+        
+    }
     
     init (
         id: String?,
@@ -23,7 +27,7 @@ class MainCategoryModel {
         code: String?,
         codeName: String?,
         codeId: String?,
-        subCategories: [SubCategoryModel]
+        subCategories: [SubCategoryModel]?
     ) {
         self.id = id
         self.name = name
@@ -32,5 +36,24 @@ class MainCategoryModel {
         self.codeId = codeId
         self.codeName = codeName
         self.subCategories = subCategories
+    }
+    
+    init (mainCategoryData: Dictionary<String, Any>) {
+        self.id = mainCategoryData["_id"] as? String
+        self.name = mainCategoryData["_id"] as? String
+        self.description = mainCategoryData["_id"] as? String
+        self.code = mainCategoryData["_id"] as? String
+        self.codeId = mainCategoryData["_id"] as? String
+        self.codeName = mainCategoryData["_id"] as? String
+        var subCategories: [SubCategoryModel] = []
+        
+        let subCategoryDatas = mainCategoryData["subCategories"] as? [[String: Any]] ?? []
+        
+        if subCategories.count > 0 {
+            for subCategoryData in subCategoryDatas {
+                let subCategory = SubCategoryModel(subCategoryData: subCategoryData)
+                subCategories.append(subCategory)
+            }
+        }
     }
 }

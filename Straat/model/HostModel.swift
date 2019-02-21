@@ -22,6 +22,11 @@ class HostModel {
     var isVolunteer: Bool?
     var language: String? = "en"
     
+    
+    init() {
+        
+    }
+    
     init(
         hostID : String?,
         hostLat : String?,
@@ -49,6 +54,22 @@ class HostModel {
         self.phoneNumber = phoneNumber
         self.isVolunteer = isVolunteer
         self.language = language
+    }
+    
+    init (hostData: Dictionary<String, Any>) {
+        self.id = hostData["_id"] as? String
+        self.hostName = hostData["hostName"] as? String
+        self.lat = hostData["lat"] as? String
+        self.long = hostData["long"] as? String
+        self.email = hostData["email"] as? String
+        self.username = hostData["username"] as? String
+        self.streetName = hostData["streetName"] as? String
+        self.city = hostData["city"] as? String
+        self.country = hostData["country"] as? String
+        self.postalCode = hostData["postalCode"] as? String
+        self.phoneNumber = hostData["phoneNumber"] as? String
+        self.isVolunteer = hostData["isVolunteer"] as? Bool
+        self.language = hostData["language"] as? String
     }
 }
 

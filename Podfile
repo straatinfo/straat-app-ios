@@ -7,7 +7,9 @@ target 'Straat' do
 
   # Pods for Straat
   pod 'Alamofire', '~> 4.7'
+  pod 'AlamofireImage', '~> 3.5'
   pod 'iOSDropDown'
+
   # Pods for GoogleMapiOS
   source 'https://github.com/CocoaPods/Specs.git'
   pod 'GoogleMaps'

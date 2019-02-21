@@ -27,6 +27,7 @@ class ReportMapModel {
     var address : String?
     var lat : Double?
     var long : Double?
+    var reportImage : UIImage?
     
     init(category : String?, images : [ReportImageModel]?, status : String?, message : String?, address : String?, lat : Double?, long : Double?) {
         
@@ -39,6 +40,13 @@ class ReportMapModel {
         self.long = long
     }
     
+    func setReportImage(reportImage : UIImage?) {
+        self.reportImage = reportImage
+    }
+    
+    func getReportImage() -> UIImage{
+        return self.reportImage!
+    }
 }
 
 class ReportImageModel {
@@ -47,4 +55,6 @@ class ReportImageModel {
     init(imageUrl : String?) {
         self.imageUrl = imageUrl
     }
+    
+
 }

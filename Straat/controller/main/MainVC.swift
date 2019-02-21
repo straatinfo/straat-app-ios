@@ -9,6 +9,8 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import Kingfisher
+import Alamofire
+import AlamofireImage
 
 class MainVC: UIViewController {
 
@@ -43,23 +45,6 @@ class MainVC: UIViewController {
         navColor()
         initMapView()
         //loadInfo()
-        
-        let reportMapService = ReportMapService()
-        
-        loadingShow(vc: self)
-        reportMapService.getUserReport(userID: "5c63452335086200156f93d4") { (success, message, reportMapModel)  in
-            
-            if success == true {
-                for reportMap in reportMapModel {
-                    self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
-                }
-                print("reportMap: \(reportMapModel)")
-                loadingDismiss()
-            } else {
-                defaultDialog(vc: self, title: "Fetching Reports", message: message)
-            }
-            
-        }
     }
     
     @IBAction func showSendReport(_ sender: Any) {
@@ -162,9 +147,27 @@ extension MainVC  {
     
     // initialised map view
     func initMapView() -> Void {
+
+        let reportMapService = ReportMapService()
+        loadingShow(vc: self)
+        self.sendReport.isEnabled = false
         
         self.initMapCamera(lat: 52.077646, long: 4.315667)
         self.initMapRadius(lat: 52.077646, long: 4.315667)
+        reportMapService.getUserReport(userID: "5c63452335086200156f93d4") { (success, message, reportMapModel)  in
+            
+            if success == true {
+                for reportMap in reportMapModel {
+                    self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+                }
+                self.sendReport.isEnabled = true
+                loadingDismiss()
+                
+            } else {
+                defaultDialog(vc: self, title: "Fetching Reports", message: message)
+            }
+            
+        }
         
     }
     
@@ -195,7 +198,8 @@ extension MainVC  {
 
         marker.icon = UIImage(named: "pin-new")
         marker.isDraggable = true
-        marker.map = mView        
+        marker.map = mView
+        
         location.text = address
         userLat = lat
         userLong = long
@@ -205,12 +209,20 @@ extension MainVC  {
     func reportMarker (mView : GMSMapView, reportMapModel : ReportMapModel?) -> Void {
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
+        
+        self.getReportImage(imageUrl: (reportMapModel?.images![0].imageUrl)!) { (hasImage, img) in
+            if hasImage {
+                reportMapModel?.setReportImage(reportImage: img)
+            } else {
+                reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
+            }
+        }
+        
         marker.position = CLLocationCoordinate2D(latitude: (reportMapModel?.lat)!, longitude: (reportMapModel?.long)!)
         
         marker.title = reportMapModel?.category
         marker.snippet = reportMapModel?.address
         marker.icon = UIImage(named: "pin-new")
-        marker.isDraggable = true
         marker.map = mView
         
         // data for report view
@@ -222,6 +234,35 @@ extension MainVC  {
         
     }
     
+    func getReportImage(imageUrl : String, completion: @escaping (Bool, UIImage?)->Void ) -> Void {
+        loadingShow(vc: self)
+        
+        if imageUrl.count > 0 {
+
+            Alamofire.request(URL(string: imageUrl)!).responseImage { response in
+                
+                if let img = response.result.value {
+                    print("image downloaded: \(img)")
+                    
+                    DispatchQueue.main.async {
+                        completion(true, img)
+                        loadingDismiss()
+                    }
+                    
+                } else {
+                    completion(false, nil)
+                    loadingDismiss()
+                }
+            }
+            
+        } else {
+            completion(false, nil)
+            loadingDismiss()
+        }
+        
+
+    }
+    
 }
 
 // dedicated for google maps delegates
@@ -229,7 +270,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
  
     // getting coordinatas after end dragging the GMSMarker
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
-        
+
         getAddressFromLatLon(lat: marker.position.latitude, long: marker.position.longitude, completion: { hasAdd , response in
             
             if  hasAdd {
@@ -245,43 +286,69 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
     // creating custom marker
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         
-        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: self.view.bounds.width * 0.70, height: 100))
+        let view = UIView()
         
-        view.backgroundColor = UIColor.white
-        view.layer.cornerRadius = 6
-        
-        
-        let lbl1 = UILabel(frame: CGRect.init(x: 8, y: 0, width: view.frame.size.width * 0.50
-            , height: 70))
-        lbl1.text = marker.title
-        lbl1.lineBreakMode = .byWordWrapping
-        lbl1.numberOfLines = 3
-        view.addSubview(lbl1)
-        
-        let lbl2 = UILabel(frame: CGRect.init(x: lbl1.frame.origin.x, y: lbl1.frame.origin.y + lbl1.frame.size.height + 3, width: view.frame.size.width * 0.50, height: 20))
-        
-        lbl2.text = marker.snippet
-        lbl2.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        lbl2.lineBreakMode = .byWordWrapping
-        lbl2.numberOfLines = 3
-        view.addSubview(lbl2)
-        
-        let img = UIImageView(frame: CGRect.init(x: lbl1.frame.size.width + 20, y: 0, width: view.frame.size.width * 0.40, height: view.frame.height))
-        
-
-        img.contentMode = .scaleToFill
-        img.layer.cornerRadius = 6
-        img.layer.borderColor = UIColor.init(red: 200 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1).cgColor
-        img.layer.borderWidth = 2
-        view.addSubview(img)
+        if marker != self.marker {
+            view.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.width * 0.70, height: 100)
+            
+            view.backgroundColor = UIColor.white
+            view.layer.cornerRadius = 6
+            
+            
+            let lbl1 = UILabel(frame: CGRect.init(x: 8, y: 0, width: view.frame.size.width * 0.50
+                , height: 70))
+            lbl1.text = marker.title
+            lbl1.lineBreakMode = .byWordWrapping
+            lbl1.numberOfLines = 3
+            view.addSubview(lbl1)
+            
+            let lbl2 = UILabel(frame: CGRect.init(x: lbl1.frame.origin.x, y: lbl1.frame.origin.y + lbl1.frame.size.height + 3, width: view.frame.size.width * 0.50, height: 20))
+            
+            lbl2.text = marker.snippet
+            lbl2.font = UIFont.systemFont(ofSize: 14, weight: .light)
+            lbl2.lineBreakMode = .byWordWrapping
+            lbl2.numberOfLines = 3
+            view.addSubview(lbl2)
+            
+            let img = UIImageView(frame: CGRect.init(x: lbl1.frame.size.width + 20, y: 0, width: view.frame.size.width * 0.40, height: view.frame.height))
+            
+            let imgPlaceholder = UIImage(named: "AppIcon")
+            if marker.reportMapModel != nil {
+                img.image = marker.reportMapModel!.getReportImage()
+            } else {
+                img.image = imgPlaceholder
+            }
+            
+            img.contentMode = .scaleToFill
+            img.layer.cornerRadius = 6
+            view.addSubview(img)
+            
+        }
         
         return view
     }
 
-    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        self.saveToUserDefault(reportMapModel: marker.reportMapModel)
-        let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewReportVC
-        self.present(viewReportVC, animated: true, completion: nil)
+    // present view report when tapped info windows of marker
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
+    {
+        var reportImages = [String]()
+        
+        if marker != self.marker {
+            
+            if (marker.reportMapModel?.images?.count)! > 0 {
+                for reportImg in (marker.reportMapModel?.images)! {
+                    reportImages.append(reportImg.imageUrl!)
+                }
+            } else {
+                reportImages.append("")
+            }
+
+            
+            self.saveToUserDefault(reportMapModel: marker.reportMapModel!, reportImages: reportImages)
+            let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewReportVC
+            self.present(viewReportVC, animated: true, completion: nil)
+        }
+
     }
     
     // getting the address from coordinates
@@ -392,23 +459,29 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
     }
     
-    func saveToUserDefault(reportMapModel : ReportMapModel) -> Void {
+    func saveToUserDefault(reportMapModel : ReportMapModel , reportImages : [String]) -> Void {
+        
         let uds = UserDefaults.standard
         uds.set(reportMapModel.category, forKey: "report-category")
         uds.set(reportMapModel.status, forKey: "report-status")
         uds.set(reportMapModel.message, forKey: "report-message")
-        uds.set(reportMapModel.message, forKey: "report-address")
-        uds.set(reportMapModel.message, forKey: "report-lat")
-        uds.set(reportMapModel.message, forKey: "report-long")
+        uds.set(reportMapModel.address, forKey: "report-address")
+        uds.set(reportMapModel.lat, forKey: "report-lat")
+        uds.set(reportMapModel.long, forKey: "report-long")
+        uds.set(reportImages, forKey: "report-images")
     }
     
 }
 
 
 extension GMSMarker {
-    var reportMapModel : ReportMapModel {
+    var reportMapModel : ReportMapModel? {
         set(reportMapModel) { self.userData = reportMapModel }
-        get { return self.userData as! ReportMapModel}
+        get { return self.userData as? ReportMapModel}
     }
-}
 
+//    var markerImage : UIImage {
+//        set (markerImage) {self.userData = markerImage}
+//        get { return self.userData as! UIImage }
+//    }
+}

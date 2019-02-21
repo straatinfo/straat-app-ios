@@ -16,7 +16,7 @@ class SendPublicSpaceReportVC: UIViewController {
     
     @IBOutlet weak var EmergencyView: UIView!
     @IBOutlet weak var DescriptionView: UIView!
-    @IBOutlet weak var DescriptionTextView: UITextView!
+    @IBOutlet weak var DescriptionTextView: UIView!
     
     @IBOutlet weak var ImgUIView1: UIView!
     @IBOutlet weak var ImgUIView2: UIView!
@@ -91,8 +91,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         var views = [UIView]()
         var hideViews = [UIView]()
         
-        views = [MainCategView, SubCategView, EmergencyView, DescriptionView,
-                 DescriptionTextView, ImgUIView1, ImgUIView2, ImgUIView3]
+        views = [MainCategView, SubCategView, EmergencyView, DescriptionView, DescriptionTextView, ImgUIView1, ImgUIView2, ImgUIView3]
 
         hideViews = [SubCategView]
         
@@ -215,7 +214,8 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                     self.present(img, animated: true, completion: nil)
                     self.imgViewTag = view.tag
                 } else {
-                    defaultDialog(vc: self, title: "Permission denied", message: result)
+//                    defaultDialog(vc: self, title: "Permission denied", message: result)
+                    print("permission \(result)")
                 }
                 
             }
@@ -247,6 +247,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                 imgView3.image = image
                 break
             default:
+                defaultDialog(vc: self, title: "Import Image", message: "Error occured when importing image")
                 print("error in importing image")
                 break
             }

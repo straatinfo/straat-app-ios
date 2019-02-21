@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class ViewReportVC: UIViewController {
 
@@ -16,6 +18,9 @@ class ViewReportVC: UIViewController {
     @IBOutlet weak var notification: UILabel!
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var reportBy: UILabel!
+    @IBOutlet weak var reportImageView: UIView!
+    @IBOutlet weak var reportImageViewConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +35,8 @@ class ViewReportVC: UIViewController {
 }
 
 extension ViewReportVC {
+    
+    
     func initReportMapDetails() -> Void{
         let uds = UserDefaults.standard
 
@@ -37,17 +44,78 @@ extension ViewReportVC {
         let status = uds.string(forKey: "report-status")
         let message = uds.string(forKey: "report-message")
         let address = uds.string(forKey: "report-address")
-        let lat = uds.double(forKey: "report-lat")
-        let long = uds.double(forKey: "report-long")
+        let imageUrls = uds.array(forKey: "report-images") as! [String]
         
         self.location.text = address
         self.status.text = status
         self.notification.text = category
         self.message.text = message
+    
+        self.initImageViews(imageUrls: imageUrls)
+        print("report images: \(String(describing: imageUrls))")
+    }
+    
+    func initImageViews(imageUrls : [String]) -> Void {
+ 
+        loadingShow(vc: self)
         
-        print("report view: \(String(describing: category))")
-        
+        if imageUrls.count > 0 {
 
+            self.getReportImageFromUrl(imageUrls: imageUrls) { (hasImage, images, yAxis, viewHeight) in
+                if hasImage {
+                    self.setImageViews(reportViewImage: images!, yAxis: yAxis, viewHeight: viewHeight)
+                } else {
+                    defaultDialog(vc: self, title: "Fetching image", message: "No Image")
+                }
+                loadingDismiss()
+            }
+
+        }
         
     }
+    
+    
+    func getReportImageFromUrl (imageUrls : [String], completion: @escaping (Bool, UIImage?, CGFloat, CGFloat) -> Void) -> Void {
+
+        var yAxis : CGFloat = 0
+        var viewHeight : CGFloat = 205
+        for imageUrl in imageUrls {
+
+            Alamofire.request(URL(string: imageUrl)!).responseImage { response in
+                
+                if let img = response.result.value {
+                    print("report image downloaded: \(img)")
+                    
+                    DispatchQueue.main.async {
+                        
+                            completion(true, img, yAxis, viewHeight)
+                            yAxis += 205
+                            viewHeight += yAxis
+                    }
+
+                } else {
+                    completion(false, nil, 0, 0)
+                }
+
+            }
+        }
+        
+    }
+    
+    
+    func setImageViews( reportViewImage : UIImage, yAxis : CGFloat, viewHeight : CGFloat) -> Void {
+        
+        let image = UIImageView(frame: CGRect(x: 0, y: yAxis, width: self.reportImageView.frame.width, height: 200))
+        
+        image.image = reportViewImage
+        self.reportImageViewConstraint.constant += viewHeight
+        self.reportImageView.autoresizesSubviews = true
+        self.reportImageView.addSubview(image)
+        
+        self.reportImageView.clipsToBounds = true;
+        print("view created")
+        print("imageview height \(self.reportImageViewConstraint.constant)")
+
+    }
+    
 }

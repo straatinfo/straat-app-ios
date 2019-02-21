@@ -116,7 +116,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                     let name = mainCateg.name!
                     
                     self.mainCategoryName.append(name)
-                    self.subCategory = mainCateg.subCategories
+                    self.subCategory = mainCateg.subCategories!
 
 //                    if mainCateg.subCategories.count > 0 {
 //                        for subCateg in mainCateg.subCategories {

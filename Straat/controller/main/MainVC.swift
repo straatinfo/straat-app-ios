@@ -11,6 +11,7 @@ import CoreLocation
 import Kingfisher
 import Alamofire
 import AlamofireImage
+import iOSDropDown
 
 class MainVC: UIViewController {
 
@@ -39,11 +40,16 @@ class MainVC: UIViewController {
     var userLat : Double!
     var userLong : Double!
     
+    //filter reports
+    @IBOutlet weak var filterReport: DropDown!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createMenu()
         navColor()
         initMapView()
+        initFilterReport()
         //loadInfo()
     }
     
@@ -132,6 +138,15 @@ extension MainVC  {
         navigationItem.title = "Straat.info"
     }
     
+    func initFilterReport() -> Void {
+        let filter = ["All", "Public Spaces", "Suspicious Situation"]
+        
+        self.filterReport.optionArray = filter
+        self.filterReport.selectedRowColor = UIColor.lightGray
+        self.filterReport.didSelect { (selecteItem, index, id) in
+            self.initMapView()
+        }
+    }
     
     // loading partial user information
     func loadInfo() -> Void {
@@ -479,9 +494,4 @@ extension GMSMarker {
         set(reportMapModel) { self.userData = reportMapModel }
         get { return self.userData as? ReportMapModel}
     }
-
-//    var markerImage : UIImage {
-//        set (markerImage) {self.userData = markerImage}
-//        get { return self.userData as! UIImage }
-//    }
 }

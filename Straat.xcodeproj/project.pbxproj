@@ -36,6 +36,10 @@
 		43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */; };
 		43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */; };
 		43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */; };
+		43D61D97221F2F2700730ABE /* SideBarTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D61D96221F2F2700730ABE /* SideBarTVC.swift */; };
+		43D61D99221F2F5D00730ABE /* SideBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D61D98221F2F5D00730ABE /* SideBarVC.swift */; };
+		43D61D9B221F2F8700730ABE /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D61D9A221F2F8700730ABE /* NotificationVC.swift */; };
+		43D61D9D221F41C800730ABE /* SideBars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43D61D9C221F41C800730ABE /* SideBars.storyboard */; };
 		43DB4CA5221AE55000E0F88E /* ViewReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4CA4221AE55000E0F88E /* ViewReportVC.swift */; };
 		43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4CA6221B527000E0F88E /* ReportMapService.swift */; };
 		43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7C920220FF747004A9AFD /* SelectReportVC.swift */; };
@@ -87,6 +91,10 @@
 		43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataVC.swift; sourceTree = "<group>"; };
 		43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionVC.swift; sourceTree = "<group>"; };
 		43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
+		43D61D96221F2F2700730ABE /* SideBarTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarTVC.swift; sourceTree = "<group>"; };
+		43D61D98221F2F5D00730ABE /* SideBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarVC.swift; sourceTree = "<group>"; };
+		43D61D9A221F2F8700730ABE /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		43D61D9C221F41C800730ABE /* SideBars.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideBars.storyboard; sourceTree = "<group>"; };
 		43DB4CA4221AE55000E0F88E /* ViewReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReportVC.swift; sourceTree = "<group>"; };
 		43DB4CA6221B527000E0F88E /* ReportMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMapService.swift; sourceTree = "<group>"; };
 		43E7C920220FF747004A9AFD /* SelectReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReportVC.swift; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 				435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */,
 				9BE18354220DE74C00981F3F /* Registration.storyboard */,
 				43B078EA2203739C001BF643 /* Main.storyboard */,
+				43D61D9C221F41C800730ABE /* SideBars.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -241,6 +250,7 @@
 		4388ED7D220DE8BC002A008A /* main */ = {
 			isa = PBXGroup;
 			children = (
+				43D61D95221F2F0100730ABE /* SideBar */,
 				436B99CB2217EF2C00881443 /* PublicSpacesReports */,
 				436B99CA2217EF1E00881443 /* SuspiciousSituationReports */,
 				4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */,
@@ -274,6 +284,16 @@
 				4302C10F2206085400A9865D /* CustomTabBarController.swift */,
 			);
 			path = classes;
+			sourceTree = "<group>";
+		};
+		43D61D95221F2F0100730ABE /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				43D61D96221F2F2700730ABE /* SideBarTVC.swift */,
+				43D61D98221F2F5D00730ABE /* SideBarVC.swift */,
+				43D61D9A221F2F8700730ABE /* NotificationVC.swift */,
+			);
+			path = SideBar;
 			sourceTree = "<group>";
 		};
 		43ED29F47F127A1B5C2D88D4 /* Pods */ = {
@@ -364,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */,
+				43D61D9D221F41C800730ABE /* SideBars.storyboard in Resources */,
 				43B078EB2203739C001BF643 /* Main.storyboard in Resources */,
 				9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */,
 				435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */,
@@ -455,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43D61D97221F2F2700730ABE /* SideBarTVC.swift in Sources */,
 				43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */,
 				438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */,
 				4309F8EE22174B21001C29A9 /* SendPublicSpaceReportVC.swift in Sources */,
@@ -462,6 +484,7 @@
 				43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */,
 				43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */,
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
+				43D61D99221F2F5D00730ABE /* SideBarVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
 				9B0948BC2212AD47004CE4CB /* UserRegistrationModel.swift in Sources */,
@@ -484,6 +507,7 @@
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */,
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
+				43D61D9B221F2F8700730ABE /* NotificationVC.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,

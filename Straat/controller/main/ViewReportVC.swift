@@ -36,7 +36,7 @@ class ViewReportVC: UIViewController {
 
 extension ViewReportVC {
     
-    
+    // initialise report mat details
     func initReportMapDetails() -> Void{
         let uds = UserDefaults.standard
 
@@ -55,6 +55,7 @@ extension ViewReportVC {
         print("report images: \(String(describing: imageUrls))")
     }
     
+    // initialise report images
     func initImageViews(imageUrls : [String]) -> Void {
  
         loadingShow(vc: self)
@@ -74,11 +75,12 @@ extension ViewReportVC {
         
     }
     
-    
+    // fetching report image from secured url
     func getReportImageFromUrl (imageUrls : [String], completion: @escaping (Bool, UIImage?, CGFloat, CGFloat) -> Void) -> Void {
 
         var yAxis : CGFloat = 0
         var viewHeight : CGFloat = 205
+        
         for imageUrl in imageUrls {
 
             Alamofire.request(URL(string: imageUrl)!).responseImage { response in
@@ -87,7 +89,6 @@ extension ViewReportVC {
                     print("report image downloaded: \(img)")
                     
                     DispatchQueue.main.async {
-                        
                             completion(true, img, yAxis, viewHeight)
                             yAxis += 205
                             viewHeight += yAxis

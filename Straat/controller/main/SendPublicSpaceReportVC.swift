@@ -215,7 +215,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                     self.imgViewTag = view.tag
                 } else {
 //                    defaultDialog(vc: self, title: "Permission denied", message: result)
-                    print("permission \(result)")
+                    print("permission \(String(describing: result))")
                 }
                 
             }

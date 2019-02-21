@@ -34,14 +34,13 @@ import UIKit
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.white
-        activityIndicator.isUserInteractionEnabled = false
+        activityIndicator.isUserInteractionEnabled = false        
+        activityIndicator.startAnimating()
         
         view.addSubview(activityIndicator)
         view.addSubview(loadingLabel)
         vc.view.addSubview(view)
         view.center = vc.view.center
-        
-        activityIndicator.startAnimating()
         
         //    vc.present(alertController, animated: true)
         

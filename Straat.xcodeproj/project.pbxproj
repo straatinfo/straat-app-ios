@@ -56,6 +56,7 @@
 		9BE5D8EB22195A9F0041FE8A /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */; };
 		9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */; };
 		9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */; };
+		9BECD55D22207A9D004989A2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BECD55C22207A9D004989A2 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryModel.swift; sourceTree = "<group>"; };
 		9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryModel.swift; sourceTree = "<group>"; };
+		9BECD55C22207A9D004989A2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,6 +310,7 @@
 				43DB4CA6221B527000E0F88E /* ReportMapService.swift */,
 				9BBABA9D221F29B300DBC284 /* ReportService.swift */,
 				9BBABAA5221F4AE000DBC284 /* MediaService.swift */,
+				9BECD55C22207A9D004989A2 /* UserService.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
+				9BECD55D22207A9D004989A2 /* UserService.swift in Sources */,
 				43DB4CA5221AE55000E0F88E /* ViewReportVC.swift in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */,

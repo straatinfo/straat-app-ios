@@ -32,6 +32,13 @@ let report_public = report + "/public" // GET /v1/api/report/public?_reporter=5c
 // uploading
 let upload_photo = root + "upload/public"
 
+// user
+let reporter_feedback = root + "feedback"
+let user_setting_radius = root + "user/map-radius-setting"
+let user = root + "user"
+let user_profile = user + "/profile"
+let user_pic = user + "/pic"
+let user_password = user + "/password"
 
 
 

@@ -11,6 +11,11 @@
 		4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C1132206137A00A9865D /* CreateReportVC.swift */; };
 		4309F8EE22174B21001C29A9 /* SendPublicSpaceReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */; };
 		4316BB4922037DD000A168BE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* MainVC.swift */; };
+		431E2777222014FA00441028 /* TeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E2776222014FA00441028 /* TeamVC.swift */; };
+		431E27792220152F00441028 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E27782220152F00441028 /* ProfileVC.swift */; };
+		431E277B2220162200441028 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E277A2220162200441028 /* AboutUsVC.swift */; };
+		431E277D2220165C00441028 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E277C2220165C00441028 /* FeedbackVC.swift */; };
+		431E277F222016B700441028 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E277E222016B700441028 /* SettingVC.swift */; };
 		43440D6D2215C2D7008A777E /* PublicSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */; };
 		43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D702215D460008A777E /* PublicSpaceTVC.swift */; };
 		43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D722215DA26008A777E /* SuspiciousSituationVC.swift */; };
@@ -63,6 +68,11 @@
 		4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPublicSpaceReportVC.swift; sourceTree = "<group>"; };
 		4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Straat-Bridging-Header.h"; sourceTree = "<group>"; };
 		4316BB4822037DD000A168BE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		431E2776222014FA00441028 /* TeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamVC.swift; sourceTree = "<group>"; };
+		431E27782220152F00441028 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		431E277A2220162200441028 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
+		431E277C2220165C00441028 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
+		431E277E222016B700441028 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicSpaceVC.swift; sourceTree = "<group>"; };
 		43440D702215D460008A777E /* PublicSpaceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicSpaceTVC.swift; sourceTree = "<group>"; };
 		43440D722215DA26008A777E /* SuspiciousSituationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspiciousSituationVC.swift; sourceTree = "<group>"; };
@@ -292,6 +302,11 @@
 				43D61D96221F2F2700730ABE /* SideBarTVC.swift */,
 				43D61D98221F2F5D00730ABE /* SideBarVC.swift */,
 				43D61D9A221F2F8700730ABE /* NotificationVC.swift */,
+				431E2776222014FA00441028 /* TeamVC.swift */,
+				431E27782220152F00441028 /* ProfileVC.swift */,
+				431E277A2220162200441028 /* AboutUsVC.swift */,
+				431E277C2220165C00441028 /* FeedbackVC.swift */,
+				431E277E222016B700441028 /* SettingVC.swift */,
 			);
 			path = SideBar;
 			sourceTree = "<group>";
@@ -477,11 +492,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				43D61D97221F2F2700730ABE /* SideBarTVC.swift in Sources */,
+				431E277D2220165C00441028 /* FeedbackVC.swift in Sources */,
 				43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */,
 				438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */,
 				4309F8EE22174B21001C29A9 /* SendPublicSpaceReportVC.swift in Sources */,
 				4316BB4922037DD000A168BE /* MainVC.swift in Sources */,
 				43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */,
+				431E2777222014FA00441028 /* TeamVC.swift in Sources */,
 				43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */,
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				43D61D99221F2F5D00730ABE /* SideBarVC.swift in Sources */,
@@ -501,14 +518,17 @@
 				439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */,
 				4397D19C220F6B26004788B6 /* SendSuspiciousReportVC.swift in Sources */,
 				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
+				431E277B2220162200441028 /* AboutUsVC.swift in Sources */,
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
 				43DB4CA5221AE55000E0F88E /* ViewReportVC.swift in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
+				431E27792220152F00441028 /* ProfileVC.swift in Sources */,
 				43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */,
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
 				43D61D9B221F2F8700730ABE /* NotificationVC.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
+				431E277F222016B700441028 /* SettingVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,
 				439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  NotificationVC.swift
+//  ProfileVC.swift
 //  Straat
 //
 //  Created by Global Array on 22/02/2019.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class NotificationVC: UIViewController {
-
+class ProfileVC: UIViewController {
+    
     @IBOutlet weak var menu: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -18,11 +18,10 @@ class NotificationVC: UIViewController {
         self.navColor()
         // Do any additional setup after loading the view.
     }
-    
+
 }
 
-
-extension NotificationVC {
+extension ProfileVC {
     
     // for revealing side bar menu
     func createMenu() -> Void {
@@ -47,5 +46,5 @@ extension NotificationVC {
         
         navigationItem.title = "Straat.info"
     }
-
+    
 }

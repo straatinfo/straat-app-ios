@@ -153,7 +153,15 @@ extension RegistrationTeamVC {
                 // loadingDismiss()
                 
             } else if let data = response {
-                // save user data and token here
+                
+                let dataObject = data["data"] as? Dictionary <String, Any>
+                let userObject = dataObject?["user"] as? Dictionary <String, Any>
+                
+                let userModel = UserModel(fromLogin: userObject!)
+                
+                //saving user model to loca data
+                userModel.saveToLocalData()
+                loadingDismiss()
                 
                 completion(true, "Success")
                 

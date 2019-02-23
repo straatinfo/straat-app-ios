@@ -13,9 +13,10 @@ class EnterCodeVC: UIViewController {
     
     @IBOutlet weak var tfCode: UITextField!
     let apiHandler = ApiHandler()
+    let userModel = UserModel()
     
     override func viewDidLoad() {
-            //some shit code
+
     }
     
     @IBAction func btnOkay(_ sender: UIButton) {

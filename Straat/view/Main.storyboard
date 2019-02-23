@@ -330,7 +330,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="135" id="29O-Kz-FNS" customClass="PublicSpaceTVC" customModule="Straat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="135" id="29O-Kz-FNS" customClass="SuspiciousTVC" customModule="Straat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="29O-Kz-FNS" id="cBa-4V-ni8">
@@ -340,7 +340,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWp-rv-xgr">
                                                     <rect key="frame" x="10" y="10" width="355" height="111.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pgo-B6-CsQ">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Pgo-B6-CsQ">
                                                             <rect key="frame" x="270" y="10" width="75" height="90"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="90" id="tih-zK-gHz"/>
@@ -442,9 +442,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dateOfReport" destination="tbx-35-OQp" id="D5K-Pu-P8T"/>
-                                            <outlet property="messageCount" destination="kYt-Ml-bZE" id="zhz-1N-RIS"/>
-                                            <outlet property="reportCategory" destination="MLQ-Gc-ogG" id="93X-E9-AaT"/>
+                                            <outlet property="dateOfReport" destination="tbx-35-OQp" id="nE5-qG-URk"/>
+                                            <outlet property="messageCount" destination="kYt-Ml-bZE" id="lzD-2N-HB4"/>
+                                            <outlet property="reportCategory" destination="MLQ-Gc-ogG" id="Sqn-0b-hwu"/>
+                                            <outlet property="reportImage" destination="Pgo-B6-CsQ" id="8GA-Qu-szQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -464,6 +465,9 @@
                         <viewLayoutGuide key="safeArea" id="UGf-3Z-BWm"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Suspicious Situation" image="suspicious-tab" id="gfc-h7-sRb"/>
+                    <connections>
+                        <outlet property="suspiciousReportTableView" destination="lXU-NU-F6K" id="JBi-6t-89f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCo-tm-bvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1158,7 +1162,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="135" id="MxA-vT-43s" customClass="PublicSpaceTVC" customModule="Straat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="135" id="MxA-vT-43s" customClass="PublicSpaceTVC" customModule="Straat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MxA-vT-43s" id="2ys-dj-MbR">
@@ -1168,7 +1172,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULx-Zq-ig5">
                                                     <rect key="frame" x="10" y="10" width="355" height="111.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6WU-O6-HSe">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6WU-O6-HSe">
                                                             <rect key="frame" x="270" y="10" width="75" height="90"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="75" id="3FF-0e-M22"/>
@@ -1273,7 +1277,7 @@
                                             <outlet property="dateOfReport" destination="j8T-bx-fi1" id="KUs-W9-uHf"/>
                                             <outlet property="messageCount" destination="p2d-lV-l8v" id="ygF-Xk-Q3K"/>
                                             <outlet property="reportCategory" destination="6bd-Rt-G6N" id="tID-KT-LwW"/>
-                                            <segue destination="66a-tY-SHk" kind="show" id="T4w-1X-s10"/>
+                                            <outlet property="reportImage" destination="6WU-O6-HSe" id="8nZ-Mh-cYm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1293,21 +1297,24 @@
                         <viewLayoutGuide key="safeArea" id="7Ey-9a-khn"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Public Space" image="public-spaces-tab" id="C6o-mM-sMb"/>
+                    <connections>
+                        <outlet property="publicReportTableView" destination="I6H-w4-wnB" id="6ae-az-Dgy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7yA-Qp-4J1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-238" y="3761"/>
         </scene>
-        <!--View Controller-->
+        <!--View ReportVC-->
         <scene sceneID="Vex-88-XJ9">
             <objects>
-                <viewController id="66a-tY-SHk" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ViewReportID" storyboardIdentifier="ViewReportID" id="66a-tY-SHk" customClass="ViewReportVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ueJ-DX-iR7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N80-MI-7X4">
-                                <rect key="frame" x="15" y="79" width="345" height="906"/>
+                                <rect key="frame" x="15" y="35" width="345" height="950"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3T-XT-gC1" userLabel="Main Container">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="950"/>
@@ -1570,15 +1577,26 @@
                         <viewLayoutGuide key="safeArea" id="SPc-Wj-MTz"/>
                     </view>
                     <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="date" destination="glY-Wj-VTD" id="VVF-f7-Uhm"/>
+                        <outlet property="location" destination="gwx-2F-V8V" id="EI1-cr-TB3"/>
+                        <outlet property="mainCategoryName" destination="tM1-62-CnZ" id="qcN-lO-ayO"/>
+                        <outlet property="message" destination="qWk-za-kEB" id="Lyb-GD-83F"/>
+                        <outlet property="reportImageUIView" destination="FOQ-Zb-GEy" id="NtI-4O-yXM"/>
+                        <outlet property="reportImageViewConsraint" destination="G0o-hx-8lo" id="18q-qL-u3i"/>
+                        <outlet property="reportedBy" destination="anl-K5-iGo" id="Ixl-LL-1mr"/>
+                        <outlet property="status" destination="8qE-NA-W8l" id="FjY-oA-l1L"/>
+                        <outlet property="time" destination="f4m-Tn-oco" id="L95-ln-ebQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1AT-pj-7vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-239.19999999999999" y="4917.3913043478269"/>
         </scene>
-        <!--View ReportVC-->
+        <!--View Map ReportVC-->
         <scene sceneID="axd-XL-u8J">
             <objects>
-                <viewController storyboardIdentifier="ViewReportVC" modalPresentationStyle="overCurrentContext" id="pR8-PZ-ylZ" customClass="ViewReportVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewReportVC" modalPresentationStyle="overCurrentContext" id="pR8-PZ-ylZ" customClass="ViewMapReportVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fhd-oJ-7oV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2845,6 +2863,7 @@
         <image name="checkbox" width="24" height="24"/>
         <image name="exit" width="19" height="19"/>
         <image name="info" width="48" height="48"/>
+        <image name="logo" width="88" height="91"/>
         <image name="menu" width="22" height="15"/>
         <image name="msg-tab" width="24" height="24"/>
         <image name="notif" width="22" height="15"/>

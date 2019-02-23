@@ -149,12 +149,14 @@ extension MainVC  {
     func initMapView() -> Void {
 
         let reportMapService = ReportMapService()
+        let userModel = UserModel()
+        
         loadingShow(vc: self)
         self.sendReport.isEnabled = false
         
         self.initMapCamera(lat: 52.077646, long: 4.315667)
         self.initMapRadius(lat: 52.077646, long: 4.315667)
-        reportMapService.getUserReport(userID: "5c63452335086200156f93d4") { (success, message, reportMapModel)  in
+        reportMapService.getUserReport(userID: userModel.getDataFromUSD(key: user_id)) { (success, message, reportMapModel)  in
             
             if success == true {
                 for reportMap in reportMapModel {
@@ -342,10 +344,9 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             } else {
                 reportImages.append("")
             }
-
             
             self.saveToUserDefault(reportMapModel: marker.reportMapModel!, reportImages: reportImages)
-            let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewReportVC
+            let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewMapReportVC
             self.present(viewReportVC, animated: true, completion: nil)
         }
 
@@ -479,9 +480,4 @@ extension GMSMarker {
         set(reportMapModel) { self.userData = reportMapModel }
         get { return self.userData as? ReportMapModel}
     }
-
-//    var markerImage : UIImage {
-//        set (markerImage) {self.userData = markerImage}
-//        get { return self.userData as! UIImage }
-//    }
 }

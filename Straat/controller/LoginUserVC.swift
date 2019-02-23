@@ -14,9 +14,10 @@ class LoginUserVC: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     let apiHandler = ApiHandler()
+    let userModel = UserModel()
     
     override func viewDidLoad() {
-        //some shitty code
+        self.userModel.removeFromLocalData()
     }
     
     
@@ -61,33 +62,16 @@ extension LoginUserVC {
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 let userObject = dataObject?["user"] as? Dictionary <String, Any>
                 
-                let firstname = userObject?["fname"] as? String
-                let lastname = userObject?["lname"] as? String
-                let email = userObject?["email"] as? String
-                let user = userObject?["username"] as? String
-                
-                let userModel = UserModel(firstname: firstname, lastname: lastname, email: email, username: user)
+                let userModel = UserModel(fromLogin: userObject!)
                 
                 //saving user model to loca data
-                self.saveToLocalData(usermodel: userModel)
+                userModel.saveToLocalData()
                 loadingDismiss()
                 pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
                 
             }
             
         }
-        
-    }
-    
-    // saving users data to local data
-    func saveToLocalData( usermodel : UserModel ) {
-        
-        let uds = UserDefaults.standard
-        
-        uds.set( usermodel.firstname!, forKey: "user_fname")
-        uds.set( usermodel.lastname!, forKey: "user_lname")
-        uds.set( usermodel.email!, forKey: "user_email")
-        uds.set( usermodel.username!, forKey: "user_name")
         
     }
     

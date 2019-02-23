@@ -16,6 +16,8 @@ class ReportModel : SendReportModel {
     var subCategory: SubCategoryModel?
     var parsedUploadedPhotos: [PhotoModel]?
     var reportType: ReportTypeModel?
+    var createdAt : String?
+    var status : String?
     
     init (report: Dictionary<String, Any>) {
         super.init()
@@ -24,7 +26,8 @@ class ReportModel : SendReportModel {
         self.location = report["location"] as? String
         self.long = report["long"] as? Double
         self.lat = report["lat"] as? Double
-
+        self.createdAt = report["createdAt"] as? String
+        
         // reporter details
         let reporterData = report["_reporter"] as? [String: Any]
         self.reporter = UserModel(reportData: reporterData!)
@@ -42,17 +45,25 @@ class ReportModel : SendReportModel {
 
         // mainCategory Details
         let mainCategoryData = report["_mainCategory"] as? Dictionary<String, Any>
-        self.mainCategory =  MainCategoryModel(mainCategoryData: mainCategoryData!)
-        self.mainCategoryId = self.mainCategory?.id
+        
+        if mainCategoryData != nil {
+            self.mainCategory =  MainCategoryModel(mainCategoryData: mainCategoryData!)
+            self.mainCategoryId = self.mainCategory?.id
+        }
+
 
         // subCategory Details
         let subCategoryData = report["_subCategory"] as? Dictionary<String, Any>
-        self.subCategory = SubCategoryModel(subCategoryData: subCategoryData!)
-        self.subCategoryId = self.subCategory?.id
+        
+        if subCategoryData != nil {
+            self.subCategory = SubCategoryModel(subCategoryData: subCategoryData!)
+            self.subCategoryId = self.subCategory?.id
+        }
+
         
         self.isUrgent = report["isUrgent"] as? Bool
         self.teamId = report["_team"] as? String
-
+        
         self.reportUploadedPhotos = report["reportUploadedPhotos"] as? [[String: Any]] ?? []
         if self.reportUploadedPhotos!.count > 0 {
             for photoData in self.reportUploadedPhotos! {
@@ -62,13 +73,22 @@ class ReportModel : SendReportModel {
             }
         }
         
+        self.attachments = report["attachments"] as? [[String: Any]] ?? []
+       
+//            for photoData in self.reportUploadedPhotos! {
+//                let photo = PhotoModel(photoData: photoData)
+//
+//                self.parsedUploadedPhotos?.append(photo)
+//            }
+        
         self.isVehicleInvolved = report["isVehicleInvolved"] as? Bool
         self.vehicleInvolvedCount = report["vehicleInvolvedCount"] as? Int
         self.vehicleInvolvedDescription = report["vehicleInvolvedDescription"] as? String
         self.isPeopleInvolved = report["isPeopleInvolved"] as? Bool
         self.peopleInvolvedCount = report["peopleInvolvedCount"] as? Int
         self.peopleInvolvedDescription = report["peopleInvolvedDescription"] as? String
-
+        
+        self.status = report["status"] as? String
     }
 }
 

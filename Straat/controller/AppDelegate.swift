@@ -19,6 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyDZhDD8SHZ8Sj3HIHvSttz3-Ow6gNRCQdM")
         GMSPlacesClient.provideAPIKey("AIzaSyDZhDD8SHZ8Sj3HIHvSttz3-Ow6gNRCQdM")
         
+        let userModel = UserModel()
+        let id = userModel.getDataFromUSD(key: user_id)
+        
+        if id != "" {
+            print("user_id_res: true")
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let mv = sb.instantiateViewController(withIdentifier: "SWRevealViewControllerID")
+            window?.rootViewController = mv
+        }
+        else {
+            print("user_id_res: false")
+            let sb = UIStoryboard(name: "Initial", bundle: nil)
+            let checkCode = sb.instantiateViewController(withIdentifier: "SecondScreenID")
+            window?.rootViewController = checkCode
+        }
         // Override point for customization after application launch.
         return true
     }

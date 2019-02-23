@@ -10,6 +10,8 @@
 		4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C10F2206085400A9865D /* CustomTabBarController.swift */; };
 		4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C1132206137A00A9865D /* CreateReportVC.swift */; };
 		4309F8EE22174B21001C29A9 /* SendPublicSpaceReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */; };
+		43130E242221CB5A0074AD85 /* ViewReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43130E232221CB5A0074AD85 /* ViewReportVC.swift */; };
+		43130E262221DB800074AD85 /* SecondScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43130E252221DB800074AD85 /* SecondScreenVC.swift */; };
 		4316BB4922037DD000A168BE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* MainVC.swift */; };
 		43440D6D2215C2D7008A777E /* PublicSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */; };
 		43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D702215D460008A777E /* PublicSpaceTVC.swift */; };
@@ -22,6 +24,8 @@
 		435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */; };
 		435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */; };
 		435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */; };
+		437DFD372221B1A400D2E662 /* SuspiciousTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437DFD362221B1A400D2E662 /* SuspiciousTVC.swift */; };
+		437DFD392221BB7D00D2E662 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437DFD382221BB7D00D2E662 /* Constants.swift */; };
 		4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUserVC.swift */; };
 		438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A0311221C0B6A00ECE252 /* ReportMapModel.swift */; };
 		43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43907A312210A5B60063DC16 /* TeamListModel.swift */; };
@@ -43,7 +47,7 @@
 		43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */; };
 		43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */; };
 		43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */; };
-		43DB4CA5221AE55000E0F88E /* ViewReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4CA4221AE55000E0F88E /* ViewReportVC.swift */; };
+		43DB4CA5221AE55000E0F88E /* ViewMapReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4CA4221AE55000E0F88E /* ViewMapReportVC.swift */; };
 		43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4CA6221B527000E0F88E /* ReportMapService.swift */; };
 		43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7C920220FF747004A9AFD /* SelectReportVC.swift */; };
 		43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B12220B01FD0088B5FC /* Generics.swift */; };
@@ -71,6 +75,8 @@
 		4302C10F2206085400A9865D /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		4302C1132206137A00A9865D /* CreateReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportVC.swift; sourceTree = "<group>"; };
 		4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPublicSpaceReportVC.swift; sourceTree = "<group>"; };
+		43130E232221CB5A0074AD85 /* ViewReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReportVC.swift; sourceTree = "<group>"; };
+		43130E252221DB800074AD85 /* SecondScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenVC.swift; sourceTree = "<group>"; };
 		4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Straat-Bridging-Header.h"; sourceTree = "<group>"; };
 		4316BB4822037DD000A168BE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicSpaceVC.swift; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 		435CCB2521FF66CD00E87AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		435CCB2721FF66CD00E87AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeVC.swift; sourceTree = "<group>"; };
+		437DFD362221B1A400D2E662 /* SuspiciousTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspiciousTVC.swift; sourceTree = "<group>"; };
+		437DFD382221BB7D00D2E662 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserVC.swift; sourceTree = "<group>"; };
 		438A0311221C0B6A00ECE252 /* ReportMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMapModel.swift; sourceTree = "<group>"; };
 		43907A312210A5B60063DC16 /* TeamListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListModel.swift; sourceTree = "<group>"; };
@@ -108,7 +116,7 @@
 		43C4ABE32207685C0055D4EF /* RegistrationDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataVC.swift; sourceTree = "<group>"; };
 		43C4ABE522077D880055D4EF /* TermsAndConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionVC.swift; sourceTree = "<group>"; };
 		43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
-		43DB4CA4221AE55000E0F88E /* ViewReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReportVC.swift; sourceTree = "<group>"; };
+		43DB4CA4221AE55000E0F88E /* ViewMapReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMapReportVC.swift; sourceTree = "<group>"; };
 		43DB4CA6221B527000E0F88E /* ReportMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMapService.swift; sourceTree = "<group>"; };
 		43E7C920220FF747004A9AFD /* SelectReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReportVC.swift; sourceTree = "<group>"; };
 		43EA2B12220B01FD0088B5FC /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
@@ -161,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				9BE5D8E9221958130041FE8A /* util */,
-				439B1EAF220ACBCE007A6F4E /* classes */,
+				439B1EAF220ACBCE007A6F4E /* generics */,
 				434C3B53220A286300843000 /* api */,
 			);
 			path = services;
@@ -251,6 +259,7 @@
 				435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */,
 				4386825821FF8C06008F65D0 /* LoginUserVC.swift */,
 				43C4ABE722078B3A0055D4EF /* ForgotPassVC.swift */,
+				43130E252221DB800074AD85 /* SecondScreenVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				43440D722215DA26008A777E /* SuspiciousSituationVC.swift */,
+				437DFD362221B1A400D2E662 /* SuspiciousTVC.swift */,
 			);
 			path = SuspiciousSituationReports;
 			sourceTree = "<group>";
@@ -283,7 +293,8 @@
 				4397D19B220F6B26004788B6 /* SendSuspiciousReportVC.swift */,
 				43E7C920220FF747004A9AFD /* SelectReportVC.swift */,
 				4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */,
-				43DB4CA4221AE55000E0F88E /* ViewReportVC.swift */,
+				43DB4CA4221AE55000E0F88E /* ViewMapReportVC.swift */,
+				43130E232221CB5A0074AD85 /* ViewReportVC.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -313,14 +324,15 @@
 			path = registration;
 			sourceTree = "<group>";
 		};
-		439B1EAF220ACBCE007A6F4E /* classes */ = {
+		439B1EAF220ACBCE007A6F4E /* generics */ = {
 			isa = PBXGroup;
 			children = (
 				439B1EB0220ACBE1007A6F4E /* Validation.swift */,
 				43EA2B12220B01FD0088B5FC /* Generics.swift */,
 				4302C10F2206085400A9865D /* CustomTabBarController.swift */,
+				437DFD382221BB7D00D2E662 /* Constants.swift */,
 			);
-			path = classes;
+			path = generics;
 			sourceTree = "<group>";
 		};
 		43ED29F47F127A1B5C2D88D4 /* Pods */ = {
@@ -513,6 +525,7 @@
 				9BBABA9E221F29B300DBC284 /* ReportService.swift in Sources */,
 				4316BB4922037DD000A168BE /* MainVC.swift in Sources */,
 				43C4ABE822078B3A0055D4EF /* ForgotPassVC.swift in Sources */,
+				437DFD392221BB7D00D2E662 /* Constants.swift in Sources */,
 				43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */,
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
@@ -528,6 +541,7 @@
 				9BBABAA6221F4AE000DBC284 /* MediaService.swift in Sources */,
 				9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */,
 				9BBABAA0221F2E4E00DBC284 /* ReportModel.swift in Sources */,
+				437DFD372221B1A400D2E662 /* SuspiciousTVC.swift in Sources */,
 				9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */,
 				4392B5792221299B0001A7E0 /* AboutUsVC.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
@@ -539,13 +553,15 @@
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
 				9BECD55D22207A9D004989A2 /* UserService.swift in Sources */,
-				43DB4CA5221AE55000E0F88E /* ViewReportVC.swift in Sources */,
+				43DB4CA5221AE55000E0F88E /* ViewMapReportVC.swift in Sources */,
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */,
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
+				43130E262221DB800074AD85 /* SecondScreenVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				9B2F486C221F17A100B2BF91 /* SendReportModel.swift in Sources */,
+				43130E242221CB5A0074AD85 /* ViewReportVC.swift in Sources */,
 				4392B57B222129A80001A7E0 /* FeedbackVC.swift in Sources */,
 				9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */,
 				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,

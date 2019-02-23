@@ -1939,6 +1939,14 @@
             </objects>
             <point key="canvasLocation" x="1838" y="1925"/>
         </scene>
+        <!--TeamID-->
+        <scene sceneID="PzI-tk-wkc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sidebars" referencedIdentifier="TeamID" id="U7X-aK-Jde" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dWG-x4-RcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2437" y="1257"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="oru-JD-Qoa">
             <objects>
@@ -1950,7 +1958,7 @@
                         <sections>
                             <tableViewSection id="rSo-Po-0X3">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5xF-eZ-WSp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5xF-eZ-WSp" userLabel="StreetInfoViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5xF-eZ-WSp" id="pw9-lu-gmC">
@@ -1993,8 +2001,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="Vfq-BP-MuX" secondAttribute="trailing" id="t5T-jc-Rz3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="zgL-Gj-VLo" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="iSm-TE-v24"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="h31-w7-asa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="h31-w7-asa" userLabel="NotificationViewCell">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h31-w7-asa" id="DDz-G5-8sQ">
@@ -2037,8 +2048,11 @@
                                                 <constraint firstItem="Glt-in-7oK" firstAttribute="top" secondItem="DDz-G5-8sQ" secondAttribute="top" id="y3A-gP-ROq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="oPS-QA-MyK" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Wre-Nl-rYu"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Bkl-zR-oOX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Bkl-zR-oOX" userLabel="MyTeamViewCell">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bkl-zR-oOX" id="ro4-1A-Ar9">
@@ -2081,8 +2095,11 @@
                                                 <constraint firstItem="6iR-r0-QEy" firstAttribute="leading" secondItem="ro4-1A-Ar9" secondAttribute="leading" id="Ocg-AB-Evg"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="U7X-aK-Jde" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="nbp-82-oQ9"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Cfc-l3-5Ej">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Cfc-l3-5Ej" userLabel="ProfileViewCell">
                                         <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cfc-l3-5Ej" id="uxg-I2-Ciu">
@@ -2125,8 +2142,11 @@
                                                 <constraint firstItem="Bmw-hZ-6y9" firstAttribute="leading" secondItem="uxg-I2-Ciu" secondAttribute="leading" id="l9c-1L-HcE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="kvn-pd-RvE" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="B7j-Qr-LGy"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="E1g-Cw-6KK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="E1g-Cw-6KK" userLabel="SettingViewCell">
                                         <rect key="frame" x="0.0" y="176" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E1g-Cw-6KK" id="7d1-dU-AR8">
@@ -2169,8 +2189,11 @@
                                                 <constraint firstItem="Oki-Lz-knC" firstAttribute="top" secondItem="7d1-dU-AR8" secondAttribute="top" id="ihS-Ig-M1N"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4XP-r0-CC3" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="pTc-A6-v9b"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="AkM-7X-LdX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="AkM-7X-LdX" userLabel="AboutUsViewCell">
                                         <rect key="frame" x="0.0" y="220" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AkM-7X-LdX" id="ygO-az-AE5">
@@ -2213,8 +2236,11 @@
                                                 <constraint firstItem="ebo-aY-Y9K" firstAttribute="leading" secondItem="ygO-az-AE5" secondAttribute="leading" id="tUC-kN-y8b"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="yER-BZ-g3o" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="9mK-YB-tkr"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DAh-fN-TFO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DAh-fN-TFO" userLabel="FeedBackViewCell">
                                         <rect key="frame" x="0.0" y="264" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DAh-fN-TFO" id="sRh-3u-UJi">
@@ -2225,13 +2251,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XLT-BG-YeV">
-                                                            <rect key="frame" x="80" y="11.5" width="84" height="20.5"/>
+                                                            <rect key="frame" x="80" y="11.5" width="104.5" height="20.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="7HF-gN-Sqj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="24" height="20.5"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YF4-qa-cIY">
-                                                                    <rect key="frame" x="29" y="0.0" width="55" height="20.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YF4-qa-cIY">
+                                                                    <rect key="frame" x="29" y="0.0" width="75.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -2257,8 +2283,11 @@
                                                 <constraint firstItem="FX7-gp-YYX" firstAttribute="top" secondItem="sRh-3u-UJi" secondAttribute="top" id="fpj-hI-myQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="zfv-XE-Xnz" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="8Jl-rY-tyG"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="c6p-Tm-gYJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="c6p-Tm-gYJ" userLabel="LogoutViewCell">
                                         <rect key="frame" x="0.0" y="308" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c6p-Tm-gYJ" id="6Mh-dk-DpJ">
@@ -2342,7 +2371,7 @@
                 <viewControllerPlaceholder storyboardName="Initial" referencedIdentifier="loginVC" id="0F5-XN-3qz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ww-rG-4RU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2018" y="1204"/>
+            <point key="canvasLocation" x="-903" y="709"/>
         </scene>
         <!--Chat-->
         <scene sceneID="wlV-MJ-AQF">
@@ -2765,6 +2794,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBp-hn-pel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3852" y="3771"/>
+        </scene>
+        <!--ProfileID-->
+        <scene sceneID="JKI-9f-5qn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sidebars" referencedIdentifier="ProfileID" id="kvn-pd-RvE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1wP-zm-f7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2190" y="1290"/>
+        </scene>
+        <!--NotificationID-->
+        <scene sceneID="a5d-bm-eo1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sidebars" referencedIdentifier="NotificationID" id="oPS-QA-MyK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VjI-pw-PWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1842" y="1284"/>
+        </scene>
+        <!--FeedbackID-->
+        <scene sceneID="me0-28-6aC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sidebars" referencedIdentifier="FeedbackID" id="zfv-XE-Xnz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qj3-Eg-4Bf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1517" y="1284"/>
+        </scene>
+        <!--SettingID-->
+        <scene sceneID="6Eb-4L-M9x">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sidebars" referencedIdentifier="SettingID" id="4XP-r0-CC3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1SM-bF-wIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1231" y="1284"/>
+        </scene>
+        <!--AboutID-->
+        <scene sceneID="bbg-VU-RxU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sidebars" referencedIdentifier="AboutID" id="yER-BZ-g3o" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8zt-V3-Tsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1165" y="1182"/>
         </scene>
     </scenes>
     <resources>

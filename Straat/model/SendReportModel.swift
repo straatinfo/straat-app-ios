@@ -29,6 +29,7 @@ class SendReportModel {
     var peopleInvolvedCount: Int? = 0 // peopleInvolvedCount
     var peopleInvolvedDescription: String? // peopleInvolvedDescription
     var reportTypeId: String? // _reportType
+    var attachments: [[String: Any]]? // attachments
     
     init () {
         

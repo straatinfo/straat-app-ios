@@ -189,6 +189,16 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
                 
                 uds.set(userId, forKey: prefix + "id")
                 
+            
+                
+                let userObject = dataObject?["user"] as? Dictionary <String, Any>
+                
+                let userModel = UserModel(fromLogin: userObject!)
+                
+                //saving user model to loca data
+                userModel.saveToLocalData()
+                loadingDismiss()
+                
                 
                 completion(true, "Success")
                 

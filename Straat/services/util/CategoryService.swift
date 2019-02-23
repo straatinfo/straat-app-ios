@@ -93,11 +93,12 @@ extension CategoryService { // helper functions
         }
         let mainCategory = MainCategoryModel(
             id: id, name: name,
-            description: description,
-            code: code,
-            codeName: reportTypeName,
-            codeId: codeId,
-            subCategories: subCategories)
+            description: description
+//            code: code,
+//            codeName: reportTypeName,
+//            codeId: codeId,
+//            subCategories: subCategories
+        )
         return mainCategory
     }
     

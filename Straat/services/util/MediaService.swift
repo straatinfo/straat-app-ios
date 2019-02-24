@@ -16,7 +16,7 @@ class MediaService {
     
     func uploadPhoto (image: Data, fileName: String, completion: @escaping (Bool, String, PhotoModel?, Dictionary<String, Any>?) -> Void) {
         let parameters : Parameters = [:]
-        apiHandler.executeMultiPart(URL(string: upload_photo)!, parameters: parameters, imageData: image, fileName: fileName, photoFieldName: "photo", pathExtension: ".jpeg", headers: [:]) { (response, err) in
+        apiHandler.executeMultiPart(URL(string: upload_photo)!, parameters: parameters, imageData: image, fileName: fileName, photoFieldName: "photo", pathExtension: ".jpeg", method: .post, headers: [:]) { (response, err) in
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")

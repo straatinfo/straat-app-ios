@@ -81,6 +81,14 @@ class UserModel {
         self.sound = fromLoginSetting["sound"] as? Bool
         self.radius = fromLoginSetting["radius"] as? Float
     }
+
+    // init(fromUserDefaults: Bool) {
+    //     if fromUserDefaults {
+    //         self.id = uds.string(forKey: user_id)
+    //         self.firstname = uds.string(forKey: user_fname)
+    //         self.lastname = uds.string(forKey: user_fname)
+    //     }
+    // }
     
     // saving users data to local data
     func saveToLocalData() {

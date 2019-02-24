@@ -101,8 +101,8 @@ class UserService {
     }
     
     func uploadProfilPic (userId: String, image: Data, completion: @escaping (Bool, String) -> Void) {
-        let url = "\(user_profile)/\(userId)"
-        apiHandler.executeMultiPart(URL(string: url)!, parameters: [:], imageData: image, fileName: "user_\(userId)", photoFieldName: "profile-pic", pathExtension: ".jpeg", headers: [:]) { (response, err) in
+        let url = "\(user_pic)/\(userId)"
+        apiHandler.executeMultiPart(URL(string: url)!, parameters: [:], imageData: image, fileName: "user_\(userId)", photoFieldName: "profile-pic", pathExtension: ".jpeg", method: .put, headers: [:]) { (response, err) in
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")

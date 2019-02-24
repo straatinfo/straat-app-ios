@@ -10,6 +10,9 @@ import Photos
 
 class ProfileVC: UIViewController {
     
+    var didUpdate = false
+    var userService = UserService()
+    var profilePic: Data?
 
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var firstName: UITextField!
@@ -24,18 +27,55 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var uploadImage: UIImageView!
     
+    // MARK: Input text listeners
+    
+    
+    
+    @IBAction func fnameEdit(_ sender: Any) {
+        self.wasUpdated()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.createMenu()
         self.navColor()
         self.setImageTapGestures()
+        self.loadProfileData()
         // Do any additional setup after loading the view.
     }
     
     
     
     @IBAction func changeMyDataClicked(_ sender: Any) {
+        if !self.didUpdate {
+            defaultDialog(vc: self, title: "Warning", message: "No Changes")
+        } else {
+            if profilePic != nil {
+                self.updateProfilePic() { (success, text) in
+                    if success {
+                        self.updateProfile() { (success, text) in
+                            if success {
+                                defaultDialog(vc: self, title: "Update profile", message: "Successfully updated your profile")
+                            } else {
+                                defaultDialog(vc: self, title: "Update profile", message: "An error occured please try again.")
+                            }
+                        }
+                    } else {
+                        defaultDialog(vc: self, title: "Update profile", message: "An error occured please try again.")
+                    }
+                }
+            } else {
+                self.updateProfile() { (success, text) in
+                    if success {
+                        defaultDialog(vc: self, title: "Update profile", message: "Successfully updated your profile")
+                    } else {
+                        defaultDialog(vc: self, title: "Update profile", message: "An error occured please try again.")
+                    }
+                }
+            }
+        }
     }
     
 }
@@ -135,6 +175,8 @@ extension ProfileVC : UINavigationControllerDelegate, UIImagePickerControllerDel
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             self.uploadImage.image = image
+            self.profilePic = image.jpegData(compressionQuality: CGFloat.leastNormalMagnitude)!
+            didUpdate = true
             
         } else {
             print("importing img: error in uploading image")
@@ -187,4 +229,75 @@ extension ProfileVC : UINavigationControllerDelegate, UIImagePickerControllerDel
         
     }
     
+}
+
+
+// MARK Custom functions
+extension ProfileVC {
+    func wasUpdated () {
+        self.didUpdate = true
+    }
+    
+    func loadProfileData () {
+        let u = UserModel()
+        self.firstName.text = u.getDataFromUSD(key: user_fname)
+        self.familyName.text = u.getDataFromUSD(key: user_lname)
+        self.addressLotNum.text = u.getDataFromUSD(key: user_house_number)
+        self.addressPostalCode.text = u.getDataFromUSD(key: user_postal_code)
+        self.addedStreet.text = u.getDataFromUSD(key: user_street_name)
+        self.addedTown.text = u.getDataFromUSD(key: user_city)
+        self.contactEmail.text = u.getDataFromUSD(key: user_email)
+        self.contactNumber.text = u.getDataFromUSD(key: user_phone_number)
+        self.chatName.text = u.getDataFromUSD(key: user_username)
+        // self.password.text = u.getDataFromUSD(key: user_fname)
+        // self.uploadImage.text = u.getDataFromUSD(key: user_fname)
+    }
+    
+    func getUpdatedProfileData () -> Dictionary<String, Any> {
+        var data = Dictionary<String, Any>()
+        data["fname"] = self.firstName.text ?? ""
+        data["lname"] = self.familyName.text ?? ""
+        data["email"] = self.contactEmail.text ?? ""
+        data["username"] = self.chatName.text ?? ""
+        data["houseNumber"] = self.addressLotNum.text ?? ""
+        data["postalCode"] = self.addressPostalCode.text ?? ""
+        data["streetName"] = self.addedStreet.text ?? ""
+        data["city"] = self.addedTown.text ?? ""
+        data["phoneNumber"] = self.contactNumber.text ?? ""
+        
+        
+        return data
+    }
+    
+    func updateProfile (completion: @escaping (Bool, String) -> Void) {
+        
+        let u = UserModel()
+        let userId = u.getDataFromUSD(key: user_id)
+        let userInput = self.getUpdatedProfileData()
+        self.userService.updateUserDetails(userId: userId, userInput: userInput) {
+            (success, text) in
+            
+            if success {
+                var userData = userInput
+                userData["gender"] = u.getDataFromUSD(key: user_gender)
+                userData["_id"] = u.getDataFromUSD(key: user_id)
+                
+                let updateUser = UserModel(fromLogin: userData)
+                updateUser.saveToLocalData()
+            }
+            
+            completion(success, text)
+        }
+    }
+    
+    func updateProfilePic (completion: @escaping (Bool, String) -> Void) {
+        let u = UserModel()
+        let userId = u.getDataFromUSD(key: user_id)
+        if profilePic != nil {
+            userService.uploadProfilPic(userId: userId, image: profilePic!) { (success, text) in
+                
+               completion(success, text)
+            }
+        }
+    }
 }

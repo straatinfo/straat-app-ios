@@ -27,6 +27,7 @@ class CategoryService {
                 
             } else if let data = response {
                 let categories = data["data"] as? [[String: Any]]
+                print("TEST: \(categories)")
                 for category in categories! {
                     
                     let mainCategory = self.parseMainCategory(category: category)

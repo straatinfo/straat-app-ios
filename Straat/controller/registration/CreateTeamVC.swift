@@ -93,7 +93,7 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         
         let url = URL(string: "https://straatinfo-backend-v2.herokuapp.com/v1/api/team/new/" + userId)
         
-        apiHandler.executeMultiPart(url!, parameters: parameters, imageData: img, fileName: teamNameTxtBox.text!, photoFieldName: "team-logo", pathExtension: ".jpeg", headers: [:]) { (response, err) in
+        apiHandler.executeMultiPart(url!, parameters: parameters, imageData: img, fileName: teamNameTxtBox.text!, photoFieldName: "team-logo", pathExtension: ".jpeg", method: .post, headers: [:]) { (response, err) in
             // go to main view
             completion(true, "Success")
         }

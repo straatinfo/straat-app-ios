@@ -92,7 +92,7 @@ extension SendReportModel {
         params["isUrgent"] = self.isUrgent!
         params["reportUploadedPhotos"] = self.reportUploadedPhotos ?? []
         params["_reportType"] = self.reportTypeId!
-
+        
         if self.subCategoryId != nil {
             params["_subCategory"] = self.subCategoryId!
         }

@@ -50,7 +50,14 @@ class SendSuspiciousReportVC: UIViewController {
     //image view tags
     var imgViewTag : Int!
 
+    @IBOutlet weak var reportDescription: UITextView!
+    var mainCategory = [MainCategoryModel]()
     var mainCategoryName = [String]() // for dropdown
+    var mainCategoryId : String?
+    var subCategoryId : String?
+    var isUrgent : Bool?
+    
+    let reportService = ReportService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +82,25 @@ class SendSuspiciousReportVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func sendRequest(_ sender: Any) {
+        let uds = UserDefaults.standard
+        
+        let id = uds.string(forKey: user_id)
+        let loc_add = uds.string(forKey: user_loc_address)
+        let lat = uds.double(forKey: user_loc_lat)
+        let long = uds.double(forKey: user_loc_long)
+        let host_id = "5a7b485a039e2860cf9dd19a"
+        let team_id = uds.string(forKey: user_team_id)
+        
+        print("report details: \(String(describing: reportDescription.text))")
+        print("report location: \(String(describing: uds.string(forKey: user_loc_address)))")
+        print("report lat: \(String(describing: uds.string(forKey: user_loc_lat)))")
+        print("report long: \(String(describing: uds.string(forKey: user_loc_long)))")
+        print("report reporter_id: 5a7b485a039e2860cf9dd19a")
+        print("report maincateg_id: \(String(describing: self.mainCategoryId))")
+        print("report subcateg_id: \(String(describing: self.subCategoryId))")
+        print("report isUrgent: \(String(describing: self.isUrgent))")
+        print("report teamid: \(String(describing: uds.string(forKey: user_team_id)))")
+        
         dismiss(animated: true, completion: nil)
     }
 

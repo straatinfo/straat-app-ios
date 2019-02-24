@@ -29,10 +29,10 @@ class SendPublicSpaceReportVC: UIViewController {
     @IBOutlet weak var emergencyNotifButton: UIButton!
     
     @IBOutlet weak var userLocation: UILabel!
-    
-
     @IBOutlet weak var mainCategDropDown: DropDown!
     @IBOutlet weak var subCategDropDown: DropDown!
+    
+    @IBOutlet weak var reportDescription: UITextView!
     
     @IBOutlet weak var emergencyNotifConstraint: NSLayoutConstraint!
     
@@ -44,10 +44,22 @@ class SendPublicSpaceReportVC: UIViewController {
     var sampleArr : [String] = ["main categ 1", "main categ 2", "main categ 3", "main categ 4", "main categ 5", "main categ 6"]
     var sampleArr2 : [String] = ["sub categ 1", "sub categ 2", "sub categ 3"]
     
-    
+    var mainCategory = [MainCategoryModel]()
     var mainCategoryName = [String]() // for dropdown
     var subCategory = [SubCategoryModel]()
     var subCategoryName = [String]() // for dropdown
+
+    var mainCategoryId : String?
+    var subCategoryId : String?
+    var isUrgent : Bool?
+    var sendReportImage: Data?
+    
+    let reportService = ReportService()
+    let mediaService = MediaService()
+    
+    var imageMetaData1: Dictionary <String, Any>?
+    var imageMetaData2: Dictionary <String, Any>?
+    var imageMetaData3: Dictionary <String, Any>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +68,13 @@ class SendPublicSpaceReportVC: UIViewController {
     }
     
     @IBAction func emergencyNotif(_ sender: UIButton) {
+        defaultDialog(vc: self, title: "Emergency Notification", message: "Urgent? First Call 112?")
         if sender.isSelected {
             emergencyNotifButton.isSelected = false
+            self.isUrgent = false
         } else {
             emergencyNotifButton.isSelected = true
+            self.isUrgent = true
         }
     }
     
@@ -68,7 +83,53 @@ class SendPublicSpaceReportVC: UIViewController {
     }
     
     @IBAction func sendReport(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        var imageMetaDatas : [[String: Any]] = []
+        let uds = UserDefaults.standard
+
+        let id = uds.string(forKey: user_id)
+        let loc_add = uds.string(forKey: user_loc_address)
+        let lat = uds.double(forKey: user_loc_lat)
+        let long = uds.double(forKey: user_loc_long)
+        let host_id = "5a7b485a039e2860cf9dd19a"
+        let team_id = uds.string(forKey: user_team_id)
+        let reportType_id = "5a7888bb04866e4742f74955"
+        
+        print("report details: \(String(describing: reportDescription.text))")
+        print("report location: \(String(describing: uds.string(forKey: user_loc_address)))")
+        print("report lat: \(String(describing: uds.string(forKey: user_loc_lat)))")
+        print("report long: \(String(describing: uds.string(forKey: user_loc_long)))")
+        print("report reporter_id: 5a7b485a039e2860cf9dd19a")
+        print("report maincateg_id: \(String(describing: self.mainCategoryId))")
+        print("report subcateg_id: \(String(describing: self.subCategoryId))")
+        print("report isUrgent: \(String(describing: self.isUrgent))")
+        print("report teamid: \(String(describing: uds.string(forKey: user_team_id)))")
+        
+        if self.imageMetaData1 != nil {
+            imageMetaDatas.append(self.imageMetaData1!)
+        }
+        
+        if self.imageMetaData2 != nil {
+            imageMetaDatas.append(self.imageMetaData2!)
+        }
+        
+        if self.imageMetaData3 != nil {
+            imageMetaDatas.append(self.imageMetaData3!)
+        }
+        
+        print("image meta datas: \(imageMetaDatas)")
+        
+        let sendReportModel = SendReportModel(title: "Public Space", description: reportDescription.text, location: loc_add, long: long, lat: lat, reporterId: id, hostId: host_id, mainCategoryId: self.mainCategoryId, subCategoryId: self.subCategoryId, isUrgent: self.isUrgent, teamId: team_id, reportUploadedPhotos: imageMetaDatas, isVehicleInvolved: false, vehicleInvolvedCount: 0, vehicleInvolvedDescription: "nil", isPeopleInvolved: false, peopleInvolvedCount: 0, peopleInvolvedDescription: "nil", reportTypeId: reportType_id)
+
+        self.reportService.sendReport(reportDetails: sendReportModel) { (success, message) in
+            if success {
+                defaultDialog(vc: self, title: "Send Report", message: message)
+                pushToNextVC(sbName: "Main", controllerID: "mainID", origin: self)
+            } else {
+                defaultDialog(vc: self, title: "Send Report Error", message: message)
+            }
+        }
+        
+        
     }
     
 }
@@ -104,29 +165,35 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
     }
     
     func initCategories() -> Void {
+        loadingShow(vc: self)
         
         let categoryService = CategoryService()
         
         categoryService.getMainCategoryA(hostId: "5a7b485a039e2860cf9dd19a", language: "nl") { (success, message, mainCategories) in
             if success == true {
 
+                print("MAIN CAT LIST", mainCategories)
                 
                 for mainCategory in mainCategories {
                     let mainCateg : MainCategoryModel = mainCategory
                     let name = mainCateg.name!
                     
+                    self.mainCategory.append(mainCategory)
                     self.mainCategoryName.append(name)
                     self.subCategory = mainCateg.subCategories!
-
+                
+//                    print("sub categ: \(mainCateg.subCategories)")
+                    
 //                    if mainCateg.subCategories.count > 0 {
 //                        for subCateg in mainCateg.subCategories {
 //                            self.extractSubCategory(subCateg: self.subCategory, categoryName: name )
 //                        }
 //                    }
                     
-//                    print("MAIN CAT", mainCateg.name!)
+//                    print("MAIN CAT _reportType codeId", mainCateg.codeId!)
+                    print("MAIN CAT A", mainCateg)
                 }
-                
+                loadingDismiss()
                 self.loadMainCategDropDown(mainCategList: self.mainCategoryName, subCategories: self.subCategory)
                 
             }
@@ -215,7 +282,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                     self.imgViewTag = view.tag
                 } else {
 //                    defaultDialog(vc: self, title: "Permission denied", message: result)
-                    print("permission \(result)")
+//                    print("permission \(result)")
                 }
                 
             }
@@ -233,17 +300,54 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
     // getting user selected image via photo library
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        loadingShow(vc: self)
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
+
+            self.sendReportImage = image.jpegData(compressionQuality: CGFloat.leastNormalMagnitude)!
+            
             switch(self.imgViewTag) {
-                
             case 1:
+                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "Public Space \(String(describing: self.sendReportImage))") { (success, message, photoMetaData, dataObject) in
+                    
+                    if success {
+//                        let imageData = dataObject!["data"] as? [String: Any]
+                        self.imageMetaData1 = dataObject
+                        print("dataObject: \(String(describing: dataObject))")
+                    } else {
+                        print("upload image response: \(message)")
+                    }
+                    loadingDismiss()
+                    
+                }
                 imgView1.image = image
                 break;
             case 2:
+                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "Public Space \(self.sendReportImage)") { (success, message, photoModel, dataObject) in
+                    
+                    if success {
+                        self.imageMetaData2 = dataObject
+                        print("dataObject: \(String(describing: dataObject))")
+                    } else {
+                        print("upload image response: \(message)")
+                    }
+                    loadingDismiss()
+                    
+                }
                 imgView2.image = image
                 break;
             case 3:
+                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "Public Space \(self.sendReportImage)") { (success, message, photoModel, dataObject) in
+                    
+                    if success {
+                        self.imageMetaData3 = dataObject
+                        print("dataObject: \(String(describing: dataObject))")
+                    } else {
+                        print("upload image response: \(message)")
+                    }
+                    loadingDismiss()
+                    
+                }
                 imgView3.image = image
                 break
             default:
@@ -253,6 +357,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
             }
             
         } else {
+            loadingDismiss()
             print("importing img: error in uploading image")
         }
         
@@ -315,8 +420,16 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         mainCategDropDown.didSelect { (selectedItem, index, id) in
             print("selectedItem: \(selectedItem)" )
             // insert code to identify the main category item if it has
-            // sub category then show sub categ dropdown
             
+            // getting main category id
+            for checkMainCateg in self.mainCategory {
+                if selectedItem == checkMainCateg.name {
+                    self.mainCategoryId = checkMainCateg.id
+                    print("selectedItem maincateg: \(checkMainCateg.id)")
+                }
+            }
+
+            // sub category then show sub categ dropdown
             self.subCategoryName.removeAll()
             for checkSubCateg in subCategories {
                 if selectedItem == checkSubCateg.mainCategoryName! {
@@ -353,7 +466,16 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         subCategDropDown.optionArray = subCategList
         subCategDropDown.selectedRowColor = UIColor.lightGray
         subCategDropDown.didSelect { (selectedItem, index, id) in
-            print("selectedItem: \(selectedItem)" )
+            
+            // getting subcategory id
+            for subCategory in self.subCategory {
+                if selectedItem == subCategory.name {
+                    self.subCategoryId = subCategory.id
+                    print("selectedItem subcateg: \(String(describing: subCategory.id))" )
+                }
+            }
+            
+
         }
     }
     

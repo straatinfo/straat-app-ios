@@ -22,7 +22,7 @@ class ReportService {
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
                 
-                completion(false, "error.localizedDescription")
+                completion(false, error.localizedDescription)
             } else {
                 completion(true, "Success")
             }

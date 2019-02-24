@@ -34,6 +34,7 @@ class MainVC: UIViewController {
     let marker = GMSMarker()
     let circle = GMSCircle()
     var mapCamera = GMSCameraPosition()
+    var markerReports = [GMSMarker]()
     
     //coordinates
     var userLat : Double!
@@ -49,6 +50,10 @@ class MainVC: UIViewController {
     
     @IBAction func showSendReport(_ sender: Any) {
         self.requestPermission { (hasGranted, result) in
+            
+            for markerReport in self.markerReports {
+                markerReport.map?.clear()
+            }
             
             if hasGranted {
                 
@@ -76,9 +81,9 @@ class MainVC: UIViewController {
     @IBAction func makeNotif(_ sender: Any) {
         //saving location to local data
         let uds = UserDefaults.standard
-        uds.set(location.text!, forKey: "user_loc_address")
-        uds.set(userLat, forKey: "user_loc_lat")
-        uds.set(userLong, forKey: "user_loc_long")
+        uds.set(location.text!, forKey: user_loc_address)
+        uds.set(userLat, forKey: user_loc_lat)
+        uds.set(userLong, forKey: user_loc_long)
 
         self.makeNotifConstraint.constant = 400
         self.selecReportTypeConstraint.constant = 0
@@ -150,7 +155,7 @@ extension MainVC  {
 
         let reportMapService = ReportMapService()
         let userModel = UserModel()
-        
+
         loadingShow(vc: self)
         self.sendReport.isEnabled = false
         
@@ -212,26 +217,35 @@ extension MainVC  {
     func reportMarker (mView : GMSMapView, reportMapModel : ReportMapModel?) -> Void {
         // Creates a marker in the center of the map.
         print("report marker called")
-        let marker = GMSMarker()
+        let markerReport = GMSMarker()
+        self.markerReports.append(markerReport)
         
-        self.getReportImage(imageUrl: (reportMapModel?.images![0].imageUrl)!) { (hasImage, img) in
-            if hasImage {
-                reportMapModel?.setReportImage(reportImage: img)
-            } else {
-                reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
+        if ((reportMapModel?.images?.count)! > 0) {
+
+            self.getReportImage(imageUrl: (reportMapModel?.images![0].imageUrl)!) { (hasImage, img) in
+                if hasImage {
+                    reportMapModel?.setReportImage(reportImage: img)
+                } else {
+                    reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
+                }
+                loadingDismiss()
             }
+
+        } else {
+            reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
             loadingDismiss()
         }
         
-        marker.position = CLLocationCoordinate2D(latitude: (reportMapModel?.lat)!, longitude: (reportMapModel?.long)!)
         
-        marker.title = reportMapModel?.category
-        marker.snippet = reportMapModel?.address
-        marker.icon = UIImage(named: "pin-new")
-        marker.map = mView
+        markerReport.position = CLLocationCoordinate2D(latitude: (reportMapModel?.lat)!, longitude: (reportMapModel?.long)!)
+        
+        markerReport.title = reportMapModel?.category
+        markerReport.snippet = reportMapModel?.address
+        markerReport.icon = UIImage(named: "pin-new")
+        markerReport.map = mView
         
         // data for report view
-        marker.reportMapModel = reportMapModel!
+        markerReport.reportMapModel = reportMapModel!
         
         location.text = reportMapModel?.address
         userLat = reportMapModel?.lat

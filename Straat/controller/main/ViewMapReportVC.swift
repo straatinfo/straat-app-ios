@@ -59,17 +59,20 @@ extension ViewMapReportVC {
  
         loadingShow(vc: self)
         
-        if imageUrls.count > 0 {
+        if imageUrls.count > 0 || imageUrls.isEmpty == false {
 
             self.getReportImageFromUrl(imageUrls: imageUrls) { (hasImage, images, yAxis, viewHeight) in
                 if hasImage {
                     self.setImageViews(reportViewImage: images!, yAxis: yAxis, viewHeight: viewHeight)
                 } else {
-                    defaultDialog(vc: self, title: "Fetching image", message: "No Image")
+                    defaultDialog(vc: self, title: "Fetching image", message: "Image not found")
                 }
                 loadingDismiss()
             }
 
+        } else {
+            defaultDialog(vc: self, title: "Fetching image", message: "Image not found")
+            loadingDismiss()
         }
         
     }
@@ -78,7 +81,7 @@ extension ViewMapReportVC {
     func getReportImageFromUrl (imageUrls : [String], completion: @escaping (Bool, UIImage?, CGFloat, CGFloat) -> Void) -> Void {
 
         var yAxis : CGFloat = 0
-        var viewHeight : CGFloat = 205
+        var viewHeight : CGFloat = 0
         for imageUrl in imageUrls {
 
             Alamofire.request(URL(string: imageUrl)!).responseImage { response in
@@ -90,7 +93,7 @@ extension ViewMapReportVC {
                         
                             completion(true, img, yAxis, viewHeight)
                             yAxis += 205
-                            viewHeight += yAxis
+                            viewHeight += 205
                     }
 
                 } else {
@@ -107,7 +110,7 @@ extension ViewMapReportVC {
         let image = UIImageView(frame: CGRect(x: 0, y: yAxis, width: self.reportImageView.frame.width, height: 200))
         
         image.image = reportViewImage
-        self.reportImageViewConstraint.constant += viewHeight
+        self.reportImageViewConstraint.constant = viewHeight
         self.reportImageView.autoresizesSubviews = true
         self.reportImageView.addSubview(image)
         

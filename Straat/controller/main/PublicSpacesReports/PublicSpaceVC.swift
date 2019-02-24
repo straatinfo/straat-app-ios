@@ -83,5 +83,40 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reportModel = self.reports[indexPath.row]
+        let images = reportModel.attachments
+        var reportImageURL = [String]()
+        
+        //        print("images: \(images)")        
+        for image in images! {
+            if image["secure_url"] != nil {
+                reportImageURL.append(image["secure_url"] as! String)
+            }
+        }
+        
+        self.saveToUserDefault(reportModel: reportModel, reportImages: reportImageURL)
+        pushToNextVC(sbName: "Main", controllerID: "ViewReportID", origin: self)        
+    }
+    
+    
+    func saveToUserDefault(reportModel : ReportModel , reportImages : [String]) -> Void {
+        
+        let uds = UserDefaults.standard
+        
+        let fullname = "\(String(describing: reportModel.reporter?.firstname)) \(String(describing: reportModel.reporter?.lastname))"
+        
+        uds.set(reportModel.mainCategory?.name, forKey: report_category)
+        uds.set(reportModel.status, forKey: report_status_detail_view)
+        uds.set(reportModel.description, forKey: report_message)
+        uds.set(reportModel.location, forKey: report_address)
+        uds.set(reportModel.lat, forKey: report_lat)
+        uds.set(reportModel.long, forKey: report_long)
+        uds.set(reportImages, forKey: report_images)
+        uds.set(reportModel.createdAt, forKey: report_created_at)
+        uds.set(fullname, forKey: report_reporter_fullname)
+        
+    }
+    
     
 }

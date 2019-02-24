@@ -61,11 +61,15 @@ extension LoginUserVC {
                 
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 let userObject = dataObject?["user"] as? Dictionary <String, Any>
+                let settingObject = dataObject?["setting"] as? Dictionary <String, Any>
                 
                 let userModel = UserModel(fromLogin: userObject!)
+                let userSettingModel = UserModel(fromLoginSetting: settingObject!)
                 
                 //saving user model to loca data
                 userModel.saveToLocalData()
+                userSettingModel.saveSettingToLocalData()
+                
                 loadingDismiss()
                 pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
                 

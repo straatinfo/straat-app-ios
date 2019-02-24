@@ -319,7 +319,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csX-u6-pR6" userLabel="UploadImageView">
                                                 <rect key="frame" x="10" y="10" width="335" height="120"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="nDf-Rq-bWD">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="nDf-Rq-bWD">
                                                         <rect key="frame" x="117.5" y="10" width="100" height="100"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="KsR-y6-XiQ"/>
@@ -584,7 +584,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Pasword" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="udW-AB-hKI">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="samplepass" borderStyle="roundedRect" placeholder="Enter your Pasword" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="udW-AB-hKI">
                                                                 <rect key="frame" x="0.0" y="25" width="315" height="25"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -623,6 +623,9 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="changeMyDataClicked:" destination="rVb-OV-qe3" eventType="touchUpInside" id="uDI-Lu-Sfp"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -684,7 +687,18 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="addedStreet" destination="w9M-8y-NfF" id="TOM-y7-xIU"/>
+                        <outlet property="addedTown" destination="s0Q-rH-SaD" id="OlK-cl-aWJ"/>
+                        <outlet property="addressLotNum" destination="zK9-dp-Te7" id="GbE-Ht-P81"/>
+                        <outlet property="addressPostalCode" destination="CnW-Om-viu" id="pZC-B0-OhX"/>
+                        <outlet property="chatName" destination="x6d-ZX-gMI" id="Jl9-g3-5OB"/>
+                        <outlet property="contactEmail" destination="5cR-En-Sc5" id="v6M-OC-1YC"/>
+                        <outlet property="contactNumber" destination="pn8-xl-bqi" id="o8y-y7-iBQ"/>
+                        <outlet property="familyName" destination="w5J-KT-SJV" id="qU1-r9-8UN"/>
+                        <outlet property="firstName" destination="CmK-pS-buY" id="tJ0-cQ-cBC"/>
                         <outlet property="menu" destination="UaJ-pF-MA0" id="6cl-Mc-mLY"/>
+                        <outlet property="password" destination="udW-AB-hKI" id="ULe-pO-Nj5"/>
+                        <outlet property="uploadImage" destination="nDf-Rq-bWD" id="KbR-Uj-Qve"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8h-ef-O9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1059,11 +1073,11 @@
     </scenes>
     <resources>
         <image name="back-white" width="18.399999618530273" height="18.399999618530273"/>
-        <image name="logo" width="88" height="91"/>
         <image name="menu" width="22" height="15"/>
+        <image name="upload-img" width="192" height="192"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="P7e-RK-kUh"/>
-        <segue reference="lSH-CC-cnA"/>
+        <segue reference="csG-qX-JGG"/>
     </inferredMetricsTieBreakers>
 </document>

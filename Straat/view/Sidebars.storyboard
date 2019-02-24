@@ -791,6 +791,9 @@
                                         <state key="normal" title="Submit Feedback">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onSubmitFeedback:" destination="d8P-z5-ECC" eventType="touchDown" id="1qb-qh-zPY"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5X-0S-R8I">
                                         <rect key="frame" x="10" y="120" width="325" height="189"/>
@@ -875,7 +878,10 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="menu" id="UaB-ap-IVc"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailInput" destination="pML-2e-xt5" id="VdR-4X-6Q3"/>
                         <outlet property="menu" destination="UaB-ap-IVc" id="7WU-P3-7Kp"/>
+                        <outlet property="nameInput" destination="ljL-ph-h3x" id="JSC-Fo-cNN"/>
+                        <outlet property="textInput" destination="qkH-zC-bkd" id="o7G-lc-cMf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKZ-9o-nbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1057,7 +1063,7 @@
         <image name="menu" width="22" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eC5-BQ-SyQ"/>
+        <segue reference="P7e-RK-kUh"/>
         <segue reference="lSH-CC-cnA"/>
     </inferredMetricsTieBreakers>
 </document>

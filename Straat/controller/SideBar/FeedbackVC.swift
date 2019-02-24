@@ -11,6 +11,12 @@ class FeedbackVC: UIViewController {
     
     @IBOutlet weak var menu: UIBarButtonItem!
     
+    @IBOutlet weak var nameInput: UITextField!
+    @IBOutlet weak var emailInput: UITextField!
+    @IBOutlet weak var textInput: UITextView!
+    
+    let userService = UserService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,6 +24,29 @@ class FeedbackVC: UIViewController {
         self.navColor()
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func onSubmitFeedback(_ sender: Any) {
+        loadingShow(vc: self)
+        let uds = UserDefaults.standard;
+        let name = nameInput.text ?? ""
+        let email = emailInput.text ?? ""
+        let feedback = textInput.text ?? ""
+        let reporterId = uds.string(forKey: user_id)
+        
+        self.sendFeedback(reporterId: reporterId!, name: name, email: email, feedback: feedback) { (success, text) in
+            loadingDismiss()
+            if success {
+                self.nameInput.text = ""
+                self.emailInput.text = ""
+                self.textInput.text = ""
+                defaultDialog(vc: self, title: "Success", message: "Successfully sent feedback")
+            } else {
+                defaultDialog(vc: self, title: "Failed", message: "Unable to send feedback")
+            }
+            
+        }
+    }
+    
     
 }
 
@@ -47,4 +76,21 @@ extension FeedbackVC {
         navigationItem.title = "Straat.info"
     }
     
+}
+
+extension FeedbackVC {
+    // custom functions
+    func sendFeedback (reporterId: String, name: String, email: String, feedback: String, completion: @escaping (Bool, String) -> Void) {
+        
+        
+        self.userService.sendFeedback(reporterId: reporterId, reporterName: name, reporterEmail: email, feedback: feedback, info: "") { (success, message) in
+            
+            
+            if success {
+                completion(true, "Success")
+            } else {
+                completion(false, "Failed")
+            }
+        }
+    }
 }

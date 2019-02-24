@@ -33,6 +33,10 @@ class UserModel {
     var sound: Bool?
     var radius: Float?
     
+    var team_id: String?
+    var team_name: String?
+    var team_email: String?
+    
     let uds = UserDefaults.standard
     
     init () {
@@ -70,7 +74,6 @@ class UserModel {
         self.phoneNumber = fromLogin["phoneNumber"] as? String
         self.streetName = fromLogin["streetName"] as? String
         self.city = fromLogin["city"] as? String
-        
         self.gender = fromLogin["gender"] as? String
         
     }
@@ -89,6 +92,12 @@ class UserModel {
     //         self.lastname = uds.string(forKey: user_fname)
     //     }
     // }
+    
+    init(fromLoginTeam: Dictionary <String, Any>) {
+        self.team_id = fromLoginTeam["_id"] as? String
+        self.team_name = fromLoginTeam["teamName"] as? String
+        self.team_email = fromLoginTeam["teamEmail"] as? String
+    }
     
     // saving users data to local data
     func saveToLocalData() {
@@ -111,6 +120,14 @@ class UserModel {
         uds.set( self.vibrate, forKey: user_vibration)
         uds.set( self.sound, forKey: user_sound)
         uds.set( self.radius, forKey: user_radius)
+    }
+    
+    func saveTeamToLocalData() {
+        uds.set( self.team_id, forKey: user_team_id)
+        uds.set( self.team_name, forKey: user_team_name)
+        uds.set( self.team_email, forKey: user_team_email)
+        
+        print("team object: \(self.team_email)")
     }
     
     func removeFromLocalData() {

@@ -1109,6 +1109,7 @@
                         <outlet property="imgView2" destination="If8-B6-AUW" id="HGl-4Q-rqg"/>
                         <outlet property="imgView3" destination="LXS-UA-FnG" id="7SX-oh-eaR"/>
                         <outlet property="mainCategDropDown" destination="2Lh-UG-Kh4" id="F1w-5t-pP9"/>
+                        <outlet property="reportDescription" destination="PEt-J7-ELI" id="8Ox-tU-Fn8"/>
                         <outlet property="uploadImageConstraint" destination="lmu-t8-GUg" id="BUu-I4-rse"/>
                         <outlet property="userLocation" destination="QIK-QD-Mci" id="Xah-Hk-H7N"/>
                         <outlet property="vehiclesConstraint" destination="SSI-k5-ate" id="ThO-jG-9AC"/>
@@ -2835,6 +2836,7 @@
                         <outlet property="imgView2" destination="tey-8O-h1F" id="Zls-Qp-ZiZ"/>
                         <outlet property="imgView3" destination="lQo-xU-g1Z" id="dY7-Ei-yCi"/>
                         <outlet property="mainCategDropDown" destination="hOy-Tv-zD4" id="74S-Px-ZAU"/>
+                        <outlet property="reportDescription" destination="t6j-KG-iTX" id="CnX-4o-rem"/>
                         <outlet property="subCategDropDown" destination="TuI-Rp-nGN" id="23M-2h-wPJ"/>
                         <outlet property="userLocation" destination="H9J-2m-PeX" id="FGP-kE-I3v"/>
                     </connections>

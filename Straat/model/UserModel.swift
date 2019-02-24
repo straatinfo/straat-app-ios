@@ -26,8 +26,12 @@ class UserModel {
     var phoneNumber: String?
     var streetName: String?
     var city: String?
-
     var gender: String?
+    
+    var isNotification: Bool?
+    var vibrate: Bool?
+    var sound: Bool?
+    var radius: Float?
     
     let uds = UserDefaults.standard
     
@@ -71,6 +75,13 @@ class UserModel {
         
     }
     
+    init(fromLoginSetting : Dictionary <String, Any>) {
+        self.isNotification = fromLoginSetting["isNotification"] as? Bool
+        self.vibrate = fromLoginSetting["vibrate"] as? Bool
+        self.sound = fromLoginSetting["sound"] as? Bool
+        self.radius = fromLoginSetting["radius"] as? Float
+    }
+    
     // saving users data to local data
     func saveToLocalData() {
 
@@ -85,6 +96,13 @@ class UserModel {
         uds.set( self.city!, forKey: user_city)
         uds.set( self.gender!, forKey: user_gender)
         uds.set( self.phoneNumber!, forKey: user_phone_number)
+    }
+    
+    func saveSettingToLocalData() {
+        uds.set( self.isNotification, forKey: user_is_notification)
+        uds.set( self.vibrate, forKey: user_vibration)
+        uds.set( self.sound, forKey: user_sound)
+        uds.set( self.radius, forKey: user_radius)
     }
     
     func removeFromLocalData() {

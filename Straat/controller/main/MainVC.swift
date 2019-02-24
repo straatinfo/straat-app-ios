@@ -156,6 +156,7 @@ extension MainVC  {
         
         self.initMapCamera(lat: 52.077646, long: 4.315667)
         self.initMapRadius(lat: 52.077646, long: 4.315667)
+        print("user_id: \(userModel.getDataFromUSD(key: user_id))")
         reportMapService.getUserReport(userID: userModel.getDataFromUSD(key: user_id)) { (success, message, reportMapModel)  in
             
             if success == true {
@@ -163,7 +164,7 @@ extension MainVC  {
                     self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
                 }
                 self.sendReport.isEnabled = true
-                loadingDismiss()
+//                loadingDismiss()
                 
             } else {
                 defaultDialog(vc: self, title: "Fetching Reports", message: message)
@@ -210,6 +211,7 @@ extension MainVC  {
     
     func reportMarker (mView : GMSMapView, reportMapModel : ReportMapModel?) -> Void {
         // Creates a marker in the center of the map.
+        print("report marker called")
         let marker = GMSMarker()
         
         self.getReportImage(imageUrl: (reportMapModel?.images![0].imageUrl)!) { (hasImage, img) in
@@ -218,6 +220,7 @@ extension MainVC  {
             } else {
                 reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
             }
+            loadingDismiss()
         }
         
         marker.position = CLLocationCoordinate2D(latitude: (reportMapModel?.lat)!, longitude: (reportMapModel?.long)!)
@@ -236,33 +239,20 @@ extension MainVC  {
         
     }
     
+    // fetching image url then return ui image data
     func getReportImage(imageUrl : String, completion: @escaping (Bool, UIImage?)->Void ) -> Void {
-        loadingShow(vc: self)
         
-        if imageUrl.count > 0 {
-
-            Alamofire.request(URL(string: imageUrl)!).responseImage { response in
-                
-                if let img = response.result.value {
-                    print("image downloaded: \(img)")
-                    
-                    DispatchQueue.main.async {
-                        completion(true, img)
-                        loadingDismiss()
-                    }
-                    
-                } else {
-                    completion(false, nil)
-                    loadingDismiss()
-                }
-            }
+        Alamofire.request(URL(string: imageUrl)!).responseImage { response in
             
-        } else {
-            completion(false, nil)
-            loadingDismiss()
+            if let img = response.result.value {
+                print("report map image: \(img)")
+                DispatchQueue.main.async {
+                    completion(true, img)
+                }
+            } else {
+                completion(false, nil)
+            }
         }
-        
-
     }
     
 }
@@ -341,11 +331,10 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                 for reportImg in (marker.reportMapModel?.images)! {
                     reportImages.append(reportImg.imageUrl!)
                 }
-            } else {
-                reportImages.append("")
             }
             
             self.saveToUserDefault(reportMapModel: marker.reportMapModel!, reportImages: reportImages)
+            
             let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewMapReportVC
             self.present(viewReportVC, animated: true, completion: nil)
         }

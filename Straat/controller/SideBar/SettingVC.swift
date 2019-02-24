@@ -6,16 +6,19 @@
 //
 
 import UIKit
+import iOSDropDown
 
 class SettingVC: UIViewController {
     
     @IBOutlet weak var menu: UIBarButtonItem!
+    @IBOutlet weak var radiusDropDown: DropDown!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.createMenu()
         self.navColor()
+        self.loadSettingDropDown()
         // Do any additional setup after loading the view.
     }
     
@@ -45,6 +48,15 @@ extension SettingVC {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         navigationItem.title = "Straat.info"
+    }
+    
+    func loadSettingDropDown() -> Void {
+        let raduisArr = ["100m", "300", "600m", "1k", "3k"]
+        self.radiusDropDown.optionArray = raduisArr
+        self.radiusDropDown.selectedRowColor = UIColor.lightGray
+        self.radiusDropDown.didSelect { (selectedItem, index, id) in
+            print("selectedItem: \(selectedItem)")
+        }
     }
     
 }

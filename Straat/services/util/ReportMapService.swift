@@ -21,7 +21,7 @@ class ReportMapService {
     
     func getUserReport (userID : String, completion: @escaping (Bool, String, [ReportMapModel]) -> Void ) -> Void
     {
-        
+        print("getUserReport Called")
         apiHandler.executeWithHeaders(URL(string: report_map)!, parameters: [:], method: HTTPMethod.get, destination: .queryString, headers: [:]) { (response, err) in
             
             if let error = err {

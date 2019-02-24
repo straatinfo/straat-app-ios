@@ -47,11 +47,11 @@ class UserModel {
     
     init (reportData: Dictionary<String, Any>) {
         self.id = reportData["_id"] as? String
-//        self.firstname = reportData["fname"] as? String
-//        self.lastname = reportData["lname"] as? String
+        self.firstname = reportData["fname"] as? String
+        self.lastname = reportData["lname"] as? String
         self.email = reportData["email"] as? String
         self.username = reportData["username"] as? String
-//        self.gender = reportData["gender"] as? String
+        self.gender = reportData["gender"] as? String
     }
     
     init(fromLogin : Dictionary<String, Any>) {

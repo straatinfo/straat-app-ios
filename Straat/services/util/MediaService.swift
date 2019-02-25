@@ -25,6 +25,8 @@ class MediaService {
             } else if let data = response {
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 
+                print("uploaded picture: \(String(describing: dataObject))")
+                
                 if dataObject != nil {
                     let photoMetaData = PhotoModel(photoData: dataObject!)
                     completion(true, "Success", photoMetaData, dataObject)

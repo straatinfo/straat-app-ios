@@ -15,8 +15,70 @@ class ReportService {
         
     }
     
+    func parsePhotos (reportUploadedPhotos: [[String: Any]]) -> String {
+        var string = ""
+        
+        string += "["
+        
+        for count in 1...reportUploadedPhotos.count {
+            
+            let photo = reportUploadedPhotos[count - 1]
+            string += "{"
+            
+            
+            string += "\"fieldname\":\"\(photo["fieldname"]!)\","
+            string += "\"originalname\":\"\(photo["originalname"]!)\","
+            string += "\"encoding\":\"\(photo["encoding"]!)\","
+            string += "\"mimetype\":\"\(photo["mimetype"]!)\","
+            string += "\"public_id\":\"\(photo["public_id"]!)\","
+            string += "\"version\":\"\(photo["version"]!)\","
+            string += "\"signature\":\"\(photo["signature"]!)\","
+            string += "\"width\":\(photo["width"]!),"
+            string += "\"height\":\(photo["height"]!),"
+            string += "\"format\":\"\(photo["format"]!)\","
+            string += "\"resource_type\":\"\(photo["resource_type"]!)\","
+            string += "\"created_at\":\"\(photo["created_at"]!)\","
+            string += "\"tags\":[],"
+            string += "\"bytes\":\(photo["bytes"]!),"
+            string += "\"type\":\"\(photo["type"]!)\","
+            string += "\"etag\":\"\(photo["etag"]!)\","
+            string += "\"placeholder\":\"\(photo["placeholder"]!)\","
+            string += "\"url\":\"\(photo["url"]!)\","
+            string += "\"secure_url\":\"\(photo["secure_url"]!)\","
+            string += "\"original_filename\":\"\(photo["original_filename"]!)\""
+            
+            if count == reportUploadedPhotos.count {
+                string += "}"
+            } else {
+                string += "},"
+            }
+        }
+        
+        
+        string += "]"
+        return string
+    }
+    
     func sendReport (reportDetails: SendReportModel, completion: @escaping (Bool, String) -> Void) {
-        let parameters = reportDetails.toHTTPParams()
+        var parameters = reportDetails.toHTTPParams()
+        
+        print("reportUploadedPhotos - data \(parameters["reportUploadedPhotos"])")
+        
+        
+//        parameters["reportUploadedPhotos"] = "[{\"fieldname\": \"photo\",\"originalname\": \"AdvancedReactRedux.jpg\",\"encoding\": \"7bit\",\"mimetype\": \"image/jpeg\",\"public_id\": \"reports/AdvancedReactRedux.jpg_Mon Feb 25 2019 01:19:05 GMT+0100 (Central European Standard Time)\",\"version\": 1551053947,\"signature\": \"d73f2f1b12095682ab0801f452ffbeafbaf1adcb\",\"width\": 1600,\"height\": 1194,\"format\": \"jpg\",\"resource_type\": \"image\",\"created_at\": \"2019-02-25T00:19:07Z\",\"tags\": [],\"bytes\": 1115671,\"type\": \"upload\",\"etag\": \"824910d7180cf6a2814dfdddb9b74448\",\"placeholder\": false,\"url\": \"http://res.cloudinary.com/hvina6sjo/image/upload/v1551053947/reports/AdvancedReactRedux.jpg_Mon%20Feb%2025%202019%2001:19:05%20GMT%2B0100%20%28Central%20European%20Standard%20Time%29.jpg\",\"secure_url\": \"https://res.cloudinary.com/hvina6sjo/image/upload/v1551053947/reports/AdvancedReactRedux.jpg_Mon%20Feb%2025%202019%2001:19:05%20GMT%2B0100%20%28Central%20European%20Standard%20Time%29.jpg\",\"original_filename\": \"file\"}]"
+        
+//        let dic = reportDetails.reportUploadedPhotos
+//        let encoder = JSONEncoder()
+//        if let jsonData = try? JSONSerialization.jsonObject(with: <#T##Data#>, options: <#T##JSONSerialization.ReadingOptions#>)(dic) {
+//            if let jsonString = String(data: jsonData, encoding: .utf8) {
+//                print(jsonString)
+//            }
+//        }
+        if reportDetails.reportUploadedPhotos != nil && reportDetails.reportUploadedPhotos!.count > 0 {
+            parameters["reportUploadedPhotos"] = self.parsePhotos(reportUploadedPhotos: reportDetails.reportUploadedPhotos!)
+        }
+        
+        
         apiHandler.executeWithHeaders(URL(string: send_report)!, parameters: parameters, method: .post, destination: .httpBody, headers: [:]) { (response, err) in
             
             if let error = err {

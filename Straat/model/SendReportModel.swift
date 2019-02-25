@@ -47,7 +47,7 @@ class SendReportModel {
         subCategoryId: String?,
         isUrgent: Bool?,
         teamId: String?,
-        reportUploadedPhotos: [[String: Any]]?,
+        reportUploadedPhotos: [[String: Any]],
         isVehicleInvolved: Bool?,
         vehicleInvolvedCount: Int?,
         vehicleInvolvedDescription: String?,
@@ -90,7 +90,7 @@ extension SendReportModel {
         params["_host"] = self.hostId!
         params["_mainCategory"] = self.mainCategoryId!
         params["isUrgent"] = self.isUrgent!
-        params["reportUploadedPhotos"] = self.reportUploadedPhotos ?? []
+        params["reportUploadedPhotos"] = self.reportUploadedPhotos!
         params["_reportType"] = self.reportTypeId!
         
         if self.subCategoryId != nil {

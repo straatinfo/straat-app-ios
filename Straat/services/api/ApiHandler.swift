@@ -42,7 +42,7 @@ class ApiHandler {
     }
     
     func executeWithHeaders (_ url: URL, parameters: Parameters?, method: HTTPMethod, destination: URLEncoding.Destination, headers: HTTPHeaders, completion: @escaping ApiResponse) {
-        
+
         Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding(destination: destination), headers: headers)
             .validate().responseJSON
             { response in

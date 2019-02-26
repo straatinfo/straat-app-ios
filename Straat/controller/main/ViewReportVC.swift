@@ -22,8 +22,6 @@ class ViewReportVC: UIViewController {
     @IBOutlet weak var reportImageUIView: UIView!
     @IBOutlet weak var reportImageViewConsraint: NSLayoutConstraint!
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initReportMapDetails()
@@ -43,25 +41,30 @@ extension ViewReportVC {
         let category = uds.string(forKey: report_category)
         let status = uds.string(forKey: report_status_detail_view)
         let message = uds.string(forKey: report_message)
-        let reporter = uds.string(forKey: report_reporter_fullname)
         let imageUrls = uds.array(forKey: report_images) as! [String]
+        
+        let fname = uds.string(forKey: user_fname)
+        let lname = uds.string(forKey: user_lname)
+        let fullname = fname! + " " + lname!
         
         self.location.text = address
         self.date.text = date
         self.status.text = status
         self.mainCategoryName.text = category
         self.message.text = message
-        self.reportedBy.text = reporter
+        self.reportedBy.text = fullname
         
         self.initImageViews(imageUrls: imageUrls)
-//        print("report images: \(String(describing: imageUrls))")
+        print("report fullname: \(String(describing: fullname))")
     }
     
     func initImageViews(imageUrls : [String]) -> Void {
         
         loadingShow(vc: self)
         
-        if imageUrls.count > 0 || imageUrls.isEmpty == false {
+        print("image url count: \(imageUrls.count)")
+        
+        if imageUrls.count > 0 {
             
             self.getReportImageFromUrl(imageUrls: imageUrls) { (hasImage, images, yAxis, viewHeight) in
                 if hasImage {
@@ -73,7 +76,7 @@ extension ViewReportVC {
             }
             
         } else {
-            defaultDialog(vc: self, title: "Fetching image", message: "Image not found")
+            defaultDialog(vc: self, title: "Fetching images", message: "Image not found")
             loadingDismiss()
         }
         
@@ -83,7 +86,7 @@ extension ViewReportVC {
     func getReportImageFromUrl (imageUrls : [String], completion: @escaping (Bool, UIImage?, CGFloat, CGFloat) -> Void) -> Void {
         
         var yAxis : CGFloat = 0
-        var viewHeight : CGFloat = 0
+        var viewHeight : CGFloat = 205
         for imageUrl in imageUrls {
             
             Alamofire.request(URL(string: imageUrl)!).responseImage { response in
@@ -92,7 +95,7 @@ extension ViewReportVC {
                     print("view report image downloaded: \(img)")
                     
                     DispatchQueue.main.async {
-                        
+    
                         completion(true, img, yAxis, viewHeight)
                         yAxis += 205
                         viewHeight += 205

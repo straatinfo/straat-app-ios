@@ -19,6 +19,8 @@ class ReportModel : SendReportModel {
     var createdAt : String?
     var status : String?
     
+    var reportImage : UIImage?
+    
     init (report: Dictionary<String, Any>) {
         super.init()
         self.id = report["_id"] as? String
@@ -90,8 +92,18 @@ class ReportModel : SendReportModel {
         
         self.status = report["status"] as? String
     }
+    
+    
 }
 
 extension ReportModel {
+ 
+    func setReportImage(reportImage : UIImage?) {
+        self.reportImage = reportImage
+    }
+    
+    func getReportImage() -> UIImage{
+        return self.reportImage!
+    }
     
 }

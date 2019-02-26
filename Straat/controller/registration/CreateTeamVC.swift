@@ -16,6 +16,7 @@ class CreateTeamVC: UIViewController {
     @IBOutlet weak var teamNameTxtBox: UITextField!
     @IBOutlet weak var teamEmailTxtBox: UITextField!
     @IBOutlet weak var imageTeamLogo: UIImageView!
+//    let activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,7 +198,7 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
                 
                 //saving user model to loca data
                 userModel.saveToLocalData()
-                loadingDismiss()
+//                loadingDismiss(indicator: self.activityIndicator)
                 
                 
                 completion(true, "Success")

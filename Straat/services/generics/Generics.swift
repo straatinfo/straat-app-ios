@@ -48,10 +48,11 @@ import UIKit
     }
 
     // dismiss loading
-    func loadingDismiss() {
+func loadingDismiss() {
         
         if let removeViewTag = parentView.viewWithTag(101) {
             activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
             removeViewTag.removeFromSuperview()
         }
         
@@ -76,7 +77,7 @@ import UIKit
         let sb : UIStoryboard = UIStoryboard(name: sbName!, bundle: nil)
         let mainVC = sb.instantiateViewController(withIdentifier: controllerID!)
         
-        origin.show(mainVC, sender: origin)
+        origin.present(mainVC, animated: true, completion: nil)
         
     }
     
@@ -92,4 +93,9 @@ import UIKit
         UIView.animate(withDuration: timeInterval) {
             view.layoutIfNeeded()
         }
+    }
+
+
+    protocol MapViewDelegate {
+        func refresh() -> Void
     }

@@ -35,6 +35,7 @@ class SendReportModel {
         
     }
     
+    // constructor for report type a
     init (
         title: String?,
         description: String?,
@@ -67,7 +68,47 @@ class SendReportModel {
         self.isUrgent = isUrgent
         self.teamId = teamId
         self.reportUploadedPhotos = reportUploadedPhotos
-        self.isVehicleInvolved = isPeopleInvolved
+        self.isVehicleInvolved = isVehicleInvolved
+        self.vehicleInvolvedCount = vehicleInvolvedCount
+        self.vehicleInvolvedDescription = vehicleInvolvedDescription
+        self.isPeopleInvolved = isPeopleInvolved
+        self.peopleInvolvedCount = peopleInvolvedCount
+        self.peopleInvolvedDescription = peopleInvolvedDescription
+        self.reportTypeId = reportTypeId
+    }
+    
+    // constructor for report type b
+    init (
+        title: String?,
+        description: String?,
+        location: String?,
+        long: Double?,
+        lat: Double?,
+        reporterId: String?,
+        hostId: String?,
+        mainCategoryId: String?,
+        isUrgent: Bool?,
+        teamId: String?,
+        reportUploadedPhotos: [[String: Any]],
+        isVehicleInvolved: Bool?,
+        vehicleInvolvedCount: Int?,
+        vehicleInvolvedDescription: String?,
+        isPeopleInvolved: Bool?,
+        peopleInvolvedCount: Int?,
+        peopleInvolvedDescription: String?,
+        reportTypeId: String?
+        ) {
+        self.title = title
+        self.location = location
+        self.long = long
+        self.lat = lat
+        self.reporterId = reporterId
+        self.hostId = hostId
+        self.mainCategoryId = mainCategoryId
+        self.isUrgent = isUrgent
+        self.teamId = teamId
+        self.reportUploadedPhotos = reportUploadedPhotos
+        self.isVehicleInvolved = isVehicleInvolved
         self.vehicleInvolvedCount = vehicleInvolvedCount
         self.vehicleInvolvedDescription = vehicleInvolvedDescription
         self.isPeopleInvolved = isPeopleInvolved

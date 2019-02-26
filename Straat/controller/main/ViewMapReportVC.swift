@@ -20,7 +20,6 @@ class ViewMapReportVC: UIViewController {
     @IBOutlet weak var reportBy: UILabel!
     @IBOutlet weak var reportImageView: UIView!
     @IBOutlet weak var reportImageViewConstraint: NSLayoutConstraint!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,28 +38,37 @@ extension ViewMapReportVC {
     
     func initReportMapDetails() -> Void{
         let uds = UserDefaults.standard
-
-        let category = uds.string(forKey: "report-category")
-        let status = uds.string(forKey: "report-status")
-        let message = uds.string(forKey: "report-message")
-        let address = uds.string(forKey: "report-address")
-        let imageUrls = uds.array(forKey: "report-images") as! [String]
+        
+        let address = uds.string(forKey: report_address)
+        let date = uds.string(forKey: report_created_at)
+        let category = uds.string(forKey: report_category)
+        let status = uds.string(forKey: report_status_detail_view)
+        let message = uds.string(forKey: report_message)
+        let imageUrls = uds.array(forKey: report_images) as! [String]
+        
+        let fname = uds.string(forKey: user_fname)
+        let lname = uds.string(forKey: user_lname)
+        let fullname = fname! + " " + lname!
         
         self.location.text = address
+        self.date.text = date
         self.status.text = status
         self.notification.text = category
         self.message.text = message
-    
+        self.reportBy.text = fullname
+        
         self.initImageViews(imageUrls: imageUrls)
-        print("report images: \(String(describing: imageUrls))")
+        print("report map images: \(String(describing: imageUrls))")
     }
     
     func initImageViews(imageUrls : [String]) -> Void {
- 
+        
         loadingShow(vc: self)
         
-        if imageUrls.count > 0 || imageUrls.isEmpty == false {
-
+        print("image url count: \(imageUrls.count)")
+        
+        if imageUrls.count > 0 {
+            
             self.getReportImageFromUrl(imageUrls: imageUrls) { (hasImage, images, yAxis, viewHeight) in
                 if hasImage {
                     self.setImageViews(reportViewImage: images!, yAxis: yAxis, viewHeight: viewHeight)
@@ -69,9 +77,9 @@ extension ViewMapReportVC {
                 }
                 loadingDismiss()
             }
-
+            
         } else {
-            defaultDialog(vc: self, title: "Fetching image", message: "Image not found")
+            defaultDialog(vc: self, title: "Fetching images", message: "Image not found")
             loadingDismiss()
         }
         
@@ -79,23 +87,23 @@ extension ViewMapReportVC {
     
     
     func getReportImageFromUrl (imageUrls : [String], completion: @escaping (Bool, UIImage?, CGFloat, CGFloat) -> Void) -> Void {
-
+        
         var yAxis : CGFloat = 0
-        var viewHeight : CGFloat = 0
+        var viewHeight : CGFloat = 205
         for imageUrl in imageUrls {
-
+            
             Alamofire.request(URL(string: imageUrl)!).responseImage { response in
                 
                 if let img = response.result.value {
-                    print("report image downloaded: \(img)")
+                    print("view report image downloaded: \(img)")
                     
                     DispatchQueue.main.async {
                         
-                            completion(true, img, yAxis, viewHeight)
-                            yAxis += 205
-                            viewHeight += 205
+                        completion(true, img, yAxis, viewHeight)
+                        yAxis += 205
+                        viewHeight += 205
                     }
-
+                    
                 } else {
                     completion(false, nil, 0, 0)
                 }
@@ -113,11 +121,12 @@ extension ViewMapReportVC {
         self.reportImageViewConstraint.constant = viewHeight
         self.reportImageView.autoresizesSubviews = true
         self.reportImageView.addSubview(image)
-        
         self.reportImageView.clipsToBounds = true;
+        
         print("view created")
+        print("image height \(yAxis)")
         print("imageview height \(self.reportImageViewConstraint.constant)")
-
+        
     }
     
 }

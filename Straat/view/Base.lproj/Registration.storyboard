@@ -381,7 +381,7 @@
                                                                                 <rect key="frame" x="0.0" y="25.5" width="315" height="30"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                                <state key="normal" title="Terms and Condition" image="checkbox">
+                                                                                <state key="normal" title="Terms and Conditions" image="checkbox">
                                                                                     <color key="titleColor" red="0.43137254899999999" green="0.52156862749999999" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 </state>
                                                                                 <state key="selected" image="selected-checkbox"/>
@@ -576,7 +576,7 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YJL-pf-YaR">
                                                         <rect key="frame" x="0.0" y="0.0" width="285" height="1245"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <string key="text">Always call 112 first
+                                                        <mutableString key="text">Always call 112 first
 
 
   The app street.info is intended for supporting neighborhood prevention, among other things, for passing on reports to the municipality. The use of the app for other purposes, which do not fit within the current explanation of neighborhood prevention, is not permitted.
@@ -607,7 +607,7 @@
   
   You can terminate the use of the app straat.info and have your data removed from our database by sending us a request via email.
   
-  By accepting these terms and conditions you agree to the use of your data described here.</string>
+  By accepting these terms and conditions you agree to the use of your data described here.</mutableString>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>

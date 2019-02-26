@@ -1,0 +1,138 @@
+
+/* Class = "UILabel"; text = "Report Category"; ObjectID = "0SM-rc-pp1"; */
+"0SM-rc-pp1.text" = "Report Category";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "0if-Od-q4A"; */
+"0if-Od-q4A.text" = "First Name";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "2gC-UZ-qwY"; */
+"2gC-UZ-qwY.title" = "Item";
+
+/* Class = "UILabel"; text = "Check out the report"; ObjectID = "32Q-3A-MzM"; */
+"32Q-3A-MzM.text" = "Check out the report";
+
+/* Class = "UIButton"; normalTitle = "Submit Feedback"; ObjectID = "4fD-lF-nhe"; */
+"4fD-lF-nhe.normalTitle" = "Submit Feedback";
+
+/* Class = "UITextField"; placeholder = "Enter your email"; ObjectID = "5cR-En-Sc5"; */
+"5cR-En-Sc5.placeholder" = "Enter your email";
+
+/* Class = "UILabel"; text = "Date of report"; ObjectID = "CTx-3U-4i4"; */
+"CTx-3U-4i4.text" = "Date of report";
+
+/* Class = "UITextField"; placeholder = "Enter your first name"; ObjectID = "CmK-pS-buY"; */
+"CmK-pS-buY.placeholder" = "Enter your first name";
+
+/* Class = "UITextField"; placeholder = "Enter Postal Code"; ObjectID = "CnW-Om-viu"; */
+"CnW-Om-viu.placeholder" = "Enter Postal Code";
+
+/* Class = "UILabel"; text = "99"; ObjectID = "DOf-T5-1j1"; */
+"DOf-T5-1j1.text" = "99";
+
+/* Class = "UILabel"; text = "Team Name"; ObjectID = "EdZ-C9-SJK"; */
+"EdZ-C9-SJK.text" = "Team Name";
+
+/* Class = "UILabel"; text = "Chat Name"; ObjectID = "G8h-Yh-kBR"; */
+"G8h-Yh-kBR.text" = "Chat Name";
+
+/* Class = "UILabel"; text = "Contact Details"; ObjectID = "Gmf-iO-oFc"; */
+"Gmf-iO-oFc.text" = "Contact Details";
+
+/* Class = "UILabel"; text = "Straat.info has been developed, tested and used with neighborhood prevention teams in their daily work. We do our best on your user experience so high possible to be.   \n                                                                                                                If you have any questions or tips to improve the app then we are very interested. Let us know!"; ObjectID = "KFp-V9-j57"; */
+"KFp-V9-j57.text" = "Straat.info has been developed, tested and used with neighborhood prevention teams in their daily work. We do our best on your user experience so high possible to be.   \n                                                                                                                If you have any questions or tips to improve the app then we are very interested. Let us know!";
+
+/* Class = "UILabel"; text = "Set GPS Radius"; ObjectID = "Kqa-g7-TBy"; */
+"Kqa-g7-TBy.text" = "Set GPS Radius";
+
+/* Class = "UILabel"; text = "Family Name"; ObjectID = "PHl-Tr-4R0"; */
+"PHl-Tr-4R0.text" = "Family Name";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "UaB-ap-IVc"; */
+"UaB-ap-IVc.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "UaJ-pF-MA0"; */
+"UaJ-pF-MA0.title" = "Item";
+
+/* Class = "UILabel"; text = "Straat.info has been developed, tested and used with neighborhood prevention teams in their daily work. We do our best on your user experience so high possible to be.   \n                                                                                                                If you have any questions or tips to improve the app then we are very interested. Let us know!"; ObjectID = "VSm-Mz-Nn8"; */
+"VSm-Mz-Nn8.text" = "Straat.info has been developed, tested and used with neighborhood prevention teams in their daily work. We do our best on your user experience so high possible to be.   \n                                                                                                                If you have any questions or tips to improve the app then we are very interested. Let us know!";
+
+/* Class = "UILabel"; text = "Team Name"; ObjectID = "Wko-ux-PN4"; */
+"Wko-ux-PN4.text" = "Team Name";
+
+/* Class = "UIButton"; normalTitle = "Send us a feedback"; ObjectID = "aFO-nB-dal"; */
+"aFO-nB-dal.normalTitle" = "Send us a feedback";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "cKh-ya-nc4"; */
+"cKh-ya-nc4.title" = "Item";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "ch2-uo-dwD"; */
+"ch2-uo-dwD.text" = "Address";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "dOy-Ab-f0c"; */
+"dOy-Ab-f0c.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "eUa-vi-M3f"; */
+"eUa-vi-M3f.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "CHANGE MY DATA"; ObjectID = "hXM-Ph-oOr"; */
+"hXM-Ph-oOr.normalTitle" = "CHANGE MY DATA";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "jwy-cx-H7k"; */
+"jwy-cx-H7k.title" = "Item";
+
+/* Class = "UILabel"; text = "999"; ObjectID = "keo-QU-ZUA"; */
+"keo-QU-ZUA.text" = "999";
+
+/* Class = "UIButton"; normalTitle = "Messages"; ObjectID = "klu-SK-3cP"; */
+"klu-SK-3cP.normalTitle" = "Messages";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "ljL-ph-h3x"; */
+"ljL-ph-h3x.placeholder" = "Name";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "m33-Fb-dsS"; */
+"m33-Fb-dsS.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "m3M-lx-7b0"; */
+"m3M-lx-7b0.title" = "Item";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "oGf-zU-Ukw"; */
+"oGf-zU-Ukw.text" = "Password";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "pGG-VK-nlo"; */
+"pGG-VK-nlo.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "pML-2e-xt5"; */
+"pML-2e-xt5.placeholder" = "Email Address";
+
+/* Class = "UITextField"; placeholder = "Enter your contact number"; ObjectID = "pn8-xl-bqi"; */
+"pn8-xl-bqi.placeholder" = "Enter your contact number";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "qZQ-8c-COb"; */
+"qZQ-8c-COb.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Enter Town"; ObjectID = "s0Q-rH-SaD"; */
+"s0Q-rH-SaD.placeholder" = "Enter Town";
+
+/* Class = "UITextField"; placeholder = "Enter your Pasword"; ObjectID = "udW-AB-hKI"; */
+"udW-AB-hKI.placeholder" = "Enter your Pasword";
+
+/* Class = "UITextField"; text = "samplepass"; ObjectID = "udW-AB-hKI"; */
+"udW-AB-hKI.text" = "samplepass";
+
+/* Class = "UITextField"; placeholder = "Enter your family name"; ObjectID = "w5J-KT-SJV"; */
+"w5J-KT-SJV.placeholder" = "Enter your family name";
+
+/* Class = "UITextField"; placeholder = "Enter Street"; ObjectID = "w9M-8y-NfF"; */
+"w9M-8y-NfF.placeholder" = "Enter Street";
+
+/* Class = "UITextField"; placeholder = "Enter your chat name"; ObjectID = "x6d-ZX-gMI"; */
+"x6d-ZX-gMI.placeholder" = "Enter your chat name";
+
+/* Class = "UILabel"; text = "Your Feedback"; ObjectID = "yeP-wr-w7A"; */
+"yeP-wr-w7A.text" = "Your Feedback";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "yyN-fP-7lY"; */
+"yyN-fP-7lY.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Enter Lot Number"; ObjectID = "zK9-dp-Te7"; */
+"zK9-dp-Te7.placeholder" = "Enter Lot Number";

@@ -126,13 +126,13 @@
 		9B2F486B221F17A100B2BF91 /* SendReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportModel.swift; sourceTree = "<group>"; };
 		9B69A50722123C95001BBFE8 /* PostalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalModel.swift; sourceTree = "<group>"; };
 		9B77016E222076B4004D8CF0 /* ReportTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTypeModel.swift; sourceTree = "<group>"; };
-		9BA851A42225E10700E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Initial.strings; sourceTree = "<group>"; };
 		9BA851A52225E10700E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9BA851A62225E10800E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Registration.strings; sourceTree = "<group>"; };
 		9BA851AD2225E13400E872D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BA851AE2225E13900E872D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Sidebars.storyboard; sourceTree = "<group>"; };
 		9BA851AF2225E14500E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Sidebars.strings; sourceTree = "<group>"; };
 		9BA851B02225E14F00E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		9BA851B62225F0B200E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Initial.strings; sourceTree = "<group>"; };
 		9BBABA9D221F29B300DBC284 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		9BBABA9F221F2E4E00DBC284 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
@@ -419,6 +419,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = 435CCB0F21FF66CB00E87AD6;
 			productRefGroup = 435CCB1921FF66CB00E87AD6 /* Products */;
@@ -592,7 +593,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				435CCB2021FF66CB00E87AD6 /* Base */,
-				9BA851A42225E10700E872D9 /* nl */,
+				9BA851B62225F0B200E872D9 /* nl */,
 			);
 			name = Initial.storyboard;
 			sourceTree = "<group>";

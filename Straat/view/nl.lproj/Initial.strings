@@ -1,54 +1,54 @@
 
 /* Class = "UIButton"; normalTitle = "No"; ObjectID = "05S-nr-tKR"; */
-"05S-nr-tKR.normalTitle" = "No";
+"05S-nr-tKR.normalTitle" = "Nee";
 
 /* Class = "UILabel"; text = "Enter Your Code Here:"; ObjectID = "23e-RC-Hwr"; */
-"23e-RC-Hwr.text" = "Enter Your Code Here:";
+"23e-RC-Hwr.text" = "Voeg uw code hier in:";
 
 /* Class = "UITextField"; placeholder = "Enter Your Code"; ObjectID = "8Mq-dG-pkY"; */
-"8Mq-dG-pkY.placeholder" = "Enter Your Code";
+"8Mq-dG-pkY.placeholder" = "Voeg uw code in";
 
 /* Class = "UITextField"; placeholder = "Enter Your Code"; ObjectID = "E5d-b4-JsB"; */
-"E5d-b4-JsB.placeholder" = "Enter Your Code";
+"E5d-b4-JsB.placeholder" = "Voeg uw code in";
 
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "Kte-6V-iLp"; */
-"Kte-6V-iLp.normalTitle" = "Login";
+"Kte-6V-iLp.normalTitle" = "Inloggen";
 
 /* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "OPE-dC-2WA"; */
-"OPE-dC-2WA.normalTitle" = "CANCEL";
+"OPE-dC-2WA.normalTitle" = "ANNULEREN";
 
 /* Class = "UITextField"; placeholder = "Email/Username"; ObjectID = "PPt-VT-8ml"; */
-"PPt-VT-8ml.placeholder" = "Email/Username";
+"PPt-VT-8ml.placeholder" = "Email/Gebruikersnaam";
 
 /* Class = "UIButton"; normalTitle = "Yes"; ObjectID = "QCk-XD-wfM"; */
-"QCk-XD-wfM.normalTitle" = "Yes";
+"QCk-XD-wfM.normalTitle" = "Ja";
 
 /* Class = "UILabel"; text = "New User?"; ObjectID = "RFv-ex-TKI"; */
-"RFv-ex-TKI.text" = "New User?";
+"RFv-ex-TKI.text" = "Nieuwe gebruiker?";
 
 /* Class = "UIButton"; normalTitle = "SEND REQUEST"; ObjectID = "U3x-WO-O3z"; */
-"U3x-WO-O3z.normalTitle" = "SEND REQUEST";
+"U3x-WO-O3z.normalTitle" = "VERZEND VERZOEK";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "UBr-a6-kkM"; */
-"UBr-a6-kkM.text" = "Loading";
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "UBr-a6-kkM"; */
+"UBr-a6-kkM.text" = "Bezig met laden...";
 
 /* Class = "UIButton"; normalTitle = "Forgot Password"; ObjectID = "ZBy-Iy-aov"; */
-"ZBy-Iy-aov.normalTitle" = "Forgot Password";
+"ZBy-Iy-aov.normalTitle" = "Wachtwoord vergeten";
 
 /* Class = "UILabel"; text = "This app only works with an access code at this time. Do you have an access code?"; ObjectID = "bhi-bZ-95k"; */
-"bhi-bZ-95k.text" = "This app only works with an access code at this time. Do you have an access code?";
+"bhi-bZ-95k.text" = "Deze app werkt op dit moment alleen met een toegangscode. Heeft u een code?";
 
 /* Class = "UIButton"; normalTitle = "Back"; ObjectID = "dOJ-jr-BRb"; */
-"dOJ-jr-BRb.normalTitle" = "Back";
+"dOJ-jr-BRb.normalTitle" = "Terug";
 
 /* Class = "UIButton"; normalTitle = "Okay"; ObjectID = "e52-vO-H4L"; */
 "e52-vO-H4L.normalTitle" = "Okay";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "f4M-4u-nv0"; */
-"f4M-4u-nv0.placeholder" = "Password";
+"f4M-4u-nv0.placeholder" = "Wachtwoord";
 
 /* Class = "UILabel"; text = "Enter your email"; ObjectID = "mQs-5H-YOZ"; */
-"mQs-5H-YOZ.text" = "Enter your email";
+"mQs-5H-YOZ.text" = "E-mailadres";
 
 /* Class = "UIButton"; normalTitle = "Click Here"; ObjectID = "xth-Nl-U7Z"; */
-"xth-Nl-U7Z.normalTitle" = "Click Here";
+"xth-Nl-U7Z.normalTitle" = "Klik hier";

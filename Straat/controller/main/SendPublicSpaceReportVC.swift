@@ -51,7 +51,7 @@ class SendPublicSpaceReportVC: UIViewController {
 
     var mainCategoryId : String?
     var subCategoryId : String?
-    var isUrgent : Bool?
+    var isUrgent : Bool = false
     var sendReportImage: Data?
     
     let reportService = ReportService()
@@ -61,6 +61,8 @@ class SendPublicSpaceReportVC: UIViewController {
     var imageMetaData2: Dictionary <String, Any>?
     var imageMetaData3: Dictionary <String, Any>?
     
+    var mapViewDelegate : MapViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
@@ -68,22 +70,25 @@ class SendPublicSpaceReportVC: UIViewController {
     }
     
     @IBAction func emergencyNotif(_ sender: UIButton) {
-        defaultDialog(vc: self, title: "Emergency Notification", message: "Urgent? First Call 112?")
         if sender.isSelected {
             emergencyNotifButton.isSelected = false
             self.isUrgent = false
         } else {
             emergencyNotifButton.isSelected = true
             self.isUrgent = true
+            defaultDialog(vc: self, title: "Emergency Notification", message: "Urgent? First Call 112?")
         }
     }
     
     @IBAction func dismiss(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+//        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendReport(_ sender: UIButton) {
-        var imageMetaDatas : [[String: Any]] = []
+        loadingShow(vc: self)
+        
+        var imageMetaDatas = [[String: Any]]()
         let uds = UserDefaults.standard
 
         let id = uds.string(forKey: user_id)
@@ -118,15 +123,36 @@ class SendPublicSpaceReportVC: UIViewController {
         
         print("image meta datas: \(imageMetaDatas)")
         
-        let sendReportModel = SendReportModel(title: "Public Space", description: reportDescription.text, location: loc_add, long: long, lat: lat, reporterId: id, hostId: host_id, mainCategoryId: self.mainCategoryId, subCategoryId: self.subCategoryId, isUrgent: self.isUrgent, teamId: team_id, reportUploadedPhotos: imageMetaDatas, isVehicleInvolved: false, vehicleInvolvedCount: 0, vehicleInvolvedDescription: "nil", isPeopleInvolved: false, peopleInvolvedCount: 0, peopleInvolvedDescription: "nil", reportTypeId: reportType_id)
+        let sendReportModel = SendReportModel(
+                title: "Public Space",
+                description: reportDescription.text,
+                location: loc_add,
+                long: long,
+                lat: lat,
+                reporterId: id,
+                hostId: host_id,
+                mainCategoryId: self.mainCategoryId,
+                subCategoryId: self.subCategoryId,
+                isUrgent: self.isUrgent,
+                teamId: team_id,
+                reportUploadedPhotos: imageMetaDatas,
+                isVehicleInvolved: false,
+                vehicleInvolvedCount: 0,
+                vehicleInvolvedDescription: "nil",
+                isPeopleInvolved: false,
+                peopleInvolvedCount: 0,
+                peopleInvolvedDescription: "nil",
+                reportTypeId: reportType_id)
 
         self.reportService.sendReport(reportDetails: sendReportModel) { (success, message) in
             if success {
                 defaultDialog(vc: self, title: "Send Report", message: message)
-                pushToNextVC(sbName: "Main", controllerID: "mainID", origin: self)
+//                self.mapViewDelegate?.refresh(message: message)
+//                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
             } else {
                 defaultDialog(vc: self, title: "Send Report Error", message: message)
             }
+            loadingDismiss()
         }
         
         
@@ -193,9 +219,8 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
 //                    print("MAIN CAT _reportType codeId", mainCateg.codeId!)
                     print("MAIN CAT A", mainCateg)
                 }
-                loadingDismiss()
                 self.loadMainCategDropDown(mainCategList: self.mainCategoryName, subCategories: self.subCategory)
-                
+                loadingDismiss()
             }
         }
         
@@ -308,12 +333,21 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
             
             switch(self.imgViewTag) {
             case 1:
-                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "Public Space \(String(describing: self.sendReportImage))") { (success, message, photoMetaData, dataObject) in
+                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage1") { (success, message, photoMetaData, dataObject) in
                     
                     if success {
-//                        let imageData = dataObject!["data"] as? [String: Any]
+//                        let public_id = dataObject!["public_id"] as? String
+//                        let mimetype = dataObject!["mimetype"] as? String
+//                        let url = dataObject!["url"] as? String
+//                        let secure_url = dataObject!["secure_url"] as? String
+//                        let format = dataObject!["format"] as? String
+//                        let etag = dataObject!["etag"] as? String
+//                        let width = dataObject!["width"] as? Int
+//                        let height = dataObject!["height"] as? Int
+                        
                         self.imageMetaData1 = dataObject
-                        print("dataObject: \(String(describing: dataObject))")
+//                        debugPrint("dataObject: \(String(describing: dataObject))")
+//                        print("public_id: \(String(describing: public_id))")
                     } else {
                         print("upload image response: \(message)")
                     }
@@ -323,7 +357,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                 imgView1.image = image
                 break;
             case 2:
-                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "Public Space \(self.sendReportImage)") { (success, message, photoModel, dataObject) in
+                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage2") { (success, message, photoModel, dataObject) in
                     
                     if success {
                         self.imageMetaData2 = dataObject
@@ -337,7 +371,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                 imgView2.image = image
                 break;
             case 3:
-                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "Public Space \(self.sendReportImage)") { (success, message, photoModel, dataObject) in
+                self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage3") { (success, message, photoModel, dataObject) in
                     
                     if success {
                         self.imageMetaData3 = dataObject

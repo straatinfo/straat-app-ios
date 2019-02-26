@@ -98,19 +98,18 @@ extension EnterCodeVC {
     func saveToLocalData (host: HostModel, completion: @escaping OnFinish) {
         let uds = UserDefaults.standard;
         
-        let prefix = "host-reg"
+        uds.set(host.id, forKey: host_reg_id)
+        uds.set(host.lat, forKey: host_reg_lat)
+        uds.set(host.long, forKey: host_reg_long)
+        uds.set(host.email, forKey: host_reg_email)
+        uds.set(host.city, forKey: host_reg_city)
+        uds.set(host.country, forKey: host_reg_country)
+        uds.set(host.hostName, forKey: host_reg_host_name)
+        uds.set(host.isVolunteer, forKey: host_reg_is_volunteer)
+        uds.set(host.postalCode, forKey: host_reg_postal_code)
+        uds.set(host.phoneNumber, forKey: host_reg_phone_number)
+        uds.set(host.language, forKey: host_reg_language)
         
-        uds.set(host.id, forKey: prefix + "id")
-        uds.set(host.lat, forKey: prefix + "lat")
-        uds.set(host.long, forKey: prefix + "long")
-        uds.set(host.email, forKey: prefix + "email")
-        uds.set(host.city, forKey: prefix + "city")
-        uds.set(host.country, forKey: prefix + "country")
-        uds.set(host.hostName, forKey: prefix + "hostName")
-        uds.set(host.isVolunteer, forKey: prefix + "isVolunteer")
-        uds.set(host.postalCode, forKey: prefix + "postalCode")
-        uds.set(host.phoneNumber, forKey: prefix + "phoneNumber")
-        uds.set(host.language, forKey: prefix + "language")
         completion(true, "Success")
     }
     

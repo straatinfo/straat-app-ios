@@ -57,8 +57,8 @@ class ReportMapService {
 //                        print("status: \(String(describing: status))")
 //                        print("message: \(String(describing: message))")
 //                        print("address: \(String(describing: address))")
-                        print("lat: \(String(describing: lat))")
-                        print("long: \(String(describing: long))")
+//                        print("lat: \(String(describing: lat))")
+//                        print("long: \(String(describing: long))")
 //                        print("attachments: \(String(describing: attachments))")
                     }
                     

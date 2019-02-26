@@ -25,10 +25,7 @@ class SplashScreenVC: UIViewController {
     func interval() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
         
-
                 self.performSegue(withIdentifier: "nextVC", sender: nil)
-
-        
 
             
         }

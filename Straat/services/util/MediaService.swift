@@ -24,6 +24,7 @@ class MediaService {
                 completion(false, error.localizedDescription, nil, nil)
             } else if let data = response {
                 let dataObject = data["data"] as? Dictionary <String, Any>
+                let dataObj = data["data"] as? [[String:Any]]
                 
                 print("uploaded picture: \(String(describing: dataObject))")
                 

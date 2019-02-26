@@ -99,8 +99,20 @@ class MainVC: UIViewController {
     }
     
     
+    @IBAction func showSuspiciousReport(_ sender: UIButton) {
+        let suspiciousReportVC = self.storyboard?.instantiateViewController(withIdentifier: "SendSuspiciousReportVC") as! SendSuspiciousReportVC
+        suspiciousReportVC.mapViewDelegate = self
+        
+    }
+    
+    
     @IBAction func suspiciousInfo(_ sender: UIButton) {
         defaultDialog(vc: self, title: "Suspicious Situation", message: "Here you're able to share a situation that might be suspicious with other members of your team. At the moment other members agree with you. that is needed looks suspicious call the police or other relevant organisation. Emergency? First call 112 before continuing to use this app.")
+    }
+    
+    @IBAction func showPublicSpaceReport(_ sender: UIButton) {
+        let publicSpacesReportVC = self.storyboard?.instantiateViewController(withIdentifier: "SendSuspiciousReportVC") as! SendPublicSpaceReportVC
+        publicSpacesReportVC.mapViewDelegate = self
     }
     
     @IBAction func publicSpaceInfo(_ sender: UIButton) {
@@ -110,8 +122,20 @@ class MainVC: UIViewController {
 
 
 
+
+
+
+
+
 // for implementing functions
-extension MainVC  {
+extension MainVC : MapViewDelegate {
+    func refresh() {
+        createMenu()
+        navColor()
+        initMapView()
+
+    }
+    
     
     // for revealing side bar menu
     func createMenu() -> Void {
@@ -152,30 +176,54 @@ extension MainVC  {
     
     // initialised map view
     func initMapView() -> Void {
-
-        let reportMapService = ReportMapService()
+        
+        let reportService = ReportService()
+        let uds = UserDefaults.standard
+        
         let userModel = UserModel()
-
+        let userID = userModel.getDataFromUSD(key: user_id)
+        let hostLat = uds.double(forKey: host_reg_lat)
+        let hostLong = uds.double(forKey: host_reg_long)
+        let userRadius : Double = 300
+        
         loadingShow(vc: self)
         self.sendReport.isEnabled = false
         
         self.initMapCamera(lat: 52.077646, long: 4.315667)
         self.initMapRadius(lat: 52.077646, long: 4.315667)
         print("user_id: \(userModel.getDataFromUSD(key: user_id))")
-        reportMapService.getUserReport(userID: userModel.getDataFromUSD(key: user_id)) { (success, message, reportMapModel)  in
+        
+        reportService.getReportNear(reporterId: userID, lat: hostLat, long: hostLong, radius: userRadius) { (success, message, reportModel) in
             
-            if success == true {
-                for reportMap in reportMapModel {
+            if success {
+                for reportMap in reportModel {
                     self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+//                    let attachments = reportMap.attachments![0]
+//                    let imageUrl = attachments["secure_url"] as? String
+//                    debugPrint("new report attachments: \(imageUrl)")
                 }
-                self.sendReport.isEnabled = true
+//                self.sendReport.isEnabled = true
 //                loadingDismiss()
-                
             } else {
-                defaultDialog(vc: self, title: "Fetching Reports", message: message)
+                defaultDialog(vc: self, title: "Error", message: message)
+                loadingDismiss()
             }
             
         }
+//        reportService.(userID: userModel.getDataFromUSD(key: user_id)) { (success, message, reportMapModel)  in
+//
+//            if success == true {
+//                for reportMap in reportMapModel {
+//                    self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+//                }
+//                self.sendReport.isEnabled = true
+////                loadingDismiss()
+//
+//            } else {
+//                defaultDialog(vc: self, title: "Fetching Reports", message: message)
+//            }
+//
+//        }
         
     }
     
@@ -214,43 +262,61 @@ extension MainVC  {
         
     }
     
-    func reportMarker (mView : GMSMapView, reportMapModel : ReportMapModel?) -> Void {
+    func reportMarker (mView : GMSMapView, reportMapModel : ReportModel?) -> Void {
         // Creates a marker in the center of the map.
-        print("report marker called")
         let markerReport = GMSMarker()
         self.markerReports.append(markerReport)
-        
-        if ((reportMapModel?.images?.count)! > 0) {
 
-            self.getReportImage(imageUrl: (reportMapModel?.images![0].imageUrl)!) { (hasImage, img) in
-                if hasImage {
-                    reportMapModel?.setReportImage(reportImage: img)
-                } else {
-                    reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
-                }
-                loadingDismiss()
-            }
-
-        } else {
-            reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
-            loadingDismiss()
-        }
-        
-        
         markerReport.position = CLLocationCoordinate2D(latitude: (reportMapModel?.lat)!, longitude: (reportMapModel?.long)!)
-        
-        markerReport.title = reportMapModel?.category
-        markerReport.snippet = reportMapModel?.address
+
+        markerReport.title = reportMapModel?.mainCategory?.name
+        markerReport.snippet = reportMapModel?.location
         markerReport.icon = UIImage(named: "pin-new")
         markerReport.map = mView
-        
+
         // data for report view
-        markerReport.reportMapModel = reportMapModel!
-        
-        location.text = reportMapModel?.address
+        markerReport.reportModel = reportMapModel!
+
+        location.text = reportMapModel?.location
         userLat = reportMapModel?.lat
         userLong = reportMapModel?.long
         
+        self.setReportImage(reportMapModel: reportMapModel) { (success) in
+            if success {
+                self.sendReport.isEnabled = true
+                loadingDismiss()
+            } else {
+                self.sendReport.isEnabled = true
+                loadingDismiss()
+            }
+        }
+
+    }
+    
+    func setReportImage(reportMapModel : ReportModel?, completion: @escaping (Bool)->Void) -> Void {
+        
+        if (reportMapModel?.attachments?.count)! > 0 {
+            
+            let attachments = reportMapModel!.attachments![0]
+            let imageUrl = attachments["secure_url"] as? String
+            
+            self.getReportImage(imageUrl: imageUrl!) { (success, image) in
+                
+                if success {
+                    reportMapModel?.setReportImage(reportImage: image)
+                    completion(true)
+                } else {
+                    reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
+                    completion(false)
+                }
+                
+            }
+            
+        } else {
+            reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
+            self.sendReport.isEnabled = true
+            loadingDismiss()
+        }
     }
     
     // fetching image url then return ui image data
@@ -268,8 +334,12 @@ extension MainVC  {
             }
         }
     }
+ 
     
 }
+
+
+
 
 // dedicated for google maps delegates
 extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
@@ -319,8 +389,9 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             let img = UIImageView(frame: CGRect.init(x: lbl1.frame.size.width + 20, y: 0, width: view.frame.size.width * 0.40, height: view.frame.height))
             
             let imgPlaceholder = UIImage(named: "AppIcon")
-            if marker.reportMapModel != nil {
-                img.image = marker.reportMapModel!.getReportImage()
+
+            if marker.reportModel != nil {
+                img.image = marker.reportModel!.getReportImage()
             } else {
                 img.image = imgPlaceholder
             }
@@ -341,16 +412,24 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
         if marker != self.marker {
             
-            if (marker.reportMapModel?.images?.count)! > 0 {
-                for reportImg in (marker.reportMapModel?.images)! {
-                    reportImages.append(reportImg.imageUrl!)
+            if (marker.reportModel?.attachments?.count)! > 0 {
+                let attachments = marker.reportModel?.attachments
+                
+                for reportImg in attachments! {
+                    reportImages.append((reportImg["secure_url"] as? String)!)
                 }
+                
             }
+            debugPrint("report array image append: \(reportImages)")
+
+            self.saveToUserDefault(reportMapModel: marker.reportModel!, reportImages: reportImages, completion: {success in                
+                if success {
+                    let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewMapReportVC
+                    self.present(viewReportVC, animated: true, completion: nil)
+                }
+            })
             
-            self.saveToUserDefault(reportMapModel: marker.reportMapModel!, reportImages: reportImages)
-            
-            let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewMapReportVC
-            self.present(viewReportVC, animated: true, completion: nil)
+
         }
 
     }
@@ -411,7 +490,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         getAddressFromLatLon(lat: locValue.latitude, long: locValue.longitude, completion: { hasAdd , response in
 
             
-            if  hasAdd {
+            if hasAdd {
                 self.initMapCamera(lat: locValue.latitude, long: locValue.longitude)
                 self.customMarker (mView : self.mapView, marker: self.marker, title: "Report Category", address : response, lat : locValue.latitude , long : locValue.longitude)
                 self.initMapRadius(lat: locValue.latitude, long: locValue.longitude)
@@ -463,24 +542,29 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
     }
     
-    func saveToUserDefault(reportMapModel : ReportMapModel , reportImages : [String]) -> Void {
+    func saveToUserDefault(reportMapModel : ReportModel , reportImages : [String], completion : @escaping (Bool)->Void) -> Void {
         
         let uds = UserDefaults.standard
-        uds.set(reportMapModel.category, forKey: "report-category")
-        uds.set(reportMapModel.status, forKey: "report-status")
-        uds.set(reportMapModel.message, forKey: "report-message")
-        uds.set(reportMapModel.address, forKey: "report-address")
-        uds.set(reportMapModel.lat, forKey: "report-lat")
-        uds.set(reportMapModel.long, forKey: "report-long")
-        uds.set(reportImages, forKey: "report-images")
+        let fullname = reportMapModel.reporter?.firstname
+        
+        uds.set(reportMapModel.mainCategory?.name, forKey: report_category)
+        uds.set(reportMapModel.status, forKey: report_status_detail_view)
+        uds.set(reportMapModel.location, forKey: report_address)
+        uds.set(reportMapModel.lat, forKey: report_lat)
+        uds.set(reportMapModel.long, forKey: report_long)
+        uds.set(reportMapModel.description, forKey: report_message)
+        uds.set(fullname, forKey: report_reporter_fullname)
+        uds.set(reportImages, forKey: report_images)
+        
+        completion(true)
     }
     
 }
 
 
 extension GMSMarker {
-    var reportMapModel : ReportMapModel? {
-        set(reportMapModel) { self.userData = reportMapModel }
-        get { return self.userData as? ReportMapModel}
+    var reportModel : ReportModel? {
+        set(reportModel) { self.userData = reportModel }
+        get { return self.userData as? ReportModel}
     }
 }

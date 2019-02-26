@@ -15,6 +15,7 @@ class PublicSpaceVC: UIViewController {
     
     let reportService = ReportService()
     var reports = [ReportModel]()
+    let imageActivityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +67,12 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
             let rootImage = self.reports[indexPath.row].attachments![0]
             let imageUrl = rootImage["secure_url"] as? String
             
-            Alamofire.request(URL(string: imageUrl!)!).responseImage { response in
-                
-                if let img = response.result.value {
-                    print("report image downloaded: \(img)")
-                    
-                    DispatchQueue.main.async {
-                        row.reportImage?.image = img
-                    }                    
+            self.getReportImage(imageUrl: imageUrl!) { (hasImage, image) in
+                if hasImage {
+                    row.reportImage?.image = image
                 }
             }
+
             
         }
         
@@ -99,6 +96,21 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
         pushToNextVC(sbName: "Main", controllerID: "ViewReportID", origin: self)        
     }
     
+    
+    
+    func getReportImage(imageUrl: String, completion: @escaping (Bool, UIImage?) -> Void) -> Void {
+        
+        Alamofire.request(URL(string: imageUrl)!).responseImage { response in
+            
+            if let img = response.result.value {
+                print("report image downloaded: \(img)")
+                
+                completion(true, img)
+            } else {
+                completion(false, nil)
+            }
+        }
+    }
     
     func saveToUserDefault(reportModel : ReportModel , reportImages : [String]) -> Void {
         

@@ -1,51 +1,51 @@
 
 /* Class = "UILabel"; text = "Report Category"; ObjectID = "0SM-rc-pp1"; */
-"0SM-rc-pp1.text" = "Report Category";
+"0SM-rc-pp1.text" = "Rapport Categorie";
 
 /* Class = "UILabel"; text = "First Name"; ObjectID = "0if-Od-q4A"; */
-"0if-Od-q4A.text" = "First Name";
+"0if-Od-q4A.text" = "Voornaam";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "2gC-UZ-qwY"; */
 "2gC-UZ-qwY.title" = "Item";
 
 /* Class = "UILabel"; text = "Check out the report"; ObjectID = "32Q-3A-MzM"; */
-"32Q-3A-MzM.text" = "Check out the report";
+"32Q-3A-MzM.text" = "Bekijk het rapport";
 
 /* Class = "UIButton"; normalTitle = "Submit Feedback"; ObjectID = "4fD-lF-nhe"; */
-"4fD-lF-nhe.normalTitle" = "Submit Feedback";
+"4fD-lF-nhe.normalTitle" = "Feedback verzenden";
 
 /* Class = "UITextField"; placeholder = "Enter your email"; ObjectID = "5cR-En-Sc5"; */
-"5cR-En-Sc5.placeholder" = "Enter your email";
+"5cR-En-Sc5.placeholder" = "Voer uw e-mailadres in";
 
 /* Class = "UILabel"; text = "Date of report"; ObjectID = "CTx-3U-4i4"; */
-"CTx-3U-4i4.text" = "Date of report";
+"CTx-3U-4i4.text" = "Datum van het rapport";
 
 /* Class = "UITextField"; placeholder = "Enter your first name"; ObjectID = "CmK-pS-buY"; */
-"CmK-pS-buY.placeholder" = "Enter your first name";
+"CmK-pS-buY.placeholder" = "Vul uw voornaam in";
 
 /* Class = "UITextField"; placeholder = "Enter Postal Code"; ObjectID = "CnW-Om-viu"; */
-"CnW-Om-viu.placeholder" = "Enter Postal Code";
+"CnW-Om-viu.placeholder" = "Voer postcode in";
 
 /* Class = "UILabel"; text = "99"; ObjectID = "DOf-T5-1j1"; */
 "DOf-T5-1j1.text" = "99";
 
 /* Class = "UILabel"; text = "Team Name"; ObjectID = "EdZ-C9-SJK"; */
-"EdZ-C9-SJK.text" = "Team Name";
+"EdZ-C9-SJK.text" = "Team naam";
 
 /* Class = "UILabel"; text = "Chat Name"; ObjectID = "G8h-Yh-kBR"; */
-"G8h-Yh-kBR.text" = "Chat Name";
+"G8h-Yh-kBR.text" = "Chat naam";
 
 /* Class = "UILabel"; text = "Contact Details"; ObjectID = "Gmf-iO-oFc"; */
 "Gmf-iO-oFc.text" = "Contact Details";
 
 /* Class = "UILabel"; text = "Straat.info has been developed, tested and used with neighborhood prevention teams in their daily work. We do our best on your user experience so high possible to be.   \n                                                                                                                If you have any questions or tips to improve the app then we are very interested. Let us know!"; ObjectID = "KFp-V9-j57"; */
-"KFp-V9-j57.text" = "Straat.info has been developed, tested and used with neighborhood prevention teams in their daily work. We do our best on your user experience so high possible to be.   \n                                                                                                                If you have any questions or tips to improve the app then we are very interested. Let us know!";
+"KFp-V9-j57.text" = "Straat.info is ontwikkeld, getest en gebruikt met buurtpreventie teams in hun dagelijkse werk. We doen ons best uw gebruikerservaring zo hoog mogelijk te maken.   \n Als je nog vragen of tips hebt om de app te verbeteren, zijn we erg geïnteresseerd. Laat het ons weten!";
 
 /* Class = "UILabel"; text = "Set GPS Radius"; ObjectID = "Kqa-g7-TBy"; */
-"Kqa-g7-TBy.text" = "Set GPS Radius";
+"Kqa-g7-TBy.text" = "Stel GPS-straal in";
 
 /* Class = "UILabel"; text = "Family Name"; ObjectID = "PHl-Tr-4R0"; */
-"PHl-Tr-4R0.text" = "Family Name";
+"PHl-Tr-4R0.text" = "Achternaam";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "UaB-ap-IVc"; */
 "UaB-ap-IVc.title" = "Item";
@@ -54,13 +54,13 @@
 "UaJ-pF-MA0.title" = "Item";
 
 /* Class = "UILabel"; text = "Straat.info has been developed, tested and used with neighborhood prevention teams in their daily work. We do our best on your user experience so high possible to be.   \n                                                                                                                If you have any questions or tips to improve the app then we are very interested. Let us know!"; ObjectID = "VSm-Mz-Nn8"; */
-"VSm-Mz-Nn8.text" = "Straat.info has been developed, tested and used with neighborhood prevention teams in their daily work. We do our best on your user experience so high possible to be.   \n                                                                                                                If you have any questions or tips to improve the app then we are very interested. Let us know!";
+"VSm-Mz-Nn8.text" = "Straat.info is ontwikkeld, getest en gebruikt met buurtpreventie teams in hun dagelijkse werk. We doen ons best uw gebruikerservaring zo hoog mogelijk te maken.   \n Als je nog vragen of tips hebt om de app te verbeteren, zijn we erg geïnteresseerd. Laat het ons weten!";
 
 /* Class = "UILabel"; text = "Team Name"; ObjectID = "Wko-ux-PN4"; */
-"Wko-ux-PN4.text" = "Team Name";
+"Wko-ux-PN4.text" = "Team naam";
 
 /* Class = "UIButton"; normalTitle = "Send us a feedback"; ObjectID = "aFO-nB-dal"; */
-"aFO-nB-dal.normalTitle" = "Send us a feedback";
+"aFO-nB-dal.normalTitle" = "Versturen";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "cKh-ya-nc4"; */
 "cKh-ya-nc4.title" = "Item";
@@ -75,7 +75,7 @@
 "eUa-vi-M3f.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "CHANGE MY DATA"; ObjectID = "hXM-Ph-oOr"; */
-"hXM-Ph-oOr.normalTitle" = "CHANGE MY DATA";
+"hXM-Ph-oOr.normalTitle" = "Wijzig Mijn Cegevens";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "jwy-cx-H7k"; */
 "jwy-cx-H7k.title" = "Item";
@@ -84,10 +84,10 @@
 "keo-QU-ZUA.text" = "999";
 
 /* Class = "UIButton"; normalTitle = "Messages"; ObjectID = "klu-SK-3cP"; */
-"klu-SK-3cP.normalTitle" = "Messages";
+"klu-SK-3cP.normalTitle" = "Berichten";
 
 /* Class = "UITextField"; placeholder = "Name"; ObjectID = "ljL-ph-h3x"; */
-"ljL-ph-h3x.placeholder" = "Name";
+"ljL-ph-h3x.placeholder" = "Naam";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "m33-Fb-dsS"; */
 "m33-Fb-dsS.title" = "Item";
@@ -96,16 +96,16 @@
 "m3M-lx-7b0.title" = "Item";
 
 /* Class = "UILabel"; text = "Password"; ObjectID = "oGf-zU-Ukw"; */
-"oGf-zU-Ukw.text" = "Password";
+"oGf-zU-Ukw.text" = "Wachtwoord";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "pGG-VK-nlo"; */
 "pGG-VK-nlo.title" = "Item";
 
 /* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "pML-2e-xt5"; */
-"pML-2e-xt5.placeholder" = "Email Address";
+"pML-2e-xt5.placeholder" = "E-mailadres";
 
 /* Class = "UITextField"; placeholder = "Enter your contact number"; ObjectID = "pn8-xl-bqi"; */
-"pn8-xl-bqi.placeholder" = "Enter your contact number";
+"pn8-xl-bqi.placeholder" = "Voer uw contactnummer in";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "qZQ-8c-COb"; */
 "qZQ-8c-COb.title" = "Item";
@@ -114,25 +114,25 @@
 "s0Q-rH-SaD.placeholder" = "Enter Town";
 
 /* Class = "UITextField"; placeholder = "Enter your Pasword"; ObjectID = "udW-AB-hKI"; */
-"udW-AB-hKI.placeholder" = "Enter your Pasword";
+"udW-AB-hKI.placeholder" = "Voer je Paswoord in";
 
 /* Class = "UITextField"; text = "samplepass"; ObjectID = "udW-AB-hKI"; */
 "udW-AB-hKI.text" = "samplepass";
 
 /* Class = "UITextField"; placeholder = "Enter your family name"; ObjectID = "w5J-KT-SJV"; */
-"w5J-KT-SJV.placeholder" = "Enter your family name";
+"w5J-KT-SJV.placeholder" = "Voer je achternaam in";
 
 /* Class = "UITextField"; placeholder = "Enter Street"; ObjectID = "w9M-8y-NfF"; */
-"w9M-8y-NfF.placeholder" = "Enter Street";
+"w9M-8y-NfF.placeholder" = "Ga Street binnen";
 
 /* Class = "UITextField"; placeholder = "Enter your chat name"; ObjectID = "x6d-ZX-gMI"; */
-"x6d-ZX-gMI.placeholder" = "Enter your chat name";
+"x6d-ZX-gMI.placeholder" = "Voer je chatnaam in";
 
 /* Class = "UILabel"; text = "Your Feedback"; ObjectID = "yeP-wr-w7A"; */
-"yeP-wr-w7A.text" = "Your Feedback";
+"yeP-wr-w7A.text" = "Jouw feedback";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "yyN-fP-7lY"; */
 "yyN-fP-7lY.title" = "Item";
 
 /* Class = "UITextField"; placeholder = "Enter Lot Number"; ObjectID = "zK9-dp-Te7"; */
-"zK9-dp-Te7.placeholder" = "Enter Lot Number";
+"zK9-dp-Te7.placeholder" = "Voer het kavelnummer in";

@@ -576,7 +576,7 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YJL-pf-YaR">
                                                         <rect key="frame" x="0.0" y="0.0" width="285" height="1245"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <mutableString key="text">Always call 112 first
+                                                        <string key="text">Always call 112 first
 
 
   The app street.info is intended for supporting neighborhood prevention, among other things, for passing on reports to the municipality. The use of the app for other purposes, which do not fit within the current explanation of neighborhood prevention, is not permitted.
@@ -607,7 +607,7 @@
   
   You can terminate the use of the app straat.info and have your data removed from our database by sending us a request via email.
   
-  By accepting these terms and conditions you agree to the use of your data described here.</mutableString>
+  By accepting these terms and conditions you agree to the use of your data described here.</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>

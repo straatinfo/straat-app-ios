@@ -10,6 +10,7 @@ import UIKit
 class TeamVC: UIViewController {
     
     @IBOutlet weak var menu: UIBarButtonItem!
+    var teamNameArr = ["team1", "team2", "team3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class TeamVC: UIViewController {
     
 }
 
-extension TeamVC {
+extension TeamVC : UITableViewDelegate, UITableViewDataSource {
     
     // for revealing side bar menu
     func createMenu() -> Void {
@@ -45,6 +46,21 @@ extension TeamVC {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         navigationItem.title = "Straat.info"
+    }
+    
+    // for table view functions
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.teamNameArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! TeamTVC
+        
+        row.teamName.text = self.teamNameArr[indexPath.row]
+        row.teamEmail.text = "sample@email.com"
+        
+        return row
     }
     
 }

@@ -93,7 +93,7 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
         }
         
         self.saveToUserDefault(reportModel: reportModel, reportImages: reportImageURL)
-        pushToNextVC(sbName: "Main", controllerID: "ViewReportID", origin: self)        
+//        pushToNextVC(sbName: "Main", controllerID: "ViewReportID", origin: self)        
     }
     
     

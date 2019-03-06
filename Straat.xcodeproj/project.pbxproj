@@ -13,6 +13,8 @@
 		43130E242221CB5A0074AD85 /* ViewReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43130E232221CB5A0074AD85 /* ViewReportVC.swift */; };
 		43130E262221DB800074AD85 /* SecondScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43130E252221DB800074AD85 /* SecondScreenVC.swift */; };
 		4316BB4922037DD000A168BE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* MainVC.swift */; };
+		433DF9C12228665E0091BF8A /* ReportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433DF9C02228665E0091BF8A /* ReportTVC.swift */; };
+		433DF9C3222866710091BF8A /* TeamTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433DF9C2222866710091BF8A /* TeamTVC.swift */; };
 		43440D6D2215C2D7008A777E /* PublicSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */; };
 		43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D702215D460008A777E /* PublicSpaceTVC.swift */; };
 		43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D722215DA26008A777E /* SuspiciousSituationVC.swift */; };
@@ -24,12 +26,16 @@
 		435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */; };
 		435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */; };
 		435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */; };
+		4368EB12222973CC00EA03FE /* TeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368EB11222973CC00EA03FE /* TeamDetailsVC.swift */; };
+		4368EB14222977B500EA03FE /* TeamDetailsUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368EB13222977B500EA03FE /* TeamDetailsUpdateVC.swift */; };
+		436B4027222A83BD00873C01 /* CreateNewTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B4026222A83BD00873C01 /* CreateNewTeamVC.swift */; };
+		436B4029222A95A100873C01 /* TeamMemberTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B4028222A95A100873C01 /* TeamMemberTVC.swift */; };
 		437DFD372221B1A400D2E662 /* SuspiciousTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437DFD362221B1A400D2E662 /* SuspiciousTVC.swift */; };
 		437DFD392221BB7D00D2E662 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437DFD382221BB7D00D2E662 /* Constants.swift */; };
 		4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUserVC.swift */; };
 		438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A0311221C0B6A00ECE252 /* ReportMapModel.swift */; };
 		43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43907A312210A5B60063DC16 /* TeamListModel.swift */; };
-		4392B573222129650001A7E0 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B572222129650001A7E0 /* NotificationVC.swift */; };
+		4392B573222129650001A7E0 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B572222129650001A7E0 /* ReportVC.swift */; };
 		4392B575222129760001A7E0 /* TeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B574222129760001A7E0 /* TeamVC.swift */; };
 		4392B5772221298B0001A7E0 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B5762221298B0001A7E0 /* ProfileVC.swift */; };
 		4392B5792221299B0001A7E0 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B5782221299B0001A7E0 /* AboutUsVC.swift */; };
@@ -79,6 +85,8 @@
 		43130E252221DB800074AD85 /* SecondScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenVC.swift; sourceTree = "<group>"; };
 		4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Straat-Bridging-Header.h"; sourceTree = "<group>"; };
 		4316BB4822037DD000A168BE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		433DF9C02228665E0091BF8A /* ReportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTVC.swift; sourceTree = "<group>"; };
+		433DF9C2222866710091BF8A /* TeamTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTVC.swift; sourceTree = "<group>"; };
 		43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicSpaceVC.swift; sourceTree = "<group>"; };
 		43440D702215D460008A777E /* PublicSpaceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicSpaceTVC.swift; sourceTree = "<group>"; };
 		43440D722215DA26008A777E /* SuspiciousSituationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspiciousSituationVC.swift; sourceTree = "<group>"; };
@@ -92,12 +100,16 @@
 		435CCB2521FF66CD00E87AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		435CCB2721FF66CD00E87AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeVC.swift; sourceTree = "<group>"; };
+		4368EB11222973CC00EA03FE /* TeamDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsVC.swift; sourceTree = "<group>"; };
+		4368EB13222977B500EA03FE /* TeamDetailsUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsUpdateVC.swift; sourceTree = "<group>"; };
+		436B4026222A83BD00873C01 /* CreateNewTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTeamVC.swift; sourceTree = "<group>"; };
+		436B4028222A95A100873C01 /* TeamMemberTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberTVC.swift; sourceTree = "<group>"; };
 		437DFD362221B1A400D2E662 /* SuspiciousTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspiciousTVC.swift; sourceTree = "<group>"; };
 		437DFD382221BB7D00D2E662 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserVC.swift; sourceTree = "<group>"; };
 		438A0311221C0B6A00ECE252 /* ReportMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMapModel.swift; sourceTree = "<group>"; };
 		43907A312210A5B60063DC16 /* TeamListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListModel.swift; sourceTree = "<group>"; };
-		4392B572222129650001A7E0 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		4392B572222129650001A7E0 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		4392B574222129760001A7E0 /* TeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamVC.swift; sourceTree = "<group>"; };
 		4392B5762221298B0001A7E0 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		4392B5782221299B0001A7E0 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
@@ -165,6 +177,16 @@
 				4316BB4422037B3B00A168BE /* Straat-Bridging-Header.h */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		433DF9BF222865E70091BF8A /* TVC */ = {
+			isa = PBXGroup;
+			children = (
+				433DF9C02228665E0091BF8A /* ReportTVC.swift */,
+				433DF9C2222866710091BF8A /* TeamTVC.swift */,
+				436B4028222A95A100873C01 /* TeamMemberTVC.swift */,
+			);
+			path = TVC;
 			sourceTree = "<group>";
 		};
 		433E947222259DCA007EC3AF /* initial */ = {
@@ -312,12 +334,16 @@
 		4392B5712221293F0001A7E0 /* sidebar */ = {
 			isa = PBXGroup;
 			children = (
-				4392B572222129650001A7E0 /* NotificationVC.swift */,
+				433DF9BF222865E70091BF8A /* TVC */,
+				4392B572222129650001A7E0 /* ReportVC.swift */,
 				4392B574222129760001A7E0 /* TeamVC.swift */,
 				4392B5762221298B0001A7E0 /* ProfileVC.swift */,
 				4392B57C222129B90001A7E0 /* SettingVC.swift */,
 				4392B5782221299B0001A7E0 /* AboutUsVC.swift */,
 				4392B57A222129A80001A7E0 /* FeedbackVC.swift */,
+				4368EB11222973CC00EA03FE /* TeamDetailsVC.swift */,
+				4368EB13222977B500EA03FE /* TeamDetailsUpdateVC.swift */,
+				436B4026222A83BD00873C01 /* CreateNewTeamVC.swift */,
 			);
 			path = sidebar;
 			sourceTree = "<group>";
@@ -530,7 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */,
-				4392B573222129650001A7E0 /* NotificationVC.swift in Sources */,
+				4392B573222129650001A7E0 /* ReportVC.swift in Sources */,
 				438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */,
 				4309F8EE22174B21001C29A9 /* SendPublicSpaceReportVC.swift in Sources */,
 				9BBABA9E221F29B300DBC284 /* ReportService.swift in Sources */,
@@ -541,8 +567,10 @@
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
+				433DF9C3222866710091BF8A /* TeamTVC.swift in Sources */,
 				9B0948BC2212AD47004CE4CB /* UserRegistrationModel.swift in Sources */,
 				4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */,
+				4368EB14222977B500EA03FE /* TeamDetailsUpdateVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				9B0948BE2212BC15004CE4CB /* RegistrationStep2VCViewController.swift in Sources */,
 				43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */,
@@ -554,14 +582,17 @@
 				9BBABAA0221F2E4E00DBC284 /* ReportModel.swift in Sources */,
 				437DFD372221B1A400D2E662 /* SuspiciousTVC.swift in Sources */,
 				9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */,
+				433DF9C12228665E0091BF8A /* ReportTVC.swift in Sources */,
 				4392B5792221299B0001A7E0 /* AboutUsVC.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
 				434C3B59220A2DE800843000 /* UserModel.swift in Sources */,
 				439470EE220B5FDD00CEC63E /* SWRevealViewController 02-32-09-600.m in Sources */,
 				4397D19C220F6B26004788B6 /* SendSuspiciousReportVC.swift in Sources */,
+				436B4029222A95A100873C01 /* TeamMemberTVC.swift in Sources */,
 				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
+				436B4027222A83BD00873C01 /* CreateNewTeamVC.swift in Sources */,
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
 				9BECD55D22207A9D004989A2 /* UserService.swift in Sources */,
 				43DB4CA5221AE55000E0F88E /* ViewMapReportVC.swift in Sources */,
@@ -573,6 +604,7 @@
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				9B2F486C221F17A100B2BF91 /* SendReportModel.swift in Sources */,
 				43130E242221CB5A0074AD85 /* ViewReportVC.swift in Sources */,
+				4368EB12222973CC00EA03FE /* TeamDetailsVC.swift in Sources */,
 				4392B57B222129A80001A7E0 /* FeedbackVC.swift in Sources */,
 				9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */,
 				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,

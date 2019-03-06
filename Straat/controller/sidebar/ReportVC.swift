@@ -7,9 +7,10 @@
 
 import UIKit
 
-class NotificationVC: UIViewController {
+class ReportVC: UIViewController {
     
     @IBOutlet weak var menu: UIBarButtonItem!
+    var sampleArr = ["repot1", "report2", "report3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class NotificationVC: UIViewController {
 }
 
 
-extension NotificationVC {
+extension ReportVC : UITableViewDelegate, UITableViewDataSource {
     
     // for revealing side bar menu
     func createMenu() -> Void {
@@ -46,6 +47,18 @@ extension NotificationVC {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         navigationItem.title = "Straat.info"
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.sampleArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! ReportTVC
+        
+        row.reportCategory.text = self.sampleArr[indexPath.row]
+        
+        return row
     }
     
 }

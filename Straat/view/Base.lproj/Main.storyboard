@@ -1278,6 +1278,7 @@
                                             <outlet property="messageCount" destination="p2d-lV-l8v" id="ygF-Xk-Q3K"/>
                                             <outlet property="reportCategory" destination="6bd-Rt-G6N" id="tID-KT-LwW"/>
                                             <outlet property="reportImage" destination="6WU-O6-HSe" id="8nZ-Mh-cYm"/>
+                                            <segue destination="66a-tY-SHk" kind="show" id="01F-Uc-qvo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1314,7 +1315,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N80-MI-7X4">
-                                <rect key="frame" x="10" y="30" width="355" height="960"/>
+                                <rect key="frame" x="10" y="64" width="355" height="926"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3T-XT-gC1" userLabel="Main Container">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="822"/>
@@ -1600,7 +1601,7 @@
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="N80-MI-7X4" firstAttribute="leading" secondItem="SPc-Wj-MTz" secondAttribute="leading" constant="10" id="EKG-tK-Ghc"/>
-                            <constraint firstItem="N80-MI-7X4" firstAttribute="top" secondItem="SPc-Wj-MTz" secondAttribute="top" constant="10" id="G38-9q-9do"/>
+                            <constraint firstItem="N80-MI-7X4" firstAttribute="top" secondItem="SPc-Wj-MTz" secondAttribute="top" id="G38-9q-9do"/>
                             <constraint firstItem="SPc-Wj-MTz" firstAttribute="bottom" secondItem="N80-MI-7X4" secondAttribute="bottom" constant="10" id="MQI-sG-kHm"/>
                             <constraint firstItem="SPc-Wj-MTz" firstAttribute="trailing" secondItem="N80-MI-7X4" secondAttribute="trailing" constant="10" id="WXM-pu-B0c"/>
                         </constraints>

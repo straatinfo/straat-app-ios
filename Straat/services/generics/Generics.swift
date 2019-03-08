@@ -9,15 +9,16 @@ import Foundation
 import UIKit
 
 
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    var activityIndicator: UIActivityIndicatorView?
     var parentView = UIView()
-    var loadingLabel = UILabel(frame: CGRect(x: 0, y: 70, width: view.frame.width, height: 20))
+
+    let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    let loadingLabel = UILabel(frame: CGRect(x: 0, y: 70, width: view.frame.width, height: 20))
 
     // show loading
     func loadingShow(vc : UIViewController) {
         
-        //    activityIndicator = UIActivityIndicatorView(frame: alertController.view.bounds)
+        activityIndicator = UIActivityIndicatorView()
         //    activityIndicator!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         parentView = vc.view
         
@@ -31,33 +32,27 @@ import UIKit
         loadingLabel.font = loadingLabel.font.withSize(15)
         loadingLabel.textAlignment = .center
         
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = UIActivityIndicatorView.Style.white
-        activityIndicator.isUserInteractionEnabled = false
+        activityIndicator!.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+        activityIndicator!.center = view.center
+        activityIndicator!.hidesWhenStopped = true
+        activityIndicator!.style = UIActivityIndicatorView.Style.white
+        activityIndicator!.isUserInteractionEnabled = false
         
-        view.addSubview(activityIndicator)
+        view.addSubview(activityIndicator!)
         view.addSubview(loadingLabel)
         vc.view.addSubview(view)
         view.center = vc.view.center
         
-        activityIndicator.startAnimating()
-        
-        //    vc.present(alertController, animated: true)
-        
+        activityIndicator!.startAnimating()        
     }
 
     // dismiss loading
-func loadingDismiss() {
-        
-        if let removeViewTag = parentView.viewWithTag(101) {
-            activityIndicator.stopAnimating()
-            activityIndicator.removeFromSuperview()
-            removeViewTag.removeFromSuperview()
-        }
-        
+    func loadingDismiss() {
 
-        //    alertController.dismiss(animated: true, completion: nil)
+        activityIndicator!.stopAnimating()
+        activityIndicator!.removeFromSuperview()
+        activityIndicator!.willRemoveSubview(view)
+        activityIndicator = nil
         
     }
 

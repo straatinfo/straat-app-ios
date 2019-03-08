@@ -17,7 +17,18 @@ class TeamVC: UIViewController {
         
         self.createMenu()
         self.navColor()
-        // Do any additional setup after loading the view.
+        
+        let teamService = TeamService()
+        let uds = UserDefaults.standard
+        let userId = uds.string(forKey: user_id)
+
+        teamService.getTeamList(userId: userId!) { (success, message, teamModel) in
+
+            if success == true {
+                print("teamService: \(String(describing: teamModel))")
+            }
+        }
+
     }
     
 }

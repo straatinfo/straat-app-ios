@@ -226,30 +226,38 @@ extension RegistrationDataVC {
         let password = passwordTxtBox.text ?? ""
         let tac = self.termsAndCondition.isSelected
         
-        let uds = UserDefaults.init()
+        let tfs : [UITextField] = [firstnameTxtBox, lastnameTxtBox, usernameTxtBox, postCodeTxtBox, postNumberTxtBox, streetTxtBox, townTxtBox, emailTxtBox, mobileNumberTxtBox, passwordTxtBox]
         
-        let prefix = "reg-user-data-"
-        
-        uds.set(gender, forKey: prefix + "gender")
-        uds.set(fname, forKey: prefix + "fname")
-        uds.set(lname, forKey: prefix + "lname")
-        uds.set(username, forKey: prefix + "username")
-        uds.set(postalCode, forKey: prefix + "postalCode")
-        uds.set(postalNumber, forKey: prefix + "postalNumber")
-        uds.set(street, forKey: prefix + "street")
-        uds.set(town, forKey: prefix + "town")
-        uds.set(email, forKey: prefix + "email")
-        uds.set(phoneNumber, forKey: prefix + "phoneNumber")
-        uds.set(password, forKey: prefix + "password")
-        uds.set(tac, forKey: prefix + "tac")
-        
-        completion(true, "Success")
+        if validateTextField(tf: tfs) {
+            let uds = UserDefaults.init()
+            let prefix = "reg-user-data-"
+            
+            uds.set(gender, forKey: prefix + "gender")
+            uds.set(fname, forKey: prefix + "fname")
+            uds.set(lname, forKey: prefix + "lname")
+            uds.set(username, forKey: prefix + "username")
+            uds.set(postalCode, forKey: prefix + "postalCode")
+            uds.set(postalNumber, forKey: prefix + "postalNumber")
+            uds.set(street, forKey: prefix + "street")
+            uds.set(town, forKey: prefix + "town")
+            uds.set(email, forKey: prefix + "email")
+            uds.set(phoneNumber, forKey: prefix + "phoneNumber")
+            uds.set(password, forKey: prefix + "password")
+            uds.set(tac, forKey: prefix + "tac")
+            
+            completion(true, "Success")
+        } else {
+            completion(false, "")
+        }
+
     }
     
     func goToStep2 () -> Void {
         self.saveInputs() { (success, message) in
             if success == true {
                 pushToNextVC(sbName: "Registration", controllerID: "step2VC", origin: self)
+            } else {
+                defaultDialog(vc: self, title: "Empty Fields", message: "Please fill up all the empty fields")
             }
         }
     }

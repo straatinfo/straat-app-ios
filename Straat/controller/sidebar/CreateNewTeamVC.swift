@@ -7,17 +7,36 @@
 
 import UIKit
 import Photos
+import Alamofire
 
 class CreateNewTeamVC: UIViewController {
 
+    var img : Data?
+    
+    @IBOutlet weak var teamName: UITextField!
+    @IBOutlet weak var teamEmailAddress: UITextField!
     @IBOutlet weak var uploadTeamLogo: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setImageTapGestures()
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func createNewTeam(_ sender: UIButton) {
+        let uds = UserDefaults.standard
+        let userId = uds.string(forKey: user_id)
 
+        
+        loadingShow(vc: self)
+        self.createTeam(userId: userId!) { (success, message) in
+            loadingDismiss()
+            defaultDialog(vc: self, title: "Creating New Team", message: message)
+
+        }
+
+    }
+    
 }
 
 extension CreateNewTeamVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -80,6 +99,7 @@ extension CreateNewTeamVC : UINavigationControllerDelegate, UIImagePickerControl
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             self.uploadTeamLogo.image = image
+            self.img = image.jpegData(compressionQuality: CGFloat.leastNormalMagnitude)!
             
         } else {
             print("importing img: error in uploading image")
@@ -130,7 +150,29 @@ extension CreateNewTeamVC : UINavigationControllerDelegate, UIImagePickerControl
             
             
         }
+    }
+    
+    
+    func createTeam (userId: String, completion: @escaping (Bool, String) -> Void) {
         
+        let uds = UserDefaults.standard
+        let hostId = uds.string(forKey: user_host_id)
+        let isVolunteer = uds.string(forKey: user_is_volunteer)
+        
+        let apiHandler = ApiHandler()
+        var parameters : Parameters = [:]
+
+        parameters["_host"] = hostId ?? ""
+        parameters["isVolunteer"] = isVolunteer ?? true
+        parameters["teamName"] = self.teamName.text ?? ""
+        parameters["teamEmail"] = self.teamEmailAddress.text ?? ""
+        
+        let url = URL(string: "https://straatinfo-backend-v2.herokuapp.com/v1/api/team/new/" + userId)
+        
+        apiHandler.executeMultiPart(url!, parameters: parameters, imageData: self.img, fileName: teamName.text!, photoFieldName: "team-logo", pathExtension: ".jpeg", method: .post, headers: [:]) { (response, err) in
+            // go to main view
+            completion(true, "Success")
+        }
         
     }
     

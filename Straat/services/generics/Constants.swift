@@ -26,6 +26,9 @@ let user_vibration = "user_vibration"
 let user_sound = "user_sound"
 let user_radius = "user_radius"
 
+let user_host_id = "user_host_id"
+let user_is_volunteer = "user_is_volunteer"
+
 //for sending location
 let user_loc_address = "user_loc_address"
 let user_loc_lat = "user_loc_lat"

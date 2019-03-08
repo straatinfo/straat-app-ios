@@ -40,6 +40,10 @@ let user_profile = user + "/profile"
 let user_pic = user + "/pic"
 let user_password = user + "/password"
 
+// team
+
+let team_list = root + "team/list/"
+let update_team = root + "team"
 
 
 

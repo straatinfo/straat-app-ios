@@ -31,6 +31,7 @@ class RegistrationTeamVC: UIViewController {
     
     
     @IBAction func onRegisterPress(_ sender: Any) {
+        
         self.register() { (success, message) in
             if success == true {
                 // go to landing page

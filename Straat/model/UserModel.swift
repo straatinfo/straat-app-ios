@@ -37,6 +37,9 @@ class UserModel {
     var team_name: String?
     var team_email: String?
     
+    var host_id: String?
+    var isVolunteer: Bool?
+    
     let uds = UserDefaults.standard
     
     init () {
@@ -99,6 +102,11 @@ class UserModel {
         self.team_email = fromLoginTeam["teamEmail"] as? String
     }
     
+    init(fromLoginHostId: String, fromLoginIsVolunteer: Bool) {
+        self.host_id = fromLoginHostId
+        self.isVolunteer = fromLoginIsVolunteer
+    }
+    
     // saving users data to local data
     func saveToLocalData() {
 
@@ -126,8 +134,11 @@ class UserModel {
         uds.set( self.team_id, forKey: user_team_id)
         uds.set( self.team_name, forKey: user_team_name)
         uds.set( self.team_email, forKey: user_team_email)
-        
-        print("team object: \(self.team_email)")
+    }
+    
+    func saveOtherToLocalData() {
+        uds.set( self.host_id, forKey: user_host_id)
+        uds.set( self.isVolunteer, forKey: user_is_volunteer)
     }
     
     func removeFromLocalData() {

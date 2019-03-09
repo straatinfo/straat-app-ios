@@ -1493,7 +1493,6 @@
         <!--Create New TeamVC-->
         <scene sceneID="zpb-1f-012">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NGj-Er-EFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="NWU-om-y7Q" customClass="CreateNewTeamVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aaW-Sa-4h4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1555,6 +1554,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createNewTeam:" destination="NWU-om-y7Q" eventType="touchUpInside" id="DUq-Bc-XYx"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="Vit-Kh-0fZ">
                                         <rect key="frame" x="102.5" y="211.5" width="150" height="150"/>
@@ -1601,9 +1603,12 @@
                         <viewLayoutGuide key="safeArea" id="9jA-MM-ON1"/>
                     </view>
                     <connections>
+                        <outlet property="teamEmailAddress" destination="jMO-Vv-58P" id="SOM-5M-h7P"/>
+                        <outlet property="teamName" destination="xaC-yW-NHB" id="loz-Cq-0wE"/>
                         <outlet property="uploadTeamLogo" destination="Vit-Kh-0fZ" id="BV2-VN-wXV"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NGj-Er-EFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-10129" y="4031"/>
         </scene>

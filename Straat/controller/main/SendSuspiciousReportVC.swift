@@ -85,6 +85,7 @@ class SendSuspiciousReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
+        self.initKeyBoardToolBar()
         self.initCategories()
         // Do any additional setup after loading the view.
     }
@@ -171,6 +172,8 @@ class SendSuspiciousReportVC: UIViewController {
         }
         
         //        dismiss(animated: true, completion: nil)
+        
+
     }
     
 
@@ -225,7 +228,7 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         var number = 0
         var views = [UIView]()
         var hideViews = [UIView]()
-        
+
         views = [ChooseCategView, EmergencyView, DescriptionView, DescriptionTextView,
                  PersonsInvolvedView, PersonsInvolvedCountView, PersonsInvolvedDecriptionView, VehiclesInvolvedView, VehiclesInvolvedCountView, VehiclesInvolvedDescriptionView, ImgUIView1, ImgUIView2, ImgUIView3, PersonsDescriptionView, VehicleDescriptionView]
         
@@ -254,6 +257,8 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         
         self.loadPersonsInvolvedDropDown(numberOfPersons: self.numberOfPersons)
         self.loadVehiclesInvolvedDropDown(numberOfVehicles: self.numberOfVechicles)
+        
+        
         print("count: \(self.numberOfPersons.count)")
         
     }
@@ -280,6 +285,27 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
             }
         }
     }
+    
+    // initialise key board toolbar
+    func initKeyBoardToolBar() -> Void {
+        let kbToolBar = UIToolbar()
+        kbToolBar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
+        
+        kbToolBar.setItems([doneBtn], animated: false)
+        
+        self.reportDescription.inputAccessoryView = kbToolBar
+        self.personsInvolvedDescription.inputAccessoryView = kbToolBar
+        self.vehiclesInvolvedDescription.inputAccessoryView = kbToolBar
+        
+    }
+    
+    // dismiss function of keyboard
+    @objc func keyBoardDismiss() -> Void {
+        view.endEditing(true)
+    }
+    
     
     // setting tap gesture recognizer for imageview
     func setImageTapGestures() -> Void {

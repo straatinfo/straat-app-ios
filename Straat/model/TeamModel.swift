@@ -12,9 +12,23 @@ class TeamModel {
     var teamName: String?
     var teamEmail: String?
     
+    var leaderID: String?
+    var profilePic: String?
+    
     init(teamId: String?, teamName: String?, teamEmail: String?) {
         self.teamId = teamId
         self.teamName = teamName
         self.teamEmail = teamEmail
     }
+    
+    init(fromMyTeam: Dictionary<String, Any>) {
+        let profilePicObj = fromMyTeam["_profilePic"] as? [String: Any]
+        
+        self.teamId = fromMyTeam["_id"] as? String
+        self.teamName = fromMyTeam["teamName"] as? String
+        self.teamEmail = fromMyTeam["teamEmail"] as? String
+        self.profilePic = profilePicObj!["secure_url"] as? String
+        
+    }
+    
 }

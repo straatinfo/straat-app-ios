@@ -27,6 +27,7 @@ class PublicSpaceVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
        
         loadingShow(vc: self)
+        self.reports.removeAll()
         self.reportService.getPublicReport(reporterId: "5c63e92035086200156f93e0", reportType: "A") { (success, message, reportModels) in
             
             if success {

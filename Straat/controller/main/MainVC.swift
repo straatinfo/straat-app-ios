@@ -56,7 +56,7 @@ class MainVC: UIViewController {
             }
             
             if hasGranted {
-                
+                loadingDismiss()
                 self.makeNotifConstraint.constant = 0
                 self.sendReport.isHidden = true
                 animateLayout(view: self.view, timeInterval: 0.6)
@@ -187,43 +187,25 @@ extension MainVC : MapViewDelegate {
         let userRadius : Double = 300
         
         loadingShow(vc: self)
-        self.sendReport.isEnabled = false
         
         self.initMapCamera(lat: 52.077646, long: 4.315667)
         self.initMapRadius(lat: 52.077646, long: 4.315667)
-        print("user_id: \(userModel.getDataFromUSD(key: user_id))")
+//        print("user_id: \(userModel.getDataFromUSD(key: user_id))")
         
         reportService.getReportNear(reporterId: userID, lat: hostLat, long: hostLong, radius: userRadius) { (success, message, reportModel) in
             
             if success {
                 for reportMap in reportModel {
                     self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
-//                    let attachments = reportMap.attachments![0]
-//                    let imageUrl = attachments["secure_url"] as? String
-//                    debugPrint("new report attachments: \(imageUrl)")
                 }
-//                self.sendReport.isEnabled = true
-//                loadingDismiss()
+                
             } else {
                 defaultDialog(vc: self, title: "Error", message: message)
                 loadingDismiss()
             }
             
         }
-//        reportService.(userID: userModel.getDataFromUSD(key: user_id)) { (success, message, reportMapModel)  in
-//
-//            if success == true {
-//                for reportMap in reportMapModel {
-//                    self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
-//                }
-//                self.sendReport.isEnabled = true
-////                loadingDismiss()
-//
-//            } else {
-//                defaultDialog(vc: self, title: "Fetching Reports", message: message)
-//            }
-//
-//        }
+
         
     }
     
@@ -245,7 +227,7 @@ extension MainVC : MapViewDelegate {
         circle.map = mapView; // Add it to the map
     }
     
-    
+    // initialise marker dedicated for sending report
     func customMarker (mView : GMSMapView, marker : GMSMarker, title : String?, address : String, lat : Double, long : Double) -> Void {
         // Creates a marker in the center of the map.
         marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -262,6 +244,7 @@ extension MainVC : MapViewDelegate {
         
     }
     
+    // initialise marker dedicated for reports
     func reportMarker (mView : GMSMapView, reportMapModel : ReportModel?) -> Void {
         // Creates a marker in the center of the map.
         let markerReport = GMSMarker()
@@ -283,13 +266,13 @@ extension MainVC : MapViewDelegate {
         
         self.setReportImage(reportMapModel: reportMapModel) { (success) in
             if success {
-                self.sendReport.isEnabled = true
                 loadingDismiss()
             } else {
-                self.sendReport.isEnabled = true
                 loadingDismiss()
             }
         }
+        
+        debugPrint("report map marker loc: \(String(describing: reportMapModel?.location))")
 
     }
     
@@ -314,7 +297,6 @@ extension MainVC : MapViewDelegate {
             
         } else {
             reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
-            self.sendReport.isEnabled = true
             loadingDismiss()
         }
     }

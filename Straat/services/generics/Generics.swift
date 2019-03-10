@@ -48,12 +48,14 @@ import UIKit
 
     // dismiss loading
     func loadingDismiss() {
-
-        activityIndicator!.stopAnimating()
-        activityIndicator!.removeFromSuperview()
-        activityIndicator!.willRemoveSubview(view)
-        activityIndicator = nil
         
+        if let removeViewTag = parentView.viewWithTag(101) {
+            activityIndicator!.stopAnimating()
+            activityIndicator!.removeFromSuperview()
+            activityIndicator!.willRemoveSubview(view)
+            activityIndicator = nil
+            removeViewTag.removeFromSuperview()
+        }
     }
 
 

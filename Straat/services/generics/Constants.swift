@@ -60,3 +60,11 @@ let host_reg_is_volunteer = "host_reg_is_volunteer"
 let host_reg_postal_code = "host_reg_postal_code"
 let host_reg_phone_number = "host_reg_phone_number"
 let host_reg_language = "host_reg_language"
+
+
+//team
+let team_id = "team_id"
+let team_name = "team_name"
+let team_email = "team_email"
+let team_logo = "team_logo"
+let team_leader_id = "team_leader_id"

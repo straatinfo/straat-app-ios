@@ -66,6 +66,7 @@ class SendPublicSpaceReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
+        self.initKeyBoardToolBar()
         self.initCategories()
     }
     
@@ -207,16 +208,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                     self.mainCategory.append(mainCategory)
                     self.mainCategoryName.append(name)
                     self.subCategory = mainCateg.subCategories!
-                
-//                    print("sub categ: \(mainCateg.subCategories)")
-                    
-//                    if mainCateg.subCategories.count > 0 {
-//                        for subCateg in mainCateg.subCategories {
-//                            self.extractSubCategory(subCateg: self.subCategory, categoryName: name )
-//                        }
-//                    }
-                    
-//                    print("MAIN CAT _reportType codeId", mainCateg.codeId!)
+
                     print("MAIN CAT A", mainCateg)
                 }
                 self.loadMainCategDropDown(mainCategList: self.mainCategoryName, subCategories: self.subCategory)
@@ -224,11 +216,24 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
             }
         }
         
-        //        categoryService.getMainCategoryB(language: "nl") { (success, message, mainCategories) in
-        //            if success == true {
-        //                print("MAIN CAT B", mainCategories)
-        //            }
-        //        }
+    }
+    
+    // initialise key board toolbar
+    func initKeyBoardToolBar() -> Void {
+        let kbToolBar = UIToolbar()
+        kbToolBar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
+        
+        kbToolBar.setItems([doneBtn], animated: false)
+        
+        self.reportDescription.inputAccessoryView = kbToolBar
+        
+    }
+    
+    // dismiss function of keyboard
+    @objc func keyBoardDismiss() -> Void {
+        view.endEditing(true)
     }
     
     func extractSubCategory (subCateg : SubCategoryModel , categoryName : String) {
@@ -336,15 +341,6 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                 self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage1") { (success, message, photoMetaData, dataObject) in
                     
                     if success {
-//                        let public_id = dataObject!["public_id"] as? String
-//                        let mimetype = dataObject!["mimetype"] as? String
-//                        let url = dataObject!["url"] as? String
-//                        let secure_url = dataObject!["secure_url"] as? String
-//                        let format = dataObject!["format"] as? String
-//                        let etag = dataObject!["etag"] as? String
-//                        let width = dataObject!["width"] as? Int
-//                        let height = dataObject!["height"] as? Int
-                        
                         self.imageMetaData1 = dataObject
 //                        debugPrint("dataObject: \(String(describing: dataObject))")
 //                        print("public_id: \(String(describing: public_id))")

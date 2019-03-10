@@ -327,6 +327,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menu" destination="cKh-ya-nc4" id="OS8-iL-EpM"/>
+                        <outlet property="teamListTableView" destination="CgS-O1-FDI" id="UJm-Ah-O5n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vBz-Vz-IRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -540,6 +541,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="teamEmail" destination="jBF-Rj-2TT" id="Oak-Y5-abR"/>
+                        <outlet property="teamLogo" destination="b09-6a-x98" id="cYQ-En-UKn"/>
+                        <outlet property="teamName" destination="LlT-ey-8y5" id="SHq-Ut-RZn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVL-Rx-pZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

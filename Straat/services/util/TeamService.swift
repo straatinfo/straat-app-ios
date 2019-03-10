@@ -10,11 +10,12 @@ import Alamofire
 
 class TeamService {
     let apiHandler = ApiHandler()
+    
     init () {
         
     }
     
-    func getTeamList (userId: String, completion: @escaping (Bool, String, [[String: Any]]?) -> Void) {
+    func getTeamList (userId: String, completion: @escaping (Bool, String, [TeamModel]?) -> Void) {
         let url = team_list + userId
         
         apiHandler.executeWithHeaders(URL(string: url)!, parameters: [:], method: .get, destination: .queryString, headers: [:]) { (response, err) in
@@ -24,11 +25,17 @@ class TeamService {
                 
                 completion(false, error.localizedDescription, nil)
             } else if let data = response {
-                let dataObject = data["data"] as? [[String: Any]]
+                let dataObject = data["data"] as? [[String:Any]] ?? []
+                var teamModel = [TeamModel]()
                 
-                if dataObject != nil {
+                if dataObject.count > 0 {
                     
-                    completion(true, "Success", dataObject)
+                    for teamModels in dataObject {
+                        let teamModelItem = TeamModel(fromMyTeam: teamModels)
+                        teamModel.append(teamModelItem)
+                    }
+                    
+                    completion(true, "Success", teamModel)
                 } else {
                     completion(false, "Failed", nil)
                 }

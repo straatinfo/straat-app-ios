@@ -21,6 +21,7 @@ class SuspiciousSituationVC: UIViewController {
         super.viewDidLoad()
         
         loadingShow(vc: self)
+        self.reports.removeAll()
         self.reportService.getPublicReport(reporterId: "5c63e92035086200156f93e0", reportType: "B") { (success, message, reportModels) in
             
             if success {

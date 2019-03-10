@@ -7,15 +7,65 @@
 
 import UIKit
 import Photos
+import Alamofire
+import AlamofireImage
+
 class TeamDetailsUpdateVC: UIViewController {
 
+    @IBOutlet weak var teamName: UITextField!
+    @IBOutlet weak var teamEmail: UITextField!
     @IBOutlet weak var uploadTeamLogo: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setImageTapGestures()
+        self.initView()
         // Do any additional setup after loading the view.
     }
 
+}
+
+extension TeamDetailsUpdateVC {
+    
+    func initView() {
+        
+        let uds = UserDefaults.standard
+        let teamName = uds.string(forKey: team_name)
+        let teamEmail = uds.string(forKey: team_email)
+        let teamLogo = uds.string(forKey: team_logo)
+        
+        self.teamName.text = teamName
+        self.teamEmail.text = teamEmail
+        
+        loadingShow(vc: self)
+        
+        if teamLogo != nil {
+            self.getImage(imageUrl: teamLogo!) { (success, teamLogo) in
+                if success == true {
+                    self.uploadTeamLogo.image = teamLogo
+                    loadingDismiss()
+                }
+            }
+        } else {
+            loadingDismiss()
+        }
+
+        
+    }
+    
+    
+    func getImage(imageUrl: String, completion: @escaping (Bool, UIImage?) -> Void) -> Void {
+        
+        Alamofire.request(URL(string: imageUrl)!).responseImage { response in
+            
+            if let img = response.result.value {
+                completion(true, img)
+            } else {
+                completion(false, nil)
+            }
+        }
+    }
+    
 }
 
 extension TeamDetailsUpdateVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {

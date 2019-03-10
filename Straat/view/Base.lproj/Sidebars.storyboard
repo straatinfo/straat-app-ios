@@ -637,10 +637,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="aA1-xY-C06">
-                                        <rect key="frame" x="102.5" y="211.5" width="150" height="150"/>
+                                        <rect key="frame" x="102.5" y="212.5" width="150" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="Hkw-Qb-V0G"/>
-                                            <constraint firstAttribute="height" constant="150" id="gGs-Gb-PyE"/>
+                                            <constraint firstAttribute="width" constant="150" id="EGT-4K-1w7"/>
+                                            <constraint firstAttribute="height" constant="150" id="vAe-Gc-0vI"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -651,16 +651,15 @@
                                     <constraint firstItem="wZY-Er-G5e" firstAttribute="leading" secondItem="nR3-99-Pxn" secondAttribute="leading" constant="10" id="OkX-wz-wEw"/>
                                     <constraint firstItem="T2i-E1-RN6" firstAttribute="top" secondItem="wZY-Er-G5e" secondAttribute="bottom" constant="10" id="Pjw-UO-oNW"/>
                                     <constraint firstAttribute="bottom" secondItem="k07-yI-xYN" secondAttribute="bottom" constant="10" id="QOt-K1-Dcj"/>
-                                    <constraint firstItem="aA1-xY-C06" firstAttribute="leading" secondItem="nR3-99-Pxn" secondAttribute="leading" constant="102.5" id="Qhx-7s-DNc"/>
                                     <constraint firstItem="T2i-E1-RN6" firstAttribute="leading" secondItem="nR3-99-Pxn" secondAttribute="leading" constant="10" id="UNa-OC-PBE"/>
                                     <constraint firstItem="wZY-Er-G5e" firstAttribute="top" secondItem="2hJ-OI-8Eq" secondAttribute="bottom" constant="10" id="aP1-EH-2Wi"/>
+                                    <constraint firstItem="aA1-xY-C06" firstAttribute="centerX" secondItem="nR3-99-Pxn" secondAttribute="centerX" id="cex-mS-qRw"/>
+                                    <constraint firstItem="aA1-xY-C06" firstAttribute="top" secondItem="T2i-E1-RN6" secondAttribute="bottom" constant="50" id="e2A-dm-9mZ"/>
                                     <constraint firstAttribute="trailing" secondItem="2hJ-OI-8Eq" secondAttribute="trailing" constant="10" id="gVP-91-EAY"/>
                                     <constraint firstItem="k07-yI-xYN" firstAttribute="leading" secondItem="nR3-99-Pxn" secondAttribute="leading" constant="10" id="mqg-WF-Gi2"/>
-                                    <constraint firstItem="aA1-xY-C06" firstAttribute="top" secondItem="T2i-E1-RN6" secondAttribute="bottom" constant="49" id="n9U-Xz-0c1"/>
                                     <constraint firstAttribute="trailing" secondItem="wZY-Er-G5e" secondAttribute="trailing" constant="10" id="njj-mY-eeU"/>
                                     <constraint firstItem="2hJ-OI-8Eq" firstAttribute="top" secondItem="nR3-99-Pxn" secondAttribute="top" constant="10" id="oCK-ig-6TC"/>
                                     <constraint firstAttribute="trailing" secondItem="k07-yI-xYN" secondAttribute="trailing" constant="10" id="uVy-P6-BkI"/>
-                                    <constraint firstAttribute="trailing" secondItem="aA1-xY-C06" secondAttribute="trailing" constant="102.5" id="uqX-DI-N3p"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -675,6 +674,8 @@
                         <viewLayoutGuide key="safeArea" id="sZB-kQ-sj0"/>
                     </view>
                     <connections>
+                        <outlet property="teamEmail" destination="MsJ-KW-Atd" id="iEl-6F-qT1"/>
+                        <outlet property="teamName" destination="qhF-2Z-Izw" id="QC7-rq-4B8"/>
                         <outlet property="uploadTeamLogo" destination="aA1-xY-C06" id="zNP-wE-9TU"/>
                     </connections>
                 </viewController>

@@ -151,6 +151,9 @@
                                                 <color key="textColor" red="0.43137254899999999" green="0.52156862749999999" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="rb9-9R-lFz" id="eyq-UN-T5g"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -357,6 +360,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="lQh-D8-Ivu" id="Vmw-fW-J09"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4M-4u-nv0">
                                                         <rect key="frame" x="0.0" y="45" width="384" height="35"/>
@@ -366,6 +372,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" smartDashesType="yes" textContentType="password"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="lQh-D8-Ivu" id="VZ5-FY-Ppg"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -462,6 +471,9 @@
                                                 <color key="textColor" red="0.43137254899999999" green="0.52156862749999999" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="q7l-Qo-mST" id="TFy-4f-5cL"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>

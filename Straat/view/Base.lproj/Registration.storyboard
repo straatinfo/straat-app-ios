@@ -57,9 +57,6 @@
                                                         <state key="normal" title="Report">
                                                             <color key="titleColor" red="0.30980392156862746" green="0.41568627450980389" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="onReportTabPress:" destination="O9O-pR-1m0" eventType="touchUpInside" id="DvV-ZA-JzO"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-vX-naG">
                                                         <rect key="frame" x="230" y="0.0" width="115" height="35"/>
@@ -67,9 +64,6 @@
                                                         <state key="normal" title="Team">
                                                             <color key="titleColor" red="0.30980392156862746" green="0.41568627450980389" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <connections>
-                                                            <segue destination="Rs7-qQ-TUZ" kind="show" id="1fz-wu-Iew"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -175,7 +169,10 @@
                                                                                 <rect key="frame" x="0.0" y="25.5" width="315" height="30"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" textContentType="given-name"/>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="O9O-pR-1m0" id="Yw1-6N-RcI"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -195,7 +192,10 @@
                                                                                 <rect key="frame" x="0.0" y="25.5" width="315" height="30"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="O9O-pR-1m0" id="8Ed-PT-n7y"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -215,7 +215,10 @@
                                                                                 <rect key="frame" x="0.0" y="25.5" width="315" height="30"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="O9O-pR-1m0" id="JFc-Cj-jyB"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -238,6 +241,7 @@
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                                 <connections>
                                                                                     <action selector="getPostCode:" destination="O9O-pR-1m0" eventType="editingDidEnd" id="8LE-oh-9UV"/>
+                                                                                    <outlet property="delegate" destination="O9O-pR-1m0" id="kQd-qI-ZwT"/>
                                                                                 </connections>
                                                                             </textField>
                                                                         </subviews>
@@ -261,6 +265,7 @@
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                                 <connections>
                                                                                     <action selector="sendPostNumber:" destination="O9O-pR-1m0" eventType="editingDidEnd" id="qJ8-0z-RDu"/>
+                                                                                    <outlet property="delegate" destination="O9O-pR-1m0" id="OhP-zg-NEd"/>
                                                                                 </connections>
                                                                             </textField>
                                                                         </subviews>
@@ -321,7 +326,10 @@
                                                                                 <rect key="frame" x="0.0" y="25.5" width="315" height="30"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="O9O-pR-1m0" id="wMK-rm-Kht"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -341,7 +349,10 @@
                                                                                 <rect key="frame" x="0.0" y="25.5" width="315" height="30"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="O9O-pR-1m0" id="0u7-T4-d9a"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -361,7 +372,10 @@
                                                                                 <rect key="frame" x="0.0" y="25.5" width="315" height="30"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="O9O-pR-1m0" id="c2V-uw-KlM"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -535,6 +549,7 @@
                         <outlet property="lastnameTxtBox" destination="L8Y-wK-edr" id="KHL-jW-7Xl"/>
                         <outlet property="male" destination="j9e-e1-HgV" id="GQk-aL-F2M"/>
                         <outlet property="mobileNumberTxtBox" destination="VXz-o9-eil" id="sDG-XC-IfI"/>
+                        <outlet property="nextStep" destination="2AT-7M-kN7" id="ffd-8g-Lf7"/>
                         <outlet property="passwordTxtBox" destination="RHX-1b-msE" id="wP0-Kh-iUK"/>
                         <outlet property="postCodeTxtBox" destination="nYG-vD-h8Y" id="0jy-o7-f5K"/>
                         <outlet property="postNumberTxtBox" destination="HtW-kA-MhW" id="5Cg-Ib-Px8"/>
@@ -1095,6 +1110,8 @@
                         <viewLayoutGuide key="safeArea" id="8bK-jL-seo"/>
                     </view>
                     <connections>
+                        <outlet property="individualReporterButton" destination="cxO-Cr-wDE" id="N3U-JP-DPj"/>
+                        <outlet property="registerButton" destination="F6J-OK-UsK" id="xEf-Lu-pDT"/>
                         <outlet property="teamDropdown" destination="3Kp-7z-kiu" id="rjY-Bf-bCb"/>
                         <outlet property="teamListView" destination="plB-Hg-yiT" id="yhe-dR-0vM"/>
                     </connections>
@@ -1187,6 +1204,9 @@
                                                         <color key="textColor" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="ESZ-MO-LCQ" id="RxA-L9-Jwn"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -1204,6 +1224,9 @@
                                                         <color key="textColor" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="ESZ-MO-LCQ" id="JUR-z0-nSa"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -1274,7 +1297,7 @@
         <image name="upload-img" width="192" height="192"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1fz-wu-Iew"/>
+        <segue reference="mcr-1N-n6a"/>
         <segue reference="NUV-xW-xjc"/>
     </inferredMetricsTieBreakers>
 </document>

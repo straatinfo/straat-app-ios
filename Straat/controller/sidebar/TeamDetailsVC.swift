@@ -58,13 +58,18 @@ extension TeamDetailsVC {
         self.teamEmail.text = teamEmail
         
         loadingShow(vc: self)
-        self.getImage(imageUrl: teamLogo!) { (success, teamLogo) in
-            if success == true {
-                self.teamLogo.image = teamLogo
-                loadingDismiss()
+        if teamLogo != nil {
+            self.getImage(imageUrl: teamLogo!) { (success, teamLogo) in
+                if success == true {
+                    self.teamLogo.image = teamLogo
+                    loadingDismiss()
+                }
             }
+        } else {
+            loadingDismiss()
         }
-        // Do any additional setup after loading the view.
+
+
     }
     
     

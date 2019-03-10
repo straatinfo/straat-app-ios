@@ -110,13 +110,16 @@ extension TeamVC : UITableViewDelegate, UITableViewDataSource {
         row.teamName.text = self.teamModelArr[indexPath.row].teamName
         row.teamEmail.text = self.teamModelArr[indexPath.row].teamEmail
         
-        self.getImage(imageUrl: self.teamModelArr[indexPath.row].profilePic!) { (success, teamLogo) in
-            
-            if success == true {
-                row.teamLogo.image = teamLogo
+        if self.teamModelArr[indexPath.row].profilePic != nil {
+            self.getImage(imageUrl: self.teamModelArr[indexPath.row].profilePic!) { (success, teamLogo) in
+                
+                if success == true {
+                    row.teamLogo.image = teamLogo
+                }
+                
             }
-            
         }
+
         
         return row
     }

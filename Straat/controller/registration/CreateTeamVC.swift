@@ -56,6 +56,15 @@ class CreateTeamVC: UIViewController {
     
 }
 
+extension CreateTeamVC : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
+
 // for implementing functions
 extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     

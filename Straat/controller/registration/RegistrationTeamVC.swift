@@ -13,7 +13,9 @@ class RegistrationTeamVC: UIViewController {
 
     @IBOutlet weak var teamDropdown: DropDown!
     @IBOutlet weak var teamListView: UIView!
-    
+    @IBOutlet weak var individualReporterButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+
     var apiHandler = ApiHandler()
     var teamList = [String]()
     var teamListModel = [TeamListModel]()
@@ -50,6 +52,10 @@ extension RegistrationTeamVC {
     // executing default view of registration team section
     func defaultView() {
         teamListView.isHidden = true
+        self.individualReporterButton.isEnabled = false
+        self.individualReporterButton.backgroundColor = UIColor.lightGray
+        self.registerButton.isEnabled = false
+        self.registerButton.backgroundColor = UIColor.lightGray
     }
     
     // show team list and fetch team list data
@@ -103,6 +109,8 @@ extension RegistrationTeamVC {
         
         teamDropdown.didSelect { (selectedItem, index, id) in
             print("selected team_id: \(String(describing: teamListModel[index].id))")
+            self.registerButton.isEnabled = false
+            self.registerButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
             
         }
     }

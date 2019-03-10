@@ -596,6 +596,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pq6-Od-oix" id="saN-OT-0SI"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -617,6 +620,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="pq6-Od-oix" id="RG1-6c-gJM"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -746,6 +752,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="o8T-vc-SIb"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="vC7-91-ddL"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -790,6 +797,7 @@
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="aBp-Nm-x9Z"/>
                                                                     <action selector="lnameOnValueChange:" destination="rVb-OV-qe3" eventType="valueChanged" id="8qn-6l-siR"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="if3-RS-vIk"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -833,6 +841,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingChanged" id="guS-Ok-xok"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="DN9-hJ-2Cw"/>
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Postal Code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CnW-Om-viu">
@@ -842,6 +851,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="uhx-vA-uMd"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="IzU-ft-gez"/>
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Street" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w9M-8y-NfF">
@@ -851,6 +861,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="knd-1C-CkX"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="HiT-hb-ZbD"/>
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Town" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="s0Q-rH-SaD">
@@ -860,6 +871,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="IJO-3D-eNo"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="Mmb-vr-eos"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -905,6 +917,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="LOw-Hr-Dhc"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="seM-42-J4c"/>
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your contact number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pn8-xl-bqi">
@@ -914,6 +927,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="qgG-kJ-775"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="Qht-WW-M3D"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -957,6 +971,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="K0W-Vh-Fcj"/>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="tHG-pu-Qub"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -998,6 +1013,9 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="rVb-OV-qe3" id="Owq-7G-6pi"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -1199,12 +1217,18 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="d8P-z5-ECC" id="S2O-Yc-Ecn"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pML-2e-xt5">
                                                 <rect key="frame" x="0.0" y="50" width="325" height="40"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="d8P-z5-ECC" id="N1L-gF-bwj"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -1522,6 +1546,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="NWU-om-y7Q" id="Agk-oe-Uws"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -1543,6 +1570,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="NWU-om-y7Q" id="wKa-5p-6BT"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -1566,10 +1596,10 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-img" translatesAutoresizingMaskIntoConstraints="NO" id="Vit-Kh-0fZ">
-                                        <rect key="frame" x="102.5" y="211.5" width="150" height="150"/>
+                                        <rect key="frame" x="102.5" y="212.5" width="150" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="FDK-DZ-pe9"/>
-                                            <constraint firstAttribute="height" constant="150" id="psF-Su-5Eh"/>
+                                            <constraint firstAttribute="width" constant="150" id="gbx-Vs-9nn"/>
+                                            <constraint firstAttribute="height" constant="150" id="s2y-LE-WOY"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plj-S0-SEr">
@@ -1583,17 +1613,16 @@
                                 <constraints>
                                     <constraint firstItem="bJj-SS-wOL" firstAttribute="leading" secondItem="4i9-VI-S8L" secondAttribute="leading" constant="10" id="0lE-OH-ekQ"/>
                                     <constraint firstItem="NLB-1W-ea0" firstAttribute="leading" secondItem="4i9-VI-S8L" secondAttribute="leading" constant="10" id="DhN-Rw-HcJ"/>
+                                    <constraint firstItem="Vit-Kh-0fZ" firstAttribute="top" secondItem="bJj-SS-wOL" secondAttribute="bottom" constant="50" id="JTW-XT-rIX"/>
+                                    <constraint firstItem="Vit-Kh-0fZ" firstAttribute="centerX" secondItem="4i9-VI-S8L" secondAttribute="centerX" id="KrI-xF-7lr"/>
                                     <constraint firstAttribute="trailing" secondItem="V1q-B5-XZT" secondAttribute="trailing" constant="10" id="O9W-EN-zlm"/>
                                     <constraint firstItem="plj-S0-SEr" firstAttribute="leading" secondItem="4i9-VI-S8L" secondAttribute="leading" constant="10" id="THd-me-QNf"/>
                                     <constraint firstAttribute="trailing" secondItem="bJj-SS-wOL" secondAttribute="trailing" constant="10" id="Uwc-7E-rhu"/>
                                     <constraint firstAttribute="trailing" secondItem="NLB-1W-ea0" secondAttribute="trailing" constant="10" id="WFh-3Y-fIL"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vit-Kh-0fZ" secondAttribute="trailing" constant="102.5" id="XPl-Oo-t4k"/>
                                     <constraint firstItem="V1q-B5-XZT" firstAttribute="leading" secondItem="4i9-VI-S8L" secondAttribute="leading" constant="10" id="cZQ-Le-BIk"/>
                                     <constraint firstItem="V1q-B5-XZT" firstAttribute="top" secondItem="plj-S0-SEr" secondAttribute="bottom" constant="20" id="gGj-YF-6QV"/>
                                     <constraint firstAttribute="trailing" secondItem="plj-S0-SEr" secondAttribute="trailing" constant="10" id="gak-yN-Neu"/>
                                     <constraint firstItem="plj-S0-SEr" firstAttribute="top" secondItem="4i9-VI-S8L" secondAttribute="top" id="hVZ-MB-mdV"/>
-                                    <constraint firstItem="Vit-Kh-0fZ" firstAttribute="top" secondItem="bJj-SS-wOL" secondAttribute="bottom" constant="49" id="rMA-sE-QPd"/>
-                                    <constraint firstItem="Vit-Kh-0fZ" firstAttribute="leading" secondItem="4i9-VI-S8L" secondAttribute="leading" constant="102.5" id="sxG-ft-nEq"/>
                                     <constraint firstAttribute="bottom" secondItem="NLB-1W-ea0" secondAttribute="bottom" constant="10" id="td0-IU-lJw"/>
                                     <constraint firstItem="bJj-SS-wOL" firstAttribute="top" secondItem="V1q-B5-XZT" secondAttribute="bottom" constant="10" id="wNy-a8-MdT"/>
                                 </constraints>
@@ -1628,6 +1657,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="P7e-RK-kUh"/>
-        <segue reference="dQc-Z9-kwt"/>
+        <segue reference="lSH-CC-cnA"/>
     </inferredMetricsTieBreakers>
 </document>

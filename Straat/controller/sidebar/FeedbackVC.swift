@@ -22,6 +22,7 @@ class FeedbackVC: UIViewController {
         
         self.createMenu()
         self.navColor()
+        self.initKeyBoardToolBar()
         // Do any additional setup after loading the view.
     }
     
@@ -50,7 +51,7 @@ class FeedbackVC: UIViewController {
     
 }
 
-extension FeedbackVC {
+extension FeedbackVC : UITextFieldDelegate {
     
     // for revealing side bar menu
     func createMenu() -> Void {
@@ -76,7 +77,31 @@ extension FeedbackVC {
         navigationItem.title = "Straat.info"
     }
     
+    // initialise key board toolbar
+    func initKeyBoardToolBar() -> Void {
+        let kbToolBar = UIToolbar()
+        kbToolBar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
+        
+        kbToolBar.setItems([doneBtn], animated: false)
+        
+        self.textInput.inputAccessoryView = kbToolBar
+        
+    }
+    
+    // dismiss function of keyboard
+    @objc func keyBoardDismiss() -> Void {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
+
 
 extension FeedbackVC {
     // custom functions

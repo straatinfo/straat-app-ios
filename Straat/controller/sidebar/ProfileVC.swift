@@ -80,7 +80,7 @@ class ProfileVC: UIViewController {
     
 }
 
-extension ProfileVC {
+extension ProfileVC : UITextFieldDelegate {
     
     // for revealing side bar menu
     func createMenu() -> Void {
@@ -106,6 +106,10 @@ extension ProfileVC {
         navigationItem.title = "Straat.info"
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
 

@@ -25,7 +25,12 @@ class TeamDetailsUpdateVC: UIViewController {
 
 }
 
-extension TeamDetailsUpdateVC {
+extension TeamDetailsUpdateVC : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func initView() {
         

@@ -39,6 +39,15 @@ class CreateNewTeamVC: UIViewController {
     
 }
 
+extension CreateNewTeamVC : UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
+
 extension CreateNewTeamVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     // setting tap gesture recognizer for imageview

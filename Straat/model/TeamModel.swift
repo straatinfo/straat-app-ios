@@ -22,12 +22,17 @@ class TeamModel {
     }
     
     init(fromMyTeam: Dictionary<String, Any>) {
-        let profilePicObj = fromMyTeam["_profilePic"] as? [String: Any]
+        let profilePicObj = fromMyTeam["_profilePic"] as? [String: Any] ?? nil
         
         self.teamId = fromMyTeam["_id"] as? String
         self.teamName = fromMyTeam["teamName"] as? String
         self.teamEmail = fromMyTeam["teamEmail"] as? String
-        self.profilePic = profilePicObj!["secure_url"] as? String
+        
+        if profilePicObj != nil {
+            self.profilePic = profilePicObj!["secure_url"] as? String
+        }
+        
+
         
     }
     

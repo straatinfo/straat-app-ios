@@ -42,8 +42,13 @@ class EnterCodeVC: UIViewController {
 
 
 // for implementing functions
-extension EnterCodeVC {
+extension EnterCodeVC : UITextFieldDelegate {
  
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     // fetching data based on access code of user input
     func code( params : Parameters ) {
         

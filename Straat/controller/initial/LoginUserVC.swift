@@ -45,8 +45,12 @@ class LoginUserVC: UIViewController {
 
 
 // for implementing functions
-extension LoginUserVC {
+extension LoginUserVC : UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     // fetching user data
     func login( params: Parameters) {
         

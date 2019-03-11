@@ -28,12 +28,16 @@ class RegistrationDataVC: UIViewController {
     @IBOutlet weak var emailTxtBox: UITextField!
     @IBOutlet weak var mobileNumberTxtBox: UITextField!
     @IBOutlet weak var passwordTxtBox: UITextField!
+    @IBOutlet weak var nextStep: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         let userData = self.getInputs()
         self.loadInputs(userData: userData)
+        self.initView()
+        self.initKeyBoardToolBar()
     }
     
 
@@ -85,10 +89,6 @@ class RegistrationDataVC: UIViewController {
         tacVC.acceptTACDele = self
         present(tacVC, animated: true, completion: nil)
     }
-
-    @IBAction func onReportTabPress(_ sender: Any) {
-        self.goToStep2()
-    }
     
     @IBAction func onStep2Press(_ sender: Any) {
         self.goToStep2()
@@ -97,13 +97,52 @@ class RegistrationDataVC: UIViewController {
 
 
 //for implementating delegate
-extension RegistrationDataVC : acceptTACDelegate {
+extension RegistrationDataVC : acceptTACDelegate, UITextFieldDelegate, UITextViewDelegate {
     func state(state: Bool) {
         self.termsAndCondition.isSelected = state
         self.saveInputs() { (success, message) in
             print("Success: \(success), message: \(message)")
         }
+        
+        if state == true {
+            self.nextStep.isEnabled = true
+            self.nextStep.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+        } else {
+            self.nextStep.isEnabled = false
+            self.nextStep.backgroundColor = UIColor.lightGray
+
+        }
         print("state: \(state)" )
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func initView() {
+        self.streetTxtBox.isEnabled = false
+        self.townTxtBox.isEnabled = false
+        self.nextStep.isEnabled = false
+        self.nextStep.backgroundColor = UIColor.lightGray
+    }
+    
+    // initialise key board toolbar
+    func initKeyBoardToolBar() -> Void {
+        let kbToolBar = UIToolbar()
+        kbToolBar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
+        
+        kbToolBar.setItems([doneBtn], animated: false)
+        
+        self.mobileNumberTxtBox.inputAccessoryView = kbToolBar
+        
+    }
+    
+    // dismiss function of keyboard
+    @objc func keyBoardDismiss() -> Void {
+        view.endEditing(true)
     }
 }
 

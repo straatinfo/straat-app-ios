@@ -26,8 +26,8 @@
 /* Class = "UITextField"; placeholder = "Enter Postal Code"; ObjectID = "CnW-Om-viu"; */
 "CnW-Om-viu.placeholder" = "Voer postcode in";
 
-/* Class = "UILabel"; text = "99"; ObjectID = "DOf-T5-1j1"; */
-"DOf-T5-1j1.text" = "99";
+/* Class = "UILabel"; text = "0"; ObjectID = "DOf-T5-1j1"; */
+"DOf-T5-1j1.text" = "0";
 
 /* Class = "UILabel"; text = "Team Name"; ObjectID = "EdZ-C9-SJK"; */
 "EdZ-C9-SJK.text" = "Team naam";
@@ -80,8 +80,8 @@
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "jwy-cx-H7k"; */
 "jwy-cx-H7k.title" = "Item";
 
-/* Class = "UILabel"; text = "999"; ObjectID = "keo-QU-ZUA"; */
-"keo-QU-ZUA.text" = "999";
+/* Class = "UILabel"; text = "0"; ObjectID = "keo-QU-ZUA"; */
+"keo-QU-ZUA.text" = "0";
 
 /* Class = "UIButton"; normalTitle = "Messages"; ObjectID = "klu-SK-3cP"; */
 "klu-SK-3cP.normalTitle" = "Berichten";

@@ -133,13 +133,12 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         let teamId = uds.object(forKey: prefix + "teamId") as? String? ?? nil
         let teamEmail = uds.object(forKey: prefix + "teamEmail") as? String? ?? nil
         
-        let hostPrefix = "host-reg"
         
-        let hostId = uds.object(forKey: hostPrefix + "id") as? String? ?? nil
+        let hostId = uds.object(forKey: host_reg_id) as? String? ?? nil
         
-        let long = uds.object(forKey: hostPrefix + "long") as? Double? ?? nil
+        let long = uds.object(forKey: host_reg_long) as? Double? ?? nil
         
-        let lat = uds.object(forKey: hostPrefix + "lat") as? Double? ?? nil
+        let lat = uds.object(forKey: host_reg_lat) as? Double? ?? nil
         
         let team = TeamModel(teamId: teamId, teamName: teamName, teamEmail: teamEmail)
         

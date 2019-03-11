@@ -173,8 +173,8 @@
 /* Class = "UILabel"; text = "Description"; ObjectID = "j8V-QT-uSI"; */
 "j8V-QT-uSI.text" = "Omschrijving";
 
-/* Class = "UILabel"; text = "999"; ObjectID = "kYt-Ml-bZE"; */
-"kYt-Ml-bZE.text" = "999";
+/* Class = "UILabel"; text = "0"; ObjectID = "kYt-Ml-bZE"; */
+"kYt-Ml-bZE.text" = "0";
 
 /* Class = "UILabel"; text = "Description"; ObjectID = "kaR-6X-FZ8"; */
 "kaR-6X-FZ8.text" = "Omschrijving";
@@ -194,8 +194,8 @@
 /* Class = "UIButton"; normalTitle = "Send Request"; ObjectID = "nyp-hP-zFK"; */
 "nyp-hP-zFK.normalTitle" = "Verzend Verzoek";
 
-/* Class = "UILabel"; text = "999"; ObjectID = "p2d-lV-l8v"; */
-"p2d-lV-l8v.text" = "999";
+/* Class = "UILabel"; text = "0"; ObjectID = "p2d-lV-l8v"; */
+"p2d-lV-l8v.text" = "0";
 
 /* Class = "UILabel"; text = "Number of Persons Involved"; ObjectID = "qBm-4A-ehM"; */
 "qBm-4A-ehM.text" = "Aantal betrokken personen";

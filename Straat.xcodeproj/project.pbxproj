@@ -896,7 +896,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.straat.straatinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eversun.straatinfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -919,7 +919,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.straat.straatinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eversun.straatinfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

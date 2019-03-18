@@ -18,6 +18,7 @@ target 'Straat' do
   # Pod for Kingfisher (imageloader)
   pod 'Kingfisher', '~> 5.0'
   
+  pod 'IQKeyboardManagerSwift'
 end
 
 post_install do |installer|

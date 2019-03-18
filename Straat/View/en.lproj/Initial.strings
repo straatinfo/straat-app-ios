@@ -1,0 +1,60 @@
+
+/* Class = "UIButton"; normalTitle = "No"; ObjectID = "05S-nr-tKR"; */
+"05S-nr-tKR.normalTitle" = "No";
+
+/* Class = "UILabel"; text = "Enter Your Code Here:"; ObjectID = "23e-RC-Hwr"; */
+"23e-RC-Hwr.text" = "Enter Your Code Here:";
+
+/* Class = "UITextField"; placeholder = "Enter Your Code"; ObjectID = "8Mq-dG-pkY"; */
+"8Mq-dG-pkY.placeholder" = "Enter Your Code";
+
+/* Class = "UILabel"; text = "Login:"; ObjectID = "9ue-31-fzJ"; */
+"9ue-31-fzJ.text" = "Login:";
+
+/* Class = "UITextField"; placeholder = "Enter Your Code"; ObjectID = "E5d-b4-JsB"; */
+"E5d-b4-JsB.placeholder" = "Enter Your Code";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "Kte-6V-iLp"; */
+"Kte-6V-iLp.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "OPE-dC-2WA"; */
+"OPE-dC-2WA.normalTitle" = "CANCEL";
+
+/* Class = "UITextField"; placeholder = "Email/Username"; ObjectID = "PPt-VT-8ml"; */
+"PPt-VT-8ml.placeholder" = "Email/Username";
+
+/* Class = "UIButton"; normalTitle = "Yes"; ObjectID = "QCk-XD-wfM"; */
+"QCk-XD-wfM.normalTitle" = "Yes";
+
+/* Class = "UILabel"; text = "New User?"; ObjectID = "RFv-ex-TKI"; */
+"RFv-ex-TKI.text" = "New User?";
+
+/* Class = "UIButton"; normalTitle = "SEND REQUEST"; ObjectID = "U3x-WO-O3z"; */
+"U3x-WO-O3z.normalTitle" = "SEND REQUEST";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "UBr-a6-kkM"; */
+"UBr-a6-kkM.text" = "Loading...";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password"; ObjectID = "ZBy-Iy-aov"; */
+"ZBy-Iy-aov.normalTitle" = "Forgot Password";
+
+/* Class = "UILabel"; text = "This app only works with an access code at this time. Do you have an access code?"; ObjectID = "bhi-bZ-95k"; */
+"bhi-bZ-95k.text" = "This app only works with an access code at this time. Do you have an access code?";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "dOJ-jr-BRb"; */
+"dOJ-jr-BRb.normalTitle" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Okay"; ObjectID = "e52-vO-H4L"; */
+"e52-vO-H4L.normalTitle" = "Okay";
+
+/* Class = "UITextField"; placeholder = "Your Own Password"; ObjectID = "f4M-4u-nv0"; */
+"f4M-4u-nv0.placeholder" = "Your Own Password";
+
+/* Class = "UILabel"; text = "Enter your email"; ObjectID = "mQs-5H-YOZ"; */
+"mQs-5H-YOZ.text" = "Enter your email";
+
+/* Class = "UILabel"; text = "Existing User?"; ObjectID = "uWS-CA-nbl"; */
+"uWS-CA-nbl.text" = "Existing User?";
+
+/* Class = "UIButton"; normalTitle = "Click Here"; ObjectID = "xth-Nl-U7Z"; */
+"xth-Nl-U7Z.normalTitle" = "Click Here";

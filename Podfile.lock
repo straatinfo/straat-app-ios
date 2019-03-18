@@ -10,6 +10,7 @@ PODS:
   - GooglePlaces (3.0.3):
     - GoogleMaps/Base (= 3.0.3)
   - iOSDropDown (0.2.7)
+  - IQKeyboardManagerSwift (6.2.0)
   - Kingfisher (5.1.1)
 
 DEPENDENCIES:
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - iOSDropDown
+  - IQKeyboardManagerSwift
   - Kingfisher (~> 5.0)
 
 SPEC REPOS:
@@ -27,6 +29,7 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - iOSDropDown
+    - IQKeyboardManagerSwift
     - Kingfisher
 
 SPEC CHECKSUMS:
@@ -35,8 +38,9 @@ SPEC CHECKSUMS:
   GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
   GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
   iOSDropDown: 7a4cfc67d5166f319858747b63cd2f7760c4fb4b
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
 
-PODFILE CHECKSUM: be2f2c35ccfe5cc0b623c0bef77e5a784cc6aa3f
+PODFILE CHECKSUM: afb79d941d9ae2d50668f5615d8de5d8c2fe0f16
 
 COCOAPODS: 1.5.3

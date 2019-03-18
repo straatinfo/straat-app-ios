@@ -61,6 +61,27 @@ class RegistrationDataVC: UIViewController {
 
         diselect(sender: buttonSelected)
     }
+    
+    @IBAction func selectTAC(_ sender: Any) {
+        let tacVC = storyboard?.instantiateViewController(withIdentifier: "TermsAndConditionID") as! TermsAndConditionVC
+        tacVC.acceptTACDele = self
+        present(tacVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func onStep2Press(_ sender: Any) {
+        self.goToStep2()
+    }
+    
+    
+    @IBAction func firstNameTextField(_ sender: UITextField) {
+    }
+    
+    @IBAction func lastNameTextField(_ sender: UITextField) {
+    }
+    
+    @IBAction func userNameTextField(_ sender: UITextField) {
+    }
+    
     @IBAction func getPostCode(_ sender: Any) {
         postCode = postCodeTxtBox.text
         if postNumber != nil {
@@ -85,17 +106,142 @@ class RegistrationDataVC: UIViewController {
         }
     }
     
-    @IBAction func selectTAC(_ sender: Any) {
-        let tacVC = storyboard?.instantiateViewController(withIdentifier: "TermsAndConditionID") as! TermsAndConditionVC
-        tacVC.acceptTACDele = self
-        present(tacVC, animated: true, completion: nil)
+    @IBAction func emailTextField(_ sender: UITextField) {
     }
     
-    @IBAction func onStep2Press(_ sender: Any) {
-        self.goToStep2()
+    @IBAction func mobileTextField(_ sender: UITextField) {
+    }
+    
+    @IBAction func passwordTextField(_ sender: UITextField) {
+    }
+    @IBAction func userNameInfo(_ sender: UIButton) {
+        defaultDialog(vc: self, title: "Username Info", message: "Please enter your username here. All other users can only see your username; your phone number, your name or other data is not shown.\n However, when you are member of a team, your team members will be able to see your real name, but not other data like your phonenumber. Your team coordinator can see all your data; with this (s)he can check if the right person is in the team.\n            When needed the police and other officials will be given access to your data.")
     }
 }
 
+//for input validations
+extension RegistrationDataVC {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        textField.resignFirstResponder()
+        switch(textField) {
+            case firstnameTxtBox:
+                debugPrint("firstname")
+                if textField.text?.isValid() ?? false {
+                    checkTextFieldValues()
+                } else {
+                    firstnameTxtBox.becomeFirstResponder()
+                    validationDialog(vc: self, title: "Wrong input", message: "Your firstname is not valid", buttonText: "Ok")
+                    disableNextStepButton()
+                }
+            case lastnameTxtBox:
+                debugPrint("lastname")
+                if textField.text?.isValid() ?? false {
+                    checkTextFieldValues()
+                } else {
+                    lastnameTxtBox.becomeFirstResponder()
+                    validationDialog(vc: self, title: "Wrong input", message: "Your lastname is not valid", buttonText: "Ok")
+                    disableNextStepButton()
+                }
+            case usernameTxtBox:
+                debugPrint("username")
+                if textField.text?.isValid() ?? false {
+                    if textField.text?.isUserNameNotValid() ?? false {
+                        validationDialog(vc: self, title: "Wrong input", message: "This username is already in use or not allowed. Please choose a different name.", buttonText: "Ok")
+                    }
+                    checkTextFieldValues()
+                } else {
+                    usernameTxtBox.becomeFirstResponder()
+                    validationDialog(vc: self, title: "Wrong input", message: "Your usernmae is not valid", buttonText: "Ok")
+                    disableNextStepButton()
+                }
+            case postCodeTxtBox:
+                debugPrint("postal code")
+                if textField.text?.isValid() ?? false {
+                    checkTextFieldValues()
+                } else {
+                    postCodeTxtBox.becomeFirstResponder()
+                    validationDialog(vc: self, title: "Wrong input", message: "Your lastname is not valid", buttonText: "Ok")
+                    disableNextStepButton()
+                }
+            break
+            case postNumberTxtBox:
+                debugPrint("postal number")
+                if textField.text?.isValid() ?? false {
+                    checkTextFieldValues()
+                } else {
+                    postNumberTxtBox.becomeFirstResponder()
+                    validationDialog(vc: self, title: "Wrong input", message: "Your post number is not valid", buttonText: "Ok")
+                    disableNextStepButton()
+                }
+            case emailTxtBox:
+                debugPrint("email")
+                if textField.text?.isValidEmail() ?? false {
+                    checkTextFieldValues()
+                    debugPrint("valid email")
+                } else {
+                    emailTxtBox.becomeFirstResponder()
+                    validationDialog(vc: self, title: "Wrong input", message: "Your e-mail is not valid", buttonText: "Ok")
+                    disableNextStepButton()
+                    debugPrint("not valid email")
+                }
+            case mobileNumberTxtBox:
+                debugPrint("mobile")
+                if textField.text?.isMobileNumberValid() ?? false {
+                    checkTextFieldValues()
+                } else {
+                    validationDialog(vc: self, title: "Wrong input", message: "Your mobile number is not valid", buttonText: "Ok")
+                    mobileNumberTxtBox.becomeFirstResponder()
+                    disableNextStepButton()
+
+                }
+            case passwordTxtBox:
+                debugPrint("pass")
+                if textField.text?.isValidPassword() ?? false {
+                    checkTextFieldValues()
+                } else {
+                    validationDialog(vc: self, title: "Wrong input", message: "Your password is not valid or must be atleast 6 characters", buttonText: "Ok")
+                    passwordTxtBox.becomeFirstResponder()
+                    disableNextStepButton()
+                    debugPrint("not valid password")
+                }
+        default: break
+        }
+        
+    }
+    
+    func disableNextStepButton() {
+        self.nextStep.isEnabled = false
+        self.nextStep.backgroundColor = UIColor.lightGray
+    }
+    
+    func enableNextStepButton() {
+        self.nextStep.isEnabled = true
+        self.nextStep.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+        debugPrint("enable next step")
+    }
+    
+    func checkTextFieldValues() {
+        
+        if self.textFieldHasValues(tf: [firstnameTxtBox, lastnameTxtBox, usernameTxtBox, postCodeTxtBox, postNumberTxtBox, streetTxtBox, townTxtBox, emailTxtBox, mobileNumberTxtBox, passwordTxtBox]) {
+            enableNextStepButton()
+        } else {
+            disableNextStepButton()
+        }
+        
+    }
+    
+    func textFieldHasValues (tf: [UITextField]) -> Bool {
+        
+        if validateTextField(tf: tf) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+}
 
 //for implementating delegate
 extension RegistrationDataVC : acceptTACDelegate, UITextFieldDelegate, UITextViewDelegate {
@@ -106,12 +252,9 @@ extension RegistrationDataVC : acceptTACDelegate, UITextFieldDelegate, UITextVie
         }
         
         if state == true {
-            self.nextStep.isEnabled = true
-            self.nextStep.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+            enableNextStepButton()
         } else {
-            self.nextStep.isEnabled = false
-            self.nextStep.backgroundColor = UIColor.lightGray
-
+            disableNextStepButton()
         }
         print("state: \(state)" )
     }
@@ -170,6 +313,7 @@ extension RegistrationDataVC {
             "x-api-key": "gvuwmtomsB8eRf5Zgsfnj7zs8DE2ihC79DlEbQnb"
             ] as! HTTPHeaders
         
+        loadingShow(vc: self)
         apiHandler.executeWithHeaders(URL(string: POST_CODE_API)!, parameters: parameters, method: .get, destination: .queryString, headers: headers) { (response, err) in
             
             if let error = err {
@@ -198,6 +342,7 @@ extension RegistrationDataVC {
                 print("response:  \(String(describing: dataObject))")
                 
             }
+            loadingDismiss()
         }
     }
     

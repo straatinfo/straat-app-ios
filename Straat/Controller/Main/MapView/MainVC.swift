@@ -41,6 +41,7 @@ class MainVC: UIViewController {
     var userLat : Double!
     var userLong : Double!
     var reportTypeArr = ["All", "Public Spaces", "Suspicious Situation"]
+    var mapZoom : Float = 16.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +121,16 @@ class MainVC: UIViewController {
     
     @IBAction func publicSpaceInfo(_ sender: UIButton) {
         defaultDialog(vc: self, title: "Public Space", message: "Here you're able to make a report on public space (e.g. trash on the street, broken street light etc). This report will be send to the local government")
+    }
+    
+    @IBAction func zoomIn(_ sender: UIButton) {
+        self.mapZoom += 1
+        self.mapView.animate(toZoom: self.mapZoom)
+    }
+    
+    @IBAction func zoomOut(_ sender: UIButton) {
+        self.mapZoom -= 1
+        self.mapView.animate(toZoom: self.mapZoom)
     }
 }
 
@@ -457,12 +468,13 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                     if pm.locality != nil {
                         addressString = addressString + pm.locality! + ", "
                     }
-                    if pm.country != nil {
-                        addressString = addressString + pm.country! + ", "
-                    }
                     if pm.postalCode != nil {
                         addressString = addressString + pm.postalCode! + " "
                     }
+                    if pm.country != nil {
+                        addressString = addressString + pm.country! + ", "
+                    }
+
                     
                     completion(true, addressString)
                     
@@ -542,8 +554,12 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         uds.set(reportMapModel.lat, forKey: report_lat)
         uds.set(reportMapModel.long, forKey: report_long)
         uds.set(reportMapModel.description, forKey: report_message)
+        uds.set(reportMapModel.createdAt, forKey: report_created_at)
+
+        
         uds.set(fullname, forKey: report_reporter_fullname)
         uds.set(reportImages, forKey: report_images)
+
         
         completion(true)
     }

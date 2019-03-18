@@ -27,6 +27,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var uploadImage: UIImageView!
     
+    @IBOutlet weak var changeData: UIButton!
     // MARK: Input text listeners
     
     
@@ -109,6 +110,127 @@ extension ProfileVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        textField.resignFirstResponder()
+        switch(textField) {
+        case firstName:
+            debugPrint("firstname")
+            if textField.text?.isValid() ?? false {
+                checkTextFieldValues()
+            } else {
+                firstName.becomeFirstResponder()
+                validationDialog(vc: self, title: "Wrong input", message: "Your firstname is not valid", buttonText: "Ok")
+                disableChangeDataButton()
+
+            }
+        case familyName:
+            debugPrint("lastname")
+            if textField.text?.isValid() ?? false {
+                checkTextFieldValues()
+            } else {
+                familyName.becomeFirstResponder()
+                validationDialog(vc: self, title: "Wrong input", message: "Your lastname is not valid", buttonText: "Ok")
+                disableChangeDataButton()
+            }
+        case chatName:
+            debugPrint("username")
+            if textField.text?.isValid() ?? false {
+                if textField.text?.isUserNameNotValid() ?? false {
+                    validationDialog(vc: self, title: "Wrong input", message: "This username is already in use or not allowed. Please choose a different name.", buttonText: "Ok")
+                }
+                checkTextFieldValues()
+            } else {
+                chatName.becomeFirstResponder()
+                validationDialog(vc: self, title: "Wrong input", message: "Your usernmae is not valid", buttonText: "Ok")
+                disableChangeDataButton()
+            }
+        case addressPostalCode:
+            debugPrint("postal code")
+            if textField.text?.isValid() ?? false {
+                checkTextFieldValues()
+            } else {
+                addressPostalCode.becomeFirstResponder()
+                validationDialog(vc: self, title: "Wrong input", message: "Your lastname is not valid", buttonText: "Ok")
+                disableChangeDataButton()
+            }
+            break
+        case addressLotNum:
+            debugPrint("postal number")
+            if textField.text?.isValid() ?? false {
+                checkTextFieldValues()
+            } else {
+                addressLotNum.becomeFirstResponder()
+                validationDialog(vc: self, title: "Wrong input", message: "Your post number is not valid", buttonText: "Ok")
+                disableChangeDataButton()
+            }
+        case contactEmail:
+            debugPrint("email")
+            if textField.text?.isValidEmail() ?? false {
+                checkTextFieldValues()
+                debugPrint("valid email")
+            } else {
+                contactEmail.becomeFirstResponder()
+                validationDialog(vc: self, title: "Wrong input", message: "Your e-mail is not valid", buttonText: "Ok")
+                disableChangeDataButton()
+                debugPrint("not valid email")
+            }
+        case contactNumber:
+            debugPrint("mobile")
+            if textField.text?.isMobileNumberValid() ?? false {
+                checkTextFieldValues()
+            } else {
+                validationDialog(vc: self, title: "Wrong input", message: "Your mobile number is not valid", buttonText: "Ok")
+                contactNumber.becomeFirstResponder()
+                disableChangeDataButton()
+                
+            }
+        case password:
+            debugPrint("pass")
+            if textField.text?.isValidPassword() ?? false {
+                checkTextFieldValues()
+            } else {
+                validationDialog(vc: self, title: "Wrong input", message: "Your password is not valid or must be atleast 6 characters", buttonText: "Ok")
+                password.becomeFirstResponder()
+                disableChangeDataButton()
+                debugPrint("not valid password")
+            }
+        default: break
+        }
+        
+    }
+    
+    func disableChangeDataButton() {
+        self.changeData.isEnabled = false
+        self.changeData.backgroundColor = UIColor.lightGray
+    }
+    
+    func enableChangeDataButton() {
+        self.changeData.isEnabled = true
+        self.changeData.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+        debugPrint("enable next step")
+    }
+    
+    func checkTextFieldValues() {
+        
+        if self.textFieldHasValues(tf: [firstName, familyName, chatName, addressPostalCode, addressLotNum, addedStreet, addedTown, contactEmail, contactNumber]) {
+            enableChangeDataButton()
+        } else {
+            disableChangeDataButton()
+
+        }
+        
+    }
+    
+    func textFieldHasValues (tf: [UITextField]) -> Bool {
+        
+        if validateTextField(tf: tf) {
+            return true
+        } else {
+            return false
+        }
     }
     
 }
@@ -253,6 +375,10 @@ extension ProfileVC {
         self.contactEmail.text = u.getDataFromUSD(key: user_email)
         self.contactNumber.text = u.getDataFromUSD(key: user_phone_number)
         self.chatName.text = u.getDataFromUSD(key: user_username)
+        
+        self.addedStreet.isEnabled = false
+        self.addedTown.isEnabled = false
+        self.password.isEnabled = false
         // self.password.text = u.getDataFromUSD(key: user_fname)
         // self.uploadImage.text = u.getDataFromUSD(key: user_fname)
     }

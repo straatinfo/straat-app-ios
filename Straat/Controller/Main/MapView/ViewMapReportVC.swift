@@ -72,16 +72,18 @@ extension ViewMapReportVC {
             self.getReportImageFromUrl(imageUrls: imageUrls) { (hasImage, images, yAxis, viewHeight) in
                 if hasImage {
                     self.setImageViews(reportViewImage: images!, yAxis: yAxis, viewHeight: viewHeight)
-                } else {
-                    defaultDialog(vc: self, title: "Fetching image", message: "Image not found")
                 }
+//                else {
+//                    defaultDialog(vc: self, title: "Fetching image", message: "Image not found")
+//                }
                 loadingDismiss()
             }
             
-        } else {
-            defaultDialog(vc: self, title: "Fetching images", message: "Image not found")
-            loadingDismiss()
         }
+//        else {
+//            defaultDialog(vc: self, title: "Fetching images", message: "Image not found")
+//            loadingDismiss()
+//        }
         
     }
     

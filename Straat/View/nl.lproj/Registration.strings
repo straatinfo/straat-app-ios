@@ -3,13 +3,13 @@
 "0d1-N3-EIk.normalTitle" = "Accepteer";
 
 /* Class = "UIButton"; normalTitle = "Data"; ObjectID = "1RP-bb-Yin"; */
-"1RP-bb-Yin.normalTitle" = "Data";
+"1RP-bb-Yin.normalTitle" = "Gegevens";
 
 /* Class = "UIButton"; normalTitle = "Next Step"; ObjectID = "2AT-7M-kN7"; */
 "2AT-7M-kN7.normalTitle" = "Volgende Stap";
 
 /* Class = "UIButton"; normalTitle = "Report"; ObjectID = "2Ie-c6-Vhw"; */
-"2Ie-c6-Vhw.normalTitle" = "Report";
+"2Ie-c6-Vhw.normalTitle" = "Melder";
 
 /* Class = "UILabel"; text = "Email Address"; ObjectID = "2Ro-mB-nVg"; */
 "2Ro-mB-nVg.text" = "Emailadres";
@@ -126,7 +126,7 @@
 "h65-mT-bVL.normalTitle" = "Selecteer Teamlogo";
 
 /* Class = "UIButton"; normalTitle = "Male"; ObjectID = "j9e-e1-HgV"; */
-"j9e-e1-HgV.normalTitle" = "Mannetje";
+"j9e-e1-HgV.normalTitle" = "Man";
 
 /* Class = "UILabel"; text = "Firstname"; ObjectID = "jQ7-E3-G0x"; */
 "jQ7-E3-G0x.text" = "Voornaam";
@@ -150,7 +150,7 @@
 "q9X-nm-tLL.text" = "Lees de algemene voorwaarden";
 
 /* Class = "UIButton"; normalTitle = "Female"; ObjectID = "ssL-JQ-uvh"; */
-"ssL-JQ-uvh.normalTitle" = "Female";
+"ssL-JQ-uvh.normalTitle" = "Vrouw";
 
 /* Class = "UITextField"; placeholder = "Street"; ObjectID = "uMT-z0-L9r"; */
 "uMT-z0-L9r.placeholder" = "Vrouw";
@@ -168,7 +168,7 @@
 "vbh-0T-0M0.placeholder" = "Emailadres";
 
 /* Class = "UILabel"; text = "Town"; ObjectID = "wBT-q1-Zea"; */
-"wBT-q1-Zea.text" = "Town";
+"wBT-q1-Zea.text" = "Plaats";
 
 /* Class = "UILabel"; text = "Are you using straat.info as a volunteer?"; ObjectID = "x66-Mi-Pxo"; */
 "x66-Mi-Pxo.text" = "Gebruikt je straat.info als vrijwilliger?";

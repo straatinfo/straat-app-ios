@@ -12,14 +12,21 @@ class LoginUserVC: UIViewController {
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     let apiHandler = ApiHandler()
     let userModel = UserModel()
     
     override func viewDidLoad() {
         self.userModel.removeFromLocalData()
+        self.disableLoginButton()
     }
     
+    @IBAction func userNameTextField(_ sender: UITextField) {
+
+    }
+    @IBAction func passwordTextField(_ sender: UITextField) {
+    }
     
     @IBAction func loginUser(_ sender: Any) {
         
@@ -43,7 +50,6 @@ class LoginUserVC: UIViewController {
     
 }
 
-
 // for implementing functions
 extension LoginUserVC : UITextFieldDelegate {
     
@@ -51,6 +57,63 @@ extension LoginUserVC : UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
+        textField.resignFirstResponder()
+        switch(textField) {
+            case email:
+                if textField.text?.isValidEmail() ?? false {
+                    debugPrint("valid email")
+                    if self.textFieldHasValues(tf: [email, password]) {
+                        enableLoginButton()
+                    }
+                } else {
+                    email.becomeFirstResponder()
+                    validationDialog(vc: self, title: "Wrong input", message: "Your e-mail is not valid", buttonText: "Ok")
+                    disableLoginButton()
+                    debugPrint("not valid email")
+                }
+            break
+            case password:
+                if textField.text?.isValidPassword() ?? false {
+                    if self.textFieldHasValues(tf: [email, password]) {
+                        enableLoginButton()
+                    }
+                } else {
+                    validationDialog(vc: self, title: "Wrong input", message: "Your password is not valid or must be atleast 6 characters", buttonText: "Ok")
+                    password.becomeFirstResponder()
+                    disableLoginButton()
+                    debugPrint("not valid password")
+                }
+            break
+            default:
+            //            self.loginButton.isEnabled = true
+            //            self.loginButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+            break
+        }
+        
+    }
+    
+    func disableLoginButton() {
+        self.loginButton.isEnabled = false
+        self.loginButton.backgroundColor = UIColor.lightGray
+    }
+    
+    func enableLoginButton() {
+        self.loginButton.isEnabled = true
+        self.loginButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+    }
+    
+    func textFieldHasValues (tf: [UITextField]) -> Bool {
+        
+        if validateTextField(tf: tf) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // fetching user data
     func login( params: Parameters) {
         

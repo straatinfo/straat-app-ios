@@ -163,8 +163,13 @@ class SendSuspiciousReportVC: UIViewController {
         
         self.reportService.sendReport(reportDetails: sendReportModel) { (success, message) in
             if success {
-                defaultDialog(vc: self, title: "Send Report", message: message)
-//                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+                let alertController = UIAlertController(title: "Send Report", message: message, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+                    
+                    pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+                }))
+                
+                self.present(alertController, animated: true)
             } else {
                 defaultDialog(vc: self, title: "Send Report Error", message: message)
             }
@@ -225,7 +230,8 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
     
     // initialised default view
     func initView() -> Void {
-        var number = 0
+        var countPerson = 0
+        var countVehicle = 0
         var views = [UIView]()
         var hideViews = [UIView]()
 
@@ -244,14 +250,14 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
         
         while self.numberOfPersons.count < 100 {
-            number += 1
-            let stringNumber = String(number)
+            countPerson += 1
+            let stringNumber = String(countPerson)
             self.numberOfPersons.append(stringNumber)
         }
         
         while self.numberOfVechicles.count < 100 {
-            number += 1
-            let stringNumber = String(number)
+            countVehicle += 1
+            let stringNumber = String(countVehicle)
             self.numberOfVechicles.append(stringNumber)
         }
         
@@ -280,7 +286,7 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                     self.mainCategoryName.append(name)
                 }
                 
-                self.loadMainCategDropDown(mainCategList: self.mainCategoryName)
+                self.loadMainCategDropDown(mainCategList: self.mainCategoryName.sorted())
                 loadingDismiss()
             }
         }

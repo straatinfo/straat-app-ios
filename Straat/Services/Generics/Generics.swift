@@ -68,6 +68,15 @@ import UIKit
         
     }
 
+    func validationDialog( vc: UIViewController, title : String? , message : String? , buttonText: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: buttonText, style: .default, handler: nil))
+        vc.present(alertController, animated: true)
+        
+    }
+
+
     // pushing to next view controller
     func pushToNextVC( sbName : String? , controllerID : String?, origin :  UIViewController ) {
         

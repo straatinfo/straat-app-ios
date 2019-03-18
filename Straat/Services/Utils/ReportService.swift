@@ -115,6 +115,7 @@ class ReportService {
         
     }
     
+    // for my reports
     func getUserReports (userId: String, completion: @escaping (Bool, String, [ReportModel]) -> Void) {
         var parameters: Parameters = [:]
         parameters["language"] = "nl"

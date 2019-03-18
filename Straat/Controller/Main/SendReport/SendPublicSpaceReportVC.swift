@@ -147,9 +147,13 @@ class SendPublicSpaceReportVC: UIViewController {
 
         self.reportService.sendReport(reportDetails: sendReportModel) { (success, message) in
             if success {
-                defaultDialog(vc: self, title: "Send Report", message: message)
-//                self.mapViewDelegate?.refresh(message: message)
-//                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+                let alertController = UIAlertController(title: "Send Report", message: message, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+                    
+                    pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+                }))
+                
+                self.present(alertController, animated: true)
             } else {
                 defaultDialog(vc: self, title: "Send Report Error", message: message)
             }
@@ -211,7 +215,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
 
                     print("MAIN CAT A", mainCateg)
                 }
-                self.loadMainCategDropDown(mainCategList: self.mainCategoryName, subCategories: self.subCategory)
+                self.loadMainCategDropDown(mainCategList: self.mainCategoryName.sorted(), subCategories: self.subCategory)
                 loadingDismiss()
             }
         }
@@ -455,7 +459,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
             for checkMainCateg in self.mainCategory {
                 if selectedItem == checkMainCateg.name {
                     self.mainCategoryId = checkMainCateg.id
-                    print("selectedItem maincateg: \(checkMainCateg.id)")
+//                    print("selectedItem maincateg: \(checkMainCateg.id)")
                 }
             }
 
@@ -476,7 +480,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
             if self.subCategoryName.count > 0 {
                 //code for appearing sub categ
                 self.viewAppearance(views: showViews, isHidden: false)
-                self.loadsubCategDropDown(subCategList: self.subCategoryName)
+                self.loadsubCategDropDown(subCategList: self.subCategoryName.sorted())
                 self.emergencyNotifConstraint.constant = 20
                 animateLayout(view: self.view, timeInterval: 0.8)
             } else {

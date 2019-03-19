@@ -109,7 +109,8 @@ class SendSuspiciousReportVC: UIViewController {
         } else {
             self.isUrgent = true
             emergencyNotifButton.isSelected = true
-            defaultDialog(vc: self, title: "Emergency Notification", message: "Urgent? First Call 112?")
+            let desc = NSLocalizedString("emergency-notif-desc", comment: "")
+            defaultDialog(vc: self, title: "Emergency Notification", message: desc)
         }
         debugPrint("isUrgent: \(String(describing: self.isUrgent))")
         
@@ -293,6 +294,8 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         //new implementation of dropdown
         self.personInvolvedDropDown.loadDropdownData(data: self.numberOfPersons)
         self.vehicleInvolvedDropDown.loadDropdownData(data: self.numberOfVechicles)
+        
+        self.personsInvolvedDescription.text = NSLocalizedString("", comment: "")
         
     }
     

@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Straat
+
+  Created by Jamie Aguinaldo on 3/19/19.
+  
+*/
+
+"suspicious-desc" = "Here you're able to share a situation that might be suspicious with other members of your team. At the moment other members agree with you. that is needed looks suspicious call the police or other relevant organisation. Emergency? First call 112 before continuing to use this app!";
+
+"emergency-notif-desc" = "Urgent? First Call 112";
+
+"persons-involved-desc" = "Fill in characteristics of the person(s) involved, such as height, man/woman, color hair, mustache, beard, clothing, posture, tattoo or other striking details.";

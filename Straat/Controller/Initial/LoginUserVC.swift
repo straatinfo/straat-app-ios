@@ -32,15 +32,17 @@ class LoginUserVC: UIViewController {
         
         let tf : [UITextField] = [email, password]
         
+         //pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+        
         if validateTextField(tf: tf) {
-            
+
             loadingShow(vc: self)
-            
+
             login(params: [
                 "loginName" : email.text!,
                 "password" : password.text!
                 ])
-            
+
         } else {
             defaultDialog(vc: self, title: "Login", message: "Please fill up all the empty fields")
             print("false")

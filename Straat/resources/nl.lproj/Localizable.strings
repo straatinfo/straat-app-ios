@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Straat
+
+  Created by Jamie Aguinaldo on 3/19/19.
+  
+*/
+
+"suspicious-desc" = "Hier kunt u een situatie die u verdacht vindt, delen met andere gebruikers in de app. Zodra meer mensen de situatie verdacht vinden, neem dan contact op met de politie of andere relevante instantie (bijv. brandweer). NB bij spoed altijd eerst 112 bellen!";
+
+"emergency-notif-desc" = "Spoed? Bel eerst 112";
+
+"persons-involved-desc" = "Vul de kenmerken van de betrokken persoon (personen) in, zoals lengte, man / vrouw, haarkleur, snor, baard, kleding, houding, tatoeage of andere opvallende details.";g

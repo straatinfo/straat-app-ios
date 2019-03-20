@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import GameplayKit
 
     var activityIndicator: UIActivityIndicatorView?
     var parentView = UIView()
@@ -101,7 +101,30 @@ import UIKit
         }
     }
 
+    func randomUserID() -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        return String((0..<5).map{ _ in letters.randomElement()! })
+    }
 
     protocol MapViewDelegate {
         func refresh() -> Void
+    }
+
+
+    extension UITextField {
+        func loadDropdownData(data: [String]) {
+            self.inputView = MyPickerView(pickerData: data, dropdownField: self)
+        }
+        
+        func loadDropdownData2(data: [String]) {
+            self.inputView = MyPickerView(pickerData: data, dropdownField: self)
+        }
+        
+        func loadDropdownData3(data: [String]) {
+            self.inputView = MyPickerView(pickerData: data, dropdownField: self)
+        }
+        
+//        func loadMainCategoryB(mainCategList : [String] , subCategories : [[SubCategoryModel]], type: String) {
+//
+//        }
     }

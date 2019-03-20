@@ -25,6 +25,7 @@ class ReportModel : SendReportModel {
         super.init()
         self.id = report["_id"] as? String
         self.title = report["title"] as? String
+        self.description = report["description"] as? String
         self.location = report["location"] as? String
         self.long = report["long"] as? Double
         self.lat = report["lat"] as? Double

@@ -20,6 +20,7 @@ class RegistrationDataVC: UIViewController {
     @IBOutlet weak var firstnameTxtBox: UITextField!
     @IBOutlet weak var lastnameTxtBox: UITextField!
     @IBOutlet weak var usernameTxtBox: UITextField!
+    @IBOutlet weak var userIdRand: UILabel!    
     @IBOutlet weak var termsAndCondition: UIButton!
     @IBOutlet weak var postCodeTxtBox: UITextField!
     @IBOutlet weak var postNumberTxtBox: UITextField!
@@ -122,10 +123,19 @@ class RegistrationDataVC: UIViewController {
 //for input validations
 extension RegistrationDataVC {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case usernameTxtBox:
+            userIdRand.text =  "_ID:\(randomUserID())"
+        default:
+            break
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         textField.resignFirstResponder()
-        switch(textField) {
+        switch textField {
             case firstnameTxtBox:
                 debugPrint("firstname")
                 if textField.text?.isValid() ?? false {
@@ -354,6 +364,7 @@ extension RegistrationDataVC {
         let fname = uds.object(forKey: prefix + "fname") as? String? ?? ""
         let lname = uds.object(forKey: prefix + "lname") as? String? ?? ""
         let username = uds.object(forKey: prefix + "username") as? String? ?? ""
+        let userPrefix = uds.object(forKey: prefix + "userPrefix") as? String? ?? ""
         let postalCode = uds.object(forKey: prefix + "postalCode") as? String? ?? ""
         let postalNumber = uds.object(forKey: prefix + "postalNumber") as? String? ?? ""
         let street = uds.object(forKey: prefix + "street") as? String? ?? ""
@@ -363,7 +374,7 @@ extension RegistrationDataVC {
         let password = uds.object(forKey: prefix + "password") as? String? ?? ""
         let tac = uds.object(forKey: prefix + "tac") as? Bool? ?? false
         
-        let userData = UserRegistrationModel(gender: gender, firstname: fname, lastname: lname, username: username, postalCode: postalCode, postalNumber: postalNumber, street: street, town: town, email: email, phoneNumber: phoneNumber, password: password, tac: tac, isVolunteer: nil, hostId: nil, long: nil, lat: nil, team: nil)
+        let userData = UserRegistrationModel(gender: gender, firstname: fname, lastname: lname, username: username, userPrefix: userPrefix, postalCode: postalCode, postalNumber: postalNumber, street: street, town: town, email: email, phoneNumber: phoneNumber, password: password, tac: tac, isVolunteer: nil, hostId: nil, long: nil, lat: nil, team: nil)
         
         return userData
     }
@@ -372,6 +383,7 @@ extension RegistrationDataVC {
         firstnameTxtBox.text = userData.firstname ?? ""
         lastnameTxtBox.text = userData.lastname ?? ""
         usernameTxtBox.text = userData.username ?? ""
+        userIdRand.text = userData.userPrefix ?? ""
         postCodeTxtBox.text = userData.postalCode ?? ""
         postNumberTxtBox.text = userData.postalNumber ?? ""
         streetTxtBox.text = userData.street ?? ""
@@ -379,6 +391,7 @@ extension RegistrationDataVC {
         emailTxtBox.text = userData.email ?? ""
         passwordTxtBox.text = userData.password ?? ""
         mobileNumberTxtBox.text = userData.phoneNumber ?? ""
+        
         self.termsAndCondition.isSelected = userData.tac ?? false
         let gender = userData.gender ?? "MALE"
         if gender == "MALE" {
@@ -402,6 +415,7 @@ extension RegistrationDataVC {
         let fname = firstnameTxtBox.text ?? ""
         let lname = lastnameTxtBox.text ?? ""
         let username = usernameTxtBox.text ?? ""
+        let userPrefix = userIdRand.text ?? ""
         let postalCode = postCodeTxtBox.text ?? ""
         let postalNumber = postNumberTxtBox.text ?? ""
         let street = streetTxtBox.text ?? ""
@@ -421,6 +435,7 @@ extension RegistrationDataVC {
             uds.set(fname, forKey: prefix + "fname")
             uds.set(lname, forKey: prefix + "lname")
             uds.set(username, forKey: prefix + "username")
+            uds.set(userPrefix, forKey: prefix + "userPrefix")
             uds.set(postalCode, forKey: prefix + "postalCode")
             uds.set(postalNumber, forKey: prefix + "postalNumber")
             uds.set(street, forKey: prefix + "street")

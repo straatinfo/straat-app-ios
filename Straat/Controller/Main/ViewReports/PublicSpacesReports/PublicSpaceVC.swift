@@ -25,10 +25,12 @@ class PublicSpaceVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
+        let uds = UserDefaults.standard
+        let userId = uds.string(forKey: user_id) ?? ""
+        
         loadingShow(vc: self)
         self.reports.removeAll()
-        self.reportService.getPublicReport(reporterId: "5c63e92035086200156f93e0", reportType: "A") { (success, message, reportModels) in
+        self.reportService.getPublicReport(reporterId: userId, reportType: "A") { (success, message, reportModels) in
             
             if success {
                 for reportModel in reportModels {

@@ -144,7 +144,7 @@ extension ProfileVC : UITextFieldDelegate {
                 checkTextFieldValues()
             } else {
                 chatName.becomeFirstResponder()
-                validationDialog(vc: self, title: "Wrong input", message: "Your usernmae is not valid", buttonText: "Ok")
+                validationDialog(vc: self, title: "Wrong input", message: "Your username is not valid", buttonText: "Ok")
                 disableChangeDataButton()
             }
         case addressPostalCode:

@@ -18,7 +18,6 @@ class MainVC: UIViewController {
     @IBOutlet weak var makeNotifConstraint: NSLayoutConstraint!
     @IBOutlet weak var selecReportTypeConstraint: NSLayoutConstraint!
     
-    
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var sendReport: UIButton!
@@ -27,7 +26,7 @@ class MainVC: UIViewController {
     // for make notification ui view initialisation
     @IBOutlet weak var location: UILabel!
     
-    
+
     //location manager
     let locationManager = CLLocationManager()
     
@@ -43,11 +42,12 @@ class MainVC: UIViewController {
     var reportTypeArr = ["All", "Public Spaces", "Suspicious Situation"]
     var mapZoom : Float = 16.0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createMenu()
         self.navColor()
-        self.initMapView()
+        self.initMapView(reportType: "All")
         self.initView()
         //loadInfo()
     }
@@ -142,14 +142,35 @@ class MainVC: UIViewController {
 
 
 // for implementing functions
-extension MainVC : MapViewDelegate {
+extension MainVC : MapViewDelegate, UITextFieldDelegate {
     
+    // map view delegate
     func refresh() {
         self.createMenu()
         self.navColor()
-        self.initMapView()
+        self.initMapView(reportType: "All")
     }
     
+    // textfield delegate
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        for markerReport in self.markerReports {
+            markerReport.map?.clear()
+        }
+        
+        switch textField {
+            case reportTypeTextField:
+                if textField.text == "Public Spaces" {
+                    self.initMapView(reportType: "A")
+                } else if textField.text == "Suspicious Situation" {
+                    self.initMapView(reportType: "B")
+                } else {
+                    self.initMapView(reportType: "All")
+                }
+            default:
+            break
+        }
+    }
     
     // for revealing side bar menu
     func createMenu() -> Void {
@@ -189,11 +210,10 @@ extension MainVC : MapViewDelegate {
     // dismiss function of keyboard
     @objc func keyBoardDismiss() -> Void {
         view.endEditing(true)
-        self.initMapView()
     }
     
     // initialised map view
-    func initMapView() -> Void {
+    func initMapView(reportType: String) -> Void {
         
         let reportService = ReportService()
         let uds = UserDefaults.standard
@@ -208,13 +228,19 @@ extension MainVC : MapViewDelegate {
         
         self.initMapCamera(lat: 52.077646, long: 4.315667)
         self.initMapRadius(lat: 52.077646, long: 4.315667)
-//        print("user_id: \(userModel.getDataFromUSD(key: user_id))")
+        print("user_id: \(userModel.getDataFromUSD(key: user_id))")
         
         reportService.getReportNear(reporterId: userID, lat: hostLat, long: hostLong, radius: userRadius) { (success, message, reportModel) in
             
             if success {
                 for reportMap in reportModel! {
-                    self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+                    if reportType == "All" {
+                        self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+                    } else if reportType == reportMap.reportType?.code {
+                        self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+                    } else {
+                        loadingDismiss()
+                    }
                 }
                 
             } else {
@@ -571,11 +597,5 @@ extension GMSMarker {
     var reportModel : ReportModel? {
         set(reportModel) { self.userData = reportModel }
         get { return self.userData as? ReportModel}
-    }
-}
-
-extension UITextField {
-    func loadDropdownData(data: [String]) {
-        self.inputView = MyPickerView(pickerData: data, dropdownField: self)
     }
 }

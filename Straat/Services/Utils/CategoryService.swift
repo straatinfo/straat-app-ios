@@ -28,7 +28,7 @@ class CategoryService {
             } else if let data = response {
                 
                 let categories = data["data"] as? [[String: Any]]
-                print("TEST: \(categories)")
+                print("TEST: \(String(describing: categories))")
                 for category in categories! {
                     
                     let mainCategory = self.parseMainCategory(category: category)
@@ -56,14 +56,17 @@ class CategoryService {
                 completion(false, error.localizedDescription, [])
                 
             } else if let data = response {
+                
                 let categories = data["data"] as? [[String: Any]]
                 for category in categories! {
-                    let mainCategory = self.parseMainCategory(category: category)
-                    
-//                    if mainCategory.code != nil && mainCategory.code == "B" {
-//                        mainCategories.append(mainCategory)
-//                    }
-                    mainCategories.append(mainCategory)
+                    let reportType = category["_reportType"] as? Dictionary<String, Any>
+                    let code = reportType!["code"] as? String
+                    debugPrint("code: \(code)")
+
+                    if code == "B" {
+                        let mainCategory = self.parseMainCategory(category: category)
+                        mainCategories.append(mainCategory)
+                    }
                 }
                 
                 completion(true, "Success", mainCategories)

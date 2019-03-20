@@ -9,8 +9,10 @@ import Foundation
 
 class MyPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    var pickerData : [String]!
-    var pickerTextField : UITextField!
+    var pickerData: [String]!
+    var pickerTextField: UITextField!
+//    var subCategories = [[SubCategoryModel]]()
+
     
     init(pickerData: [String], dropdownField: UITextField) {
         super.init(frame: CGRect.zero)
@@ -32,6 +34,27 @@ class MyPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
         }
     }
     
+//    init(pickerData: [String], subCategory: [[SubCategoryModel]], dropdownField: UITextField) {
+//        super.init(frame: CGRect.zero)
+//
+//        self.pickerData = pickerData
+//        self.pickerTextField = dropdownField
+//        self.subCategories = subCategory
+//
+//        self.delegate = self
+//        self.dataSource = self
+//
+//        DispatchQueue.main.async {
+//            if pickerData.count > 0 {
+//                self.pickerTextField.text = self.pickerData[0]
+//                self.pickerTextField.isEnabled = true
+//            } else {
+//                self.pickerTextField.text = nil
+//                self.pickerTextField.isEnabled = false
+//            }
+//        }
+//    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -41,6 +64,7 @@ class MyPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         return self.pickerData.count
     }
     

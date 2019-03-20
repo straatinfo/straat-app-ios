@@ -133,7 +133,11 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         let gender = uds.object(forKey: prefix + "gender") as? String? ?? ""
         let fname = uds.object(forKey: prefix + "fname") as? String? ?? ""
         let lname = uds.object(forKey: prefix + "lname") as? String? ?? ""
-        let username = uds.object(forKey: prefix + "username") as? String? ?? ""
+
+        let user = uds.object(forKey: prefix + "username") as! String? ?? ""
+        let userPrefix = uds.object(forKey: prefix + "userPrefix") as! String? ?? ""
+        let username = user + userPrefix
+        
         let postalCode = uds.object(forKey: prefix + "postalCode") as? String? ?? ""
         let postalNumber = uds.object(forKey: prefix + "postalNumber") as? String? ?? ""
         let street = uds.object(forKey: prefix + "street") as? String? ?? ""

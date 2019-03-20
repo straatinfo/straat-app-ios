@@ -168,6 +168,7 @@ class ReportService {
                         
                         reports.append(reportItem)
                     }
+//                    debugPrint("report near: \(dataObject)")
                     completion(true, "Success", reports)
                 } else {
                     completion(false, "No Available Reports", nil)

@@ -31,6 +31,9 @@ class SendPublicSpaceReportVC: UIViewController {
     @IBOutlet weak var userLocation: UILabel!
     @IBOutlet weak var mainCategDropDown: DropDown!
     @IBOutlet weak var subCategDropDown: DropDown!
+    @IBOutlet weak var mainCategoryDropDown: UITextField!
+    @IBOutlet weak var subCategoryDropDown: UITextField!
+    
     
     @IBOutlet weak var reportDescription: UITextView!
     
@@ -46,7 +49,7 @@ class SendPublicSpaceReportVC: UIViewController {
     
     var mainCategory = [MainCategoryModel]()
     var mainCategoryName = [String]() // for dropdown
-    var subCategory = [SubCategoryModel]()
+    var subCategory = [[SubCategoryModel]]()
     var subCategoryName = [String]() // for dropdown
 
     var mainCategoryId : String?
@@ -66,7 +69,7 @@ class SendPublicSpaceReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
-        self.initKeyBoardToolBar()
+//        self.initKeyBoardToolBar()
         self.initCategories()
     }
     
@@ -96,19 +99,9 @@ class SendPublicSpaceReportVC: UIViewController {
         let loc_add = uds.string(forKey: user_loc_address)
         let lat = uds.double(forKey: user_loc_lat)
         let long = uds.double(forKey: user_loc_long)
-        let host_id = "5a7b485a039e2860cf9dd19a"
+        let host_id = uds.string(forKey: user_host_id)
         let team_id = uds.string(forKey: user_team_id)
         let reportType_id = "5a7888bb04866e4742f74955"
-        
-        print("report details: \(String(describing: reportDescription.text))")
-        print("report location: \(String(describing: uds.string(forKey: user_loc_address)))")
-        print("report lat: \(String(describing: uds.string(forKey: user_loc_lat)))")
-        print("report long: \(String(describing: uds.string(forKey: user_loc_long)))")
-        print("report reporter_id: 5a7b485a039e2860cf9dd19a")
-        print("report maincateg_id: \(String(describing: self.mainCategoryId))")
-        print("report subcateg_id: \(String(describing: self.subCategoryId))")
-        print("report isUrgent: \(String(describing: self.isUrgent))")
-        print("report teamid: \(String(describing: uds.string(forKey: user_team_id)))")
         
         if self.imageMetaData1 != nil {
             imageMetaDatas.append(self.imageMetaData1!)
@@ -167,11 +160,64 @@ class SendPublicSpaceReportVC: UIViewController {
 
 
 
+extension SendPublicSpaceReportVC : UITextFieldDelegate {
 
-
-
-
-
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case mainCategoryDropDown:
+            // getting main category id
+            for checkMainCateg in self.mainCategory {
+                if textField.text == checkMainCateg.name {
+                    self.mainCategoryId = checkMainCateg.id
+                    //                    print("selectedItem maincateg: \(checkMainCateg.id)")
+                }
+            }
+            
+            // sub category then show sub categ dropdown
+            self.subCategoryName.removeAll()
+            
+            for checkSubCateg in self.subCategory {
+                
+                for subCateg in checkSubCateg {
+                    
+                    if textField.text == subCateg.mainCategoryName! {
+                        self.subCategoryName.append(subCateg.name!)
+                    }
+                    print("sub categ -> main categ name: \(String(describing: subCateg.mainCategoryName))")
+                }
+            }
+            
+            let showViews : [UIView] = [self.SubCategView]
+            
+            if self.subCategoryName.count > 0 {
+                //code for appearing sub categ
+                self.viewAppearance(views: showViews, isHidden: false)
+                self.subCategoryDropDown.loadDropdownData(data: self.subCategoryName.sorted())
+                self.emergencyNotifConstraint.constant = 20
+                animateLayout(view: self.view, timeInterval: 0.8)
+            } else {
+                self.viewAppearance(views: showViews, isHidden: true)
+                self.emergencyNotifConstraint.constant = -70
+                animateLayout(view: self.view, timeInterval: 0.8)
+            }
+        case subCategDropDown:
+            // getting subcategory id
+            for subCategory in self.subCategory {
+                for subCateg in subCategory {
+                    if textField.text == subCateg.name {
+                        self.subCategoryId = subCateg.id
+                        print("selectedItem subcateg: \(String(describing: subCateg.id))" )
+                    }
+                }
+                
+            }
+        break
+        default:
+            break
+        }
+    }
+    
+}
 
 
 // for implement functions
@@ -191,7 +237,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         self.viewAppearance(views: hideViews, isHidden: true)
         self.setImageTapGestures()
         
-        self.emergencyNotifConstraint.constant = -150
+        self.emergencyNotifConstraint.constant = -70
         userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
     }
     
@@ -199,8 +245,10 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         loadingShow(vc: self)
         
         let categoryService = CategoryService()
+        let uds = UserDefaults.standard
+        let host_id = uds.string(forKey: user_host_id) ?? ""
         
-        categoryService.getMainCategoryA(hostId: "5a7b485a039e2860cf9dd19a", language: "nl") { (success, message, mainCategories) in
+        categoryService.getMainCategoryA(hostId: host_id, language: "nl") { (success, message, mainCategories) in
             if success == true {
 
                 print("MAIN CAT LIST", mainCategories)
@@ -211,38 +259,38 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                     
                     self.mainCategory.append(mainCategory)
                     self.mainCategoryName.append(name)
-                    self.subCategory = mainCateg.subCategories!
+                    self.subCategory.append(mainCateg.subCategories ?? [])
 
                     print("MAIN CAT A", mainCateg)
+                    print("MAIN CAT A -> Sub categ: ", mainCateg.subCategories!)
                 }
-                self.loadMainCategDropDown(mainCategList: self.mainCategoryName.sorted(), subCategories: self.subCategory)
+                self.mainCategoryDropDown.loadDropdownData(data: self.mainCategoryName.sorted())
                 loadingDismiss()
             }
         }
         
     }
     
-    // initialise key board toolbar
-    func initKeyBoardToolBar() -> Void {
-        let kbToolBar = UIToolbar()
-        kbToolBar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
-        
-        kbToolBar.setItems([doneBtn], animated: false)
-        
-        self.reportDescription.inputAccessoryView = kbToolBar
-        
-    }
+//    // initialise key board toolbar
+//    func initKeyBoardToolBar() -> Void {
+//        let kbToolBar = UIToolbar()
+//        kbToolBar.sizeToFit()
+//
+//        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
+//
+//        kbToolBar.setItems([doneBtn], animated: false)
+//        self.reportDescription.inputAccessoryView = kbToolBar
+//
+//    }
+//
+//    // dismiss function of keyboard
+//    @objc func keyBoardDismiss() -> Void {
+//        view.endEditing(true)
+//    }
     
-    // dismiss function of keyboard
-    @objc func keyBoardDismiss() -> Void {
-        view.endEditing(true)
-    }
-    
-    func extractSubCategory (subCateg : SubCategoryModel , categoryName : String) {
-        print("main categ: \(categoryName) => sub category: \(String(describing: subCateg.name))")
-    }
+//    func extractSubCategory (subCateg : SubCategoryModel , categoryName : String) {
+//        print("main categ: \(categoryName) => sub category: \(String(describing: subCateg.name))")
+//    }
     
     // setting tap gesture recognizer for imageview
     func setImageTapGestures() -> Void {
@@ -271,16 +319,12 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         }
     }
     
-    
-    
     // change appearance for array of uiviews
     func viewAppearance (views : [UIView], isHidden : Bool) -> Void {
         for view in views {
             view.isHidden = isHidden
         }
     }
-    
-    
     
     // import image via photo library
     @objc func importImage ( gesture : UITapGestureRecognizer) {
@@ -442,75 +486,6 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
             
         }
         
-    }
-
-    
-    // populate main categ list data to dropdown
-    func loadMainCategDropDown(mainCategList : [String]! , subCategories : [SubCategoryModel]!) {
-        
-        mainCategDropDown.optionArray = mainCategList
-        mainCategDropDown.selectedRowColor = UIColor.lightGray
-        
-        mainCategDropDown.didSelect { (selectedItem, index, id) in
-            print("selectedItem: \(selectedItem)" )
-            // insert code to identify the main category item if it has
-            
-            // getting main category id
-            for checkMainCateg in self.mainCategory {
-                if selectedItem == checkMainCateg.name {
-                    self.mainCategoryId = checkMainCateg.id
-//                    print("selectedItem maincateg: \(checkMainCateg.id)")
-                }
-            }
-
-            // sub category then show sub categ dropdown
-            self.subCategoryName.removeAll()
-            for checkSubCateg in subCategories {
-                if selectedItem == checkSubCateg.mainCategoryName! {
-                    self.subCategoryName.append(checkSubCateg.name!)
-                    print("meron sub categ")
-                } else {
-                    print("wala sub categ")
-                }
-                print("sub categ -> main categ name: \(String(describing: checkSubCateg.mainCategoryName))")
-            }
-
-            let showViews : [UIView] = [self.SubCategView]
-            
-            if self.subCategoryName.count > 0 {
-                //code for appearing sub categ
-                self.viewAppearance(views: showViews, isHidden: false)
-                self.loadsubCategDropDown(subCategList: self.subCategoryName.sorted())
-                self.emergencyNotifConstraint.constant = 20
-                animateLayout(view: self.view, timeInterval: 0.8)
-            } else {
-                self.viewAppearance(views: showViews, isHidden: true)
-                self.emergencyNotifConstraint.constant = -150
-                animateLayout(view: self.view, timeInterval: 0.8)
-            }
-
-        }
-    }
-    
-    
-    
-    // populate main categ list data to dropdown
-    func loadsubCategDropDown(subCategList : [String]!) {
-        
-        subCategDropDown.optionArray = subCategList
-        subCategDropDown.selectedRowColor = UIColor.lightGray
-        subCategDropDown.didSelect { (selectedItem, index, id) in
-            
-            // getting subcategory id
-            for subCategory in self.subCategory {
-                if selectedItem == subCategory.name {
-                    self.subCategoryId = subCategory.id
-                    print("selectedItem subcateg: \(String(describing: subCategory.id))" )
-                }
-            }
-            
-
-        }
     }
     
     

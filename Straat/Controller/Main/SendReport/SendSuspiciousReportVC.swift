@@ -40,10 +40,8 @@ class SendSuspiciousReportVC: UIViewController {
     
     @IBOutlet weak var emergencyNotifButton: UIButton!
     @IBOutlet weak var userLocation: UILabel!
-    
     @IBOutlet weak var mainCategDropDown: DropDown!
-    @IBOutlet weak var mainCategoryDropDown: UITextField!
-    
+    @IBOutlet weak var subCategDropDown: DropDown!
     
     //dummy data for category
     var sampleArr : [String] = ["main categ 1", "main categ 2", "main categ 3", "main categ 4", "main categ 5", "main categ 6"]
@@ -58,13 +56,10 @@ class SendSuspiciousReportVC: UIViewController {
     var imgViewTag : Int!
 
     @IBOutlet weak var reportDescription: UITextView!
-    
     @IBOutlet weak var personsInvolvedDropDown: DropDown!
-    @IBOutlet weak var personInvolvedDropDown: UITextField!
     @IBOutlet weak var personsInvolvedDescription: UITextView!
     
     @IBOutlet weak var vehiclesInvolvedDropDown: DropDown!
-    @IBOutlet weak var vehicleInvolvedDropDown: UITextField!
     @IBOutlet weak var vehiclesInvolvedDescription: UITextView!
     
     
@@ -91,13 +86,9 @@ class SendSuspiciousReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
-//        self.initKeyBoardToolBar()
+        self.initKeyBoardToolBar()
         self.initCategories()
         // Do any additional setup after loading the view.
-        
-        let uds = UserDefaults.standard
-        let id = uds.string(forKey: user_id)
-//        debugPrint("userID: \(id)")
     }
     
     
@@ -109,7 +100,8 @@ class SendSuspiciousReportVC: UIViewController {
         } else {
             self.isUrgent = true
             emergencyNotifButton.isSelected = true
-            defaultDialog(vc: self, title: "Emergency Notification", message: "Urgent? First Call 112?")
+            let desc = NSLocalizedString("emergency-notif-desc", comment: "")
+            defaultDialog(vc: self, title: "Emergency Notification", message: desc)
         }
         debugPrint("isUrgent: \(String(describing: self.isUrgent))")
         
@@ -133,7 +125,7 @@ class SendSuspiciousReportVC: UIViewController {
         let loc_add = uds.string(forKey: user_loc_address)
         let lat = uds.double(forKey: user_loc_lat)
         let long = uds.double(forKey: user_loc_long)
-        let host_id = uds.string(forKey: user_host_id)
+        let host_id = "5a7b485a039e2860cf9dd19a"
         let team_id = uds.string(forKey: user_team_id)
         let reportType_id = "5a7888bb04866e4742f74956"
         
@@ -173,18 +165,16 @@ class SendSuspiciousReportVC: UIViewController {
         
         self.reportService.sendReport(reportDetails: sendReportModel) { (success, message) in
             if success {
-                let alertController = UIAlertController(title: "Send Report", message: message, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
-
-                    pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
-                }))
-
-                self.present(alertController, animated: true)
+                defaultDialog(vc: self, title: "Send Report", message: message)
+//                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
             } else {
                 defaultDialog(vc: self, title: "Send Report Error", message: message)
             }
             loadingDismiss()
         }
+        
+        //        dismiss(animated: true, completion: nil)
+        
 
     }
     
@@ -198,7 +188,7 @@ class SendSuspiciousReportVC: UIViewController {
         } else {
             self.isPersonInvolved = false
             self.viewAppearance(views: personsInvolvedViews, isHidden: true)
-            self.vehiclesConstraint.constant = -265
+            self.vehiclesConstraint.constant = -415
         }
         animateLayout(view: self.view, timeInterval: 0.8)
         debugPrint("isperson_involved: \(String(describing: self.isPersonInvolved))")
@@ -211,7 +201,7 @@ class SendSuspiciousReportVC: UIViewController {
         if sender.isOn {
             self.isVehicleInvolved = true
             self.viewAppearance(views: vehiclesInvolvedViews, isHidden: false)
-            self.uploadImageConstraint.constant = 320
+            self.uploadImageConstraint.constant = 450
         } else {
             self.isVehicleInvolved = false
             self.viewAppearance(views: vehiclesInvolvedViews, isHidden: true)
@@ -226,38 +216,18 @@ class SendSuspiciousReportVC: UIViewController {
 
 
 
-extension SendSuspiciousReportVC : UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        switch textField {
-            case mainCategoryDropDown:
-                for checkMainCateg in self.mainCategory {
-                    if textField.text == checkMainCateg.name {
-                        self.mainCategoryId = checkMainCateg.id
-                        print("selectedItem maincateg: \(String(describing: checkMainCateg.id))")
-                    }
-                }
-            case personInvolvedDropDown:
-                self.numberofPersonInvolved = Int(textField.text!) ?? 0
-//                debugPrint("selectedItem: \(textField.text)")
-            case vehicleInvolvedDropDown:
-                self.numberofVehicleInvolved = Int(textField.text!) ?? 0
-//                debugPrint("selectedItem: \(textField.text)")
-            default:
-            break
-        }
-    }
-    
-}
+
+
+
+
+
 
 // for implementing function
 extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     // initialised default view
     func initView() -> Void {
-        var countPerson = 0
-        var countVehicle = 0
+        var number = 0
         var views = [UIView]()
         var hideViews = [UIView]()
 
@@ -276,23 +246,24 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
         
         while self.numberOfPersons.count < 100 {
-            countPerson += 1
-            let stringNumber = String(countPerson)
+            number += 1
+            let stringNumber = String(number)
             self.numberOfPersons.append(stringNumber)
         }
         
         while self.numberOfVechicles.count < 100 {
-            countVehicle += 1
-            let stringNumber = String(countVehicle)
+            number += 1
+            let stringNumber = String(number)
             self.numberOfVechicles.append(stringNumber)
         }
         
-//        self.loadPersonsInvolvedDropDown(numberOfPersons: self.numberOfPersons)
-//        self.loadVehiclesInvolvedDropDown(numberOfVehicles: self.numberOfVechicles)
+        self.loadPersonsInvolvedDropDown(numberOfPersons: self.numberOfPersons)
+        self.loadVehiclesInvolvedDropDown(numberOfVehicles: self.numberOfVechicles)
         
-        //new implementation of dropdown
-        self.personInvolvedDropDown.loadDropdownData(data: self.numberOfPersons)
-        self.vehicleInvolvedDropDown.loadDropdownData(data: self.numberOfVechicles)
+        
+        print("count: \(self.numberOfPersons.count)")
+        
+        self.personsInvolvedDescription.text = NSLocalizedString("", comment: "")
         
     }
     
@@ -313,32 +284,31 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                     self.mainCategoryName.append(name)
                 }
                 
-                self.mainCategoryDropDown.loadDropdownData(data: self.mainCategoryName.sorted())
-                
+                self.loadMainCategDropDown(mainCategList: self.mainCategoryName)
                 loadingDismiss()
             }
         }
     }
     
     // initialise key board toolbar
-//    func initKeyBoardToolBar() -> Void {
-//        let kbToolBar = UIToolbar()
-//        kbToolBar.sizeToFit()
-//        
-//        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
-//        
-//        kbToolBar.setItems([doneBtn], animated: false)
-//        
-////        self.reportDescription.inputAccessoryView = kbToolBar
-////        self.personsInvolvedDescription.inputAccessoryView = kbToolBar
-////        self.vehiclesInvolvedDescription.inputAccessoryView = kbToolBar
-////        self.mainCategoryDropDown.inputAccessoryView = kbToolBar
-//    }
-//    
-//    // dismiss function of keyboard
-//    @objc func keyBoardDismiss() -> Void {
-//        view.endEditing(true)
-//    }
+    func initKeyBoardToolBar() -> Void {
+        let kbToolBar = UIToolbar()
+        kbToolBar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
+        
+        kbToolBar.setItems([doneBtn], animated: false)
+        
+        self.reportDescription.inputAccessoryView = kbToolBar
+        self.personsInvolvedDescription.inputAccessoryView = kbToolBar
+        self.vehiclesInvolvedDescription.inputAccessoryView = kbToolBar
+        
+    }
+    
+    // dismiss function of keyboard
+    @objc func keyBoardDismiss() -> Void {
+        view.endEditing(true)
+    }
     
     
     // setting tap gesture recognizer for imageview
@@ -549,36 +519,38 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                 if selectedItem == checkMainCateg.name {
                     self.mainCategoryId = checkMainCateg.id
                     print("selectedItem maincateg: \(String(describing: checkMainCateg.id))")
+                    
+                    //subCategDropDown.optionArray = checkMainCateg.subCategories  
                 }
             }
         }
     }
     
-//    //populates persons involved count in dropdown
-//    func loadPersonsInvolvedDropDown( numberOfPersons : [String]) -> Void {
-//
-//        self.personsInvolvedDropDown.optionArray = numberOfPersons
-//        self.personsInvolvedDropDown.selectedRowColor = UIColor.lightGray
-//
-//        self.personsInvolvedDropDown.didSelect { (selectedItem, index, id) in
-//            self.numberofPersonInvolved = index + 1
-//            debugPrint("selectedItem: \(selectedItem)")
-//        }
-//
-//    }
-//
-//    //populates persons involved count in dropdown
-//    func loadVehiclesInvolvedDropDown( numberOfVehicles : [String]) -> Void {
-//
-//        self.vehiclesInvolvedDropDown.optionArray = numberOfVehicles
-//        self.vehiclesInvolvedDropDown.selectedRowColor = UIColor.lightGray
-//
-//        self.vehiclesInvolvedDropDown.didSelect { (selectedItem, index, id) in
-//            self.numberofVehicleInvolved = index + 1
-//            debugPrint("selectedItem: \(selectedItem)")
-//        }
-//
-//    }
+    //populates persons involved count in dropdown
+    func loadPersonsInvolvedDropDown( numberOfPersons : [String]) -> Void {
+        
+        self.personsInvolvedDropDown.optionArray = numberOfPersons
+        self.personsInvolvedDropDown.selectedRowColor = UIColor.lightGray
+        
+        self.personsInvolvedDropDown.didSelect { (selectedItem, index, id) in
+            self.numberofPersonInvolved = index + 1
+            debugPrint("selectedItem: \(selectedItem)")
+        }
+        
+    }
+
+    //populates persons involved count in dropdown
+    func loadVehiclesInvolvedDropDown( numberOfVehicles : [String]) -> Void {
+        
+        self.vehiclesInvolvedDropDown.optionArray = numberOfVehicles
+        self.vehiclesInvolvedDropDown.selectedRowColor = UIColor.lightGray
+        
+        self.vehiclesInvolvedDropDown.didSelect { (selectedItem, index, id) in
+            self.numberofVehicleInvolved = index + 1
+            debugPrint("selectedItem: \(selectedItem)")
+        }
+        
+    }
     
 }
 

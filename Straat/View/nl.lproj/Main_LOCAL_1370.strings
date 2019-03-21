@@ -57,7 +57,7 @@
 "D3M-aB-izp.text" = "Dit rapport is gemaakt door:";
 
 /* Class = "UILabel"; text = "Status"; ObjectID = "FgM-8v-NNO"; */
-"FgM-8v-NNO.text" = "Staat";
+"FgM-8v-NNO.text" = "Status";
 
 /* Class = "UILabel"; text = "Location:"; ObjectID = "H9J-2m-PeX"; */
 "H9J-2m-PeX.text" = "Plaats:";
@@ -123,7 +123,7 @@
 "bXU-c8-sTw.text" = "Tijd:";
 
 /* Class = "UILabel"; text = "Notification"; ObjectID = "bvt-bM-wZc"; */
-"bvt-bM-wZc.text" = "Soort melding";
+"bvt-bM-wZc.text" = "Soort Melding";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cJD-4q-nSL"; */
 "cJD-4q-nSL.normalTitle" = "Button";

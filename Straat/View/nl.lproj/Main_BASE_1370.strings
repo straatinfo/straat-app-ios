@@ -105,7 +105,7 @@
 "VmX-bc-i1i.text" = "Vul hier uw tekst in";
 
 /* Class = "UILabel"; text = "Status"; ObjectID = "W6x-gf-bsa"; */
-"W6x-gf-bsa.text" = "Status";
+"W6x-gf-bsa.text" = "Staat";
 
 /* Class = "UILabel"; text = "Feedback"; ObjectID = "YF4-qa-cIY"; */
 "YF4-qa-cIY.text" = "Terugkoppeling";
@@ -123,7 +123,7 @@
 "bXU-c8-sTw.text" = "Tijd:";
 
 /* Class = "UILabel"; text = "Notification"; ObjectID = "bvt-bM-wZc"; */
-"bvt-bM-wZc.text" = "Soort melding";
+"bvt-bM-wZc.text" = "Kennisgeving";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cJD-4q-nSL"; */
 "cJD-4q-nSL.normalTitle" = "Button";

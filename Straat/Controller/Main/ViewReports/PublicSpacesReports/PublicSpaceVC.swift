@@ -61,27 +61,25 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
         
         let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! PublicSpaceTVC
         
-        if self.reports.count != 0 {
-            let mainCategory = self.reports[indexPath.row].mainCategory?.name
-            let date = self.reports[indexPath.row].createdAt
+        let mainCategory = self.reports[indexPath.row].mainCategory?.name
+        let date = self.reports[indexPath.row].createdAt
+
+        row.reportCategory.text = mainCategory
+        row.dateOfReport.text = date
+
+        if (self.reports[indexPath.row].attachments?.count)! > 0 {
             
-            row.reportCategory.text = mainCategory
-            row.dateOfReport.text = date
+            let rootImage = self.reports[indexPath.row].attachments![0]
+            let imageUrl = rootImage["secure_url"] as? String
             
-            if (self.reports[indexPath.row].attachments?.count)! > 0 {
-                
-                let rootImage = self.reports[indexPath.row].attachments![0]
-                let imageUrl = rootImage["secure_url"] as? String
-                
-                self.getReportImage(imageUrl: imageUrl!) { (hasImage, image) in
-                    if hasImage {
-                        row.reportImage?.image = image
-                    }
+            self.getReportImage(imageUrl: imageUrl!) { (hasImage, image) in
+                if hasImage {
+                    row.reportImage?.image = image
                 }
             }
+
+            
         }
-        
-        
         
         return row
         

@@ -120,7 +120,8 @@ class MainVC: UIViewController {
     }
     
     @IBAction func publicSpaceInfo(_ sender: UIButton) {
-        defaultDialog(vc: self, title: "Public Space", message: "Here you're able to make a report on public space (e.g. trash on the street, broken street light etc). This report will be send to the local government")
+        let desc = NSLocalizedString("public-space-desc", comment: "")
+        defaultDialog(vc: self, title: "Public Space", message: desc)
     }
     
     @IBAction func zoomIn(_ sender: UIButton) {
@@ -244,7 +245,8 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
                 }
                 
             } else {
-                defaultDialog(vc: self, title: "Fetching near reports", message: message)
+                let desc = NSLocalizedString("no-available-reports", comment: "")
+                defaultDialog(vc: self, title: "Fetching near reports", message: desc)
                 loadingDismiss()
             }
             

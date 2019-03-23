@@ -111,8 +111,7 @@ class MainVC: UIViewController {
     
     
     @IBAction func suspiciousInfo(_ sender: UIButton) {
-        let desc = NSLocalizedString("suspicious-desc", comment: "")
-        defaultDialog(vc: self, title: "Suspicious Situation", message: desc)
+        defaultDialog(vc: self, title: "Suspicious Situation", message: "Here you're able to share a situation that might be suspicious with other members of your team. At the moment other members agree with you. that is needed looks suspicious call the police or other relevant organisation. Emergency? First call 112 before continuing to use this app.")
     }
     
     @IBAction func showPublicSpaceReport(_ sender: UIButton) {

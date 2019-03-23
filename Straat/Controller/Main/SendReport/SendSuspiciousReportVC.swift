@@ -112,8 +112,7 @@ class SendSuspiciousReportVC: UIViewController {
         } else {
             self.isUrgent = true
             emergencyNotifButton.isSelected = true
-            let desc = NSLocalizedString("emergency-notif-desc", comment: "")
-            defaultDialog(vc: self, title: "Emergency Notification", message: desc)
+            defaultDialog(vc: self, title: "Emergency Notification", message: "Urgent? First Call 112?")
         }
         debugPrint("isUrgent: \(String(describing: self.isUrgent))")
         

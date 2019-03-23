@@ -327,7 +327,10 @@ extension RegistrationDataVC {
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
-                defaultDialog(vc: self, title: "Error Response", message: error.localizedDescription)
+                
+                let desc = NSLocalizedString("suspicious-desc", comment: "")
+                defaultDialog(vc: self, title: "Error Response", message: desc)
+                
                 // loadingDismiss()
                 
             } else if let data = response {

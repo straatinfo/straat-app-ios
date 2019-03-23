@@ -13,3 +13,5 @@
 "persons-involved-desc" = "Fill in characteristics of the person(s) involved, such as height, man/woman, color hair, mustache, beard, clothing, posture, tattoo or other striking details.";
 
 "send-report-success" = "Thank you for your report! From now on everybody can see in the app. If the report is about public space, it is also mailed to the host.";
+
+"invalid-postal-code" = "Invalid postal code";

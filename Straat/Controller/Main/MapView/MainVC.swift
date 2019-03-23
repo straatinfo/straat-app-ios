@@ -13,7 +13,7 @@ import Alamofire
 import AlamofireImage
 
 class MainVC: UIViewController {
-
+    
     // constraint for make notif and select report type initialisation
     @IBOutlet weak var makeNotifConstraint: NSLayoutConstraint!
     @IBOutlet weak var selecReportTypeConstraint: NSLayoutConstraint!
@@ -26,7 +26,7 @@ class MainVC: UIViewController {
     // for make notification ui view initialisation
     @IBOutlet weak var location: UILabel!
     
-
+    
     //location manager
     let locationManager = CLLocationManager()
     
@@ -66,7 +66,7 @@ class MainVC: UIViewController {
                 animateLayout(view: self.view, timeInterval: 0.6)
                 
             } else {
-//                defaultDialog(vc: self, title: "Permission", message: result)
+                //                defaultDialog(vc: self, title: "Permission", message: result)
                 self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : "initial address", lat : 52.077646 , long : 4.315667)
                 
             }
@@ -88,7 +88,7 @@ class MainVC: UIViewController {
         uds.set(location.text!, forKey: user_loc_address)
         uds.set(userLat, forKey: user_loc_lat)
         uds.set(userLong, forKey: user_loc_long)
-
+        
         self.makeNotifConstraint.constant = 400
         self.selecReportTypeConstraint.constant = 0
         
@@ -159,15 +159,15 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         }
         
         switch textField {
-            case reportTypeTextField:
-                if textField.text == "Public Spaces" {
-                    self.initMapView(reportType: "A")
-                } else if textField.text == "Suspicious Situation" {
-                    self.initMapView(reportType: "B")
-                } else {
-                    self.initMapView(reportType: "All")
-                }
-            default:
+        case reportTypeTextField:
+            if textField.text == "Public Spaces" {
+                self.initMapView(reportType: "A")
+            } else if textField.text == "Suspicious Situation" {
+                self.initMapView(reportType: "B")
+            } else {
+                self.initMapView(reportType: "All")
+            }
+        default:
             break
         }
     }
@@ -249,7 +249,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
             }
             
         }
-
+        
         
     }
     
@@ -262,7 +262,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
     
     //Creates a circle shape in the center of the map
     func initMapRadius(lat : Double, long : Double) -> Void {
-    
+        
         circle.radius = 130 // Meters
         circle.fillColor = UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 0.5)
         circle.position = CLLocationCoordinate2D(latitude: lat, longitude: long) // Your CLLocationCoordinate2D  position
@@ -277,7 +277,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
         marker.title = title!
         marker.snippet = address
-
+        
         marker.icon = UIImage(named: "pin-new")
         marker.isDraggable = true
         marker.map = mView
@@ -293,17 +293,17 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         // Creates a marker in the center of the map.
         let markerReport = GMSMarker()
         self.markerReports.append(markerReport)
-
+        
         markerReport.position = CLLocationCoordinate2D(latitude: (reportMapModel?.lat)!, longitude: (reportMapModel?.long)!)
-
+        
         markerReport.title = reportMapModel?.mainCategory?.name
         markerReport.snippet = reportMapModel?.location
         markerReport.icon = UIImage(named: "pin-new")
         markerReport.map = mView
-
+        
         // data for report view
         markerReport.reportModel = reportMapModel!
-
+        
         location.text = reportMapModel?.location
         userLat = reportMapModel?.lat
         userLong = reportMapModel?.long
@@ -317,7 +317,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         }
         
         debugPrint("report map marker loc: \(String(describing: reportMapModel?.location))")
-
+        
     }
     
     func setReportImage(reportMapModel : ReportModel?, completion: @escaping (Bool)->Void) -> Void {
@@ -360,7 +360,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
             }
         }
     }
- 
+    
     
 }
 
@@ -369,10 +369,10 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
 
 // dedicated for google maps delegates
 extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
- 
+    
     // getting coordinatas after end dragging the GMSMarker
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
-
+        
         getAddressFromLatLon(lat: marker.position.latitude, long: marker.position.longitude, completion: { hasAdd , response in
             
             if  hasAdd {
@@ -415,7 +415,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             let img = UIImageView(frame: CGRect.init(x: lbl1.frame.size.width + 20, y: 0, width: view.frame.size.width * 0.40, height: view.frame.height))
             
             let imgPlaceholder = UIImage(named: "AppIcon")
-
+            
             if marker.reportModel != nil {
                 img.image = marker.reportModel!.getReportImage()
             } else {
@@ -430,7 +430,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
         return view
     }
-
+    
     // present view report when tapped info windows of marker
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
@@ -447,17 +447,17 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                 
             }
             debugPrint("report array image append: \(reportImages)")
-
-            self.saveToUserDefault(reportMapModel: marker.reportModel!, reportImages: reportImages, completion: {success in                
+            
+            self.saveToUserDefault(reportMapModel: marker.reportModel!, reportImages: reportImages, completion: {success in
                 if success {
                     let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewMapReportVC
                     self.present(viewReportVC, animated: true, completion: nil)
                 }
             })
             
-
+            
         }
-
+        
     }
     
     // getting the address from coordinates
@@ -500,7 +500,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                     if pm.country != nil {
                         addressString = addressString + pm.country! + ", "
                     }
-
+                    
                     
                     completion(true, addressString)
                     
@@ -515,7 +515,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         
         getAddressFromLatLon(lat: locValue.latitude, long: locValue.longitude, completion: { hasAdd , response in
-
+            
             
             if hasAdd {
                 self.initMapCamera(lat: locValue.latitude, long: locValue.longitude)
@@ -541,27 +541,27 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         if CLLocationManager.locationServicesEnabled() {
             
             switch CLLocationManager.authorizationStatus() {
-                case .authorizedAlways, .authorizedWhenInUse:
-                    locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                    locationManager.startUpdatingLocation()
-
-                    completion(true, "granted")
-                    print("granted")
-                case .notDetermined:
-
-                    self.locationManager.requestAlwaysAuthorization()
-                    self.locationManager.requestWhenInUseAuthorization()
-                    completion(false, "User not determined")
-                    print("not determined")
-                case .restricted:
-                    completion(false, "Restricted")
-                    print("restricted")
-                case .denied:
-                    completion(false, "Permission denied")
-                    print("denied")
+            case .authorizedAlways, .authorizedWhenInUse:
+                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManager.startUpdatingLocation()
+                
+                completion(true, "granted")
+                print("granted")
+            case .notDetermined:
+                
+                self.locationManager.requestAlwaysAuthorization()
+                self.locationManager.requestWhenInUseAuthorization()
+                completion(false, "User not determined")
+                print("not determined")
+            case .restricted:
+                completion(false, "Restricted")
+                print("restricted")
+            case .denied:
+                completion(false, "Permission denied")
+                print("denied")
             }
-         
-
+            
+            
         } else {
             completion(false, "Location not enabled")
             print("Location service not enabled")
@@ -581,11 +581,11 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         uds.set(reportMapModel.long, forKey: report_long)
         uds.set(reportMapModel.description, forKey: report_message)
         uds.set(reportMapModel.createdAt, forKey: report_created_at)
-
+        
         
         uds.set(fullname, forKey: report_reporter_fullname)
         uds.set(reportImages, forKey: report_images)
-
+        
         
         completion(true)
     }

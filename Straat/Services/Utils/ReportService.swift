@@ -87,7 +87,8 @@ class ReportService {
 
                 completion(false, error.localizedDescription)
             } else {
-                completion(true, "Success")
+                let desc = NSLocalizedString("send-report-success", comment: "")
+                completion(true, desc)
             }
         }
     }

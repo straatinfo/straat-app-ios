@@ -113,9 +113,6 @@
 /* Class = "UILabel"; text = "Messages"; ObjectID = "aQ6-vN-yzN"; */
 "aQ6-vN-yzN.text" = "Berichten";
 
-/* Class = "UITextView"; text = "Fill in characteristics of the person(s) involved, such as height, man/woman, color hair, mustache, beard, clothing, posture, tattoo or other striking details."; ObjectID = "ah1-H2-Zw6"; */
-"ah1-H2-Zw6.text" = "Vul de kenmerken van de betrokken persoon (personen) in, zoals lengte, man / vrouw, haarkleur, snor, baard, kleding, houding, tatoeage of andere opvallende details.";
-
 /* Class = "UILabel"; text = "This report is made by:"; ObjectID = "anl-K5-iGo"; */
 "anl-K5-iGo.text" = "Dit rapport is gemaakt door:";
 

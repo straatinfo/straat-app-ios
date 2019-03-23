@@ -14,7 +14,6 @@ class RegistrationDataVC: UIViewController {
     var postNumber : String? = nil
     var isMale : Bool? = true
     
-    
     @IBOutlet weak var male: UIButton!
     @IBOutlet weak var female: UIButton!
     @IBOutlet weak var firstnameTxtBox: UITextField!

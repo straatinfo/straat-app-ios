@@ -98,6 +98,9 @@ class SendSuspiciousReportVC: UIViewController {
         let uds = UserDefaults.standard
         let id = uds.string(forKey: user_id)
 //        debugPrint("userID: \(id)")
+        
+        let desc = NSLocalizedString("persons-involved-desc", comment: "")
+        personsInvolvedDescription.text  = desc
     }
     
     

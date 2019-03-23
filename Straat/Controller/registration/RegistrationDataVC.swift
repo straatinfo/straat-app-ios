@@ -115,7 +115,8 @@ class RegistrationDataVC: UIViewController {
     @IBAction func passwordTextField(_ sender: UITextField) {
     }
     @IBAction func userNameInfo(_ sender: UIButton) {
-        defaultDialog(vc: self, title: "Username Info", message: "Please enter your username here. All other users can only see your username; your phone number, your name or other data is not shown.\n However, when you are member of a team, your team members will be able to see your real name, but not other data like your phonenumber. Your team coordinator can see all your data; with this (s)he can check if the right person is in the team.\n            When needed the police and other officials will be given access to your data.")
+        let desc = NSLocalizedString("username-info", comment: "")
+        defaultDialog(vc: self, title: "Username Info", message: desc)
     }
 }
 

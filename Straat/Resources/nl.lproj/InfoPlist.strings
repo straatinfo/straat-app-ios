@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  
+
+  Created by Jamie Aguinaldo on 3/23/19.
+  
+*/
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Straat.info gebruikt de locatie informatie van je mobiel op het moment dat je een melding wil maken. Hiermee wordt het adres (GPS locatie) ingevuld bij je melding.";
+
+"NSLocationWhenInUseUsageDescription" = "Straat.info gebruikt de locatie informatie van je mobiel op het moment dat je een melding wil maken. Hiermee wordt het adres (GPS locatie) ingevuld bij je melding.";

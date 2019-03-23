@@ -8,6 +8,8 @@
 import Foundation
 
 let root = "https://straatinfo-backend-v2.herokuapp.com/v1/api/"
+let root_v2 = "https://straatinfo-backend-v2.herokuapp.com/v2/api/"
+
 let auth = root + "auth/login"
 let request_host = root + "registration/validation/host"
 let request_team = root + "team"
@@ -49,6 +51,10 @@ let team_info_members = root + "team/info/"
 let team_accept_user = root + "teamInvite/acceptRequest/"
 
 
+// chat
+let chat_list = root_v2 + "message"
+let send_message = root_v2 + "message/?_conversation="
+let create_conversation = root_v2 + "conversation?type=PRIVATE"
 
 /*
  REPORT TYPES

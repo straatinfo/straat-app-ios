@@ -18,6 +18,8 @@ class ReportModel : SendReportModel {
     var reportType: ReportTypeModel?
     var createdAt : String?
     var status : String?
+    var conversationId: String?
+    var messages: [String]?
     
     var reportImage : UIImage?
     
@@ -92,7 +94,17 @@ class ReportModel : SendReportModel {
         self.peopleInvolvedDescription = report["peopleInvolvedDescription"] as? String
         
         self.status = report["status"] as? String
+        
+        let conversation = report["_conversation"] as? [String:Any] ?? [:]
+        self.conversationId = conversation["_id"] as? String? ?? ""
+        self.messages = conversation["messages"] as? [String] ?? []
+
     }
+    
+//    init (reportMessageCount: Dictionary<String, Any>) {
+//        let conversation = reportMessageCount["_conversation"] as? [String:Any] ?? [:]
+//
+//    }
     
     
 }

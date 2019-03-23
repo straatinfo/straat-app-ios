@@ -19,22 +19,29 @@ class SuspiciousSituationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadingShow(vc: self)
-        self.reports.removeAll()
-        self.reportService.getPublicReport(reporterId: "5c63e92035086200156f93e0", reportType: "B") { (success, message, reportModels) in
-            
-            if success {
-                for reportModel in reportModels {
-                    self.reports.append(reportModel)
-                    debugPrint("report description suspicious: \(String(describing: reportModel.description))")
-                }
-                loadingDismiss()
-                self.suspiciousReportTableView.reloadData()
-            }
-        }
 
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		let uds = UserDefaults.standard
+		let userId = uds.string(forKey: user_id) ?? ""
+		
+		loadingShow(vc: self)
+		self.reports.removeAll()
+		self.reportService.getPublicReport(reporterId: userId, reportType: "B") { (success, message, reportModels) in
+			
+			if success {
+				for reportModel in reportModels {
+					self.reports.append(reportModel)
+					//                    debugPrint("report description suspicious: \(String(describing: reportModel.description))")
+					//                    debugPrint("_conversation: \(String(describing: reportModel.conversationId))")
+					//                    debugPrint("messages: \(String(describing: reportModel.messages))")
+				}
+				loadingDismiss()
+				self.suspiciousReportTableView.reloadData()
+			}
+		}
+	}
 
 }
 
@@ -47,30 +54,30 @@ extension SuspiciousSituationVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! SuspiciousTVC
-        
-        let mainCategory = self.reports[indexPath.row].mainCategory?.name
-        let date = self.reports[indexPath.row].createdAt
-        
+
+		let reports = self.reports[indexPath.row]
+        let mainCategory = reports.mainCategory?.name
+        let date = reports.createdAt
+		let messageCount = reports.messages!.count
+		
+		row.reportId = reports.reporter?.id
+		row.conversationId = reports.conversationId
         row.reportCategory.text = mainCategory
         row.dateOfReport.text = date
+		row.messageCount.text = "\(String(describing: messageCount))"
         
-        if (self.reports[indexPath.row].attachments?.count)! > 0 {
-            
-            let rootImage = self.reports[indexPath.row].attachments![0]
-            let imageUrl = rootImage["secure_url"] as? String
-            
-            Alamofire.request(URL(string: imageUrl!)!).responseImage { response in
-                
-                if let img = response.result.value {
-                    print("suspicious image dl: \(img)")
-                    
-                    DispatchQueue.main.async {
-                        row.reportImage?.image = img
-                    }
-                }
-            }
-            
-        }
+		if (self.reports[indexPath.row].attachments?.count)! > 0 {
+			
+			let rootImage = self.reports[indexPath.row].attachments![0]
+			let imageUrl = rootImage["secure_url"] as? String
+			
+			self.getReportImage(imageUrl: imageUrl!) { (hasImage, image) in
+				if hasImage {
+					row.reportImage?.image = image
+				}
+			}
+			
+		}
         
         return row
         
@@ -93,7 +100,20 @@ extension SuspiciousSituationVC : UITableViewDataSource, UITableViewDelegate {
 //        pushToNextVC(sbName: "Main", controllerID: "ViewReportID", origin: self)        
     }
         
-    
+	func getReportImage(imageUrl: String, completion: @escaping (Bool, UIImage?) -> Void) -> Void {
+		
+		Alamofire.request(URL(string: imageUrl)!).responseImage { response in
+			
+			if let img = response.result.value {
+				print("report image downloaded: \(img)")
+				
+				completion(true, img)
+			} else {
+				completion(false, nil)
+			}
+		}
+	}
+	
     func saveToUserDefault(reportModel : ReportModel , reportImages : [String]) -> Void {
 
         let uds = UserDefaults.standard
@@ -108,9 +128,11 @@ extension SuspiciousSituationVC : UITableViewDataSource, UITableViewDelegate {
         uds.set(reportModel.location, forKey: report_address)
         uds.set(reportModel.lat, forKey: report_lat)
         uds.set(reportModel.long, forKey: report_long)
+        uds.set(reportModel.conversationId, forKey: report_conversation_id)
         uds.set(reportImages, forKey: report_images)
         uds.set(reportModel.createdAt, forKey: report_created_at)
         uds.set(fullname, forKey: report_reporter_fullname)
+
         
     }
     

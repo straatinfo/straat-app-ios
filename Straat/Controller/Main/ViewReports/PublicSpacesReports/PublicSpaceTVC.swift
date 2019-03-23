@@ -15,7 +15,8 @@ class PublicSpaceTVC: UITableViewCell {
     @IBOutlet weak var messageCount: UILabel!
     @IBOutlet weak var reportImage: UIImageView!
     
-    var id : String? = nil
+    var reportId: String?
+    var conversationId: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +29,9 @@ class PublicSpaceTVC: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func messageShow(_ sender: Any) {
-        print("id: " + id!)
+    @IBAction func chatShow(_ sender: Any) {
+        let uds = UserDefaults.standard
+        uds.set(self.reportId, forKey: reporter_id)
+        uds.set(self.conversationId, forKey: report_conversation_id)
     }
 }

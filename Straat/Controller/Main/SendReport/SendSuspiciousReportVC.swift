@@ -137,7 +137,7 @@ class SendSuspiciousReportVC: UIViewController {
         let lat = uds.double(forKey: user_loc_lat)
         let long = uds.double(forKey: user_loc_long)
         let host_id = uds.string(forKey: user_host_id)
-        let team_id = uds.string(forKey: user_team_id)
+        let team_id = uds.string(forKey: user_team_id)        
         let reportType_id = "5a7888bb04866e4742f74956"
         
         if self.imageMetaData1 != nil {

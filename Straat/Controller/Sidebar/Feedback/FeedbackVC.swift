@@ -36,13 +36,17 @@ class FeedbackVC: UIViewController {
         
         self.sendFeedback(reporterId: reporterId!, name: name, email: email, feedback: feedback) { (success, text) in
             loadingDismiss()
+            var desc : String? = nil
             if success {
                 self.nameInput.text = ""
                 self.emailInput.text = ""
                 self.textInput.text = ""
-                defaultDialog(vc: self, title: "Success", message: "Successfully sent feedback")
+                desc = NSLocalizedString("feedback-success", comment: "")
+                defaultDialog(vc: self, title: "Success", message: desc)
             } else {
-                defaultDialog(vc: self, title: "Failed", message: "Unable to send feedback")
+                let title = NSLocalizedString("failed", comment: "")
+                desc = NSLocalizedString("feedback-failed", comment: "")
+                defaultDialog(vc: self, title: title, message: desc)
             }
             
         }

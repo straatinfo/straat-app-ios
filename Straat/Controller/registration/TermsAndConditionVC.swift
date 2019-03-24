@@ -9,6 +9,7 @@ import UIKit
 
 class TermsAndConditionVC: UIViewController {
 
+    @IBOutlet weak var txtViewAlwaysCall: UITextView!
 
     @IBOutlet weak var mainContainer: UIView!
     var acceptTACDele : acceptTACDelegate?
@@ -18,6 +19,9 @@ class TermsAndConditionVC: UIViewController {
 
         loadBorderedVIew(viewContainer: mainContainer, borderWidth: 1,
                          color: UIColor.init(red: 79 / 255, green: 106 / 255, blue: 133 / 255, alpha: 1))
+        
+        let desc = NSLocalizedString("always-call-112", comment: "")
+        txtViewAlwaysCall.text = desc
 
         // Do any additional setup after loading the view.
     }

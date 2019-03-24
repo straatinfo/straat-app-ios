@@ -1,0 +1,79 @@
+/*
+ Localizable.strings
+ Straat
+ 
+ Created by Jamie Aguinaldo on 3/19/19.
+ 
+ */
+
+"suspicious-desc" = "Hier kunt u een situatie die u verdacht vindt, delen met andere gebruikers in de app. Zodra meer mensen de situatie verdacht vinden, neem dan contact op met de politie of andere relevante instantie (bijv. brandweer). NB bij spoed altijd eerst 112 bellen!";
+
+"emergency-notif-desc" = "Spoed? Bel eerst 112";
+
+"persons-involved-desc" = "Vul de kenmerken van de betrokken persoon (personen) in, zoals lengte, man / vrouw, haarkleur, snor, baard, kleding, houding, tatoeage of andere opvallende details.";
+
+"send-report-success" = "Deze is vanaf nu voor iedereen te zien op straat.info. Een melding openbare ruimte wordt bovendien naar de gemeente gestuurd.";
+
+"invalid-postal-code" = "Ongeldige postcode";
+
+"public-space-desc" = "Hier kunt een melding openbare ruimte (bijv grofvuil, losliggende stoeptegels etc) doorgeven. Deze wordt direct naar de gemeente gestuurd.";
+
+"username-info" = "In dit veld vult u uw gebruikersnaam in. Alle andere gebruikers van de app straat.info zien alleen uw gebruikersnaam en dus niet uw mobiele nummer, eigen naam of andere gegevens.\nAls u lid bent van een team, dan zien de teamleden uw eigen naam, maar niet uw overige gegevens. De team coördinator ziet wel al uw gegevens. Hiermee kan de coördinator controleren of de juiste persoon in het team zit.\nDe gemeente en politie kunnen indien noodzakelijk inzage krijgen in uw gegevens. ";
+
+"always-call-112" = "Bel bij spoed altijd eerst 112\n\n\n De app straat.info is bedoeld voor het ondersteunen van buurtpreventie onder andere voor het doorgeven van meldingen aan de gemeente. Het gebruik van de app voor andere doeleinden, die niet binnen de gangbare uitleg van buurtpreventie passen, is niet toegestaan.\n\nDe app is nadrukkelijk niet bedoeld om het normale communicatie verkeer met instanties zoals de politie, de brandweer, ambulance en gemeenten te vervangen.\n\nBel bij spoed altijd eerst 112\n\nSeqretary b.v. is eigenaar van de app straat.info en aanvaardt geen enkele aansprakelijkheid voor schade op welke wijze dan ook, door het gebruik van de app. Seqretary b.v. kan de algemene voorwaarden wijzigen.\n\n\n\nOver privacy en jouw gegevens:\n\nOm je gegevens beter te beschermen, maakt de app straat.info gebruik van een chatnaam. Je mag zelf bepalen welke naam je daarvoor gebruikt. Je telefoonnummer en al je andere persoonlijke gegevens worden in het openbare deel van de app straat.info aan niemand bekend gemaakt.\n\nAls je lid bent van een team, dan zien je teamleden wel je naam, maar niet je overige gegevens. Zij zien dus niet je telefoonnummer, adres etc.\n\nDe teamcoördinator van je team heeft wel inzage in je gegevens. Hiermee kan de coördinator controleren of de juiste persoon in het team zit.\n\nDe gemeente en politie kunnen desgevraagd indien noodzakelijk inzage krijgen in jouw gegevens en gegevens die met deze app straat.info worden gegenereerd.\n\nDe meldingen met de bijbehorende berichten die met de app straat.info worden gemaakt, worden een beperkte tijd bewaard. Daarna worden deze vernietigd. Teams en de gemeente krijgen een afschrift van de meldingen.\n\nWij maken geen analyse van het gebruik van de app, anders dan ter verbetering van onze dienstverlening.\n\nWij verkopen je gegevens niet aan andere organisaties.\n\nJe kunt het gebruik van de app straat.info beëindigen en je gegevens laten verwijderen uit ons bestand door ons via de mail een verzoek daartoe te versturen.\n\nMet het accepteren van deze algemene voorwaarden stem je in met het hier beschreven gebruik van je gegevens.";
+
+"no-available-reports" = "Geen beschikbare rapporten";
+
+"fetching-near-reports" = "Fetching near reports";
+
+"report" = "Melder";
+
+"invalid-post-code" = "Ongeldige postcode";
+
+"error-response" = "Foutreactie";
+
+"enter-code" = "Voer code in";
+
+"fill-up-all-fields" = "Vul alle lege velden in";
+
+"invalid-code" = "Ongeldige code";
+
+"wrong-input" = "Verkeerde invoer";
+
+"invalid-email" = "Uw e-mail is niet geldig";
+
+"invalid-password" = "Uw wachtwoord is niet geldig of moet ten minste 6 tekens lang zijn";
+
+"invalid-firstname" = "Uw voornaam is niet geldig";
+
+"invalid-lastname" = "Uw achternaam is niet geldig";
+
+"taken-username" = "Deze gebruikersnaam is al in gebruik of niet toegestaan. Kies een andere naam.";
+
+"invalid-username" = "Uw gebruikersnaam is niet geldig";
+
+"invalid-post-number" = "Uw postnummer is niet geldig";
+
+"invalid-mobile-number" = "Uw mobiele nummer is niet geldig";
+
+"image-source" = "Afbeeldingsbron";
+
+"image-source-desc" = "Kies waar u uw afbeelding wilt nemen";
+
+"camera" = "Camera";
+
+"camera-not-available" = "Camera niet beschikbaar";
+
+"photo-library" = "Fotobibliotheek";
+
+"permission-denied" = "Geen toestemming";
+
+"invalid-username-password" = "Ongeldige gebruikersnaam of wachtwoord";
+
+"invalid-username-password" = "Ongeldige gebruikersnaam of wachtwoord";
+
+"feedback-success" = "Feedback verzonden";
+
+"feedback-failed" = "Kan geen feedback verzenden";
+
+"failed" = "Mislukt";

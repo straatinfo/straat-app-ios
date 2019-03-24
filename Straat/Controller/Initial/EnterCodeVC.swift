@@ -32,7 +32,10 @@ class EnterCodeVC: UIViewController {
             print("code: " + tfCode.text!)
         } else {
             // creates an alert for this result
-            defaultDialog(vc: self, title: "Enter Code", message: "Please fill up all the empty fields")
+            
+            let title = NSLocalizedString("enter-code", comment: "")
+            let desc = NSLocalizedString("fill-up-all-fields", comment: "")
+            defaultDialog(vc: self, title: title, message: desc)
         }
         
     }
@@ -56,7 +59,11 @@ extension EnterCodeVC : UITextFieldDelegate {
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
-                defaultDialog(vc: self, title: "Error Response", message: error.localizedDescription)
+                
+                let title = NSLocalizedString("error-response", comment: "")
+                let desc = NSLocalizedString("invalid-code", comment: "")
+                defaultDialog(vc: self, title: title, message: desc)
+                
                 loadingDismiss()
                 // creates an alert for this error response
                 

@@ -22,43 +22,43 @@
 
 "always-call-112" = "Bel bij spoed altijd eerst 112\n\n\n De app straat.info is bedoeld voor het ondersteunen van buurtpreventie onder andere voor het doorgeven van meldingen aan de gemeente. Het gebruik van de app voor andere doeleinden, die niet binnen de gangbare uitleg van buurtpreventie passen, is niet toegestaan.\n\nDe app is nadrukkelijk niet bedoeld om het normale communicatie verkeer met instanties zoals de politie, de brandweer, ambulance en gemeenten te vervangen.\n\nBel bij spoed altijd eerst 112\n\nSeqretary b.v. is eigenaar van de app straat.info en aanvaardt geen enkele aansprakelijkheid voor schade op welke wijze dan ook, door het gebruik van de app. Seqretary b.v. kan de algemene voorwaarden wijzigen.\n\n\n\nOver privacy en jouw gegevens:\n\nOm je gegevens beter te beschermen, maakt de app straat.info gebruik van een chatnaam. Je mag zelf bepalen welke naam je daarvoor gebruikt. Je telefoonnummer en al je andere persoonlijke gegevens worden in het openbare deel van de app straat.info aan niemand bekend gemaakt.\n\nAls je lid bent van een team, dan zien je teamleden wel je naam, maar niet je overige gegevens. Zij zien dus niet je telefoonnummer, adres etc.\n\nDe teamcoördinator van je team heeft wel inzage in je gegevens. Hiermee kan de coördinator controleren of de juiste persoon in het team zit.\n\nDe gemeente en politie kunnen desgevraagd indien noodzakelijk inzage krijgen in jouw gegevens en gegevens die met deze app straat.info worden gegenereerd.\n\nDe meldingen met de bijbehorende berichten die met de app straat.info worden gemaakt, worden een beperkte tijd bewaard. Daarna worden deze vernietigd. Teams en de gemeente krijgen een afschrift van de meldingen.\n\nWij maken geen analyse van het gebruik van de app, anders dan ter verbetering van onze dienstverlening.\n\nWij verkopen je gegevens niet aan andere organisaties.\n\nJe kunt het gebruik van de app straat.info beëindigen en je gegevens laten verwijderen uit ons bestand door ons via de mail een verzoek daartoe te versturen.\n\nMet het accepteren van deze algemene voorwaarden stem je in met het hier beschreven gebruik van je gegevens.";
 
-"no-available-reports" = "Geen beschikbare rapporten";
+"no-available-reports" = "No available reports";
 
 "fetching-near-reports" = "Fetching near reports";
 
 "report" = "Melder";
 
-"invalid-post-code" = "Ongeldige postcode";
+"invalid-post-code" = "Invalid postcode";
 
 "error-response" = "Foutreactie";
 
 "enter-code" = "Voer code in";
 
-"fill-up-all-fields" = "Vul alle lege velden in";
+"fill-up-all-fields" = "Please fill up all the empty fields";
 
 "invalid-code" = "Ongeldige code";
 
 "wrong-input" = "Verkeerde invoer";
 
-"invalid-email" = "Uw e-mail is niet geldig";
+"invalid-email" = "Your e-mail is not valid";
 
-"invalid-password" = "Uw wachtwoord is niet geldig of moet ten minste 6 tekens lang zijn";
+"invalid-password" = "Your password is not valid or must be atleast 6 characters";
 
-"invalid-firstname" = "Uw voornaam is niet geldig";
+"invalid-firstname" = "Your firstname is not valid";
 
-"invalid-lastname" = "Uw achternaam is niet geldig";
+"invalid-lastname" = "Your lastname is not valid";
 
-"taken-username" = "Deze gebruikersnaam is al in gebruik of niet toegestaan. Kies een andere naam.";
+"taken-username" = "This username is already in use or not allowed. Please choose a different name.";
 
-"invalid-username" = "Uw gebruikersnaam is niet geldig";
+"invalid-username" = "Your username is not valid";
 
-"invalid-post-number" = "Uw postnummer is niet geldig";
+"invalid-post-number" = "Your post number is not valid";
 
-"invalid-mobile-number" = "Uw mobiele nummer is niet geldig";
+"invalid-mobile-number" = "Your mobile number is not valid";
 
 "image-source" = "Afbeeldingsbron";
 
-"image-source-desc" = "Kies waar u uw afbeelding wilt nemen";
+"image-source-desc" = "Please choose where to take your image";
 
 "camera" = "Camera";
 
@@ -68,12 +68,28 @@
 
 "permission-denied" = "Geen toestemming";
 
-"invalid-username-password" = "Ongeldige gebruikersnaam of wachtwoord";
+"invalid-username-password" = "Invalid username or password";
 
-"invalid-username-password" = "Ongeldige gebruikersnaam of wachtwoord";
+"feedback-success" = "Successfully sent feedback";
 
-"feedback-success" = "Feedback verzonden";
-
-"feedback-failed" = "Kan geen feedback verzenden";
+"feedback-failed" = "Unable to send feedback";
 
 "failed" = "Mislukt";
+
+"no-changes" = "Geen veranderingen";
+
+"update-profile-success" = "Successfully updated your profile";
+
+"error-occured" = "An error occurred please try again.";
+
+"radius-success" = "Successfully updated radius value";
+
+"try-again" = "Probeer het opnieuw";
+
+"team-leader-accepts-request" = "Please wait until team leader accepts your request";
+
+"unidentified-location" = "This location is unindentified";
+
+"image-not-found" = "Image not found";
+
+"import-image-error" = "Error occured when importing image";

@@ -41,7 +41,8 @@ class TeamVC: UIViewController {
                 loadingDismiss()
                 self.teamListTableView.reloadData()
             } else {
-                defaultDialog(vc: self, title: "No Team Yet", message: "Please wait until team leader accepts your request")
+                let desc = NSLocalizedString("team-leader-accepts-request", comment: "")
+                defaultDialog(vc: self, title: "No Team Yet", message: desc)
             }
         }
     }

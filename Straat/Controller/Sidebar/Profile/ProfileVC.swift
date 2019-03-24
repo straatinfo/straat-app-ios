@@ -54,29 +54,36 @@ class ProfileVC: UIViewController {
     
     
     @IBAction func changeMyDataClicked(_ sender: Any) {
+        var desc : String? = nil
         if !self.didUpdate {
-            defaultDialog(vc: self, title: "Warning", message: "No Changes")
+            desc = NSLocalizedString("no-changes", comment: "")
+            defaultDialog(vc: self, title: "Warning", message: desc)
         } else {
             if profilePic != nil {
                 self.updateProfilePic() { (success, text) in
                     if success {
                         self.updateProfile() { (success, text) in
                             if success {
-                                defaultDialog(vc: self, title: "Update profile", message: "Successfully updated your profile")
+                                desc = NSLocalizedString("update-profile-success", comment: "")
+                                defaultDialog(vc: self, title: "Update profile", message: desc)
                             } else {
-                                defaultDialog(vc: self, title: "Update profile", message: "An error occured please try again.")
+                                desc = NSLocalizedString("error-occured", comment: "")
+                                defaultDialog(vc: self, title: "Update profile", message: desc)
                             }
                         }
                     } else {
-                        defaultDialog(vc: self, title: "Update profile", message: "An error occured please try again.")
+                        desc = NSLocalizedString("error-occured", comment: "")
+                        defaultDialog(vc: self, title: "Update profile", message: desc)
                     }
                 }
             } else {
                 self.updateProfile() { (success, text) in
                     if success {
-                        defaultDialog(vc: self, title: "Update profile", message: "Successfully updated your profile")
+                        desc = NSLocalizedString("update-profile-success", comment: "")
+                        defaultDialog(vc: self, title: "Update profile", message: desc)
                     } else {
-                        defaultDialog(vc: self, title: "Update profile", message: "An error occured please try again.")
+                        desc = NSLocalizedString("error-occured", comment: "")
+                        defaultDialog(vc: self, title: "Update profile", message: desc)
                     }
                 }
             }

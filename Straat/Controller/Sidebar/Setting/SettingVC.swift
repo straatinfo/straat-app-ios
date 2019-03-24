@@ -64,13 +64,16 @@ extension SettingVC {
             
             self.updateRadius(userId: userId, radius: radius) {
                 (success, text) in
+                var desc : String? = nil
                 if success {
-                    defaultDialog(vc: self, title: "Success", message: "Successfully updated radius value")
+                    desc = NSLocalizedString("radius-success", comment: "")
+                    defaultDialog(vc: self, title: "Success", message: desc)
                     
                     // @TODO set user default here
                     self.uds.set(radius, forKey: "user_radius")
                 } else {
-                    defaultDialog(vc: self, title: "Failed", message: "Please try again")
+                    desc = NSLocalizedString("try-again", comment: "")
+                    defaultDialog(vc: self, title: "Failed", message: desc)
                 }
             }
         }

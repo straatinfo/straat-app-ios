@@ -480,7 +480,8 @@ extension RegistrationDataVC {
             if success == true {
                 pushToNextVC(sbName: "Registration", controllerID: "step2VC", origin: self)
             } else {
-                defaultDialog(vc: self, title: "Empty Fields", message: "Please fill up all the empty fields")
+                let desc = NSLocalizedString("fill-up-all-fields", comment: "")
+                defaultDialog(vc: self, title: "Empty Fields", message: desc)
             }
         }
     }

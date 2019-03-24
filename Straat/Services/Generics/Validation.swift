@@ -66,13 +66,21 @@ extension String {
         return mobileNumberPredicate.evaluate(with:self)
         
     }
-    
+	
+	// check if this accepting spaces
     func isValid() -> Bool {
         let stringRegex = "^[A-Za-z0-9]+$"
         let stringPredicate = NSPredicate(format: "SELF MATCHES %@", stringRegex)
         return stringPredicate.evaluate(with:self)
 
     }
+	
+	func isValidDescription() -> Bool{
+		let stringRegex = "[A-Za-z ]+"
+		
+		let stringPredicate = NSPredicate(format: "SELF MATCHES %@", stringRegex)
+		return stringPredicate.evaluate(with:self)
+	}
     
     func isUserNameNotValid() -> Bool {
         let specialUsers = ["pol", "politie", "agent", "bureau", "gemeente", "afdeling", "sectie", "dienst"]

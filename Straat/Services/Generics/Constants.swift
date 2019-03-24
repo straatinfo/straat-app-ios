@@ -48,6 +48,7 @@ let report_images = "report_images"
 let report_reporter_fullname = "report_reporter_fullname"
 let report_created_at = "report_created_at"
 
+
 //host
 let host_reg_id = "host_reg_id"
 let host_reg_lat = "host_reg_lat"
@@ -68,3 +69,10 @@ let team_name = "team_name"
 let team_email = "team_email"
 let team_logo = "team_logo"
 let team_leader_id = "team_leader_id"
+
+
+// for chat
+let team_member_id = "team_member_id"
+let team_conversation_id = "team_conversation_id"
+let report_conversation_id = "report_conversation_id"
+let reporter_id = "reporter_id"

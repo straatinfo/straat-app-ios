@@ -15,7 +15,8 @@ class SuspiciousTVC: UITableViewCell {
     @IBOutlet weak var messageCount: UILabel!
     @IBOutlet weak var reportImage: UIImageView!
     
-    var id : String? = nil
+	var reportId: String?
+	var conversationId: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +30,9 @@ class SuspiciousTVC: UITableViewCell {
     }
 
     @IBAction func messageShow(_ sender: Any) {
-        print("id: " + id!)
+		let uds = UserDefaults.standard
+		uds.set(self.reportId, forKey: reporter_id)
+		uds.set(self.conversationId, forKey: report_conversation_id)
     }
     
 }

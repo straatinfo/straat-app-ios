@@ -10,6 +10,8 @@ import UIKit
 class TeamMemberTVC: UITableViewCell {
 
     @IBOutlet weak var teamMemberName: UILabel!
+	var teamMemberId: String?
+	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +22,13 @@ class TeamMemberTVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+	
+	
+	@IBAction func openConversation(_ sender: UIButton) {
+		let uds = UserDefaults.standard
+		uds.set(self.teamMemberId, forKey: team_member_id)
+		
+		debugPrint("team_member_id: \(self.teamMemberId)")
+	}
+	
 }

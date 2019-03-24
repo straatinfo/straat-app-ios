@@ -19,7 +19,8 @@ class TeamDetailsVC: UIViewController {
     @IBOutlet weak var teamRequestTableView: UITableView!
     
     var teamMembersArr = [TeamModel]()
-    
+	var userId : String?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navColor()
@@ -54,9 +55,11 @@ extension TeamDetailsVC {
         let teamName = uds.string(forKey: team_name)
         let teamEmail = uds.string(forKey: team_email)
         let teamLogo = uds.string(forKey: team_logo)
-        
+		let userId = uds.string(forKey: user_id)
+		
         self.teamName.text = teamName
         self.teamEmail.text = teamEmail
+		self.userId = userId
         
         loadingShow(vc: self)
         if teamLogo != nil {
@@ -69,7 +72,7 @@ extension TeamDetailsVC {
         } else {
             loadingDismiss()
         }
-        
+		self.teamMembersArr.removeAll()
         self.getTeamMembers(teamId: teamId!)
 
     }
@@ -95,7 +98,12 @@ extension TeamDetailsVC {
         debugPrint("teamid: \(teamId)")
         teamService.getTeamMembers(teamId: teamId) { (success, message, teamModel) in
             if success == true {
-                self.teamMembersArr = teamModel ?? []
+				for teamModelItem in teamModel! {
+					if teamModelItem.requestUserId != self.userId {
+						self.teamMembersArr.append(teamModelItem)
+					}
+				}
+//                self.teamMembersArr = teamModel ?? []
                 debugPrint("teamModel: \(String(describing: teamModel))")
             } else {
                 debugPrint("false")
@@ -114,8 +122,12 @@ extension TeamDetailsVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! TeamMemberTVC
-        
-        row.teamMemberName.text = self.teamMembersArr[indexPath.row].requestUserFname! + " " + self.teamMembersArr[indexPath.row].requestUserLname!
+		
+		if self.teamMembersArr[indexPath.row].requestUserId! != self.userId {
+			row.teamMemberId = self.teamMembersArr[indexPath.row].requestUserId!
+			row.teamMemberName.text = self.teamMembersArr[indexPath.row].requestUserFname! + " " + self.teamMembersArr[indexPath.row].requestUserLname!
+		}
+
         
         return row
     }

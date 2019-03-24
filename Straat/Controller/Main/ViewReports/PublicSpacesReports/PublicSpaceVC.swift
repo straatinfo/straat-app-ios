@@ -15,7 +15,6 @@ class PublicSpaceVC: UIViewController {
     
     let reportService = ReportService()
     var reports = [ReportModel]()
-    let imageActivityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +34,9 @@ class PublicSpaceVC: UIViewController {
             if success {
                 for reportModel in reportModels {
                     self.reports.append(reportModel)
-                    debugPrint("report description public: \(String(describing: reportModel.description))")
-
+//                    debugPrint("report description public: \(String(describing: reportModel.description))")
+//                    debugPrint("_conversation: \(String(describing: reportModel.conversationId))")
+//                    debugPrint("messages: \(String(describing: reportModel.messages?.count))")
                 }
                 loadingDismiss()
                 self.publicReportTableView.reloadData()
@@ -61,11 +61,17 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
         
         let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! PublicSpaceTVC
         
-        let mainCategory = self.reports[indexPath.row].mainCategory?.name
-        let date = self.reports[indexPath.row].createdAt
-
+		let reports = self.reports[indexPath.row]
+		let mainCategory = reports.mainCategory?.name
+		let date = reports.createdAt
+		let messageCount = reports.messages!.count
+        
+        row.reportId = reports.reporter?.id
+        row.conversationId = reports.conversationId
         row.reportCategory.text = mainCategory
         row.dateOfReport.text = date
+        row.messageCount.text = "\(String(describing: messageCount))"
+
 
         if (self.reports[indexPath.row].attachments?.count)! > 0 {
             
@@ -77,9 +83,15 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
                     row.reportImage?.image = image
                 }
             }
-
             
         }
+
+        
+//        if (self.reports[indexPath.row].messages?.count)! > 0 {
+//
+//        } else {
+//
+//        }
         
         return row
         
@@ -129,6 +141,7 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
         uds.set(reportModel.location, forKey: report_address)
         uds.set(reportModel.lat, forKey: report_lat)
         uds.set(reportModel.long, forKey: report_long)
+        uds.set(reportModel.conversationId, forKey: report_conversation_id)
         uds.set(reportImages, forKey: report_images)
         uds.set(reportModel.createdAt, forKey: report_created_at)
         uds.set(fullname, forKey: report_reporter_fullname)

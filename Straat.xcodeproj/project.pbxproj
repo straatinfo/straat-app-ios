@@ -15,6 +15,10 @@
 		4316BB4922037DD000A168BE /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316BB4822037DD000A168BE /* MainVC.swift */; };
 		432D6605223AA68A005F382D /* TeamMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D6604223AA68A005F382D /* TeamMemberVC.swift */; };
 		432D6607223AA7DC005F382D /* TeamMemberRequestTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D6606223AA7DC005F382D /* TeamMemberRequestTVC.swift */; };
+		4335FF3222434C1C00A1C6AA /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4335FF3122434C1C00A1C6AA /* ChatVC.swift */; };
+		4335FF3422434C3B00A1C6AA /* ChatTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4335FF3322434C3B00A1C6AA /* ChatTVC.swift */; };
+		4335FF3622434E6200A1C6AA /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4335FF3522434E6200A1C6AA /* ChatModel.swift */; };
+		4335FF382243583D00A1C6AA /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4335FF372243583D00A1C6AA /* ChatService.swift */; };
 		433DF9C12228665E0091BF8A /* ReportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433DF9C02228665E0091BF8A /* ReportTVC.swift */; };
 		433DF9C3222866710091BF8A /* TeamTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433DF9C2222866710091BF8A /* TeamTVC.swift */; };
 		43440D6D2215C2D7008A777E /* PublicSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */; };
@@ -28,6 +32,8 @@
 		435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */; };
 		435CCB2621FF66CD00E87AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB2421FF66CD00E87AD6 /* LaunchScreen.storyboard */; };
 		435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */; };
+		435E4CB022465DBC00A6AAC2 /* TeamChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E4CAF22465DBC00A6AAC2 /* TeamChatVC.swift */; };
+		435E4CB222465DD900A6AAC2 /* TeamChatTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E4CB122465DD900A6AAC2 /* TeamChatTVC.swift */; };
 		4368EB12222973CC00EA03FE /* TeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368EB11222973CC00EA03FE /* TeamDetailsVC.swift */; };
 		4368EB14222977B500EA03FE /* TeamDetailsUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368EB13222977B500EA03FE /* TeamDetailsUpdateVC.swift */; };
 		436B4027222A83BD00873C01 /* CreateNewTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B4026222A83BD00873C01 /* CreateNewTeamVC.swift */; };
@@ -92,6 +98,10 @@
 		4316BB4822037DD000A168BE /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		432D6604223AA68A005F382D /* TeamMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberVC.swift; sourceTree = "<group>"; };
 		432D6606223AA7DC005F382D /* TeamMemberRequestTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberRequestTVC.swift; sourceTree = "<group>"; };
+		4335FF3122434C1C00A1C6AA /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		4335FF3322434C3B00A1C6AA /* ChatTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTVC.swift; sourceTree = "<group>"; };
+		4335FF3522434E6200A1C6AA /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		4335FF372243583D00A1C6AA /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		433DF9C02228665E0091BF8A /* ReportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTVC.swift; sourceTree = "<group>"; };
 		433DF9C2222866710091BF8A /* TeamTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTVC.swift; sourceTree = "<group>"; };
 		43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicSpaceVC.swift; sourceTree = "<group>"; };
@@ -107,6 +117,8 @@
 		435CCB2521FF66CD00E87AD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		435CCB2721FF66CD00E87AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		435CCB3421FF78F000E87AD6 /* EnterCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeVC.swift; sourceTree = "<group>"; };
+		435E4CAF22465DBC00A6AAC2 /* TeamChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatVC.swift; sourceTree = "<group>"; };
+		435E4CB122465DD900A6AAC2 /* TeamChatTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatTVC.swift; sourceTree = "<group>"; };
 		4368EB11222973CC00EA03FE /* TeamDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsVC.swift; sourceTree = "<group>"; };
 		4368EB13222977B500EA03FE /* TeamDetailsUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsUpdateVC.swift; sourceTree = "<group>"; };
 		436B4026222A83BD00873C01 /* CreateNewTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTeamVC.swift; sourceTree = "<group>"; };
@@ -191,9 +203,19 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		4335FF3022434BE000A1C6AA /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				4335FF3122434C1C00A1C6AA /* ChatVC.swift */,
+				4335FF3322434C3B00A1C6AA /* ChatTVC.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		433DF9BF222865E70091BF8A /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				435E4CB122465DD900A6AAC2 /* TeamChatTVC.swift */,
 				433DF9C02228665E0091BF8A /* ReportTVC.swift */,
 				433DF9C2222866710091BF8A /* TeamTVC.swift */,
 				436B4028222A95A100873C01 /* TeamMemberTVC.swift */,
@@ -295,6 +317,7 @@
 				9BBABA9F221F2E4E00DBC284 /* ReportModel.swift */,
 				9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */,
 				9B77016E222076B4004D8CF0 /* ReportTypeModel.swift */,
+				4335FF3522434E6200A1C6AA /* ChatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,6 +355,7 @@
 		437B55A322398D570022A831 /* MyTeam */ = {
 			isa = PBXGroup;
 			children = (
+				435E4CAF22465DBC00A6AAC2 /* TeamChatVC.swift */,
 				4368EB11222973CC00EA03FE /* TeamDetailsVC.swift */,
 				4392B574222129760001A7E0 /* TeamVC.swift */,
 				4368EB13222977B500EA03FE /* TeamDetailsUpdateVC.swift */,
@@ -415,6 +439,7 @@
 		4388ED7D220DE8BC002A008A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				4335FF3022434BE000A1C6AA /* Chat */,
 				437B55AB22398E890022A831 /* MapView */,
 				437B55AA22398E570022A831 /* ViewReports */,
 				437B55A922398DF80022A831 /* SendReport */,
@@ -478,6 +503,7 @@
 				9BBABAA5221F4AE000DBC284 /* MediaService.swift */,
 				9BECD55C22207A9D004989A2 /* UserService.swift */,
 				9B2EC5352232E1AD00257649 /* TeamService.swift */,
+				4335FF372243583D00A1C6AA /* ChatService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -672,6 +698,7 @@
 				4368EB14222977B500EA03FE /* TeamDetailsUpdateVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				9B0948BE2212BC15004CE4CB /* RegistrationStep2VC.swift in Sources */,
+				4335FF3422434C3B00A1C6AA /* ChatTVC.swift in Sources */,
 				43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */,
 				4392B5772221298B0001A7E0 /* ProfileVC.swift in Sources */,
 				432D6605223AA68A005F382D /* TeamMemberVC.swift in Sources */,
@@ -684,6 +711,7 @@
 				9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */,
 				437CF0AE2238399E00FC1A86 /* MyPickerView.swift in Sources */,
 				433DF9C12228665E0091BF8A /* ReportTVC.swift in Sources */,
+				435E4CB022465DBC00A6AAC2 /* TeamChatVC.swift in Sources */,
 				4392B5792221299B0001A7E0 /* AboutUsVC.swift in Sources */,
 				43EA2B13220B01FD0088B5FC /* Generics.swift in Sources */,
 				435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */,
@@ -693,6 +721,7 @@
 				436B4029222A95A100873C01 /* TeamMemberTVC.swift in Sources */,
 				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
+				4335FF382243583D00A1C6AA /* ChatService.swift in Sources */,
 				436B4027222A83BD00873C01 /* CreateNewTeamVC.swift in Sources */,
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
 				432D6607223AA7DC005F382D /* TeamMemberRequestTVC.swift in Sources */,
@@ -701,6 +730,8 @@
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */,
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
+				4335FF3222434C1C00A1C6AA /* ChatVC.swift in Sources */,
+				435E4CB222465DD900A6AAC2 /* TeamChatTVC.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				43130E262221DB800074AD85 /* SecondScreenVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
@@ -711,6 +742,7 @@
 				9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */,
 				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,
 				439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */,
+				4335FF3622434E6200A1C6AA /* ChatModel.swift in Sources */,
 				9B77016F222076B4004D8CF0 /* ReportTypeModel.swift in Sources */,
 				4392B575222129760001A7E0 /* TeamVC.swift in Sources */,
 				439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */,
@@ -905,14 +937,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46BKCK9BUH;
+				DEVELOPMENT_TEAM = LY8NRN944A;
 				INFOPLIST_FILE = Straat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.straat.straatinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.straat.straatinfotest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -928,14 +960,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46BKCK9BUH;
+				DEVELOPMENT_TEAM = LY8NRN944A;
 				INFOPLIST_FILE = Straat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.straat.straatinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.straat.straatinfotest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

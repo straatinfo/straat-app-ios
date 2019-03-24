@@ -13,6 +13,8 @@ class ProfileVC: UIViewController {
     var didUpdate = false
     var userService = UserService()
     var profilePic: Data?
+    var errorTitle : String? = nil
+    var errorDesc : String? = nil
 
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var firstName: UITextField!
@@ -44,6 +46,8 @@ class ProfileVC: UIViewController {
         self.navColor()
         self.setImageTapGestures()
         self.loadProfileData()
+        
+        errorTitle = NSLocalizedString("wrong-input", comment: "")
         // Do any additional setup after loading the view.
     }
     
@@ -122,7 +126,8 @@ extension ProfileVC : UITextFieldDelegate {
                 checkTextFieldValues()
             } else {
                 firstName.becomeFirstResponder()
-                validationDialog(vc: self, title: "Wrong input", message: "Your firstname is not valid", buttonText: "Ok")
+                errorDesc = NSLocalizedString("invalid-firstname", comment: "")
+                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
 
             }
@@ -132,19 +137,22 @@ extension ProfileVC : UITextFieldDelegate {
                 checkTextFieldValues()
             } else {
                 familyName.becomeFirstResponder()
-                validationDialog(vc: self, title: "Wrong input", message: "Your lastname is not valid", buttonText: "Ok")
+                errorDesc = NSLocalizedString("invalid-lastname", comment: "")
+                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
             }
         case chatName:
             debugPrint("username")
             if textField.text?.isValid() ?? false {
                 if textField.text?.isUserNameNotValid() ?? false {
-                    validationDialog(vc: self, title: "Wrong input", message: "This username is already in use or not allowed. Please choose a different name.", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("taken-username", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 }
                 checkTextFieldValues()
             } else {
                 chatName.becomeFirstResponder()
-                validationDialog(vc: self, title: "Wrong input", message: "Your username is not valid", buttonText: "Ok")
+                errorDesc = NSLocalizedString("invalid-username", comment: "")
+                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
             }
         case addressPostalCode:
@@ -153,7 +161,8 @@ extension ProfileVC : UITextFieldDelegate {
                 checkTextFieldValues()
             } else {
                 addressPostalCode.becomeFirstResponder()
-                validationDialog(vc: self, title: "Wrong input", message: "Your lastname is not valid", buttonText: "Ok")
+                errorDesc = NSLocalizedString("invalid-postal-code", comment: "")
+                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
             }
             break
@@ -163,7 +172,8 @@ extension ProfileVC : UITextFieldDelegate {
                 checkTextFieldValues()
             } else {
                 addressLotNum.becomeFirstResponder()
-                validationDialog(vc: self, title: "Wrong input", message: "Your post number is not valid", buttonText: "Ok")
+                errorDesc = NSLocalizedString("invalid-post-number", comment: "")
+                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
             }
         case contactEmail:
@@ -173,7 +183,8 @@ extension ProfileVC : UITextFieldDelegate {
                 debugPrint("valid email")
             } else {
                 contactEmail.becomeFirstResponder()
-                validationDialog(vc: self, title: "Wrong input", message: "Your e-mail is not valid", buttonText: "Ok")
+                errorDesc = NSLocalizedString("invalid-email", comment: "")
+                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
                 debugPrint("not valid email")
             }
@@ -182,7 +193,8 @@ extension ProfileVC : UITextFieldDelegate {
             if textField.text?.isMobileNumberValid() ?? false {
                 checkTextFieldValues()
             } else {
-                validationDialog(vc: self, title: "Wrong input", message: "Your mobile number is not valid", buttonText: "Ok")
+                errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
+                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 contactNumber.becomeFirstResponder()
                 disableChangeDataButton()
                 
@@ -192,7 +204,8 @@ extension ProfileVC : UITextFieldDelegate {
             if textField.text?.isValidPassword() ?? false {
                 checkTextFieldValues()
             } else {
-                validationDialog(vc: self, title: "Wrong input", message: "Your password is not valid or must be atleast 6 characters", buttonText: "Ok")
+                errorDesc = NSLocalizedString("invalid-password", comment: "")
+                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 password.becomeFirstResponder()
                 disableChangeDataButton()
                 debugPrint("not valid password")
@@ -257,20 +270,25 @@ extension ProfileVC : UINavigationControllerDelegate, UIImagePickerControllerDel
         let view = gesture.view!
         img.delegate = self
         
-        let alert = UIAlertController(title: "Image Source", message: "Please choose where to take your image", preferredStyle: .actionSheet)
+        let imageSource = NSLocalizedString("image-source", comment: "")
+        let imageSourceDesc = NSLocalizedString("image-source-desc", comment: "")
+        let alert = UIAlertController(title: imageSource, message: imageSourceDesc, preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+        let camera = NSLocalizedString("camera", comment: "")
+        let cameraNotAvailable = NSLocalizedString("camera-not-available", comment: "")
+        alert.addAction(UIAlertAction(title: camera, style: .default, handler: { (action:UIAlertAction) in
             //some shitty code
             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
                 img.sourceType = UIImagePickerController.SourceType.camera
                 self.present(img, animated: true, completion: nil)
             } else {
-                defaultDialog(vc: self, title: "Camera not available", message: nil)
+                defaultDialog(vc: self, title: cameraNotAvailable, message: nil)
             }
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+        let photoLibrary = NSLocalizedString("photo-library", comment: "")
+        alert.addAction(UIAlertAction(title: photoLibrary, style: .default, handler: { (action:UIAlertAction) in
             //some shitty code
             
             self.importImagePermission { (hasGranted, result) in
@@ -281,7 +299,8 @@ extension ProfileVC : UINavigationControllerDelegate, UIImagePickerControllerDel
                     
                     self.present(img, animated: true, completion: nil)
                 } else {
-                    defaultDialog(vc: self, title: "Permission denied", message: result)
+                    let permissionDenied = NSLocalizedString("permission-denied", comment: "")
+                    defaultDialog(vc: self, title: permissionDenied, message: result)
                 }
                 
             }

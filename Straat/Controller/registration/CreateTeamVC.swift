@@ -197,7 +197,10 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
-                defaultDialog(vc: self, title: "Error Response", message: error.localizedDescription)
+                
+                let title = NSLocalizedString("error-response", comment: "")
+                defaultDialog(vc: self, title: title, message: error.localizedDescription)
+                
                 completion(false, error.localizedDescription)
                 // loadingDismiss()
                 

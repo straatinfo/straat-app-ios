@@ -13,6 +13,8 @@ class RegistrationDataVC: UIViewController {
     var postCode : String? = nil
     var postNumber : String? = nil
     var isMale : Bool? = true
+    var errorTitle : String? = nil
+    var errorDesc : String? = nil
     
     @IBOutlet weak var male: UIButton!
     @IBOutlet weak var female: UIButton!
@@ -30,6 +32,9 @@ class RegistrationDataVC: UIViewController {
     @IBOutlet weak var passwordTxtBox: UITextField!
     @IBOutlet weak var nextStep: UIButton!
     
+    @IBOutlet weak var btnTeam: UIButton!
+    @IBOutlet weak var btnReporter: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +43,11 @@ class RegistrationDataVC: UIViewController {
         self.loadInputs(userData: userData)
         self.initView()
         self.initKeyBoardToolBar()
+        
+        let title = NSLocalizedString("report", comment: "")
+        self.btnReporter.setTitle(title, for: .normal)
+        
+        errorTitle = NSLocalizedString("wrong-input", comment: "")
     }
     
 
@@ -142,7 +152,8 @@ extension RegistrationDataVC {
                     checkTextFieldValues()
                 } else {
                     firstnameTxtBox.becomeFirstResponder()
-                    validationDialog(vc: self, title: "Wrong input", message: "Your firstname is not valid", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-firstname", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     disableNextStepButton()
                 }
             case lastnameTxtBox:
@@ -151,19 +162,22 @@ extension RegistrationDataVC {
                     checkTextFieldValues()
                 } else {
                     lastnameTxtBox.becomeFirstResponder()
-                    validationDialog(vc: self, title: "Wrong input", message: "Your lastname is not valid", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-lastname", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     disableNextStepButton()
                 }
             case usernameTxtBox:
                 debugPrint("username")
                 if textField.text?.isValid() ?? false {
                     if textField.text?.isUserNameNotValid() ?? false {
-                        validationDialog(vc: self, title: "Wrong input", message: "This username is already in use or not allowed. Please choose a different name.", buttonText: "Ok")
+                        errorDesc = NSLocalizedString("taken-username", comment: "")
+                        validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     }
                     checkTextFieldValues()
                 } else {
                     usernameTxtBox.becomeFirstResponder()
-                    validationDialog(vc: self, title: "Wrong input", message: "Your usernmae is not valid", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-username", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     disableNextStepButton()
                 }
             case postCodeTxtBox:
@@ -172,7 +186,8 @@ extension RegistrationDataVC {
                     checkTextFieldValues()
                 } else {
                     postCodeTxtBox.becomeFirstResponder()
-                    validationDialog(vc: self, title: "Wrong input", message: "Your lastname is not valid", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-postal-code", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     disableNextStepButton()
                 }
             break
@@ -182,7 +197,8 @@ extension RegistrationDataVC {
                     checkTextFieldValues()
                 } else {
                     postNumberTxtBox.becomeFirstResponder()
-                    validationDialog(vc: self, title: "Wrong input", message: "Your post number is not valid", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-post-number", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     disableNextStepButton()
                 }
             case emailTxtBox:
@@ -192,7 +208,8 @@ extension RegistrationDataVC {
                     debugPrint("valid email")
                 } else {
                     emailTxtBox.becomeFirstResponder()
-                    validationDialog(vc: self, title: "Wrong input", message: "Your e-mail is not valid", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("wrong-input", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     disableNextStepButton()
                     debugPrint("not valid email")
                 }
@@ -201,7 +218,8 @@ extension RegistrationDataVC {
                 if textField.text?.isMobileNumberValid() ?? false {
                     checkTextFieldValues()
                 } else {
-                    validationDialog(vc: self, title: "Wrong input", message: "Your mobile number is not valid", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     mobileNumberTxtBox.becomeFirstResponder()
                     disableNextStepButton()
 
@@ -211,7 +229,8 @@ extension RegistrationDataVC {
                 if textField.text?.isValidPassword() ?? false {
                     checkTextFieldValues()
                 } else {
-                    validationDialog(vc: self, title: "Wrong input", message: "Your password is not valid or must be atleast 6 characters", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-password", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     passwordTxtBox.becomeFirstResponder()
                     disableNextStepButton()
                     debugPrint("not valid password")
@@ -329,8 +348,9 @@ extension RegistrationDataVC {
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
                 
-                let desc = NSLocalizedString("suspicious-desc", comment: "")
-                defaultDialog(vc: self, title: "Error Response", message: desc)
+                let title = NSLocalizedString("error-response", comment: "")
+                let desc = NSLocalizedString("invalid-post-code", comment: "")
+                defaultDialog(vc: self, title: title, message: desc)
                 
                 // loadingDismiss()
                 

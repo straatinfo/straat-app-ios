@@ -245,11 +245,11 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
                 }
                 
             } else {
+                let title = NSLocalizedString("fetching-near-reports", comment: "")
                 let desc = NSLocalizedString("no-available-reports", comment: "")
-                defaultDialog(vc: self, title: "Fetching near reports", message: desc)
+                defaultDialog(vc: self, title: title, message: desc)
                 loadingDismiss()
             }
-            
         }
         
         

@@ -68,3 +68,12 @@
 
 "permission-denied" = "Geen toestemming";
 
+"invalid-username-password" = "Ongeldige gebruikersnaam of wachtwoord";
+
+"invalid-username-password" = "Ongeldige gebruikersnaam of wachtwoord";
+
+"feedback-success" = "Feedback verzonden";
+
+"feedback-failed" = "Kan geen feedback verzenden";
+
+"failed" = "Mislukt";

@@ -67,3 +67,13 @@
 "photo-library" = "Photo Library";
 
 "permission-denied" = "Permission denied";
+
+"login" = "Login";
+
+"invalid-username-password" = "Invalid username or password";
+
+"feedback-success" = "Successfully sent feedback";
+
+"feedback-failed" = "Unable to send feedback";
+
+"failed" = "Failed";

@@ -46,7 +46,8 @@ class LoginUserVC: UIViewController {
                 ])
             
         } else {
-            defaultDialog(vc: self, title: "Login", message: "Please fill up all the empty fields")
+            let desc = NSLocalizedString("fill-up-all-fields", comment: "")
+            defaultDialog(vc: self, title: "Login", message: desc)
             print("false")
         }
         
@@ -129,7 +130,8 @@ extension LoginUserVC : UITextFieldDelegate {
                 print("error reponse: \(error.localizedDescription)")
                 
                 let title = NSLocalizedString("error-response", comment: "")
-                defaultDialog(vc: self, title: title, message: error.localizedDescription)
+                let desc = NSLocalizedString("invalid-username-password", comment: "")
+                defaultDialog(vc: self, title: title, message: desc)
                 
                 loadingDismiss()
                 

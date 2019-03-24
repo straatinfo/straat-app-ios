@@ -77,3 +77,21 @@
 "feedback-failed" = "Unable to send feedback";
 
 "failed" = "Failed";
+
+"no-changes" = "No Changes";
+
+"update-profile-success" = "Successfully updated your profile";
+
+"error-occured" = "An error occurred please try again.";
+
+"radius-success" = "Successfully updated radius value";
+
+"try-again" = "Try Again";
+
+"team-leader-accepts-request" = "Please wait until team leader accepts your request";
+
+"unidentified-location" = "This location is unindentified";
+
+"image-not-found" = "Image not found";
+
+"import-image-error" = "Error occured when importing image";

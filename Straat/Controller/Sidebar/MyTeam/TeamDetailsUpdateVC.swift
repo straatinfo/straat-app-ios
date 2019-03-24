@@ -35,7 +35,8 @@ class TeamDetailsUpdateVC: UIViewController {
                 loadingDismiss()
             }
         } else {
-            defaultDialog(vc: self, title: "Empty Field", message: "Please fill up all the empty fields!")
+            let desc = NSLocalizedString("fill-up-all-fields", comment: "")
+            defaultDialog(vc: self, title: "Empty Field", message: desc)
         }
     }
     
@@ -134,7 +135,8 @@ extension TeamDetailsUpdateVC : UINavigationControllerDelegate, UIImagePickerCon
                 img.sourceType = UIImagePickerController.SourceType.camera
                 self.present(img, animated: true, completion: nil)
             } else {
-                defaultDialog(vc: self, title: "Camera not available", message: nil)
+                let desc = NSLocalizedString("camera-not-available", comment: "")
+                defaultDialog(vc: self, title: desc, message: nil)
             }
             
         }))

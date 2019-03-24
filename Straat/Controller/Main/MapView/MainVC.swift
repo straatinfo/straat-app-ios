@@ -111,7 +111,8 @@ class MainVC: UIViewController {
     
     
     @IBAction func suspiciousInfo(_ sender: UIButton) {
-        defaultDialog(vc: self, title: "Suspicious Situation", message: "Here you're able to share a situation that might be suspicious with other members of your team. At the moment other members agree with you. that is needed looks suspicious call the police or other relevant organisation. Emergency? First call 112 before continuing to use this app.")
+        let desc = NSLocalizedString("suspicious-desc", comment: "")
+        defaultDialog(vc: self, title: "Suspicious Situation", message: desc)
     }
     
     @IBAction func showPublicSpaceReport(_ sender: UIButton) {
@@ -380,7 +381,8 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             if  hasAdd {
                 self.customMarker (mView : mapView, marker: marker, title: "Report Category", address : response, lat : marker.position.latitude , long : marker.position.longitude)
             } else {
-                defaultDialog(vc: self, title: "Unidentified Location", message: "This location is unindentified")
+                let desc = NSLocalizedString("unidentified-location", comment: "")
+                defaultDialog(vc: self, title: "Unidentified Location", message: desc)
             }
             
         })
@@ -524,7 +526,8 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                 self.customMarker (mView : self.mapView, marker: self.marker, title: "Report Category", address : response, lat : locValue.latitude , long : locValue.longitude)
                 self.initMapRadius(lat: locValue.latitude, long: locValue.longitude)
             } else {
-                defaultDialog(vc: self, title: "Unidentified Location", message: "Your location is unindentified")
+                let desc = NSLocalizedString("unidentified-location", comment: "")
+                defaultDialog(vc: self, title: "Unidentified Location", message: desc)
             }
             
             self.locationManager.stopUpdatingLocation()

@@ -77,7 +77,8 @@ extension ViewReportVC {
             }
             
         } else {
-            defaultDialog(vc: self, title: "Fetching images", message: "Image not found")
+            let desc = NSLocalizedString("image-not-found", comment: "")
+            defaultDialog(vc: self, title: "Fetching images", message: desc)
             loadingDismiss()
         }
         

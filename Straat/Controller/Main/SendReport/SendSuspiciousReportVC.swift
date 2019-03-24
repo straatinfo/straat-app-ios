@@ -112,7 +112,8 @@ class SendSuspiciousReportVC: UIViewController {
         } else {
             self.isUrgent = true
             emergencyNotifButton.isSelected = true
-            defaultDialog(vc: self, title: "Emergency Notification", message: "Urgent? First Call 112?")
+            let desc = NSLocalizedString("emergency-notif-desc", comment: "")
+            defaultDialog(vc: self, title: "Emergency Notification", message: desc)
         }
         debugPrint("isUrgent: \(String(describing: self.isUrgent))")
         
@@ -392,7 +393,8 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                 self.present(img, animated: true, completion: nil)
                 self.imgViewTag = view.tag
             } else {
-                defaultDialog(vc: self, title: "Camera not available", message: nil)
+                let desc = NSLocalizedString("camera-not-available", comment: "")
+                defaultDialog(vc: self, title: desc, message: nil)
             }
 
         }))
@@ -478,7 +480,8 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                 imgView3.image = image
                 break
             default:
-                defaultDialog(vc: self, title: "Import Image", message: "Error occured when importing image")
+                let desc = NSLocalizedString("import-image-error", comment: "")
+                defaultDialog(vc: self, title: "Import Image", message: desc)
                 print("error in importing image")
                 break
             }

@@ -570,6 +570,8 @@
                     </view>
                     <size key="freeformSize" width="375" height="1300"/>
                     <connections>
+                        <outlet property="btnReporter" destination="M2l-mF-Kpj" id="HrK-Yi-dNQ"/>
+                        <outlet property="btnTeam" destination="ZCr-vX-naG" id="FqX-E8-dJR"/>
                         <outlet property="emailTxtBox" destination="vbh-0T-0M0" id="QEZ-dW-Vs7"/>
                         <outlet property="female" destination="ssL-JQ-uvh" id="2Bj-Mo-khA"/>
                         <outlet property="firstnameTxtBox" destination="2y4-9d-kI4" id="5i9-BK-agF"/>
@@ -727,6 +729,7 @@
                     <size key="freeformSize" width="375" height="1400"/>
                     <connections>
                         <outlet property="mainContainer" destination="Cdo-z3-0hl" id="pHA-gG-I2H"/>
+                        <outlet property="txtViewAlwaysCall" destination="YJL-pf-YaR" id="Bmo-zW-l6b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ta9-Vt-vhb" userLabel="First Responder" sceneMemberID="firstResponder"/>

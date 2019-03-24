@@ -13,6 +13,8 @@ class LoginUserVC: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    var errorTitle : String? = nil
+    var errorDesc : String? = nil
     
     let apiHandler = ApiHandler()
     let userModel = UserModel()
@@ -20,6 +22,8 @@ class LoginUserVC: UIViewController {
     override func viewDidLoad() {
         self.userModel.removeFromLocalData()
         self.disableLoginButton()
+        
+        errorTitle = NSLocalizedString("wrong-input", comment: "")
     }
     
     @IBAction func userNameTextField(_ sender: UITextField) {
@@ -70,7 +74,8 @@ extension LoginUserVC : UITextFieldDelegate {
                     }
                 } else {
                     email.becomeFirstResponder()
-                    validationDialog(vc: self, title: "Wrong input", message: "Your e-mail is not valid", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-email", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     disableLoginButton()
                     debugPrint("not valid email")
                 }
@@ -81,7 +86,8 @@ extension LoginUserVC : UITextFieldDelegate {
                         enableLoginButton()
                     }
                 } else {
-                    validationDialog(vc: self, title: "Wrong input", message: "Your password is not valid or must be atleast 6 characters", buttonText: "Ok")
+                    errorDesc = NSLocalizedString("invalid-password", comment: "")
+                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                     password.becomeFirstResponder()
                     disableLoginButton()
                     debugPrint("not valid password")
@@ -121,7 +127,10 @@ extension LoginUserVC : UITextFieldDelegate {
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
-                defaultDialog(vc: self, title: "Error Response", message: error.localizedDescription)
+                
+                let title = NSLocalizedString("error-response", comment: "")
+                defaultDialog(vc: self, title: title, message: error.localizedDescription)
+                
                 loadingDismiss()
                 
             } else if let data = response {

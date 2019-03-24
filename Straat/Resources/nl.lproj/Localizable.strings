@@ -25,3 +25,46 @@
 "no-available-reports" = "Geen beschikbare rapporten";
 
 "fetching-near-reports" = "Fetching near reports";
+
+"report" = "Melder";
+
+"invalid-post-code" = "Ongeldige postcode";
+
+"error-response" = "Foutreactie";
+
+"enter-code" = "Voer code in";
+
+"fill-up-all-fields" = "Vul alle lege velden in";
+
+"invalid-code" = "Ongeldige code";
+
+"wrong-input" = "Verkeerde invoer";
+
+"invalid-email" = "Uw e-mail is niet geldig";
+
+"invalid-password" = "Uw wachtwoord is niet geldig of moet ten minste 6 tekens lang zijn";
+
+"invalid-firstname" = "Uw voornaam is niet geldig";
+
+"invalid-lastname" = "Uw achternaam is niet geldig";
+
+"taken-username" = "Deze gebruikersnaam is al in gebruik of niet toegestaan. Kies een andere naam.";
+
+"invalid-username" = "Uw gebruikersnaam is niet geldig";
+
+"invalid-post-number" = "Uw postnummer is niet geldig";
+
+"invalid-mobile-number" = "Uw mobiele nummer is niet geldig";
+
+"image-source" = "Afbeeldingsbron";
+
+"image-source-desc" = "Kies waar u uw afbeelding wilt nemen";
+
+"camera" = "Camera";
+
+"camera-not-available" = "Camera niet beschikbaar";
+
+"photo-library" = "Fotobibliotheek";
+
+"permission-denied" = "Geen toestemming";
+

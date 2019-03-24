@@ -25,3 +25,45 @@
 "no-available-reports" = "No available reports";
 
 "fetching-near-reports" = "Fetching near reports";
+
+"report" = "Reporter";
+
+"invalid-post-code" = "Invalid postcode";
+
+"error-response" = "Error Response";
+
+"enter-code" = "Enter Code";
+
+"fill-up-all-fields" = "Please fill up all the empty fields";
+
+"invalid-code" = "Invalid code";
+
+"wrong-input" = "Wrong input";
+
+"invalid-email" = "Your e-mail is not valid";
+
+"invalid-password" = "Your password is not valid or must be atleast 6 characters";
+
+"invalid-firstname" = "Your firstname is not valid";
+
+"invalid-lastname" = "Your lastname is not valid";
+
+"taken-username" = "This username is already in use or not allowed. Please choose a different name.";
+
+"invalid-username" = "Your username is not valid";
+
+"invalid-post-number" = "Your post number is not valid";
+
+"invalid-mobile-number" = "Your mobile number is not valid";
+
+"image-source" = "Image Source";
+
+"image-source-desc" = "Please choose where to take your image";
+
+"camera" = "Camera";
+
+"camera-not-available" = "Camera not available";
+
+"photo-library" = "Photo Library";
+
+"permission-denied" = "Permission denied";

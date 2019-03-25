@@ -47,12 +47,14 @@ class ChatVC: UIViewController {
 				let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
 				alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
 						self.navigationController?.popViewController(animated: true)
+							self.removeConvoLocalData()
 					}))
 				self.present(alertController, animated: true, completion: nil)
 			} else {
 				let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
 				alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
 						self.navigationController?.popViewController(animated: true)
+							self.removeConvoLocalData()
 				}))
 				self.present(alertController, animated: true, completion: nil)
 			}
@@ -86,10 +88,11 @@ extension ChatVC : UITextFieldDelegate {
         let userId = uds.string(forKey: user_id) ?? ""
         let reporterId = uds.string(forKey: reporter_id) ?? ""
         let conversationId = uds.string(forKey: report_conversation_id) ?? ""
+		
 		self.userId = userId
 		self.conversationId = conversationId
 		
-        debugPrint("userId: \(userId)")
+        debugPrint("reporterId: \(reporterId)")
         debugPrint("convoId: \(conversationId)")
         
         loadingShow(vc: self)
@@ -136,6 +139,13 @@ extension ChatVC : UITextFieldDelegate {
 		} else {
 			return false
 		}
+	}
+	
+	func removeConvoLocalData() -> Void {
+		let uds = UserDefaults.standard
+		uds.removeObject(forKey: reporter_id)
+		uds.removeObject(forKey: report_conversation_id)
+
 	}
 	
 }

@@ -55,7 +55,7 @@ let team_accept_user = root + "teamInvite/acceptRequest/"
 let chat_list = root_v2 + "message"
 let send_message = root_v2 + "message/?_conversation="
 let create_conversation = root_v2 + "conversation?type=PRIVATE"
-
+let team_chat_list = root_v2 + "conversation?type=PRIVATE,GROUP,TEAM"
 /*
  REPORT TYPES
  {

@@ -8,6 +8,7 @@
 import UIKit
 import iOSDropDown
 import Photos
+import UITextView_Placeholder
 
 class SendPublicSpaceReportVC: UIViewController {
 
@@ -33,13 +34,11 @@ class SendPublicSpaceReportVC: UIViewController {
     @IBOutlet weak var subCategDropDown: DropDown!
     @IBOutlet weak var mainCategoryDropDown: UITextField!
     @IBOutlet weak var subCategoryDropDown: UITextField!
-    
-    
+	
     @IBOutlet weak var reportDescription: UITextView!
-    
     @IBOutlet weak var emergencyNotifConstraint: NSLayoutConstraint!
-    
-
+	@IBOutlet weak var sendReportButton: UIButton!
+	
     //image view tags
     var imgViewTag : Int!
     
@@ -161,7 +160,7 @@ class SendPublicSpaceReportVC: UIViewController {
 
 
 
-extension SendPublicSpaceReportVC : UITextFieldDelegate {
+extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
@@ -217,6 +216,51 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate {
             break
         }
     }
+	
+	func textViewDidEndEditing(_ textView: UITextView) {
+		textView.resignFirstResponder()
+		switch textView {
+		case self.reportDescription:
+			if textView.text.isValidDescription() {
+				enableSendReportButton()
+			} else {
+				validationDialog(vc: self, title: "Invalid input", message: "Please check your description content", buttonText: "Ok")
+				self.reportDescription.becomeFirstResponder()
+				disableSendReportButton()
+			}
+		default:
+			break
+		}
+	}
+	
+	func disableSendReportButton() {
+		self.sendReportButton.isEnabled = false
+		self.sendReportButton.backgroundColor = UIColor.lightGray
+	}
+	
+	func enableSendReportButton() {
+		self.sendReportButton.isEnabled = true
+		self.sendReportButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+	}
+	
+	func checkTextFieldValues() {
+		
+		if self.textFieldHasValues(tf: [self.mainCategoryDropDown]) {
+			enableSendReportButton()
+		} else {
+			disableSendReportButton()
+		}
+	}
+	
+	func textFieldHasValues (tf: [UITextField]) -> Bool {
+		
+		if validateTextField(tf: tf) {
+			return true
+		} else {
+			return false
+		}
+	}
+	
     
 }
 
@@ -240,6 +284,9 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         
         self.emergencyNotifConstraint.constant = -70
         userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
+		
+		self.reportDescription.placeholder = "Vul hier uw teskt in"
+		self.disableSendReportButton()
     }
     
     func initCategories() -> Void {

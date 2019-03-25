@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import iOSDropDown
+import UITextView_Placeholder
 
 class SendSuspiciousReportVC: UIViewController {
 
@@ -67,7 +68,8 @@ class SendSuspiciousReportVC: UIViewController {
     @IBOutlet weak var vehicleInvolvedDropDown: UITextField!
     @IBOutlet weak var vehiclesInvolvedDescription: UITextView!
     
-    
+	@IBOutlet weak var sendReportButton: UIButton!
+	
     var mainCategory = [MainCategoryModel]()
     var mainCategoryName = [String]() // for dropdown
     
@@ -230,7 +232,7 @@ class SendSuspiciousReportVC: UIViewController {
 
 
 
-extension SendSuspiciousReportVC : UITextFieldDelegate {
+extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
@@ -252,6 +254,70 @@ extension SendSuspiciousReportVC : UITextFieldDelegate {
             break
         }
     }
+	
+	func textViewDidEndEditing(_ textView: UITextView) {
+		textView.resignFirstResponder()
+		switch textView {
+			case self.reportDescription:
+				if textView.text.isValidDescription() {
+					enableSendReportButton()
+				} else {
+					validationDialog(vc: self, title: "Invalid input", message: "Please check your description content", buttonText: "Ok")
+					self.reportDescription.becomeFirstResponder()
+					disableSendReportButton()
+				}
+			case self.personsInvolvedDescription:
+				if self.isPersonInvolved {
+					if textView.text.isValidDescription() {
+						enableSendReportButton()
+					} else {
+						validationDialog(vc: self, title: "Invalid input", message: "Please check your description content", buttonText: "Ok")
+						self.personsInvolvedDescription.becomeFirstResponder()
+						disableSendReportButton()
+					}
+				}
+			case self.vehiclesInvolvedDescription:
+				if self.isVehicleInvolved {
+					if textView.text.isValidDescription() {
+						enableSendReportButton()
+					} else {
+						validationDialog(vc: self, title: "Invalid input", message: "Please check your description content", buttonText: "Ok")
+						self.vehiclesInvolvedDescription.becomeFirstResponder()
+						disableSendReportButton()
+					}
+				}
+		default:
+			break
+		}
+	}
+	
+	func disableSendReportButton() {
+		self.sendReportButton.isEnabled = false
+		self.sendReportButton.backgroundColor = UIColor.lightGray
+	}
+	
+	func enableSendReportButton() {
+		self.sendReportButton.isEnabled = true
+		self.sendReportButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+	}
+	
+	func checkTextFieldValues() {
+		
+		if self.textFieldHasValues(tf: [self.mainCategoryDropDown]) {
+			enableSendReportButton()
+		} else {
+			disableSendReportButton()
+		}
+	}
+	
+	func textFieldHasValues (tf: [UITextField]) -> Bool {
+		
+		if validateTextField(tf: tf) {
+			return true
+		} else {
+			return false
+		}
+	}
     
 }
 
@@ -273,7 +339,6 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         self.setBorders(views: views)
         self.viewAppearance(views: hideViews, isHidden: true)
         self.setImageTapGestures()
-        
         self.vehiclesConstraint.constant = -265
         self.uploadImageConstraint.constant = 20
         
@@ -290,14 +355,15 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
             let stringNumber = String(countVehicle)
             self.numberOfVechicles.append(stringNumber)
         }
-        
-//        self.loadPersonsInvolvedDropDown(numberOfPersons: self.numberOfPersons)
-//        self.loadVehiclesInvolvedDropDown(numberOfVehicles: self.numberOfVechicles)
-        
+
+		self.reportDescription.placeholder = "Vul hier uw teskt in"
+		self.personsInvolvedDescription.placeholder = "Vul de kenmerken van de betrokken persoon (personen) in, zoals lengte, man / vrouw, haarkleur, snor, baard, kleding, houding, tatoeage of andere opvallende details."
+		self.vehiclesInvolvedDescription.placeholder = "Voer de kenmerken van de betrokken vervoermiddelen in, zoals registratienummer, kleur, merk- en typenummer, opvallende stickers, enz."
+		
         //new implementation of dropdown
         self.personInvolvedDropDown.loadDropdownData(data: self.numberOfPersons)
         self.vehicleInvolvedDropDown.loadDropdownData(data: self.numberOfVechicles)
-        
+        self.disableSendReportButton()
     }
     
     // initialise categories data

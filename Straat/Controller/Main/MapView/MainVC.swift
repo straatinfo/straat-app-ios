@@ -41,7 +41,9 @@ class MainVC: UIViewController {
     var userLong : Double!
     var reportTypeArr = ["All", "Public Spaces", "Suspicious Situation"]
     var mapZoom : Float = 16.0
-    
+	
+	//user defaults
+	let uds = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,25 +55,34 @@ class MainVC: UIViewController {
     }
     
     @IBAction func showSendReport(_ sender: Any) {
-        self.requestPermission { (hasGranted, result) in
-            
-            for markerReport in self.markerReports {
-                markerReport.map?.clear()
-            }
-            
-            if hasGranted {
-                loadingDismiss()
-                self.makeNotifConstraint.constant = 0
-                self.sendReport.isHidden = true
-                animateLayout(view: self.view, timeInterval: 0.6)
-                
-            } else {
-                //                defaultDialog(vc: self, title: "Permission", message: result)
-                self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : "initial address", lat : 52.077646 , long : 4.315667)
-                
-            }
-            
-        }
+		let teamId = self.uds.string(forKey: user_team_id) ?? nil
+		
+		if teamId != nil {
+
+			self.requestPermission { (hasGranted, result) in
+				
+				for markerReport in self.markerReports {
+					markerReport.map?.clear()
+				}
+				
+				if hasGranted {
+					loadingDismiss()
+					self.makeNotifConstraint.constant = 0
+					self.sendReport.isHidden = true
+					animateLayout(view: self.view, timeInterval: 0.6)
+					
+				} else {
+					//                defaultDialog(vc: self, title: "Permission", message: result)
+					self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : "initial address", lat : 52.077646 , long : 4.315667)
+					
+				}
+				
+			}
+			
+		} else {
+			defaultDialog(vc: self, title: "Send Report", message: "Please wait until the team leader accepts your request before making a notification")
+		}
+
         
     }
     
@@ -499,10 +510,10 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                         addressString = addressString + pm.locality! + ", "
                     }
                     if pm.postalCode != nil {
-                        addressString = addressString + pm.postalCode! + " "
+                        addressString = addressString + pm.postalCode! + ", "
                     }
                     if pm.country != nil {
-                        addressString = addressString + pm.country! + ", "
+                        addressString = addressString + pm.country! + ""
                     }
                     
                     

@@ -51,6 +51,40 @@ class ChatService {
     }
 	
 	// for my reports
+	func getTeamMemberConversation (userId: String, completion: @escaping (Bool, String, [ChatModel]?) -> Void) {
+		
+		var parameters: Parameters = [:]
+		parameters["_user"] = userId
+		
+		apiHandler.executeWithHeaders(URL(string: team_chat_list)!, parameters: parameters, method: .get, destination: .queryString, headers: [:]) { (response, err) in
+			if let error = err {
+				print("error reponse: \(error.localizedDescription)")
+				
+				completion(false, error.localizedDescription, [])
+			} else if let data = response {
+				let dataObject = data["payload"] as? [[String: Any]] ?? []
+				var chatModel: [ChatModel] = []
+				
+//				                debugPrint("debug: \(dataObject)")
+				
+				if dataObject.count > 0 {
+					for conversations in dataObject {
+
+						debugPrint("debug team chat: \(conversations)")
+						let conversation = ChatModel(teamMemberConversation: conversations)
+						chatModel.append(conversation)
+					}
+					completion(true, "Success", chatModel)
+					
+				} else {
+					completion(false, "Empty Chat", nil)
+				}
+				
+			}
+		}
+	}
+	
+	// for my reports
 	func sendMessage (authorId: String, message: String, conversationId: String, completion: @escaping (Bool, String) -> Void) {
 		let url = send_message + conversationId
 		
@@ -61,7 +95,7 @@ class ChatService {
 		apiHandler.executeWithHeaders(URL(string: url)!, parameters: parameters, method: .post, destination: .httpBody, headers: [:]) { (response, err) in
 			if let error = err {
 				print("error reponse: \(error.localizedDescription)")
-				completion(false, error.localizedDescription)
+				completion(false, "Message not send")
 				
 			} else if let data = response {
 				let statusCode = data["statusCode"] as? Double

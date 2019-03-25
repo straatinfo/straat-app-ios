@@ -43,6 +43,9 @@
 		437DFD392221BB7D00D2E662 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437DFD382221BB7D00D2E662 /* Constants.swift */; };
 		4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386825821FF8C06008F65D0 /* LoginUserVC.swift */; };
 		438A0312221C0B6A00ECE252 /* ReportMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A0311221C0B6A00ECE252 /* ReportMapModel.swift */; };
+		438B8FBD2247E56100FFA4B3 /* TextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B8FBC2247E56100FFA4B3 /* TextViewPlaceholder.swift */; };
+		438B8FC022480FD300FFA4B3 /* TeamChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B8FBF22480FD300FFA4B3 /* TeamChatListVC.swift */; };
+		438B8FC22248100800FFA4B3 /* TeamChatListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B8FC12248100800FFA4B3 /* TeamChatListTVC.swift */; };
 		43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43907A312210A5B60063DC16 /* TeamListModel.swift */; };
 		4392B573222129650001A7E0 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B572222129650001A7E0 /* ReportVC.swift */; };
 		4392B575222129760001A7E0 /* TeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B574222129760001A7E0 /* TeamVC.swift */; };
@@ -129,6 +132,9 @@
 		437DFD382221BB7D00D2E662 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserVC.swift; sourceTree = "<group>"; };
 		438A0311221C0B6A00ECE252 /* ReportMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMapModel.swift; sourceTree = "<group>"; };
+		438B8FBC2247E56100FFA4B3 /* TextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholder.swift; sourceTree = "<group>"; };
+		438B8FBF22480FD300FFA4B3 /* TeamChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatListVC.swift; sourceTree = "<group>"; };
+		438B8FC12248100800FFA4B3 /* TeamChatListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatListTVC.swift; sourceTree = "<group>"; };
 		43907A312210A5B60063DC16 /* TeamListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListModel.swift; sourceTree = "<group>"; };
 		4392B572222129650001A7E0 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		4392B574222129760001A7E0 /* TeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamVC.swift; sourceTree = "<group>"; };
@@ -422,6 +428,7 @@
 		437B55AA22398E570022A831 /* ViewReports */ = {
 			isa = PBXGroup;
 			children = (
+				438B8FBE22480F6E00FFA4B3 /* ChatTab */,
 				43130E232221CB5A0074AD85 /* ViewReportVC.swift */,
 				436B99CB2217EF2C00881443 /* PublicSpacesReports */,
 				436B99CA2217EF1E00881443 /* SuspiciousSituationReports */,
@@ -448,6 +455,15 @@
 				437B55A922398DF80022A831 /* SendReport */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		438B8FBE22480F6E00FFA4B3 /* ChatTab */ = {
+			isa = PBXGroup;
+			children = (
+				438B8FBF22480FD300FFA4B3 /* TeamChatListVC.swift */,
+				438B8FC12248100800FFA4B3 /* TeamChatListTVC.swift */,
+			);
+			path = ChatTab;
 			sourceTree = "<group>";
 		};
 		4392B5712221293F0001A7E0 /* Sidebar */ = {
@@ -484,6 +500,7 @@
 				4302C10F2206085400A9865D /* CustomTabBarController.swift */,
 				437DFD382221BB7D00D2E662 /* Constants.swift */,
 				437CF0AD2238399E00FC1A86 /* MyPickerView.swift */,
+				438B8FBC2247E56100FFA4B3 /* TextViewPlaceholder.swift */,
 			);
 			path = Generics;
 			sourceTree = "<group>";
@@ -668,6 +685,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -678,6 +696,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,6 +722,7 @@
 				43DB4CA7221B527000E0F88E /* ReportMapService.swift in Sources */,
 				43C4ABE622077D880055D4EF /* TermsAndConditionVC.swift in Sources */,
 				435CCB3521FF78F000E87AD6 /* EnterCodeVC.swift in Sources */,
+				438B8FC022480FD300FFA4B3 /* TeamChatListVC.swift in Sources */,
 				43C4ABE42207685C0055D4EF /* RegistrationDataVC.swift in Sources */,
 				433DF9C3222866710091BF8A /* TeamTVC.swift in Sources */,
 				9B2EC5362232E1AD00257649 /* TeamService.swift in Sources */,
@@ -711,6 +731,7 @@
 				4368EB14222977B500EA03FE /* TeamDetailsUpdateVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				9B0948BE2212BC15004CE4CB /* RegistrationStep2VC.swift in Sources */,
+				438B8FC22248100800FFA4B3 /* TeamChatListTVC.swift in Sources */,
 				4335FF3422434C3B00A1C6AA /* ChatTVC.swift in Sources */,
 				43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */,
 				4392B5772221298B0001A7E0 /* ProfileVC.swift in Sources */,
@@ -750,6 +771,7 @@
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				9B2F486C221F17A100B2BF91 /* SendReportModel.swift in Sources */,
 				43130E242221CB5A0074AD85 /* ViewReportVC.swift in Sources */,
+				438B8FBD2247E56100FFA4B3 /* TextViewPlaceholder.swift in Sources */,
 				4368EB12222973CC00EA03FE /* TeamDetailsVC.swift in Sources */,
 				4392B57B222129A80001A7E0 /* FeedbackVC.swift in Sources */,
 				9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */,

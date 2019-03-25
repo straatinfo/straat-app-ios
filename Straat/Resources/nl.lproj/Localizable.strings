@@ -42,7 +42,7 @@
 
 "invalid-email" = "Your e-mail is not valid";
 
-"invalid-password" = "Your password is not valid or must be atleast 6 characters";
+"invalid-password" = "Your password is not valid or must be atleast 6 alphanumeric characters";
 
 "invalid-firstname" = "Your firstname is not valid";
 
@@ -54,7 +54,7 @@
 
 "invalid-post-number" = "Your post number is not valid";
 
-"invalid-mobile-number" = "Your mobile number is not valid";
+"invalid-mobile-number" = "Your mobile number is not valid or must be 10 digits";
 
 "image-source" = "Afbeeldingsbron";
 

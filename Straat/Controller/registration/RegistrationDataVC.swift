@@ -13,6 +13,7 @@ class RegistrationDataVC: UIViewController {
     var postCode : String? = nil
     var postNumber : String? = nil
     var isMale : Bool? = true
+	var isTACAccepted : Bool? = false
     var errorTitle : String? = nil
     var errorDesc : String? = nil
     
@@ -254,7 +255,12 @@ extension RegistrationDataVC {
     func checkTextFieldValues() {
         
         if self.textFieldHasValues(tf: [firstnameTxtBox, lastnameTxtBox, usernameTxtBox, postCodeTxtBox, postNumberTxtBox, streetTxtBox, townTxtBox, emailTxtBox, mobileNumberTxtBox, passwordTxtBox]) {
-            enableNextStepButton()
+			
+			if self.isTACAccepted! {
+            	enableNextStepButton()
+			} else {
+            	disableNextStepButton()
+			}
         } else {
             disableNextStepButton()
         }
@@ -275,6 +281,7 @@ extension RegistrationDataVC {
 //for implementating delegate
 extension RegistrationDataVC : acceptTACDelegate, UITextFieldDelegate, UITextViewDelegate {
     func state(state: Bool) {
+		self.isTACAccepted = state
         self.termsAndCondition.isSelected = state
         self.saveInputs() { (success, message) in
             print("Success: \(success), message: \(message)")

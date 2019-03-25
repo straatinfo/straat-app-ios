@@ -61,7 +61,7 @@ extension String {
     }
     
     func isMobileNumberValid() -> Bool {
-        let mobileNumberRegex = "^[0-9]+$"
+        let mobileNumberRegex = "^[0-9]{0,10}$"
         let mobileNumberPredicate = NSPredicate(format: "SELF MATCHES %@", mobileNumberRegex)
         return mobileNumberPredicate.evaluate(with:self)
         
@@ -76,7 +76,7 @@ extension String {
     }
 	
 	func isValidDescription() -> Bool{
-		let stringRegex = "[A-Za-z ]+"
+		let stringRegex = "[A-Za-z0-9 ]+"
 		
 		let stringPredicate = NSPredicate(format: "SELF MATCHES %@", stringRegex)
 		return stringPredicate.evaluate(with:self)

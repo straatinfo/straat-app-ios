@@ -40,9 +40,9 @@
 
 "wrong-input" = "Verkeerde invoer";
 
-"invalid-email" = "Your e-mail is not valid";
+"invalid-email" = "Dit mailadres is al in gebruik. Voer een ander emailadres is of neem contact op via formulier op www.straat.info ";
 
-"invalid-password" = "Your password is not valid or must be atleast 6 alphanumeric characters";
+"invalid-password" = "Your password is not valid or must be atleast 6 alphanumeric characters"; // TODO: Change value
 
 "invalid-firstname" = "Your firstname is not valid";
 
@@ -54,7 +54,7 @@
 
 "invalid-post-number" = "Your post number is not valid";
 
-"invalid-mobile-number" = "Your mobile number is not valid or must be 10 digits";
+"invalid-mobile-number" = " Dit nummer is niet correct of al in gebruik. Voer een ander nummer in of neem contact op via info@straat.info";
 
 "image-source" = "Afbeeldingsbron";
 
@@ -93,3 +93,11 @@
 "image-not-found" = "Image not found";
 
 "import-image-error" = "Error occured when importing image";
+
+"report-success-dialog-title" = "Dank voor uw melding!";
+
+"suspicious-situation" = "Verdachte Situatie";
+
+"emergency-notification" = "Spoedmelding";
+
+"username-info-title" = "Username Info"; // TODO: Change value

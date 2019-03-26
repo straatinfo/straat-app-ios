@@ -42,13 +42,16 @@ extension ViewMapReportVC {
         let address = uds.string(forKey: report_address)
         let date = uds.string(forKey: report_created_at)
         let category = uds.string(forKey: report_category)
-        let status = uds.string(forKey: report_status_detail_view)
+        var status = uds.string(forKey: report_status_detail_view)
         let message = uds.string(forKey: report_message)
         let imageUrls = uds.array(forKey: report_images) as! [String]
         
         let fname = uds.string(forKey: user_fname)
         let lname = uds.string(forKey: user_lname)
         let fullname = fname! + " " + lname!
+        
+        // Change "New" to "Nieuw"
+        status = status == "NEW" ? "NIEUW" : "NEW"
         
         self.location.text = address
         self.date.text = date

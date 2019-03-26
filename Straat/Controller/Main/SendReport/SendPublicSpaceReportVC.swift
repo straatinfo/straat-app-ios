@@ -79,8 +79,9 @@ class SendPublicSpaceReportVC: UIViewController {
         } else {
             emergencyNotifButton.isSelected = true
             self.isUrgent = true
+            let title = NSLocalizedString("emergency-notification", comment: "")
             let desc = NSLocalizedString("emergency-notif-desc", comment: "")
-            defaultDialog(vc: self, title: "Emergency Notification", message: desc)
+            defaultDialog(vc: self, title: title, message: desc)
         }
     }
     

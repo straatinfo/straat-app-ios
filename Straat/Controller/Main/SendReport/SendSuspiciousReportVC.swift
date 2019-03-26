@@ -100,9 +100,7 @@ class SendSuspiciousReportVC: UIViewController {
         let uds = UserDefaults.standard
         let id = uds.string(forKey: user_id)
 //        debugPrint("userID: \(id)")
-        
-        let desc = NSLocalizedString("persons-involved-desc", comment: "")
-        personsInvolvedDescription.text  = desc
+    
     }
     
     
@@ -114,8 +112,9 @@ class SendSuspiciousReportVC: UIViewController {
         } else {
             self.isUrgent = true
             emergencyNotifButton.isSelected = true
+            let title = NSLocalizedString("emergency-notification", comment: "")
             let desc = NSLocalizedString("emergency-notif-desc", comment: "")
-            defaultDialog(vc: self, title: "Emergency Notification", message: desc)
+            defaultDialog(vc: self, title: title, message: desc)
         }
         debugPrint("isUrgent: \(String(describing: self.isUrgent))")
         
@@ -357,8 +356,11 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         }
 
 		self.reportDescription.placeholder = "Vul hier uw teskt in"
-		self.personsInvolvedDescription.placeholder = "Vul de kenmerken van de betrokken persoon (personen) in, zoals lengte, man / vrouw, haarkleur, snor, baard, kleding, houding, tatoeage of andere opvallende details."
-		self.vehiclesInvolvedDescription.placeholder = "Voer de kenmerken van de betrokken vervoermiddelen in, zoals registratienummer, kleur, merk- en typenummer, opvallende stickers, enz."
+        let desc = NSLocalizedString("persons-involved-desc", comment: "")
+        
+		self.personsInvolvedDescription.placeholder = desc
+		
+        self.vehiclesInvolvedDescription.placeholder = "Voer de kenmerken van de betrokken vervoermiddelen in, zoals registratienummer, kleur, merk- en typenummer, opvallende stickers, enz."
 		
         //new implementation of dropdown
         self.personInvolvedDropDown.loadDropdownData(data: self.numberOfPersons)

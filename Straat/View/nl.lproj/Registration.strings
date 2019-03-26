@@ -153,7 +153,7 @@
 "ssL-JQ-uvh.normalTitle" = "Vrouw";
 
 /* Class = "UITextField"; placeholder = "Street"; ObjectID = "uMT-z0-L9r"; */
-"uMT-z0-L9r.placeholder" = "Vrouw";
+"uMT-z0-L9r.placeholder" = "Straat";
 
 /* Class = "UILabel"; text = "Choose Password"; ObjectID = "uQd-Yr-XVY"; */
 "uQd-Yr-XVY.text" = "Kies wachtwoord";

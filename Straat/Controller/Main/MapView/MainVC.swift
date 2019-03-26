@@ -122,8 +122,9 @@ class MainVC: UIViewController {
     
     
     @IBAction func suspiciousInfo(_ sender: UIButton) {
+        let title = NSLocalizedString("suspicious-situation", comment: "")
         let desc = NSLocalizedString("suspicious-desc", comment: "")
-        defaultDialog(vc: self, title: "Suspicious Situation", message: desc)
+        defaultDialog(vc: self, title: title, message: desc)
     }
     
     @IBAction func showPublicSpaceReport(_ sender: UIButton) {

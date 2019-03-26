@@ -261,6 +261,8 @@ extension RegistrationDataVC {
 			} else {
             	disableNextStepButton()
 			}
+            
+            
         } else {
             disableNextStepButton()
         }

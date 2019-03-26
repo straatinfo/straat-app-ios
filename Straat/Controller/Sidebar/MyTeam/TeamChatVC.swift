@@ -32,13 +32,13 @@ class TeamChatVC: UIViewController {
 		self.chatService.sendMessage(authorId: self.userId!, message: self.messageContent.text!, conversationId: self.conversationId!) { (success, message) in
 			if success {
 				let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
-				alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+				alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
 					self.navigationController?.popViewController(animated: true)
 				}))
 				self.present(alertController, animated: true, completion: nil)
 			} else {
 				let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
-				alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+				alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
 					self.navigationController?.popViewController(animated: true)
 				}))
 				self.present(alertController, animated: true, completion: nil)

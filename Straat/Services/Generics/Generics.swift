@@ -63,7 +63,7 @@ import GameplayKit
     func defaultDialog( vc: UIViewController, title : String? , message : String? ) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         vc.present(alertController, animated: true)
         
     }

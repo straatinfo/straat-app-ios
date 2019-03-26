@@ -95,3 +95,9 @@
 "image-not-found" = "Image not found";
 
 "import-image-error" = "Error occured when importing image";
+
+"report-success-dialog-title" = "Thank you for your report!";
+
+"suspicious-situation" = "Suspicious Situation";
+
+"emergency-notification" = "Emergency Notification"; 

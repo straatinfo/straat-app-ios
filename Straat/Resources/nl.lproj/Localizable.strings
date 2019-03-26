@@ -40,9 +40,9 @@
 
 "wrong-input" = "Verkeerde invoer";
 
-"invalid-email" = "Your e-mail is not valid";
+"invalid-email" = "Your e-mail is not valid"; // TODO: Change value
 
-"invalid-password" = "Your password is not valid or must be atleast 6 alphanumeric characters";
+"invalid-password" = "Your password is not valid or must be atleast 6 alphanumeric characters"; // TODO: Change value
 
 "invalid-firstname" = "Your firstname is not valid";
 
@@ -54,7 +54,7 @@
 
 "invalid-post-number" = "Your post number is not valid";
 
-"invalid-mobile-number" = "Your mobile number is not valid or must be 10 digits";
+"invalid-mobile-number" = "Your mobile number is not valid or must be 10 digits"; // TODO: Change value
 
 "image-source" = "Afbeeldingsbron";
 
@@ -93,3 +93,9 @@
 "image-not-found" = "Image not found";
 
 "import-image-error" = "Error occured when importing image";
+
+"report-success-dialog-title" = "Dank voor uw melding!";
+
+"suspicious-situation" = "Suspicious Situation"; // TODO: Change value
+
+"emergency-notification" = "Emergency Notification"; // TODO: Change value

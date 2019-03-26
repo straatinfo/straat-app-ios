@@ -126,8 +126,9 @@ class RegistrationDataVC: UIViewController {
     @IBAction func passwordTextField(_ sender: UITextField) {
     }
     @IBAction func userNameInfo(_ sender: UIButton) {
+        let title = NSLocalizedString("username-info-title", comment: "")
         let desc = NSLocalizedString("username-info", comment: "")
-        defaultDialog(vc: self, title: "Username Info", message: desc)
+        defaultDialog(vc: self, title: title, message: desc)
     }
 }
 

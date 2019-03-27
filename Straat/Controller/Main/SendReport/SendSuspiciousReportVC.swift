@@ -384,8 +384,9 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                     self.mainCategory.append(mainCategory)
                     self.mainCategoryName.append(name)
                 }
-                
-                self.mainCategoryDropDown.loadDropdownData(data: self.mainCategoryName.sorted())
+				
+				let arrangedCategories = self.arrangedCateg(categoryName: "overige")
+                self.mainCategoryDropDown.loadDropdownData(data: arrangedCategories)
                 
                 loadingDismiss()
             }
@@ -411,7 +412,18 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
 //    @objc func keyBoardDismiss() -> Void {
 //        view.endEditing(true)
 //    }
-    
+	
+	func arrangedCateg(categoryName: String) -> [String] {
+		var mainCategSorted = self.mainCategoryName.sorted().map {$0.lowercased()}
+		let index = mainCategSorted.lastIndex(of: categoryName) ?? nil
+		
+		if index != nil {
+			mainCategSorted.remove(at: index!)
+			mainCategSorted.append(categoryName)
+		}
+		
+		return mainCategSorted
+	}
     
     // setting tap gesture recognizer for imageview
     func setImageTapGestures() -> Void {

@@ -850,6 +850,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingChanged" id="guS-Ok-xok"/>
+                                                                    <action selector="postalNumber:" destination="rVb-OV-qe3" eventType="editingDidEnd" id="kST-QQ-HfA"/>
                                                                     <outlet property="delegate" destination="rVb-OV-qe3" id="DN9-hJ-2Cw"/>
                                                                 </connections>
                                                             </textField>
@@ -860,6 +861,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="uhx-vA-uMd"/>
+                                                                    <action selector="postalCode:" destination="rVb-OV-qe3" eventType="editingDidEnd" id="5mT-Mh-8gK"/>
                                                                     <outlet property="delegate" destination="rVb-OV-qe3" id="IzU-ft-gez"/>
                                                                 </connections>
                                                             </textField>
@@ -933,7 +935,7 @@
                                                                 <rect key="frame" x="0.0" y="63.5" width="315" height="26.5"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                                                 <connections>
                                                                     <action selector="fnameEdit:" destination="rVb-OV-qe3" eventType="editingDidBegin" id="qgG-kJ-775"/>
                                                                     <outlet property="delegate" destination="rVb-OV-qe3" id="Qht-WW-M3D"/>
@@ -2314,6 +2316,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="P7e-RK-kUh"/>
-        <segue reference="dQc-Z9-kwt"/>
+        <segue reference="csG-qX-JGG"/>
     </inferredMetricsTieBreakers>
 </document>

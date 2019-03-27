@@ -44,7 +44,7 @@ extension ViewMapReportVC {
         let category = uds.string(forKey: report_category)
         var status = uds.string(forKey: report_status_detail_view)
         let message = uds.string(forKey: report_message)
-        let imageUrls = uds.array(forKey: report_images) as! [String]
+        let imageUrls = uds.array(forKey: report_images) as? [String] ?? []
         
         let fname = uds.string(forKey: user_fname)
         let lname = uds.string(forKey: user_lname)
@@ -83,13 +83,12 @@ extension ViewMapReportVC {
             }
             
         }
-//        else {
+        else {
 //            defaultDialog(vc: self, title: "Fetching images", message: "Image not found")
-//            loadingDismiss()
-//        }
-        
+			loadingDismiss()
+        }
+
     }
-    
     
     func getReportImageFromUrl (imageUrls : [String], completion: @escaping (Bool, UIImage?, CGFloat, CGFloat) -> Void) -> Void {
         

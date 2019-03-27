@@ -137,18 +137,18 @@ extension LoginUserVC : UITextFieldDelegate {
                 
             } else if let data = response {
                 
-                let dataObject = data["data"] as? Dictionary <String, Any>
-                let userObject = dataObject?["user"] as? Dictionary <String, Any>
-                let settingObject = dataObject?["setting"] as? Dictionary <String, Any>
-                let teamObject = userObject!["_activeTeam"] as? Dictionary <String, Any>
-                let hostObject = userObject!["_host"] as? Dictionary<String, Any>
+				let dataObject = data["data"] as? Dictionary <String, Any> ?? [:]
+				let userObject = dataObject["user"] as? Dictionary <String, Any> ?? [:]
+				let settingObject = dataObject["setting"] as? Dictionary <String, Any> ?? [:]
+				let teamObject = userObject["_activeTeam"] as? Dictionary <String, Any> ?? [:]
+				let hostObject = userObject["_host"] as? Dictionary<String, Any> ?? [:]
 
-                let hostId = hostObject!["_id"] as? String
-                let isVolunteer = teamObject!["isVolunteer"] as? Bool ?? true
+				let hostId = hostObject["_id"] as? String
+				let isVolunteer = teamObject["isVolunteer"] as? Bool ?? true
                 
-                let userModel = UserModel(fromLogin: userObject!)
-                let userSettingModel = UserModel(fromLoginSetting: settingObject!)
-                let userTeamModel = UserModel(fromLoginTeam: teamObject!)
+				let userModel = UserModel(fromLogin: userObject)
+				let userSettingModel = UserModel(fromLoginSetting: settingObject)
+				let userTeamModel = UserModel(fromLoginTeam: teamObject)
                 let userOtherModel = UserModel(fromLoginHostId: hostId!, fromLoginIsVolunteer: isVolunteer)
                 
                 //saving user model to loca data

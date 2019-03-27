@@ -206,9 +206,11 @@ extension RegistrationDataVC {
             case emailTxtBox:
                 debugPrint("email")
                 if textField.text?.isValidEmail() ?? false {
+                    emailTxtBox.backgroundColor = UIColor .clear
                     checkTextFieldValues()
                     debugPrint("valid email")
                 } else {
+                    emailTxtBox.backgroundColor = UIColor .red
                     emailTxtBox.becomeFirstResponder()
                     errorDesc = NSLocalizedString("wrong-input", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
@@ -220,15 +222,29 @@ extension RegistrationDataVC {
                 if textField.text?.isMobileNumberValid() ?? false {
 					let checkPrefix = textField.text?.prefix(2)
 					if checkPrefix == "06" {
+                        mobileNumberTxtBox.backgroundColor = UIColor .clear
 						checkTextFieldValues()
 					} else {
-						validationDialog(vc: self, title: errorTitle, message: "Prefix number must be 06", buttonText: "Ok")
+                        mobileNumberTxtBox.backgroundColor = UIColor .red
+                        let desc = NSLocalizedString("mobile-prefix-error", comment: "")
+						validationDialog(vc: self, title: errorTitle, message: desc, buttonText: "Ok")
+                        disableNextStepButton()
 					}
                 } else {
-                    errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
-                    validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                    mobileNumberTxtBox.becomeFirstResponder()
-                    disableNextStepButton()
+                    mobileNumberTxtBox.backgroundColor = UIColor .red
+                    if (textField.text?.count)! < 10 {
+                        errorDesc = NSLocalizedString("invalid-mobile-number-length", comment: "")
+                        validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+                        mobileNumberTxtBox.becomeFirstResponder()
+                        disableNextStepButton()
+                    } else {
+                        errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
+                        validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+                        mobileNumberTxtBox.becomeFirstResponder()
+                        disableNextStepButton()
+                    }
+                    
+                    
 
                 }
             case passwordTxtBox:
@@ -245,6 +261,23 @@ extension RegistrationDataVC {
         default: break
         }
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        switch textField {
+        case mobileNumberTxtBox:
+            guard let textFieldText = textField.text,
+                let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                    return false
+            }
+            let substringToReplace = textFieldText[rangeOfTextToReplace]
+            let count = textFieldText.count - substringToReplace.count + string.count
+            return count <= 10
+        default:
+            break
+        }
+        
+         return true
     }
     
     func disableNextStepButton() {

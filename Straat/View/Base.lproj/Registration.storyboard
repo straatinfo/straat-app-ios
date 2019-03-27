@@ -1329,7 +1329,8 @@
         <image name="upload-img" width="192" height="192"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="CUy-Y3-mFN"/>
         <segue reference="mcr-1N-n6a"/>
-        <segue reference="gIb-xv-959"/>
+        <segue reference="NUV-xW-xjc"/>
     </inferredMetricsTieBreakers>
 </document>

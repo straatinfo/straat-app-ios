@@ -313,13 +313,26 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                     print("MAIN CAT A", mainCateg)
                     print("MAIN CAT A -> Sub categ: ", mainCateg.subCategories!)
                 }
-                self.mainCategoryDropDown.loadDropdownData(data: self.mainCategoryName.sorted())
+				
+				let arrangedCategories = self.arrangedCateg(categoryName: "overige")
+                self.mainCategoryDropDown.loadDropdownData(data: arrangedCategories)
                 loadingDismiss()
             }
         }
         
     }
-    
+	
+	func arrangedCateg(categoryName: String) -> [String] {
+		var mainCategSorted = self.mainCategoryName.sorted().map {$0.lowercased()}
+		let index = mainCategSorted.lastIndex(of: categoryName) ?? nil
+		
+		if index != nil {
+			mainCategSorted.remove(at: index!)
+			mainCategSorted.append(categoryName)
+		}
+		
+		return mainCategSorted
+	}
 //    // initialise key board toolbar
 //    func initKeyBoardToolBar() -> Void {
 //        let kbToolBar = UIToolbar()

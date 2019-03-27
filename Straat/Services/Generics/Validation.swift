@@ -61,7 +61,7 @@ extension String {
     }
     
     func isMobileNumberValid() -> Bool {
-        let mobileNumberRegex = "^[0-9]{0,10}$"
+        let mobileNumberRegex = "^[0-9]{10}$"
         let mobileNumberPredicate = NSPredicate(format: "SELF MATCHES %@", mobileNumberRegex)
         return mobileNumberPredicate.evaluate(with:self)
         

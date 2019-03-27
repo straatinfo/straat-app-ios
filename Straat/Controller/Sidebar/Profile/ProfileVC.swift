@@ -7,6 +7,7 @@
 
 import UIKit
 import Photos
+import Alamofire
 
 class ProfileVC: UIViewController {
     
@@ -15,7 +16,9 @@ class ProfileVC: UIViewController {
     var profilePic: Data?
     var errorTitle : String? = nil
     var errorDesc : String? = nil
-
+	var postCode : String? = nil
+	var postNumber : String? = nil
+	
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var familyName: UITextField!
@@ -50,8 +53,16 @@ class ProfileVC: UIViewController {
         errorTitle = NSLocalizedString("wrong-input", comment: "")
         // Do any additional setup after loading the view.
     }
-    
-    
+	
+	
+	@IBAction func postalCode(_ sender: UITextField) {
+
+	}
+	
+	@IBAction func postalNumber(_ sender: UITextField) {
+
+	}
+	
     
     @IBAction func changeMyDataClicked(_ sender: Any) {
         var desc : String? = nil
@@ -152,7 +163,8 @@ extension ProfileVC : UITextFieldDelegate {
             debugPrint("username")
             if textField.text?.isValid() ?? false {
                 if textField.text?.isUserNameNotValid() ?? false {
-                    errorDesc = NSLocalizedString("taken-username", comment: "")
+					chatName.becomeFirstResponder()
+					errorDesc = NSLocalizedString("taken-username", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 }
                 checkTextFieldValues()
@@ -165,18 +177,55 @@ extension ProfileVC : UITextFieldDelegate {
         case addressPostalCode:
             debugPrint("postal code")
             if textField.text?.isValid() ?? false {
-                checkTextFieldValues()
-            } else {
+				
+				postNumber = addressPostalCode.text
+				if postCode?.count ?? 0 > 0 || postNumber?.count ?? 0 > 0 {
+					self.callPostCodeApi(postCode: postCode ?? "", number: postNumber ?? ""){ (success, postalInfo, message) in
+						if success == true {
+							self.addedStreet.text = postalInfo!.street
+							self.addedTown.text = postalInfo!.city
+                			self.checkTextFieldValues()
+						} else {
+							self.addedStreet.text = ""
+							self.addedTown.text = ""
+							self.disableChangeDataButton()
+							self.addressPostalCode.becomeFirstResponder()
+						}
+					}
+				} else {
+					disableChangeDataButton()
+					addressPostalCode.becomeFirstResponder()
+				}
+				
+			} else {
                 addressPostalCode.becomeFirstResponder()
                 errorDesc = NSLocalizedString("invalid-postal-code", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
             }
-            break
         case addressLotNum:
             debugPrint("postal number")
             if textField.text?.isValid() ?? false {
-                checkTextFieldValues()
+
+				postNumber = addressLotNum.text
+				if postCode?.count ?? 0 > 0 || postNumber?.count ?? 0 > 0 {
+					self.callPostCodeApi(postCode: postCode ?? "", number: postNumber ?? ""){ (success, postalInfo, message) in
+						if success == true {
+							self.addedStreet.text = postalInfo!.street
+							self.addedTown.text = postalInfo!.city
+                			self.checkTextFieldValues()
+						} else {
+							self.addedStreet.text = ""
+							self.addedTown.text = ""
+							self.disableChangeDataButton()
+							self.addressLotNum.becomeFirstResponder()
+						}
+					}
+				} else {
+					self.disableChangeDataButton()
+					self.addressLotNum.becomeFirstResponder()
+				}
+
             } else {
                 addressLotNum.becomeFirstResponder()
                 errorDesc = NSLocalizedString("invalid-post-number", comment: "")
@@ -198,7 +247,13 @@ extension ProfileVC : UITextFieldDelegate {
         case contactNumber:
             debugPrint("mobile")
             if textField.text?.isMobileNumberValid() ?? false {
-                checkTextFieldValues()
+				let checkPrefix = textField.text?.prefix(2)
+				if checkPrefix == "06" {
+                	checkTextFieldValues()
+				} else {
+                	validationDialog(vc: self, title: errorTitle, message: "Prefix number must be 06", buttonText: "Ok")
+				}
+
             } else {
                 errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
@@ -252,6 +307,61 @@ extension ProfileVC : UITextFieldDelegate {
             return false
         }
     }
+	
+	typealias OnFinish = ( Bool, PostalModel?, String) -> Void
+	
+	func callPostCodeApi (postCode: String, number: String, completion: @escaping OnFinish) {
+		let apiHandler = ApiHandler()
+		
+		let parameters = [
+			"postcode": postCode,
+			"number": number
+		]
+		
+		let headers = [
+			"content-type": "application/json",
+			"x-api-key": "gvuwmtomsB8eRf5Zgsfnj7zs8DE2ihC79DlEbQnb"
+			] as! HTTPHeaders
+		
+		loadingShow(vc: self)
+		apiHandler.executeWithHeaders(URL(string: POST_CODE_API)!, parameters: parameters, method: .get, destination: .queryString, headers: headers) { (response, err) in
+			
+			if let error = err {
+				print("error reponse: \(error.localizedDescription)")
+				
+				let title = NSLocalizedString("error-response", comment: "")
+				let desc = NSLocalizedString("invalid-post-code", comment: "")
+				defaultDialog(vc: self, title: title, message: desc)
+				
+				// loadingDismiss()
+				
+			} else if let data = response {
+				
+				let dataObject = data["_embedded"] as? Dictionary <String, Any> ?? [:]
+				
+				let addresses = dataObject["addresses"] as? [Dictionary<String, Any>]
+				
+				if let postalData = addresses?[0] {
+					let postcode = postalData["postcode"] as? String
+					let municipality = postalData["municipality"] as? String
+					let city = postalData["city"] as? Dictionary<String, Any>
+					let cityLabel = city?["label"] as? String
+					let street = postalData["street"] as? String
+					
+					let postalInfo = PostalModel(postcode: postcode, municipality: municipality, city: cityLabel, street: street)
+					
+					completion(true, postalInfo, "Success")
+				} else {
+					completion(false, nil, "Error in Response")
+				}
+				
+				
+				print("response:  \(String(describing: dataObject))")
+				
+			}
+			loadingDismiss()
+		}
+	}
     
 }
 

@@ -98,8 +98,8 @@ class RegistrationDataVC: UIViewController {
         if postNumber != nil {
             self.callPostCodeApi(postCode: postCode!, number: postNumber!){ (success, postalInfo, message) in
                 if success == true {
-                    self.townTxtBox.text = postalInfo.city
-                    self.streetTxtBox.text = postalInfo.street
+					self.townTxtBox.text = postalInfo!.city
+					self.streetTxtBox.text = postalInfo!.street
                 }
             }
         }
@@ -110,8 +110,8 @@ class RegistrationDataVC: UIViewController {
         if postCode != nil {
             self.callPostCodeApi(postCode: postCode!, number: postNumber!){ (success, postalInfo, message) in
                 if success == true {
-                    self.townTxtBox.text = postalInfo.city
-                    self.streetTxtBox.text = postalInfo.street
+					self.townTxtBox.text = postalInfo!.city
+					self.streetTxtBox.text = postalInfo!.street
                 }
             }
         }
@@ -218,7 +218,12 @@ extension RegistrationDataVC {
             case mobileNumberTxtBox:
                 debugPrint("mobile")
                 if textField.text?.isMobileNumberValid() ?? false {
-                    checkTextFieldValues()
+					let checkPrefix = textField.text?.prefix(2)
+					if checkPrefix == "06" {
+						checkTextFieldValues()
+					} else {
+						validationDialog(vc: self, title: errorTitle, message: "Prefix number must be 06", buttonText: "Ok")
+					}
                 } else {
                     errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
@@ -337,7 +342,7 @@ extension RegistrationDataVC {
         sender.isSelected = false
     }
     
-    typealias OnFinish = ( Bool, PostalModel, String) -> Void
+    typealias OnFinish = ( Bool, PostalModel?, String) -> Void
 
     func callPostCodeApi (postCode: String, number: String, completion: @escaping OnFinish) {
         let apiHandler = ApiHandler()
@@ -366,22 +371,25 @@ extension RegistrationDataVC {
                 
             } else if let data = response {
                 
-                let dataObject = data["_embedded"] as? Dictionary <String, Any>
+				let dataObject = data["_embedded"] as? Dictionary <String, Any> ?? [:]
                 
-                let addresses = dataObject?["addresses"] as? [Dictionary<String, Any>]
+				let addresses = dataObject["addresses"] as? [Dictionary<String, Any>]
                 
-                let postalData = addresses?[0]
+				if let postalData = addresses?[0] {
+					let postcode = postalData["postcode"] as? String
+					let municipality = postalData["municipality"] as? String
+					let city = postalData["city"] as? Dictionary<String, Any>
+					let cityLabel = city?["label"] as? String
+					let street = postalData["street"] as? String
+					
+					let postalInfo = PostalModel(postcode: postcode, municipality: municipality, city: cityLabel, street: street)
+					
+					completion(true, postalInfo, "Success")
+				} else {
+					completion(false, nil, "Error in Response")
+				}
                 
-                let postcode = postalData?["postcode"] as? String
-                let municipality = postalData?["municipality"] as? String
-                let city = postalData?["city"] as? Dictionary<String, Any>
-                let cityLabel = city?["label"] as? String
-                let street = postalData?["street"] as? String
-
-                let postalInfo = PostalModel(postcode: postcode, municipality: municipality, city: cityLabel, street: street)
-                
-                completion(true, postalInfo, "Success")
-                
+				
                 print("response:  \(String(describing: dataObject))")
                 
             }

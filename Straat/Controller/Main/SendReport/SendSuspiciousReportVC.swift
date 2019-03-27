@@ -178,7 +178,7 @@ class SendSuspiciousReportVC: UIViewController {
         
         self.reportService.sendReport(reportDetails: sendReportModel) { (success, message) in
             if success {
-                let alertController = UIAlertController(title: "Send Report", message: message, preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Dank voor uw melding!", message: message, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
 
                     pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)

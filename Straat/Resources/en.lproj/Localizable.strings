@@ -14,7 +14,9 @@
 
 "send-report-success" = "Thank you for your report! From now on everybody can see in the app. If the report is about public space, it is also mailed to the host.";
 
-"invalid-postal-code" = "Invalid postal code";
+"invalid-postal-code" = "The postal code and/or house number entry seems to be incorrect. Please fill in the correct postal code and house number";
+
+"public-space-title" = "Public Space";
 
 "public-space-desc" = "Here you're able to make a report on public space (e.g. trash on the street, broken street light etc). This report will be send to the local government";
 
@@ -28,7 +30,7 @@
 
 "report" = "Reporter";
 
-"invalid-post-code" = "Invalid postcode";
+"invalid-post-code" = "The postal code and/or house number entry seems to be incorrect. Please fill in the correct postal code and house number";
 
 "error-response" = "Error Response";
 
@@ -52,7 +54,7 @@
 
 "invalid-username" = "Your username is not valid";
 
-"invalid-post-number" = "Your post number is not valid";
+"invalid-post-number" = "The postal code and/or house number entry seems to be incorrect. Please fill in the correct postal code and house number";
 
 "invalid-mobile-number" = "Your mobile number is not valid or must be 10 digits";
 

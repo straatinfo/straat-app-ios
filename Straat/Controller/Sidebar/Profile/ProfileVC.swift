@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import Alamofire
+import IQKeyboardManagerSwift
 
 class ProfileVC: UIViewController {
     
@@ -18,6 +19,13 @@ class ProfileVC: UIViewController {
     var errorDesc : String? = nil
 	var postCode : String? = nil
 	var postNumber : String? = nil
+	var areAllFieldsValid : Bool? = false
+	
+	var isFnameValid: Bool = true
+	var isLnameValid: Bool = true
+	var isEmailValid: Bool = true
+	var isNumberValid: Bool = true
+	var isUserValid: Bool = true
 	
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var firstName: UITextField!
@@ -49,7 +57,8 @@ class ProfileVC: UIViewController {
         self.navColor()
         self.setImageTapGestures()
         self.loadProfileData()
-        
+		self.disableChangeDataButton()
+		
         errorTitle = NSLocalizedString("wrong-input", comment: "")
         // Do any additional setup after loading the view.
     }
@@ -141,37 +150,50 @@ extension ProfileVC : UITextFieldDelegate {
         case firstName:
             debugPrint("firstname")
             if textField.text?.isValid() ?? false {
+				self.isUserValid = true
                 checkTextFieldValues()
             } else {
-                firstName.becomeFirstResponder()
                 errorDesc = NSLocalizedString("invalid-firstname", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                disableChangeDataButton()
 
+				self.isUserValid = false
+                firstName.becomeFirstResponder()
+				disableChangeDataButton()
             }
         case familyName:
             debugPrint("lastname")
             if textField.text?.isValid() ?? false {
+				self.isLnameValid = true
                 checkTextFieldValues()
             } else {
-                familyName.becomeFirstResponder()
                 errorDesc = NSLocalizedString("invalid-lastname", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+
+				self.isLnameValid = true
+				familyName.becomeFirstResponder()
                 disableChangeDataButton()
             }
         case chatName:
             debugPrint("username")
             if textField.text?.isValid() ?? false {
                 if textField.text?.isUserNameNotValid() ?? false {
-					chatName.becomeFirstResponder()
 					errorDesc = NSLocalizedString("taken-username", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                }
-                checkTextFieldValues()
+
+					self.isUserValid = false
+					chatName.becomeFirstResponder()
+					disableChangeDataButton()
+				} else {
+					self.isUserValid = true
+                	checkTextFieldValues()
+				}
+
             } else {
-                chatName.becomeFirstResponder()
                 errorDesc = NSLocalizedString("invalid-username", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+
+				self.isUserValid = false
+				chatName.becomeFirstResponder()
                 disableChangeDataButton()
             }
         case addressPostalCode:
@@ -181,24 +203,30 @@ extension ProfileVC : UITextFieldDelegate {
 				postNumber = addressPostalCode.text
 				if postCode?.count ?? 0 > 0 || postNumber?.count ?? 0 > 0 {
 					self.callPostCodeApi(postCode: postCode ?? "", number: postNumber ?? ""){ (success, postalInfo, message) in
+						print("success psotal code: \(success)")
 						if success == true {
 							self.addedStreet.text = postalInfo!.street
 							self.addedTown.text = postalInfo!.city
+							
                 			self.checkTextFieldValues()
 						} else {
+							let title = NSLocalizedString("error-response", comment: "")
+							let desc = NSLocalizedString("invalid-post-code", comment: "")
+							validationDialog(vc: self, title: title, message: desc, buttonText: "Ok")
+							
 							self.addedStreet.text = ""
 							self.addedTown.text = ""
 							self.disableChangeDataButton()
-							self.addressPostalCode.becomeFirstResponder()
+							//self.addressPostalCode.becomeFirstResponder()
 						}
 					}
 				} else {
 					disableChangeDataButton()
-					addressPostalCode.becomeFirstResponder()
+					//addressPostalCode.becomeFirstResponder()
 				}
 				
 			} else {
-                addressPostalCode.becomeFirstResponder()
+                //addressPostalCode.becomeFirstResponder()
                 errorDesc = NSLocalizedString("invalid-postal-code", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
@@ -210,24 +238,30 @@ extension ProfileVC : UITextFieldDelegate {
 				postNumber = addressLotNum.text
 				if postCode?.count ?? 0 > 0 || postNumber?.count ?? 0 > 0 {
 					self.callPostCodeApi(postCode: postCode ?? "", number: postNumber ?? ""){ (success, postalInfo, message) in
+						print("success psotal number: \(success)")
 						if success == true {
 							self.addedStreet.text = postalInfo!.street
 							self.addedTown.text = postalInfo!.city
+
                 			self.checkTextFieldValues()
 						} else {
+							let title = NSLocalizedString("error-response", comment: "")
+							let desc = NSLocalizedString("invalid-post-number", comment: "")
+							validationDialog(vc: self, title: title, message: desc, buttonText: "Ok")
+							
 							self.addedStreet.text = ""
 							self.addedTown.text = ""
 							self.disableChangeDataButton()
-							self.addressLotNum.becomeFirstResponder()
+							//self.addressLotNum.becomeFirstResponder()
 						}
 					}
 				} else {
 					self.disableChangeDataButton()
-					self.addressLotNum.becomeFirstResponder()
+					//self.addressLotNum.becomeFirstResponder()
 				}
 
             } else {
-                addressLotNum.becomeFirstResponder()
+                //addressLotNum.becomeFirstResponder()
                 errorDesc = NSLocalizedString("invalid-post-number", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
                 disableChangeDataButton()
@@ -235,42 +269,39 @@ extension ProfileVC : UITextFieldDelegate {
         case contactEmail:
             debugPrint("email")
             if textField.text?.isValidEmail() ?? false {
+				self.isEmailValid = true
                 checkTextFieldValues()
-                debugPrint("valid email")
             } else {
-                contactEmail.becomeFirstResponder()
                 errorDesc = NSLocalizedString("invalid-email", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                disableChangeDataButton()
-                debugPrint("not valid email")
+
+				self.isEmailValid = false
+				contactEmail.becomeFirstResponder()
+				disableChangeDataButton()
             }
         case contactNumber:
-            debugPrint("mobile")
+
             if textField.text?.isMobileNumberValid() ?? false {
 				let checkPrefix = textField.text?.prefix(2)
-				if checkPrefix == "06" {
-                	checkTextFieldValues()
-				} else {
-                	validationDialog(vc: self, title: errorTitle, message: "Prefix number must be 06", buttonText: "Ok")
-				}
+					if checkPrefix == "06" {
+						self.isNumberValid = true
+						checkTextFieldValues()
+					} else {
+						validationDialog(vc: self, title: errorTitle, message: "Prefix number must be 06", buttonText: "Ok")
+
+						self.isNumberValid = false
+						contactNumber.becomeFirstResponder()
+						disableChangeDataButton()
+					}
 
             } else {
                 errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
                 validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+				
+				self.isNumberValid = false
                 contactNumber.becomeFirstResponder()
                 disableChangeDataButton()
                 
-            }
-        case password:
-            debugPrint("pass")
-            if textField.text?.isValidPassword() ?? false {
-                checkTextFieldValues()
-            } else {
-                errorDesc = NSLocalizedString("invalid-password", comment: "")
-                validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                password.becomeFirstResponder()
-                disableChangeDataButton()
-                debugPrint("not valid password")
             }
         default: break
         }
@@ -278,25 +309,48 @@ extension ProfileVC : UITextFieldDelegate {
     }
     
     func disableChangeDataButton() {
+		self.areAllFieldsValid = false
         self.changeData.isEnabled = false
         self.changeData.backgroundColor = UIColor.lightGray
+		//IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
     func enableChangeDataButton() {
         self.changeData.isEnabled = true
         self.changeData.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
-        debugPrint("enable next step")
+		//IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
     func checkTextFieldValues() {
-        
-        if self.textFieldHasValues(tf: [firstName, familyName, chatName, addressPostalCode, addressLotNum, addedStreet, addedTown, contactEmail, contactNumber]) {
-            enableChangeDataButton()
-        } else {
-            disableChangeDataButton()
+		let allBool = [self.isFnameValid, self.isLnameValid, self.isUserValid, self.isEmailValid, self.isNumberValid]
+		var numberOfTrue = 0
+		var numberOfFalse = 0
+//			if self.textFieldHasValues(tf: [firstName, familyName, chatName, addressPostalCode, addressLotNum, addedStreet, addedTown, contactEmail, contactNumber]) {
+//				enableChangeDataButton()
+//			} else {
+//				disableChangeDataButton()
+//
+//			}
 
-        }
-        
+		for bools in allBool {
+			
+			if bools {
+				numberOfTrue += 1
+			} else {
+				numberOfFalse += 1
+			}
+			
+		}
+		debugPrint("trues: \(numberOfTrue)")
+		debugPrint("falses: \(numberOfFalse)")
+
+		if numberOfFalse > 0 {
+			disableChangeDataButton()
+		} else {
+			enableChangeDataButton()
+		}
+	
+		
     }
     
     func textFieldHasValues (tf: [UITextField]) -> Bool {
@@ -328,11 +382,7 @@ extension ProfileVC : UITextFieldDelegate {
 			
 			if let error = err {
 				print("error reponse: \(error.localizedDescription)")
-				
-				let title = NSLocalizedString("error-response", comment: "")
-				let desc = NSLocalizedString("invalid-post-code", comment: "")
-				defaultDialog(vc: self, title: title, message: desc)
-				
+				completion(false, nil, error.localizedDescription)
 				// loadingDismiss()
 				
 			} else if let data = response {

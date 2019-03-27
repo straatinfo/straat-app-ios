@@ -14,7 +14,8 @@
 
 "send-report-success" = "Deze is vanaf nu voor iedereen te zien op straat.info. Een melding openbare ruimte wordt bovendien naar de gemeente gestuurd.";
 
-"invalid-postal-code" = "Ongeldige postcode";
+"invalid-postal-code" = "The postal code and/or house number entry seems to be incorrect. Please fill in the correct postal code and house number";
+"public-space-title" = "Melding Openbare Ruimte";
 
 "public-space-desc" = "Hier kunt een melding openbare ruimte (bijv grofvuil, losliggende stoeptegels etc) doorgeven. Deze wordt direct naar de gemeente gestuurd.";
 
@@ -22,19 +23,19 @@
 
 "always-call-112" = "Bel bij spoed altijd eerst 112\n\n\n De app straat.info is bedoeld voor het ondersteunen van buurtpreventie onder andere voor het doorgeven van meldingen aan de gemeente. Het gebruik van de app voor andere doeleinden, die niet binnen de gangbare uitleg van buurtpreventie passen, is niet toegestaan.\n\nDe app is nadrukkelijk niet bedoeld om het normale communicatie verkeer met instanties zoals de politie, de brandweer, ambulance en gemeenten te vervangen.\n\nBel bij spoed altijd eerst 112\n\nSeqretary b.v. is eigenaar van de app straat.info en aanvaardt geen enkele aansprakelijkheid voor schade op welke wijze dan ook, door het gebruik van de app. Seqretary b.v. kan de algemene voorwaarden wijzigen.\n\n\n\nOver privacy en jouw gegevens:\n\nOm je gegevens beter te beschermen, maakt de app straat.info gebruik van een chatnaam. Je mag zelf bepalen welke naam je daarvoor gebruikt. Je telefoonnummer en al je andere persoonlijke gegevens worden in het openbare deel van de app straat.info aan niemand bekend gemaakt.\n\nAls je lid bent van een team, dan zien je teamleden wel je naam, maar niet je overige gegevens. Zij zien dus niet je telefoonnummer, adres etc.\n\nDe teamcoördinator van je team heeft wel inzage in je gegevens. Hiermee kan de coördinator controleren of de juiste persoon in het team zit.\n\nDe gemeente en politie kunnen desgevraagd indien noodzakelijk inzage krijgen in jouw gegevens en gegevens die met deze app straat.info worden gegenereerd.\n\nDe meldingen met de bijbehorende berichten die met de app straat.info worden gemaakt, worden een beperkte tijd bewaard. Daarna worden deze vernietigd. Teams en de gemeente krijgen een afschrift van de meldingen.\n\nWij maken geen analyse van het gebruik van de app, anders dan ter verbetering van onze dienstverlening.\n\nWij verkopen je gegevens niet aan andere organisaties.\n\nJe kunt het gebruik van de app straat.info beëindigen en je gegevens laten verwijderen uit ons bestand door ons via de mail een verzoek daartoe te versturen.\n\nMet het accepteren van deze algemene voorwaarden stem je in met het hier beschreven gebruik van je gegevens.";
 
-"no-available-reports" = "No available reports";
+"no-available-reports" = "Geen beschikbare rapporten";
 
-"fetching-near-reports" = "Fetching near reports";
+"fetching-near-reports" = "rapporten ophalen";
 
 "report" = "Melder";
 
-"invalid-post-code" = "Invalid postcode";
+"invalid-post-code" = "De postcode en/of huisnummer invoer lijken niet te kloppen. Vul de juiste postcode en huisnummer in.";
 
 "error-response" = "Foutreactie";
 
 "enter-code" = "Voer code in";
 
-"fill-up-all-fields" = "Please fill up all the empty fields";
+"fill-up-all-fields" = "Vul alle lege velden in";
 
 "invalid-code" = "Ongeldige code";
 
@@ -42,23 +43,23 @@
 
 "invalid-email" = "Dit mailadres is al in gebruik. Voer een ander emailadres is of neem contact op via formulier op www.straat.info ";
 
-"invalid-password" = "Your password is not valid or must be atleast 6 alphanumeric characters"; // TODO: Change value
+"invalid-password" = "Je wachtwoord moet in ieder geval 8 tekens bevatten, waarvan tenminste 1 letter en 1 cijfer";
 
-"invalid-firstname" = "Your firstname is not valid";
+"invalid-firstname" = "Ontbrekende voornaam";
 
-"invalid-lastname" = "Your lastname is not valid";
+"invalid-lastname" = "Ontbrekende achternaam";
 
-"taken-username" = "This username is already in use or not allowed. Please choose a different name.";
+"taken-username" = "Deze gebruikersnaam is al in gebruik of niet toegestaan. Kies een andere naam.";
 
-"invalid-username" = "Your username is not valid";
+"invalid-username" = "Uw gebruikersnaam is niet geldig";
 
-"invalid-post-number" = "Your post number is not valid";
+"invalid-post-number" = "De postcode en/of huisnummer invoer lijken niet te kloppen. Vul de juiste postcode en huisnummer in.";
 
 "invalid-mobile-number" = " Dit nummer is niet correct of al in gebruik. Voer een ander nummer in of neem contact op via info@straat.info";
 
 "image-source" = "Afbeeldingsbron";
 
-"image-source-desc" = "Please choose where to take your image";
+"image-source-desc" = "Kies waar u uw afbeelding wilt nemen";
 
 "camera" = "Camera";
 
@@ -68,31 +69,31 @@
 
 "permission-denied" = "Geen toestemming";
 
-"invalid-username-password" = "Invalid username or password";
+"invalid-username-password" = "ongeldige gebruikersnaam of wachtwoord";
 
-"feedback-success" = "Successfully sent feedback";
+"feedback-success" = "Feedback verzonden";
 
-"feedback-failed" = "Unable to send feedback";
+"feedback-failed" = "Kan geen feedback verzenden. Probeer het opnieuw";
 
 "failed" = "Mislukt";
 
 "no-changes" = "Geen veranderingen";
 
-"update-profile-success" = "Successfully updated your profile";
+"update-profile-success" = "Uw profiel is bijgewerkt";
 
-"error-occured" = "An error occurred please try again.";
+"error-occured" = "Er is een fout opgetreden, probeer het opnieuw.";
 
-"radius-success" = "Successfully updated radius value";
+"radius-success" = "De radiuswaarde is bijgewerkt";
 
 "try-again" = "Probeer het opnieuw";
 
-"team-leader-accepts-request" = "Please wait until team leader accepts your request";
+"team-leader-accepts-request" = "Wacht alstublieft tot de teamleider uw verzoek accepteert";
 
-"unidentified-location" = "This location is unindentified";
+"unidentified-location" = "TDeze locatie is niet geïdentificeerd";
 
-"image-not-found" = "Image not found";
+"image-not-found" = "Afbeelding niet gevonden";
 
-"import-image-error" = "Error occured when importing image";
+"import-image-error" = "Er is een fout opgetreden bij het importeren van de afbeelding";
 
 "report-success-dialog-title" = "Dank voor uw melding!";
 
@@ -100,4 +101,4 @@
 
 "emergency-notification" = "Spoedmelding";
 
-"username-info-title" = "Username Info"; // TODO: Change value
+"username-info-title" = "gebruikersnaam info";

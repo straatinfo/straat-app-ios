@@ -134,7 +134,8 @@ class MainVC: UIViewController {
     
     @IBAction func publicSpaceInfo(_ sender: UIButton) {
         let desc = NSLocalizedString("public-space-desc", comment: "")
-        defaultDialog(vc: self, title: "Public Space", message: desc)
+        let title = NSLocalizedString("public-space-title", comment: "")
+        defaultDialog(vc: self, title: title, message: desc)
     }
     
     @IBAction func zoomIn(_ sender: UIButton) {

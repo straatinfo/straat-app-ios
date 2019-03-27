@@ -56,7 +56,7 @@
 
 "invalid-post-number" = "The postal code and/or house number entry seems to be incorrect. Please fill in the correct postal code and house number";
 
-"invalid-mobile-number" = "Your mobile number is not valid or must be 10 digits";
+"invalid-mobile-number" = "This number is not correct or already in use, please enter a different number or contact us through info@straat.info";
 
 "image-source" = "Image Source";
 
@@ -105,3 +105,7 @@
 "emergency-notification" = "Emergency Notification";
 
 "username-info-title" = "Username Info";
+
+"mobile-prefix-error" = "Prefix number must be 06";
+
+"invalid-mobile-number-length" = "Invalid mobile number length";

@@ -102,3 +102,7 @@
 "emergency-notification" = "Spoedmelding";
 
 "username-info-title" = "gebruikersnaam info";
+
+"mobile-prefix-error" = "Prefix number must be 06";
+
+"invalid-mobile-number-length" = "Invalid mobile number length";

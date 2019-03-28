@@ -140,8 +140,11 @@ extension LoginUserVC : UITextFieldDelegate {
 				let dataObject = data["data"] as? Dictionary <String, Any> ?? [:]
 				let userObject = dataObject["user"] as? Dictionary <String, Any> ?? [:]
 				let settingObject = dataObject["setting"] as? Dictionary <String, Any> ?? [:]
+				let activeDesignObject = dataObject["_activeDesign"] as? Dictionary<String, Any> ?? [:]
+				
 				let teamObject = userObject["_activeTeam"] as? Dictionary <String, Any> ?? [:]
 				let hostObject = userObject["_host"] as? Dictionary<String, Any> ?? [:]
+
 
 				let hostId = hostObject["_id"] as? String
 				let isVolunteer = teamObject["isVolunteer"] as? Bool ?? true
@@ -150,13 +153,15 @@ extension LoginUserVC : UITextFieldDelegate {
 				let userSettingModel = UserModel(fromLoginSetting: settingObject)
 				let userTeamModel = UserModel(fromLoginTeam: teamObject)
                 let userOtherModel = UserModel(fromLoginHostId: hostId!, fromLoginIsVolunteer: isVolunteer)
+				let userActiveDesignModel = UserModel(fromLoginActiveDesign: activeDesignObject)
                 
                 //saving user model to loca data
                 userModel.saveToLocalData()
                 userSettingModel.saveSettingToLocalData()
                 userTeamModel.saveTeamToLocalData()
                 userOtherModel.saveOtherToLocalData()
-                
+                userActiveDesignModel.saveActiveDesignToLocalData()
+				
                 loadingDismiss()
                 pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
                 

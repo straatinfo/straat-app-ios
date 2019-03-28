@@ -16,7 +16,16 @@ class RegistrationDataVC: UIViewController {
 	var isTACAccepted : Bool? = false
     var errorTitle : String? = nil
     var errorDesc : String? = nil
-    
+	
+	var isFnameValid: Bool = false
+	var isLnameValid: Bool = false
+	var isPostalCodeValid: Bool = false
+	var isPostalNumberValid: Bool = false
+	var isEmailValid: Bool = false
+	var isNumberValid: Bool = false
+	var isUserValid: Bool = false
+	var isPassValid: Bool = false
+	
     @IBOutlet weak var male: UIButton!
     @IBOutlet weak var female: UIButton!
     @IBOutlet weak var firstnameTxtBox: UITextField!
@@ -151,21 +160,28 @@ extension RegistrationDataVC {
             case firstnameTxtBox:
                 debugPrint("firstname")
                 if textField.text?.isValid() ?? false {
+					self.isFnameValid = true
                     checkTextFieldValues()
+					
                 } else {
-                    firstnameTxtBox.becomeFirstResponder()
                     errorDesc = NSLocalizedString("invalid-firstname", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+					
+					self.isFnameValid = false
+					firstnameTxtBox.becomeFirstResponder()
                     disableNextStepButton()
                 }
             case lastnameTxtBox:
-                debugPrint("lastname")
                 if textField.text?.isValid() ?? false {
+					self.isLnameValid = true
                     checkTextFieldValues()
                 } else {
-                    lastnameTxtBox.becomeFirstResponder()
+
                     errorDesc = NSLocalizedString("invalid-lastname", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+
+					self.isLnameValid = false
+                    lastnameTxtBox.becomeFirstResponder()
                     disableNextStepButton()
                 }
             case usernameTxtBox:
@@ -174,89 +190,109 @@ extension RegistrationDataVC {
                     if textField.text?.isUserNameNotValid() ?? false {
                         errorDesc = NSLocalizedString("taken-username", comment: "")
                         validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                    }
-                    checkTextFieldValues()
+
+						self.isUserValid = false
+						usernameTxtBox.becomeFirstResponder()
+						disableNextStepButton()
+					} else {
+						self.isUserValid = true
+						checkTextFieldValues()
+					}
+
                 } else {
-                    usernameTxtBox.becomeFirstResponder()
                     errorDesc = NSLocalizedString("invalid-username", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+					
+					self.isUserValid = false
+                    usernameTxtBox.becomeFirstResponder()
                     disableNextStepButton()
                 }
             case postCodeTxtBox:
-                debugPrint("postal code")
                 if textField.text?.isValid() ?? false {
+					self.isPostalCodeValid = true
                     checkTextFieldValues()
                 } else {
-                    postCodeTxtBox.becomeFirstResponder()
                     errorDesc = NSLocalizedString("invalid-postal-code", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+					
+					self.isPostalCodeValid = false
+					postCodeTxtBox.becomeFirstResponder()
                     disableNextStepButton()
                 }
             break
             case postNumberTxtBox:
-                debugPrint("postal number")
                 if textField.text?.isValid() ?? false {
+					self.isPostalNumberValid = true
                     checkTextFieldValues()
                 } else {
-                    postNumberTxtBox.becomeFirstResponder()
                     errorDesc = NSLocalizedString("invalid-post-number", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                    disableNextStepButton()
+					
+					self.isPostalNumberValid = false
+                    postNumberTxtBox.becomeFirstResponder()
+					disableNextStepButton()
                 }
             case emailTxtBox:
-                debugPrint("email")
                 if textField.text?.isValidEmail() ?? false {
                     emailTxtBox.backgroundColor = UIColor .clear
+					self.isEmailValid = true
                     checkTextFieldValues()
-                    debugPrint("valid email")
                 } else {
                     emailTxtBox.backgroundColor = UIColor .red
-                    emailTxtBox.becomeFirstResponder()
-                    errorDesc = NSLocalizedString("wrong-input", comment: "")
+                    errorDesc = NSLocalizedString("invalid-email-address", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                    disableNextStepButton()
-                    debugPrint("not valid email")
+					
+					self.isEmailValid = false
+                    emailTxtBox.becomeFirstResponder()
+					disableNextStepButton()
                 }
             case mobileNumberTxtBox:
-                debugPrint("mobile")
+
                 if textField.text?.isMobileNumberValid() ?? false {
 					let checkPrefix = textField.text?.prefix(2)
 					if checkPrefix == "06" {
                         mobileNumberTxtBox.backgroundColor = UIColor .clear
+						self.isNumberValid = true
 						checkTextFieldValues()
 					} else {
                         mobileNumberTxtBox.backgroundColor = UIColor .red
                         let desc = NSLocalizedString("mobile-prefix-error", comment: "")
 						validationDialog(vc: self, title: errorTitle, message: desc, buttonText: "Ok")
-                        disableNextStepButton()
+
+						self.isNumberValid = true
+						mobileNumberTxtBox.becomeFirstResponder()
+						disableNextStepButton()
 					}
                 } else {
                     mobileNumberTxtBox.backgroundColor = UIColor .red
                     if (textField.text?.count)! < 10 {
                         errorDesc = NSLocalizedString("invalid-mobile-number-length", comment: "")
                         validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+
+						self.isNumberValid = true
                         mobileNumberTxtBox.becomeFirstResponder()
                         disableNextStepButton()
                     } else {
                         errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
                         validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                        mobileNumberTxtBox.becomeFirstResponder()
+
+						self.isNumberValid = true
+						mobileNumberTxtBox.becomeFirstResponder()
                         disableNextStepButton()
                     }
                     
-                    
-
                 }
             case passwordTxtBox:
-                debugPrint("pass")
                 if textField.text?.isValidPassword() ?? false {
+					self.isPassValid = true
                     checkTextFieldValues()
                 } else {
                     errorDesc = NSLocalizedString("invalid-password", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
-                    passwordTxtBox.becomeFirstResponder()
+
+					self.isPassValid = false
+					passwordTxtBox.becomeFirstResponder()
                     disableNextStepButton()
-                    debugPrint("not valid password")
                 }
         default: break
         }
@@ -292,20 +328,40 @@ extension RegistrationDataVC {
     }
     
     func checkTextFieldValues() {
-        
-        if self.textFieldHasValues(tf: [firstnameTxtBox, lastnameTxtBox, usernameTxtBox, postCodeTxtBox, postNumberTxtBox, streetTxtBox, townTxtBox, emailTxtBox, mobileNumberTxtBox, passwordTxtBox]) {
-			
-			if self.isTACAccepted! {
-            	enableNextStepButton()
+		let bools = [self.isFnameValid, self.isLnameValid, self.isPostalCodeValid, self.isPostalNumberValid, self.isEmailValid, self.isNumberValid, self.isUserValid, self.isPassValid]
+
+		var numberOfTrue = 0
+		var numberOfFalse = 0
+		
+		for bool in bools {
+			if bool {
+				numberOfTrue += 1
 			} else {
-            	disableNextStepButton()
+				numberOfFalse += 1
 			}
-            
-            
-        } else {
-            disableNextStepButton()
-        }
-        
+		}
+		
+		if numberOfFalse > 0 {
+			disableNextStepButton()
+		} else {
+			enableNextStepButton()
+		}
+		
+		debugPrint("nmber of true: \(numberOfTrue)")
+		debugPrint("nmber of flase: \(numberOfFalse)")
+//        if self.textFieldHasValues(tf: [firstnameTxtBox, lastnameTxtBox, usernameTxtBox, postCodeTxtBox, postNumberTxtBox, streetTxtBox, townTxtBox, emailTxtBox, mobileNumberTxtBox, passwordTxtBox]) {
+//
+//			if self.isTACAccepted! {
+//            	enableNextStepButton()
+//			} else {
+//            	disableNextStepButton()
+//			}
+//
+//
+//        } else {
+//            disableNextStepButton()
+//        }
+		
     }
     
     func textFieldHasValues (tf: [UITextField]) -> Bool {

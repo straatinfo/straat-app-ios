@@ -29,6 +29,12 @@ let user_radius = "user_radius"
 let user_host_id = "user_host_id"
 let user_is_volunteer = "user_is_volunteer"
 
+//user active design
+let user_actdes_color_one = "user_color_one"
+let user_actdes_color_two = "user_color_two"
+let user_actdes_image_url = "user_actdes_image_url"
+
+
 //for sending location
 let user_loc_address = "user_loc_address"
 let user_loc_lat = "user_loc_lat"

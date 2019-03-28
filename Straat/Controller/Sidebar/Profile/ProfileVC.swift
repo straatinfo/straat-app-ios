@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import Alamofire
+import AlamofireImage
 import IQKeyboardManagerSwift
 
 class ProfileVC: UIViewController {
@@ -309,7 +310,6 @@ extension ProfileVC : UITextFieldDelegate {
     }
     
     func disableChangeDataButton() {
-		self.areAllFieldsValid = false
         self.changeData.isEnabled = false
         self.changeData.backgroundColor = UIColor.lightGray
 		//IQKeyboardManager.shared.enableAutoToolbar = false
@@ -552,6 +552,8 @@ extension ProfileVC {
     
     func loadProfileData () {
         let u = UserModel()
+		let imageUrl = u.getDataFromUSD(key: user_actdes_image_url)
+		
         self.firstName.text = u.getDataFromUSD(key: user_fname)
         self.familyName.text = u.getDataFromUSD(key: user_lname)
         self.addressLotNum.text = u.getDataFromUSD(key: user_house_number)
@@ -565,6 +567,12 @@ extension ProfileVC {
         self.addedStreet.isEnabled = false
         self.addedTown.isEnabled = false
         self.password.isEnabled = false
+		
+		self.getUserImage(imageUrl: imageUrl) { (success, profilePic) in
+			if success {
+				self.uploadImage.image = profilePic
+			}
+		}
         // self.password.text = u.getDataFromUSD(key: user_fname)
         // self.uploadImage.text = u.getDataFromUSD(key: user_fname)
     }
@@ -616,4 +624,18 @@ extension ProfileVC {
             }
         }
     }
+	
+	func getUserImage(imageUrl: String, completion: @escaping (Bool, UIImage?) -> Void) -> Void {
+		
+		Alamofire.request(URL(string: imageUrl)!).responseImage { response in
+			
+			if let img = response.result.value {
+				print("user image downloaded: \(img)")
+				
+				completion(true, img)
+			} else {
+				completion(false, nil)
+			}
+		}
+	}
 }

@@ -39,7 +39,13 @@ class UserModel {
     
     var host_id: String?
     var isVolunteer: Bool?
-    
+	
+	// active design
+	var colorOne: String?
+	var colorTwo: String?
+	var colorThree: String?
+	var profileImageUrl: String?
+	
     let uds = UserDefaults.standard
     
     init () {
@@ -78,7 +84,6 @@ class UserModel {
         self.streetName = fromLogin["streetName"] as? String
         self.city = fromLogin["city"] as? String
         self.gender = fromLogin["gender"] as? String
-        
     }
     
     init(fromLoginSetting : Dictionary <String, Any>) {
@@ -106,6 +111,14 @@ class UserModel {
         self.host_id = fromLoginHostId
         self.isVolunteer = fromLoginIsVolunteer
     }
+	
+	init (fromLoginActiveDesign: Dictionary<String, Any>) {
+		self.colorOne = fromLoginActiveDesign["colorOne"] as? String ?? ""
+		self.colorTwo = fromLoginActiveDesign["colorTwo"] as? String ?? ""
+		
+		let profilePicObj = fromLoginActiveDesign["_profilePic"] as? [String:Any] ?? [:]
+		self.profileImageUrl = profilePicObj["secure_url"] as? String ?? ""
+	}
     
     // saving users data to local data
     func saveToLocalData() {
@@ -140,6 +153,12 @@ class UserModel {
         uds.set( self.host_id, forKey: user_host_id)
         uds.set( self.isVolunteer, forKey: user_is_volunteer)
     }
+	
+	func saveActiveDesignToLocalData() {
+		uds.set( self.colorOne, forKey: user_actdes_color_one)
+		uds.set( self.colorTwo, forKey: user_actdes_color_two)
+		uds.set( self.profileImageUrl, forKey: user_actdes_image_url)
+	}
     
     func removeFromLocalData() {
 
@@ -159,4 +178,17 @@ class UserModel {
     func getDataFromUSD(key : String) -> String {
         return uds.string(forKey: key) ?? ""
     }
+}
+
+class ActiveDesignModel {
+	var profileImageUrl: String?
+	
+	init() {
+		
+	}
+	
+	init(activeDesign: Dictionary<String,Any>) {
+		let activeDesignObj = activeDesign["_profilePic"] as? [String:Any] ?? [:]
+		self.profileImageUrl = activeDesignObj["secure_url"] as? String ?? ""
+	}
 }

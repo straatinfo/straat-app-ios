@@ -106,3 +106,5 @@
 "mobile-prefix-error" = "Prefix number must be 06";
 
 "invalid-mobile-number-length" = "Invalid mobile number length";
+
+"invalid-email-address" = "Dit mailadres is al in gebruik. Voer een ander emailadres if of neem contact op via formulier op www.straat.info";

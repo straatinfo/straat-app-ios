@@ -109,3 +109,5 @@
 "mobile-prefix-error" = "Prefix number must be 06";
 
 "invalid-mobile-number-length" = "Invalid mobile number length";
+
+"invalid-email-address" = "This email address is already being used. Enter a different email address if or contact us via form on www.straat.info";

@@ -239,7 +239,6 @@ extension RegistrationDataVC {
                     checkTextFieldValues()
                 } else {
                     emailTxtBox.backgroundColor = UIColor .red
-                    emailTxtBox.becomeFirstResponder()
                     errorDesc = NSLocalizedString("invalid-email-address", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
 					
@@ -259,6 +258,7 @@ extension RegistrationDataVC {
                         mobileNumberTxtBox.backgroundColor = UIColor .red
                         let desc = NSLocalizedString("mobile-prefix-error", comment: "")
 						validationDialog(vc: self, title: errorTitle, message: desc, buttonText: "Ok")
+
 						self.isNumberValid = true
 						mobileNumberTxtBox.becomeFirstResponder()
 						disableNextStepButton()
@@ -268,12 +268,14 @@ extension RegistrationDataVC {
                     if (textField.text?.count)! < 10 {
                         errorDesc = NSLocalizedString("invalid-mobile-number-length", comment: "")
                         validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+
 						self.isNumberValid = true
                         mobileNumberTxtBox.becomeFirstResponder()
                         disableNextStepButton()
                     } else {
                         errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
                         validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
+
 						self.isNumberValid = true
 						mobileNumberTxtBox.becomeFirstResponder()
                         disableNextStepButton()

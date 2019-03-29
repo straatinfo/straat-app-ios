@@ -72,7 +72,6 @@ extension String {
         let stringRegex = "^[A-Za-z0-9]+$"
         let stringPredicate = NSPredicate(format: "SELF MATCHES %@", stringRegex)
         return stringPredicate.evaluate(with:self)
-
     }
 	
 	func isValidDescription() -> Bool{
@@ -84,7 +83,13 @@ extension String {
     
     func isUserNameNotValid() -> Bool {
         let specialUsers = ["pol", "politie", "agent", "bureau", "gemeente", "afdeling", "sectie", "dienst"]
-        return specialUsers.contains(self.lowercased())
+        //return specialUsers.contains(self.lowercased())
+        
+        for specialUser in specialUsers where self.lowercased().contains(specialUser) {
+            return true
+        }
+        
+        return false
     }
     
 }

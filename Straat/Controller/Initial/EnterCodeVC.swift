@@ -74,8 +74,8 @@ extension EnterCodeVC : UITextFieldDelegate {
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 
                 let id = dataObject?["_id"] as? String
-                let lat = dataObject?["_lat"] as? String
-                let long = dataObject?["long"] as? String
+                let lat = dataObject?["lat"] as? Double
+                let long = dataObject?["long"] as? Double
                 let email = dataObject?["email"] as? String
                 let hostName = dataObject?["hostName"] as? String
                 let username = dataObject?["username"] as? String
@@ -86,9 +86,6 @@ extension EnterCodeVC : UITextFieldDelegate {
                 let phoneNumber = dataObject?["phoneNumber"] as? String
                 let isVolunteer = dataObject?["isVolunteer"] as? Bool
                 let language = dataObject?["language"] as? String
-                
-                print("response:  \(String(describing: dataObject))")
-                
                 
                 let host = HostModel(hostID: id, hostLat: lat, hostLong: long, hostEmail: email, username: username, streetName: streetName, city: city, country: country, postalCode: postalCode, phoneNumber: phoneNumber, isVolunteer: isVolunteer, language: language)
                 

@@ -9,8 +9,8 @@ import Foundation
 
 class HostModel {
     var id : String?
-    var lat : String?
-    var long : String?
+    var lat : Double?
+    var long : Double?
     var email : String?
     var hostName : String?
     var username: String?
@@ -29,8 +29,8 @@ class HostModel {
     
     init(
         hostID : String?,
-        hostLat : String?,
-        hostLong : String?,
+        hostLat : Double?,
+        hostLong : Double?,
         hostEmail : String?,
         username: String?,
         streetName: String?,
@@ -59,8 +59,8 @@ class HostModel {
     init (hostData: Dictionary<String, Any>) {
         self.id = hostData["_id"] as? String
         self.hostName = hostData["hostName"] as? String
-        self.lat = hostData["lat"] as? String
-        self.long = hostData["long"] as? String
+        self.lat = hostData["lat"] as? Double
+        self.long = hostData["long"] as? Double
         self.email = hostData["email"] as? String
         self.username = hostData["username"] as? String
         self.streetName = hostData["streetName"] as? String

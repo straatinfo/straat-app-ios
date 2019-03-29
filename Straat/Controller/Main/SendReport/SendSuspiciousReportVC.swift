@@ -89,7 +89,15 @@ class SendSuspiciousReportVC: UIViewController {
     var imageMetaData3: Dictionary <String, Any>?
 
     var mapViewDelegate : MapViewDelegate?
-    
+	
+	var isMainCategSelected: Bool = false
+	var isReportDescriptionValid: Bool = false
+	var isPersonInvDescValid: Bool = false
+	var isVehicleInvDescValid: Bool = false
+	
+	var errorTitle: String? = ""
+	var errorDesc: String? = ""
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
@@ -99,6 +107,7 @@ class SendSuspiciousReportVC: UIViewController {
         
         let uds = UserDefaults.standard
         let id = uds.string(forKey: user_id)
+		self.errorTitle = NSLocalizedString("wrong-input", comment: "")
 //        debugPrint("userID: \(id)")
     
     }
@@ -205,6 +214,7 @@ class SendSuspiciousReportVC: UIViewController {
             self.viewAppearance(views: personsInvolvedViews, isHidden: true)
             self.vehiclesConstraint.constant = -265
         }
+		self.checkValues()
         animateLayout(view: self.view, timeInterval: 0.8)
         debugPrint("isperson_involved: \(String(describing: self.isPersonInvolved))")
     }
@@ -222,7 +232,7 @@ class SendSuspiciousReportVC: UIViewController {
             self.viewAppearance(views: vehiclesInvolvedViews, isHidden: true)
             self.uploadImageConstraint.constant = 20
         }
-        
+		self.checkValues()
         animateLayout(view: self.view, timeInterval: 0.8)
         debugPrint("isperson_involved: \(String(describing: self.isVehicleInvolved))")
     }
@@ -232,17 +242,24 @@ class SendSuspiciousReportVC: UIViewController {
 
 
 extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
-    
+	
+	
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         switch textField {
-            case mainCategoryDropDown:
-                for checkMainCateg in self.mainCategory {
-                    if textField.text == checkMainCateg.name {
-                        self.mainCategoryId = checkMainCateg.id
-                        print("selectedItem maincateg: \(String(describing: checkMainCateg.id))")
-                    }
-                }
+			case self.mainCategoryDropDown:
+			for checkMainCateg in self.mainCategory {
+				if textField.text == checkMainCateg.name?.lowercased() {
+					self.mainCategoryId = checkMainCateg.id
+					self.isMainCategSelected = true
+					self.checkValues()
+					
+					print("selectedItem maincateg: \(String(describing: checkMainCateg.id)) for: \(textField.text)")
+				} else if textField.text == "Select Main Category" {
+					self.isMainCategSelected = false
+					disableSendReportButton()
+				}
+			}
             case personInvolvedDropDown:
                 self.numberofPersonInvolved = Int(textField.text!) ?? 0
 //                debugPrint("selectedItem: \(textField.text)")
@@ -259,31 +276,44 @@ extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
 		switch textView {
 			case self.reportDescription:
 				if textView.text.isValidDescription() {
-					enableSendReportButton()
+					self.isReportDescriptionValid = true
+					self.checkValues()
 				} else {
-					validationDialog(vc: self, title: "Invalid input", message: "Please check your description content", buttonText: "Ok")
+					self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
+					validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+					self.isReportDescriptionValid = false
 					self.reportDescription.becomeFirstResponder()
 					disableSendReportButton()
 				}
 			case self.personsInvolvedDescription:
 				if self.isPersonInvolved {
 					if textView.text.isValidDescription() {
-						enableSendReportButton()
+						self.isPersonInvDescValid = true
+						self.checkValues()
 					} else {
-						validationDialog(vc: self, title: "Invalid input", message: "Please check your description content", buttonText: "Ok")
+						self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
+						validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+						self.isPersonInvDescValid = false
 						self.personsInvolvedDescription.becomeFirstResponder()
 						disableSendReportButton()
 					}
+				} else {
+					self.checkValues()
 				}
 			case self.vehiclesInvolvedDescription:
 				if self.isVehicleInvolved {
 					if textView.text.isValidDescription() {
-						enableSendReportButton()
+						self.isVehicleInvDescValid = true
+						self.checkValues()
 					} else {
-						validationDialog(vc: self, title: "Invalid input", message: "Please check your description content", buttonText: "Ok")
+						self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
+						validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+						self.isVehicleInvDescValid = false
 						self.vehiclesInvolvedDescription.becomeFirstResponder()
 						disableSendReportButton()
 					}
+				} else {
+					self.checkValues()
 				}
 		default:
 			break
@@ -300,12 +330,38 @@ extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
 		self.sendReportButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
 	}
 	
-	func checkTextFieldValues() {
+	func checkValues() {
+		var allBool = [self.isMainCategSelected, self.isReportDescriptionValid]
+		var numberOfTrue = 0
+		var numberOfFalse = 0
 		
-		if self.textFieldHasValues(tf: [self.mainCategoryDropDown]) {
-			enableSendReportButton()
-		} else {
+		if isPersonInvolved {
+			allBool.append(self.isPersonInvDescValid)
+		}
+		
+		if isVehicleInvolved {
+			allBool.append(self.isVehicleInvDescValid)
+		}
+		
+		for bools in allBool {
+			
+			if bools {
+				numberOfTrue += 1
+			} else {
+				numberOfFalse += 1
+			}
+			
+		}
+		
+		debugPrint("all boolean: \(allBool)")
+		debugPrint("trues: \(numberOfTrue)")
+		debugPrint("falses: \(numberOfFalse)")
+		if numberOfFalse > 0 {
 			disableSendReportButton()
+			debugPrint("disable")
+		} else {
+			enableSendReportButton()
+			debugPrint("enable")
 		}
 	}
 	
@@ -380,14 +436,17 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                 for mainCategory in mainCategories {
                     let mainCateg : MainCategoryModel = mainCategory
                     let name = mainCateg.name!
-                    
+					let id = mainCategory.id
+					
+					debugPrint("categ-id: \(id)")
+					debugPrint("categ-name: \(name)")
+					
                     self.mainCategory.append(mainCategory)
                     self.mainCategoryName.append(name)
                 }
 				
 				let arrangedCategories = self.arrangedCateg(categoryName: "overige")
                 self.mainCategoryDropDown.loadDropdownData(data: arrangedCategories)
-                
                 loadingDismiss()
             }
         }
@@ -414,6 +473,7 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
 //    }
 	
 	func arrangedCateg(categoryName: String) -> [String] {
+		let mainCategTitle = NSLocalizedString("select-main-category", comment: "")
 		var mainCategSorted = self.mainCategoryName.sorted().map {$0.lowercased()}
 		let index = mainCategSorted.lastIndex(of: categoryName) ?? nil
 		
@@ -421,6 +481,7 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
 			mainCategSorted.remove(at: index!)
 			mainCategSorted.append(categoryName)
 		}
+		mainCategSorted.insert(mainCategTitle, at: 0)
 		
 		return mainCategSorted
 	}
@@ -632,7 +693,7 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
             
             //code for appearing sub categ
             for checkMainCateg in self.mainCategory {
-                if selectedItem == checkMainCateg.name {
+                if selectedItem == checkMainCateg.name?.lowercased() {
                     self.mainCategoryId = checkMainCateg.id
                     print("selectedItem maincateg: \(String(describing: checkMainCateg.id))")
                 }

@@ -108,3 +108,10 @@
 "invalid-mobile-number-length" = "Het nummer dat je ingevoerd hebt, is niet 10 cijfers lang. Voer een 10 cijferig mobiel telefoonnummer in";
 
 "invalid-email-address" = "Dit mailadres is al in gebruik. Voer een ander emailadres if of neem contact op via formulier op www.straat.info";
+
+"select-main-category" = "Selecteer Hoofdcategorie";
+
+"select-sub-category" = "Selecteer Subcategorie";
+
+"invalid-report-desc" = "Controleer de inhoud van uw beschrijving";
+

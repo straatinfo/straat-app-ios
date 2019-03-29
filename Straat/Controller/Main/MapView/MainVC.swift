@@ -243,7 +243,10 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         
         self.initMapCamera(lat: 52.077646, long: 4.315667)
         self.initMapRadius(lat: 52.077646, long: 4.315667)
+		
         print("user_id: \(userModel.getDataFromUSD(key: user_id))")
+        print("host_lat_mapview: \(hostLat)")
+        print("host_long_mapview: \(hostLong)")
         
         reportService.getReportNear(reporterId: userID, lat: hostLat, long: hostLong, radius: userRadius) { (success, message, reportModel) in
             

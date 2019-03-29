@@ -22,3 +22,6 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 Pods/
+
+## added prototype sb and vc
+Straat/prototype/

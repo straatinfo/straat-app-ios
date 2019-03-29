@@ -64,12 +64,19 @@ class SendPublicSpaceReportVC: UIViewController {
     var imageMetaData3: Dictionary <String, Any>?
     
     var mapViewDelegate : MapViewDelegate?
-    
+	var isMainCategValid: Bool = false
+	var isSubCategValid: Bool = false
+	var isReportDescriptionValid: Bool = false
+	var isMainCategHasSubCateg: Bool = false
+	
+	var errorTitle: String? = ""
+	var errorDesc: String? = ""
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
-//        self.initKeyBoardToolBar()
         self.initCategories()
+		self.errorTitle = NSLocalizedString("wrong-input", comment: "")
     }
     
     @IBAction func emergencyNotif(_ sender: UIButton) {
@@ -168,10 +175,14 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
         case mainCategoryDropDown:
             // getting main category id
             for checkMainCateg in self.mainCategory {
-                if textField.text == checkMainCateg.name {
+                if textField.text == checkMainCateg.name?.lowercased() {
                     self.mainCategoryId = checkMainCateg.id
+					self.isMainCategValid = true
                     //                    print("selectedItem maincateg: \(checkMainCateg.id)")
-                }
+				} else if textField.text == "Select Main Category" {
+					self.isMainCategValid = false
+					self.disableSendReportButton()
+				}
             }
             
             // sub category then show sub categ dropdown
@@ -181,7 +192,7 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
                 
                 for subCateg in checkSubCateg {
                     
-                    if textField.text == subCateg.mainCategoryName! {
+                    if textField.text == subCateg.mainCategoryName!.lowercased() {
                         self.subCategoryName.append(subCateg.name!)
                     }
                     print("sub categ -> main categ name: \(String(describing: subCateg.mainCategoryName))")
@@ -192,23 +203,37 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
             
             if self.subCategoryName.count > 0 {
                 //code for appearing sub categ
-                self.viewAppearance(views: showViews, isHidden: false)
+				let subCategTitle = NSLocalizedString("select-sub-category", comment: "")
+				self.isMainCategHasSubCateg = true
+				self.isSubCategValid = false
+				
+                self.viewAppearance(views: showViews, isHidden: false)				
+				self.subCategoryName.insert(subCategTitle, at: 0)
                 self.subCategoryDropDown.loadDropdownData(data: self.subCategoryName.sorted())
                 self.emergencyNotifConstraint.constant = 20
                 animateLayout(view: self.view, timeInterval: 0.8)
             } else {
+				self.isMainCategHasSubCateg = false
+				
                 self.viewAppearance(views: showViews, isHidden: true)
                 self.emergencyNotifConstraint.constant = -70
                 animateLayout(view: self.view, timeInterval: 0.8)
             }
+			self.checkValues()
         case subCategDropDown:
             // getting subcategory id
             for subCategory in self.subCategory {
                 for subCateg in subCategory {
                     if textField.text == subCateg.name {
                         self.subCategoryId = subCateg.id
+						self.isSubCategValid = true
+						self.checkValues()
+						
                         print("selectedItem subcateg: \(String(describing: subCateg.id))" )
-                    }
+					} else if textField.text == "Select Sub Category" {
+						self.isSubCategValid = false
+						disableSendReportButton()
+					}
                 }
                 
             }
@@ -223,9 +248,13 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
 		switch textView {
 		case self.reportDescription:
 			if textView.text.isValidDescription() {
-				enableSendReportButton()
+				self.isReportDescriptionValid = true
+				self.checkValues()
 			} else {
-				validationDialog(vc: self, title: "Invalid input", message: "Please check your description content", buttonText: "Ok")
+				self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
+				validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+				
+				self.isReportDescriptionValid = false
 				self.reportDescription.becomeFirstResponder()
 				disableSendReportButton()
 			}
@@ -244,13 +273,37 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
 		self.sendReportButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
 	}
 	
-	func checkTextFieldValues() {
+	func checkValues() {
+
+		var allBool = [self.isMainCategValid, self.isReportDescriptionValid]
+		var numberOfTrue = 0
+		var numberOfFalse = 0
 		
-		if self.textFieldHasValues(tf: [self.mainCategoryDropDown]) {
-			enableSendReportButton()
-		} else {
-			disableSendReportButton()
+		if isMainCategHasSubCateg {
+			allBool.append(self.isSubCategValid)
 		}
+		
+		for bools in allBool {
+			
+			if bools {
+				numberOfTrue += 1
+			} else {
+				numberOfFalse += 1
+			}
+			
+		}
+		
+		debugPrint("all boolean: \(allBool)")
+		debugPrint("trues: \(numberOfTrue)")
+		debugPrint("falses: \(numberOfFalse)")
+		if numberOfFalse > 0 {
+			disableSendReportButton()
+			debugPrint("disable")
+		} else {
+			enableSendReportButton()
+			debugPrint("enable")
+		}
+		
 	}
 	
 	func textFieldHasValues (tf: [UITextField]) -> Bool {
@@ -323,6 +376,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
     }
 	
 	func arrangedCateg(categoryName: String) -> [String] {
+		let mainCategTitle = NSLocalizedString("select-main-category", comment: "")
 		var mainCategSorted = self.mainCategoryName.sorted().map {$0.lowercased()}
 		let index = mainCategSorted.lastIndex(of: categoryName) ?? nil
 		
@@ -330,7 +384,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
 			mainCategSorted.remove(at: index!)
 			mainCategSorted.append(categoryName)
 		}
-		
+		mainCategSorted.insert(mainCategTitle, at: 0)
 		return mainCategSorted
 	}
 //    // initialise key board toolbar

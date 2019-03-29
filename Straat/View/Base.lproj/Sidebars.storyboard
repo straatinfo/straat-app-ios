@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1142,7 +1142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8h-ef-O9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7383.1999999999998" y="2911.8440779610196"/>
+            <point key="canvasLocation" x="-7353" y="2912"/>
         </scene>
         <!--SWRevealViewControllerID-->
         <scene sceneID="qg6-Ma-kk8">
@@ -2307,12 +2307,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back-white" width="18.399999618530273" height="18.399999618530273"/>
+        <image name="back-white" width="23" height="23"/>
         <image name="chat" width="20" height="16"/>
         <image name="logo" width="88" height="91"/>
         <image name="menu" width="22" height="15"/>
         <image name="pin-new" width="43" height="59"/>
-        <image name="upload-img" width="192" height="192"/>
+        <image name="upload-img" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="P7e-RK-kUh"/>

@@ -155,6 +155,10 @@ extension LoginUserVC : UITextFieldDelegate {
                 let userOtherModel = UserModel(fromLoginHostId: hostId!, fromLoginIsVolunteer: isVolunteer)
 				let userActiveDesignModel = UserModel(fromLoginActiveDesign: activeDesignObject)
                 
+                let profilePicObject = userObject["_profilePic"] as? Dictionary <String, Any> ?? [:]
+                
+                
+                
                 //saving user model to loca data
                 userModel.saveToLocalData()
                 userSettingModel.saveSettingToLocalData()

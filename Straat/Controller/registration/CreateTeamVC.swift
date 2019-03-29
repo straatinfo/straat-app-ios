@@ -43,25 +43,27 @@ class CreateTeamVC: UIViewController {
                 let prefix = "user-data-"
                 let userId = uds.object(forKey: prefix + "id") as? String
                 
-                self.createTeam(userId: userId!) { (success, message) in
-                    
-                    if success == true {
-                        let alertController = UIAlertController(title: "Registration", message: message, preferredStyle: .alert)
-                        
-                        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
-                            pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
-                        }))
-                        self.present(alertController, animated: true, completion: nil)
-                    } else {
-                        let alertController = UIAlertController(title: "Registration", message: message, preferredStyle: .alert)
-                        
-                        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
-                            pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
-                        }))
-                        self.present(alertController, animated: true, completion: nil)
-                    }
-                    
-                }
+                pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
+                
+//                self.createTeam(userId: userId!) { (success, message) in
+//
+//                    if success == true {
+//                        let alertController = UIAlertController(title: "Registration", message: message, preferredStyle: .alert)
+//
+//                        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+//                            pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+//                        }))
+//                        self.present(alertController, animated: true, completion: nil)
+//                    } else {
+//                        let alertController = UIAlertController(title: "Registration", message: message, preferredStyle: .alert)
+//
+//                        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+//                            pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
+//                        }))
+//                        self.present(alertController, animated: true, completion: nil)
+//                    }
+//
+//                }
             }
         }
     }
@@ -182,15 +184,24 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         parameters["city"] = userData.town ?? ""
         parameters["email"] = userData.email ?? ""
         parameters["phoneNumber"] = userData.phoneNumber ?? ""
-        parameters["isVolunteer"] = userData.isVolunteer ?? true
+        if (userData.isVolunteer != nil && userData.isVolunteer == true) {
+            parameters["isVolunteer"] = "true"
+        } else {
+            parameters["isVolunteer"] = "false"
+        }
         parameters["register_option"] = "MOBILE_APP"
         parameters["lat"] = userData.lat ?? ""
         parameters["lng"] = userData.long ?? ""
-        parameters["isReporter"] = true
+        parameters["isReporter"] = "true"
         parameters["_host"] = userData.hostId ?? ""
         parameters["logoUrl"] = ""
         parameters["logoSecuredUrl"] = ""
-        parameters["_team"] = userData.team?.teamId ?? ""
+//        if (userData.team != nil && userData.team?.teamId != nil && userData.team?.teamId != "") {
+//            parameters["_team"] = userData.team?.teamId
+//        }
+        parameters["teamName"] = teamNameTxtBox.text ?? ""
+        parameters["teamEmail"] = teamEmailTxtBox.text ?? ""
+    
         parameters["code"] = "SeTT0"
         
         apiHandler.execute(URL(string: signup_v3)!, parameters: parameters, method: .post, destination: .httpBody) { (response, err) in

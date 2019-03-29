@@ -103,8 +103,8 @@
 
 "username-info-title" = "gebruikersnaam info";
 
-"mobile-prefix-error" = "Prefix number must be 06";
+"mobile-prefix-error" = "Het nummer dat je ingevoerd hebt, is geen mobiel nummer. Voer een 06 nummer in";
 
-"invalid-mobile-number-length" = "Invalid mobile number length";
+"invalid-mobile-number-length" = "Het nummer dat je ingevoerd hebt, is niet 10 cijfers lang. Voer een 10 cijferig mobiel telefoonnummer in";
 
 "invalid-email-address" = "Dit mailadres is al in gebruik. Voer een ander emailadres if of neem contact op via formulier op www.straat.info";

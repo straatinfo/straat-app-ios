@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
 import CoreLocation
 import Kingfisher
 import Alamofire
@@ -44,7 +45,7 @@ class MainVC: UIViewController {
 	
 	//user defaults
 	let uds = UserDefaults.standard
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createMenu()
@@ -147,6 +148,7 @@ class MainVC: UIViewController {
         self.mapZoom -= 1
         self.mapView.animate(toZoom: self.mapZoom)
     }
+	
 }
 
 
@@ -504,19 +506,22 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                 
                 if pm.count > 0 {
                     let pm = placemarks![0]
-                    
-                    if pm.subLocality != nil {
-                        addressString = addressString + pm.subLocality! + ", "
-                    }
+					
+					if pm.subThoroughfare != nil {
+						addressString = addressString + pm.subThoroughfare! + " "
+					}
                     if pm.thoroughfare != nil {
                         addressString = addressString + pm.thoroughfare! + ", "
                     }
-                    if pm.locality != nil {
-                        addressString = addressString + pm.locality! + ", "
-                    }
+					if pm.subLocality != nil {
+						addressString = addressString + pm.subLocality! + ", "
+					}
                     if pm.postalCode != nil {
-                        addressString = addressString + pm.postalCode! + ", "
+                        addressString = addressString + pm.postalCode! + " "
                     }
+					if pm.locality != nil {
+						addressString = addressString + pm.locality! + ", "
+					}
                     if pm.country != nil {
                         addressString = addressString + pm.country! + ""
                     }
@@ -612,7 +617,6 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
     }
     
 }
-
 
 extension GMSMarker {
     var reportModel : ReportModel? {

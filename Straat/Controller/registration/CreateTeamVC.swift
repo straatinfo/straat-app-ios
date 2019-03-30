@@ -11,16 +11,22 @@ import Alamofire
 
 class CreateTeamVC: UIViewController {
     
-    var img : Data?
-
+    var teamLogo : Data?
+    let mediaService = MediaService()
+	var teamLogoMetaData : Dictionary<String,Any>?
+	var isVolunteer: Bool?
+	
     @IBOutlet weak var teamNameTxtBox: UITextField!
     @IBOutlet weak var teamEmailTxtBox: UITextField!
     @IBOutlet weak var imageTeamLogo: UIImageView!
-//    let activityIndicator = UIActivityIndicatorView()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		
+		let prefix = "reg-user-data-"
+		let uds = UserDefaults.init()
+		self.isVolunteer = uds.bool(forKey: prefix + "isVolunteer")
         // Do any additional setup after loading the view.
     }
     
@@ -39,12 +45,28 @@ class CreateTeamVC: UIViewController {
         self.register() { (success, message) in
             if success == true {
                 let uds = UserDefaults.standard;
-                
                 let prefix = "user-data-"
                 let userId = uds.object(forKey: prefix + "id") as? String
-                
-                pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
-                
+
+				if self.isVolunteer == false {
+					let msgTitle = NSLocalizedString("registration-title", comment: "")
+					let msgDesc = NSLocalizedString("registration-message", comment: "")
+					
+					let alertController = UIAlertController(title: msgTitle, message: msgDesc, preferredStyle: .alert)
+					
+					alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+                	pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
+					}))
+					self.present(alertController, animated: true, completion: nil)
+
+				} else {
+                	pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
+				}
+
+
+
+				
+				
 //                self.createTeam(userId: userId!) { (success, message) in
 //
 //                    if success == true {
@@ -92,12 +114,26 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+		
+        loadingShow(vc: self)
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
+            self.teamLogo = image.jpegData(compressionQuality: CGFloat.leastNormalMagnitude)!
+			
+			self.mediaService.uploadPhoto(image: self.teamLogo!, fileName: "team-logo") { (success, message, photoMetaData, dataObject) in
+				
+				if success {
+					self.teamLogoMetaData = dataObject
+					debugPrint("dataObject: \(String(describing: dataObject))")
+					//                        print("public_id: \(String(describing: public_id))")
+				} else {
+					print("upload image response: \(message)")
+				}
+				loadingDismiss()
+				
+			}
             imageTeamLogo.image = image
-            
-            img = image.jpegData(compressionQuality: CGFloat.leastNormalMagnitude)!
+
             
         } else {
             print("importing img: error in uploading image")
@@ -106,27 +142,27 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         self.dismiss(animated: true, completion: nil)
     }
     
-    func createTeam (userId: String, completion: @escaping (Bool, String) -> Void) {
-        
-        let userData = getInputs()
-        let apiHandler = ApiHandler()
-        let hostId = userData.hostId ?? ""
-        var parameters : Parameters = [:]
-        
-        parameters["isVolunteer"] = userData.isVolunteer ?? true
-        parameters["teamName"] = teamNameTxtBox.text ?? ""
-        parameters["teamEmail"] = teamEmailTxtBox.text ?? ""
-        parameters["creationMethod"] = "MOBILE"
-        
-//        let url = URL(string: "https://straatinfo-backend-v2.herokuapp.com/v1/api/team/new/" + userId)
-        let url = URL(string: "https://straatinfo-backend-v2.herokuapp.com/v2/api/team?_user=" + userId + "&_host=" + hostId)
-        
-        apiHandler.executeMultiPart(url!, parameters: parameters, imageData: img, fileName: teamNameTxtBox.text!, photoFieldName: "photo", pathExtension: ".jpeg", method: .post, headers: [:]) { (response, err) in
-            // go to main view
-            completion(true, "Success")
-        }
-        
-    }
+//    func createTeam (userId: String, completion: @escaping (Bool, String) -> Void) {
+//
+//        let userData = getInputs()
+//        let apiHandler = ApiHandler()
+//        let hostId = userData.hostId ?? ""
+//        var parameters : Parameters = [:]
+//
+//        parameters["isVolunteer"] = userData.isVolunteer ?? true
+//        parameters["teamName"] = teamNameTxtBox.text ?? ""
+//        parameters["teamEmail"] = teamEmailTxtBox.text ?? ""
+//        parameters["creationMethod"] = "MOBILE"
+//
+////        let url = URL(string: "https://straatinfo-backend-v2.herokuapp.com/v1/api/team/new/" + userId)
+//        let url = URL(string: "https://straatinfo-backend-v2.herokuapp.com/v2/api/team?_user=" + userId + "&_host=" + hostId)
+//
+//        apiHandler.executeMultiPart(url!, parameters: parameters, imageData: self.teamLogo, fileName: teamNameTxtBox.text!, photoFieldName: "photo", pathExtension: ".jpeg", method: .post, headers: [:]) { (response, err) in
+//            // go to main view
+//            completion(true, "Success")
+//        }
+//
+//    }
 
     func getInputs () -> UserRegistrationModel {
         let uds = UserDefaults.init()
@@ -171,7 +207,13 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         let userData = getInputs()
         let apiHandler = ApiHandler()
         var parameters : Parameters = [:]
-        
+		
+		let logoUrl = self.teamLogoMetaData!["url"] as? String ?? ""
+		let logoSecuredUrl = self.teamLogoMetaData!["secure_url"] as? String ?? ""
+		
+		debugPrint("url: \(logoUrl)")
+		debugPrint("securedurl: \(logoSecuredUrl)")
+		
         parameters["language"] = "nl"
         parameters["gender"] = userData.gender ?? ""
         parameters["fname"] = userData.firstname ?? ""
@@ -194,8 +236,8 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         parameters["lng"] = userData.long ?? ""
         parameters["isReporter"] = "true"
         parameters["_host"] = userData.hostId ?? ""
-        parameters["logoUrl"] = ""
-        parameters["logoSecuredUrl"] = ""
+        parameters["logoUrl"] = logoUrl
+        parameters["logoSecuredUrl"] = logoSecuredUrl
 //        if (userData.team != nil && userData.team?.teamId != nil && userData.team?.teamId != "") {
 //            parameters["_team"] = userData.team?.teamId
 //        }
@@ -205,39 +247,39 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         parameters["code"] = "SeTT0"
         
         apiHandler.execute(URL(string: signup_v3)!, parameters: parameters, method: .post, destination: .httpBody) { (response, err) in
-            
+
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
-                
+
                 let title = NSLocalizedString("error-response", comment: "")
                 defaultDialog(vc: self, title: title, message: error.localizedDescription)
-                
+
                 completion(false, error.localizedDescription)
                 // loadingDismiss()
-                
+
             } else if let data = response {
                 // save user data and token here
                 let uds = UserDefaults.standard;
                 let prefix = "user-data-"
-                
+
                 let dataObject = data["data"] as? Dictionary<String, Any>
                 let user = dataObject?["user"] as? Dictionary<String, Any>
                 let userId = user?["_id"] as? String
-                
+
                 uds.set(userId, forKey: prefix + "id")
 
                 let userObject = dataObject?["user"] as? Dictionary <String, Any>
                 let userModel = UserModel(fromLogin: userObject!)
-                
+
                 //saving user model to loca data
                 userModel.saveToLocalData()
                 completion(true, "Success")
-                
+
                 print("response:  \(String(describing: data))")
-                
+
             }
         }
-        
+		
     }
     
 }

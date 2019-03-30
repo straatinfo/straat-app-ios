@@ -86,7 +86,8 @@ class ReportService {
                 print("error reponse: \(error.localizedDescription)")
 
                 completion(false, error.localizedDescription)
-            } else {
+            } else if let data = response {
+				debugPrint("report sending: \(data)")
                 let desc = NSLocalizedString("send-report-success", comment: "")
                 completion(true, desc)
             }

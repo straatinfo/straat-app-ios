@@ -20,7 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         GMSServices.provideAPIKey("AIzaSyDZhDD8SHZ8Sj3HIHvSttz3-Ow6gNRCQdM")
         GMSPlacesClient.provideAPIKey("AIzaSyDZhDD8SHZ8Sj3HIHvSttz3-Ow6gNRCQdM")
-        
+
+//		GMSServices.provideAPIKey("AIzaSyCWetIVXBhjoLGnHY5LcpuvU_LWvMO-lUI")
+//		GMSPlacesClient.provideAPIKey("AIzaSyCWetIVXBhjoLGnHY5LcpuvU_LWvMO-lUI")
+
         let userModel = UserModel()
         let id = userModel.getDataFromUSD(key: user_id)
         

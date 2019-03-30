@@ -19,7 +19,8 @@ class RegistrationTeamVC: UIViewController {
     var apiHandler = ApiHandler()
     var teamList = [String]()
     var teamListModel = [TeamListModel]()
-    
+	var isVolunteer: Bool?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,6 +71,10 @@ extension RegistrationTeamVC {
         self.individualReporterButton.backgroundColor = UIColor.lightGray
         self.registerButton.isEnabled = false
         self.registerButton.backgroundColor = UIColor.lightGray
+		
+		let prefix = "reg-user-data-"
+		let uds = UserDefaults.init()
+		self.isVolunteer = uds.bool(forKey: prefix + "isVolunteer")
     }
     
     // show team list and fetch team list data
@@ -94,16 +99,19 @@ extension RegistrationTeamVC {
             } else if let data = response {
                 
                 let dataObject = data["data"] as! [[String: Any]]
-                print(data)
                 for teams in dataObject {
-                    let teamID = teams["_id"] as? String ?? ""
-                    let teamName = teams["teamName"] as? String ?? ""
-                    let teamEmail = teams["teamEmail"] as? String ?? ""
-                   
-                    self.teamListModel.append(TeamListModel(teamID: teamID, teamName: teamName, teamEmail: teamEmail))
-
-                    self.teamList.append(teamName)
-                    
+					
+					let isVolunteerTeam = teams["isVolunteer"] as? Bool ?? false
+					debugPrint("isvolunteer: \(self.isVolunteer)")
+					if isVolunteerTeam == self.isVolunteer {
+						let teamID = teams["_id"] as? String ?? ""
+						let teamName = teams["teamName"] as? String ?? ""
+						let teamEmail = teams["teamEmail"] as? String ?? ""
+						
+						self.teamListModel.append(TeamListModel(teamID: teamID, teamName: teamName, teamEmail: teamEmail))
+						self.teamList.append(teamName)
+					}
+					
                 }
                 
                 loadingDismiss()

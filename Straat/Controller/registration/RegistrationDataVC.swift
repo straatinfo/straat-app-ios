@@ -463,13 +463,14 @@ extension RegistrationDataVC {
 				let dataObject = data["_embedded"] as? Dictionary <String, Any> ?? [:]
                 
 				let addresses = dataObject["addresses"] as? [Dictionary<String, Any>]
-                
-				if let postalData = addresses?[0] {
-					let postcode = postalData["postcode"] as? String
-					let municipality = postalData["municipality"] as? String
-					let city = postalData["city"] as? Dictionary<String, Any>
+				
+				if addresses?.count ?? 0 > 0 {
+					let postalData = addresses?[0]
+					let postcode = postalData?["postcode"] as? String
+					let municipality = postalData?["municipality"] as? String
+					let city = postalData?["city"] as? Dictionary<String, Any>
 					let cityLabel = city?["label"] as? String
-					let street = postalData["street"] as? String
+					let street = postalData?["street"] as? String
 					
 					let postalInfo = PostalModel(postcode: postcode, municipality: municipality, city: cityLabel, street: street)
 					

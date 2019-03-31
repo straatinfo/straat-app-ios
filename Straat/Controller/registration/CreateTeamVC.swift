@@ -210,6 +210,7 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
 		
 		let logoUrl = self.teamLogoMetaData!["url"] as? String ?? ""
 		let logoSecuredUrl = self.teamLogoMetaData!["secure_url"] as? String ?? ""
+        let teamPhotoId = self.teamLogoMetaData!["_id"] as? String ?? ""
 		
 		debugPrint("url: \(logoUrl)")
 		debugPrint("securedurl: \(logoSecuredUrl)")
@@ -233,11 +234,12 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
         }
         parameters["register_option"] = "MOBILE_APP"
         parameters["lat"] = userData.lat ?? ""
-        parameters["lng"] = userData.long ?? ""
+        parameters["long"] = userData.long ?? ""
         parameters["isReporter"] = "true"
         parameters["_host"] = userData.hostId ?? ""
         parameters["logoUrl"] = logoUrl
         parameters["logoSecuredUrl"] = logoSecuredUrl
+        parameters["teamPhotoId"] = teamPhotoId
 //        if (userData.team != nil && userData.team?.teamId != nil && userData.team?.teamId != "") {
 //            parameters["_team"] = userData.team?.teamId
 //        }

@@ -9,3 +9,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Straat.info uses the location information of your device at the moment that you want to create a new report. With that information it fills in the address (GPS location) of the report you make.";
 
 "NSLocationWhenInUseUsageDescription" = "Straat.info uses the location information of your device at the moment that you want to create a new report. With that information it fills in the address (GPS location) of the report you make.";
+
+"NSLocationAlwaysUsageDescription" = "Straat.info uses the location information of your device at the moment that you want to create a new report. With that information it fills in the address (GPS location) of the report you make.";

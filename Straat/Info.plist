@@ -17,14 +17,16 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.6</string>
+	<string>1.8</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow this permission in order to capture your image to Straat.info</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Straat.info gebruikt de locatie informatie van je mobiel op het moment dat je een melding wil maken. Hiermee wordt het adres (GPS locatie) ingevuld bij je melding. </string>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Straat.info gebruikt de locatie informatie van je mobiel op het moment dat je een melding wil maken. Hiermee wordt het adres (GPS locatie) ingevuld bij je melding. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Straat.info gebruikt de locatie informatie van je mobiel op het moment dat je een melding wil maken. Hiermee wordt het adres (GPS locatie) ingevuld bij je melding. </string>

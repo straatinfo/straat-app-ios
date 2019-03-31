@@ -9,3 +9,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Straat.info gebruikt de locatie informatie van je mobiel op het moment dat je een melding wil maken. Hiermee wordt het adres (GPS locatie) ingevuld bij je melding.";
 
 "NSLocationWhenInUseUsageDescription" = "Straat.info gebruikt de locatie informatie van je mobiel op het moment dat je een melding wil maken. Hiermee wordt het adres (GPS locatie) ingevuld bij je melding.";
+
+"NSLocationAlwaysUsageDescription" = "Straat.info gebruikt de locatie informatie van je mobiel op het moment dat je een melding wil maken. Hiermee wordt het adres (GPS locatie) ingevuld bij je melding.";

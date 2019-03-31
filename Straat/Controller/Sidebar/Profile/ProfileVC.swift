@@ -553,6 +553,14 @@ extension ProfileVC {
     func loadProfileData () {
         let u = UserModel()
 		let imageUrl = u.getDataFromUSD(key: user_actdes_image_url)
+        
+        if (imageUrl != nil) {
+            self.getUserImage(imageUrl: imageUrl) { (success, profilePic) in
+                if success {
+                    self.uploadImage.image = profilePic
+                }
+            }
+        }
 		
         self.firstName.text = u.getDataFromUSD(key: user_fname)
         self.familyName.text = u.getDataFromUSD(key: user_lname)
@@ -568,11 +576,6 @@ extension ProfileVC {
         self.addedTown.isEnabled = false
         self.password.isEnabled = false
 		
-		self.getUserImage(imageUrl: imageUrl) { (success, profilePic) in
-			if success {
-				self.uploadImage.image = profilePic
-			}
-		}
         // self.password.text = u.getDataFromUSD(key: user_fname)
         // self.uploadImage.text = u.getDataFromUSD(key: user_fname)
     }
@@ -625,17 +628,20 @@ extension ProfileVC {
         }
     }
 	
-	func getUserImage(imageUrl: String, completion: @escaping (Bool, UIImage?) -> Void) -> Void {
-		
-		Alamofire.request(URL(string: imageUrl)!).responseImage { response in
-			
-			if let img = response.result.value {
-				print("user image downloaded: \(img)")
-				
-				completion(true, img)
-			} else {
-				completion(false, nil)
-			}
-		}
+	func getUserImage(imageUrl: String?, completion: @escaping (Bool, UIImage?) -> Void) -> Void {
+        if (imageUrl != nil && imageUrl != "") {
+            Alamofire.request(URL(string: imageUrl!)!).responseImage { response in
+                
+                if let img = response.result.value {
+                    print("user image downloaded: \(img)")
+                    
+                    completion(true, img)
+                } else {
+                    completion(false, nil)
+                }
+            }
+        } else {
+            completion(false, nil)
+        }
 	}
 }

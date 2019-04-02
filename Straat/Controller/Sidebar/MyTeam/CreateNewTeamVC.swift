@@ -16,10 +16,16 @@ class CreateNewTeamVC: UIViewController {
     @IBOutlet weak var teamName: UITextField!
     @IBOutlet weak var teamEmailAddress: UITextField!
     @IBOutlet weak var uploadTeamLogo: UIImageView!
-    
+	@IBOutlet weak var createTeamButton: UIButton!
+	
+	var isTeamNameValid: Bool = false
+	var isTeamEmailValid: Bool = false
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setImageTapGestures()
+		self.disableCreateTeamButton()
         // Do any additional setup after loading the view.
     }
 
@@ -50,24 +56,57 @@ extension CreateNewTeamVC : UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		
+		textField.resignFirstResponder()
+		switch textField {
+		case self.teamName:
+			if textField.text?.isValid() ?? false {
+				self.isTeamNameValid = true
+				checkTextFieldValues()
+			} else {
+				self.isTeamNameValid = false
+				self.teamName.becomeFirstResponder()
+				disableCreateTeamButton()
+			}
+		case self.teamEmailAddress:
+			if textField.text?.isValidEmail() ?? false {
+				self.isTeamEmailValid = true
+				checkTextFieldValues()
+			} else {
+				self.isTeamEmailValid = false
+				self.teamEmailAddress.becomeFirstResponder()
+				disableCreateTeamButton()
+			}
+		default:break
+		}
+	}
     
     func createTeam (userId: String, completion: @escaping (Bool, String) -> Void) {
         
         let uds = UserDefaults.standard
         let hostId = uds.string(forKey: user_host_id) ?? ""
-        let isVolunteer = uds.bool(forKey: user_is_volunteer)
-        
+		let isVolunteer = uds.bool(forKey: user_is_volunteer)
+		var isVol: String = ""
+		
         let apiHandler = ApiHandler()
         var parameters : Parameters = [:]
 
+		if isVolunteer {
+			isVol = "true"
+		} else {
+			isVol = "false"
+		}
 //        parameters["photo"] = self.img
         parameters["teamName"] = self.teamName.text ?? ""
         parameters["teamEmail"] = self.teamEmailAddress.text ?? ""
-        parameters["isVolunteer"] = isVolunteer
+        parameters["isVolunteer"] = isVol
+		parameters["isApproved"] = false
         parameters["creationMethod"] = "MOBILE"
         
         let url = URL(string: "https://straatinfo-backend-v2.herokuapp.com/v2/api/team?_user=" + userId + "&_host=" + hostId)
-        
+
         apiHandler.executeMultiPart(url!, parameters: parameters, imageData: self.img, fileName: teamName.text!, photoFieldName: "photo", pathExtension: ".jpeg", method: .post, headers: [:]) { (response, err) in
             // go to main view
             if err != nil {
@@ -80,7 +119,45 @@ extension CreateNewTeamVC : UITextFieldDelegate {
         }
         debugPrint("userid: \(userId)")
         debugPrint("hostid: \(hostId)")
+        debugPrint("isVolunteer: \(isVol)")
+		
     }
+	
+	func checkTextFieldValues() {
+		let bools = [self.isTeamNameValid, self.isTeamEmailValid]
+		
+		var numberOfTrue = 0
+		var numberOfFalse = 0
+		
+		for bool in bools {
+			if bool {
+				numberOfTrue += 1
+			} else {
+				numberOfFalse += 1
+			}
+		}
+		
+		if numberOfFalse > 0 {
+			disableCreateTeamButton()
+		} else {
+			enableCreateTeamButton()
+		}
+		
+		debugPrint("nmber of true: \(numberOfTrue)")
+		debugPrint("nmber of flase: \(numberOfFalse)")
+		
+	}
+	
+	func disableCreateTeamButton() {
+		self.createTeamButton.isEnabled = false
+		self.createTeamButton.backgroundColor = UIColor.lightGray
+	}
+	
+	func enableCreateTeamButton() {
+		self.createTeamButton.isEnabled = true
+		self.createTeamButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+		debugPrint("enable next step")
+	}
 }
 
 extension CreateNewTeamVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {

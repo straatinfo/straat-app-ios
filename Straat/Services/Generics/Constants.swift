@@ -20,6 +20,7 @@ let user_city = "user_city"
 let user_team_id = "user_team_id"
 let user_team_name = "user_team_name"
 let user_team_email = "user_team_email"
+let user_team_is_approved = "user_team_is_approved"
 
 let user_is_notification = "user_is_notification"
 let user_vibration = "user_vibration"

@@ -57,31 +57,44 @@ class MainVC: UIViewController {
     
     @IBAction func showSendReport(_ sender: Any) {
 		let teamId = self.uds.string(forKey: user_team_id) ?? nil
+		let isTeamApproved = self.uds.bool(forKey: user_team_is_approved)
+		let isVolunteer = self.uds.bool(forKey: user_is_volunteer)
+
+		let title = NSLocalizedString("send-report", comment: "")
+		let desc = NSLocalizedString("send-report-invalid-approval", comment: "")
 		
 		if teamId != nil {
 
-			self.requestPermission { (hasGranted, result) in
-				
-				for markerReport in self.markerReports {
-					markerReport.map?.clear()
-				}
-				
-				if hasGranted {
-					loadingDismiss()
-					self.makeNotifConstraint.constant = 0
-					self.sendReport.isHidden = true
-					animateLayout(view: self.view, timeInterval: 0.6)
+			if !isVolunteer && !isTeamApproved {
+				defaultDialog(vc: self, title: title, message: desc)
+				self.disableSendReportButton()
+			} else {
+
+				self.requestPermission { (hasGranted, result) in
 					
-				} else {
-					//                defaultDialog(vc: self, title: "Permission", message: result)
-					self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : "initial address", lat : 52.077646 , long : 4.315667)
+					for markerReport in self.markerReports {
+						markerReport.map?.clear()
+					}
 					
+					if hasGranted {
+						loadingDismiss()
+						self.makeNotifConstraint.constant = 0
+						self.sendReport.isHidden = true
+						animateLayout(view: self.view, timeInterval: 0.6)
+						
+					} else {
+						//                defaultDialog(vc: self, title: "Permission", message: result)
+						self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : "initial address", lat : 52.077646 , long : 4.315667)
+						
+					}
 				}
 				
 			}
+
 			
 		} else {
-			defaultDialog(vc: self, title: "Send Report", message: "Please wait until the team leader accepts your request before making a notification")
+			defaultDialog(vc: self, title: title, message: desc)
+			self.disableSendReportButton()
 		}
 
         
@@ -615,7 +628,16 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
         completion(true)
     }
-    
+	
+	func disableSendReportButton() {
+		self.sendReport.isEnabled = false
+		self.sendReport.backgroundColor = UIColor.lightGray
+	}
+	
+	func enableSendReportButton() {
+		self.sendReport.isEnabled = true
+		self.sendReport.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+	}
 }
 
 extension GMSMarker {

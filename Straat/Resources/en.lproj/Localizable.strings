@@ -121,3 +121,12 @@
 "registration-title" = "Registration";
 
 "registration-message" = "You’ve asked access as a non volunteer to create a new team. straat.info will contact you. If you haven’t heard anything within 5 days, please mail us at info@straat.info";
+
+"registration-success-desc" = "Registration Success";
+
+"registration-fail-desc" = "Registration Failed";
+
+"send-report" = "Send Report";
+
+"send-report-invalid-approval" = "Please wait until the team leader accepts your request before making a notification";
+

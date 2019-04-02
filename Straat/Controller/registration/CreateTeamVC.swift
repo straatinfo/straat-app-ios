@@ -13,7 +13,7 @@ class CreateTeamVC: UIViewController {
     
     var teamLogo : Data?
     let mediaService = MediaService()
-	var teamLogoMetaData : Dictionary<String,Any>?
+	var teamLogoMetaData : Dictionary<String,Any>? = [:]
 	var isVolunteer: Bool?
 	
     @IBOutlet weak var teamNameTxtBox: UITextField!
@@ -60,7 +60,7 @@ class CreateTeamVC: UIViewController {
 					self.present(alertController, animated: true, completion: nil)
 
 				} else {
-                	pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
+					pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
 				}
 
 
@@ -206,11 +206,16 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
     func register (completion: @escaping (Bool, String) -> Void) -> Void {
         let userData = getInputs()
         let apiHandler = ApiHandler()
-        var parameters : Parameters = [:]
+        var parameters: Parameters = [:]
+		var logoUrl: String = ""
+		var logoSecuredUrl: String = ""
+		var teamPhotoId: String = ""
 		
-		let logoUrl = self.teamLogoMetaData!["url"] as? String ?? ""
-		let logoSecuredUrl = self.teamLogoMetaData!["secure_url"] as? String ?? ""
-        let teamPhotoId = self.teamLogoMetaData!["_id"] as? String ?? ""
+		if self.teamLogoMetaData?.count ?? 0 > 0 {
+			logoUrl = self.teamLogoMetaData!["url"] as? String ?? ""
+			logoSecuredUrl = self.teamLogoMetaData!["secure_url"] as? String ?? ""
+			teamPhotoId = self.teamLogoMetaData!["_id"] as? String ?? ""
+		}
 		
 		debugPrint("url: \(logoUrl)")
 		debugPrint("securedurl: \(logoSecuredUrl)")
@@ -261,20 +266,39 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
 
             } else if let data = response {
                 // save user data and token here
-                let uds = UserDefaults.standard;
-                let prefix = "user-data-"
+//                let uds = UserDefaults.standard;
+//                let prefix = "user-data-"
 
-                let dataObject = data["data"] as? Dictionary<String, Any>
-                let user = dataObject?["user"] as? Dictionary<String, Any>
-                let userId = user?["_id"] as? String
+                let dataObject = data["data"] as? Dictionary<String, Any> ?? [:]
+//                let user = dataObject?["user"] as? Dictionary<String, Any>
+//                let userId = user?["_id"] as? String
+//
+//                uds.set(userId, forKey: prefix + "id")
 
-                uds.set(userId, forKey: prefix + "id")
-
-                let userObject = dataObject?["user"] as? Dictionary <String, Any>
-                let userModel = UserModel(fromLogin: userObject!)
+				let userObject = dataObject["user"] as? Dictionary <String, Any> ?? [:]
+				let settingObject = dataObject["setting"] as? Dictionary <String, Any> ?? [:]
+				let activeDesignObject = dataObject["_activeDesign"] as? Dictionary<String, Any> ?? [:]
+				
+				let teamObject = userObject["_activeTeam"] as? Dictionary <String, Any> ?? [:]
+				let hostObject = userObject["_host"] as? Dictionary<String, Any> ?? [:]
+				
+				
+				let hostId = hostObject["_id"] as? String ?? ""
+				let isVolunteer = userObject["isVolunteer"] as? Bool ?? true
+				
+				let userModel = UserModel(fromLogin: userObject)
+				let userSettingModel = UserModel(fromLoginSetting: settingObject)
+				let userTeamModel = UserModel(fromLoginTeam: teamObject)
+                let userOtherModel = UserModel(fromLoginHostId: hostId, fromLoginIsVolunteer: isVolunteer)
+				let userActiveDesignModel = UserModel(fromLoginActiveDesign: activeDesignObject)
+				
 
                 //saving user model to loca data
                 userModel.saveToLocalData()
+				userSettingModel.saveSettingToLocalData()
+				userTeamModel.saveTeamToLocalData()
+				userOtherModel.saveOtherToLocalData()
+				userActiveDesignModel.saveActiveDesignToLocalData()
                 completion(true, "Success")
 
                 print("response:  \(String(describing: data))")

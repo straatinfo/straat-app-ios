@@ -118,3 +118,11 @@
 "registration-title" = "Registratie";
 
 "registration-message" = "U heeft anders dan als vrijwilliger toegang gevraagd tot de app straat.info en u wilt een nieuw team starten. \nBinnenkort neemt straat.info contact met u op voor de vervolgstappen. \nAls u niet binnen vijf werkdagen reactie heeft ontvangen, zou u dan contact willen opnemen met ons via het mailadres info@straat.info?";
+
+"registration-success-desc" = "Registratie succes";
+
+"registration-fail-desc" = "Registratie mislukt";
+
+"send-report" = "Verzend rapport";
+
+"send-report-invalid-approval" = "Wacht tot de teamleider uw verzoek accepteert voordat u een melding doet";

@@ -24,11 +24,11 @@ class MediaService {
                 completion(false, error.localizedDescription, nil, nil)
             } else if let data = response {
                 let dataObject = data["data"] as? Dictionary <String, Any>
-                let dataObj = data["data"] as? [[String:Any]]
+//                let dataObj = data["data"] as? [[String:Any]]
                 
                 print("uploaded picture: \(String(describing: dataObject))")
                 
-                if dataObject != nil {
+                if dataObject != nil || dataObject?.count ?? 0 > 0{
                     let photoMetaData = PhotoModel(photoData: dataObject!)
                     completion(true, "Success", photoMetaData, dataObject)
                 } else {

@@ -157,8 +157,6 @@ extension LoginUserVC : UITextFieldDelegate {
                 
                 let profilePicObject = userObject["_profilePic"] as? Dictionary <String, Any> ?? [:]
                 
-                
-                
                 //saving user model to loca data
                 userModel.saveToLocalData()
                 userSettingModel.saveSettingToLocalData()

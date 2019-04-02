@@ -196,7 +196,7 @@
         <!--TeamVC-->
         <scene sceneID="ndW-mK-g0Q">
             <objects>
-                <viewController id="mwm-aw-X2V" customClass="TeamVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mwm-aw-X2V" customClass="TeamVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PYa-To-p5c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2317,6 +2317,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="P7e-RK-kUh"/>
-        <segue reference="csG-qX-JGG"/>
+        <segue reference="dQc-Z9-kwt"/>
     </inferredMetricsTieBreakers>
 </document>

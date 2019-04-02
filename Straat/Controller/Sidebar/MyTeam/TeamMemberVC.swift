@@ -49,8 +49,8 @@ extension TeamMemberVC: UITableViewDelegate, UITableViewDataSource, MemberReques
     func result(title: String, message: String) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
+			self.navigationController?.popViewController(animated: true)
         }))
         
         self.present(alertController, animated: true)

@@ -43,6 +43,7 @@ class TeamVC: UIViewController {
             } else {
                 let desc = NSLocalizedString("team-leader-accepts-request", comment: "")
                 defaultDialog(vc: self, title: "No Team Yet", message: desc)
+                loadingDismiss()
             }
         }
     }

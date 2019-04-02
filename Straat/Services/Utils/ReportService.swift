@@ -103,10 +103,10 @@ class ReportService {
                 
                 completion(false, error.localizedDescription, nil)
             } else if let data = response {
-                let dataObject = data["data"] as? Dictionary <String, Any>
+				let dataObject = data["data"] as? Dictionary <String, Any> ?? [:]
                 
-                if dataObject != nil {
-                    let reportDetails = ReportModel(report: dataObject!)
+				if dataObject != nil || dataObject.count ?? 0 > 0 {
+					let reportDetails = ReportModel(report: dataObject)
                     completion(true, "Success", reportDetails)
                 } else {
                     completion(false, "Failed", nil)

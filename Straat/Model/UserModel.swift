@@ -36,10 +36,11 @@ class UserModel {
     var team_id: String?
     var team_name: String?
     var team_email: String?
-    
+	var team_is_approved: Bool?
+	
     var host_id: String?
     var isVolunteer: Bool?
-	
+
 	// active design
 	var colorOne: String?
 	var colorTwo: String?
@@ -115,9 +116,10 @@ class UserModel {
         self.team_id = fromLoginTeam["_id"] as? String
         self.team_name = fromLoginTeam["teamName"] as? String
         self.team_email = fromLoginTeam["teamEmail"] as? String
+        self.team_is_approved = fromLoginTeam["isApproved"] as? Bool
     }
     
-    init(fromLoginHostId: String, fromLoginIsVolunteer: Bool) {
+	init(fromLoginHostId: String, fromLoginIsVolunteer: Bool) {
         self.host_id = fromLoginHostId
         self.isVolunteer = fromLoginIsVolunteer
     }
@@ -159,6 +161,7 @@ class UserModel {
         uds.set( self.team_id, forKey: user_team_id)
         uds.set( self.team_name, forKey: user_team_name)
         uds.set( self.team_email, forKey: user_team_email)
+		uds.set( self.team_is_approved, forKey: user_team_is_approved)
     }
     
     func saveOtherToLocalData() {

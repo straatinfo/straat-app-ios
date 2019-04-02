@@ -34,23 +34,30 @@ class RegistrationTeamVC: UIViewController {
     
     
     @IBAction func onRegisterPress(_ sender: Any) {
-
+		let title = NSLocalizedString("registration-title", comment: "")
+		
         loadingShow(vc: self)
         self.register() { (success, message) in
             if success == true {
+				
+				let desc = NSLocalizedString("registration-success-desc", comment: "")
+                let alertController = UIAlertController(title: title, message: desc, preferredStyle: .alert)
 
-                let alertController = UIAlertController(title: "Registration", message: message, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
+					if self.isVolunteer ?? false {
+						pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+					} else {
+                    	pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
+					}
 
-                alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
-                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
-                }))
+					}))
                 self.present(alertController, animated: true, completion: nil)
                 // go to landing page
 
             } else {
-                let alertController = UIAlertController(title: "Registration", message: message, preferredStyle: .alert)
-
-                alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+				let desc = NSLocalizedString("registration-fail-desc", comment: "")
+                let alertController = UIAlertController(title: title, message: desc, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
                     pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
                 }))
                 self.present(alertController, animated: true, completion: nil)
@@ -75,6 +82,7 @@ extension RegistrationTeamVC {
 		let prefix = "reg-user-data-"
 		let uds = UserDefaults.init()
 		self.isVolunteer = uds.bool(forKey: prefix + "isVolunteer")
+		self.disableRegisterButton()
     }
     
     // show team list and fetch team list data
@@ -99,19 +107,32 @@ extension RegistrationTeamVC {
             } else if let data = response {
                 
                 let dataObject = data["data"] as! [[String: Any]]
-                for teams in dataObject {
+
+				for teams in dataObject {
 					
 					let isVolunteerTeam = teams["isVolunteer"] as? Bool ?? false
-					debugPrint("isvolunteer: \(self.isVolunteer)")
+					let isApproved = teams["isApproved"] as? Bool ?? false
+//					debugPrint("isvolunteer: \(self.isVolunteer)")
+
 					if isVolunteerTeam == self.isVolunteer {
-						let teamID = teams["_id"] as? String ?? ""
-						let teamName = teams["teamName"] as? String ?? ""
-						let teamEmail = teams["teamEmail"] as? String ?? ""
-						
-						self.teamListModel.append(TeamListModel(teamID: teamID, teamName: teamName, teamEmail: teamEmail))
-						self.teamList.append(teamName)
+						var teamID: String = ""
+						var teamName: String = ""
+						var teamEmail: String = ""
+
+						if isVolunteerTeam == false && isApproved == true {
+							teamID = teams["_id"] as? String ?? ""
+							teamName = teams["teamName"] as? String ?? ""
+							teamEmail = teams["teamEmail"] as? String ?? ""
+							
+							self.populateTeamToDropdown(teamID: teamID, teamName: teamName, teamEmail: teamEmail)
+						} else if isVolunteerTeam {
+							teamID = teams["_id"] as? String ?? ""
+							teamName = teams["teamName"] as? String ?? ""
+							teamEmail = teams["teamEmail"] as? String ?? ""
+							
+							self.populateTeamToDropdown(teamID: teamID, teamName: teamName, teamEmail: teamEmail)
+						}
 					}
-					
                 }
                 
                 loadingDismiss()
@@ -123,7 +144,11 @@ extension RegistrationTeamVC {
         }
         
     }
-    
+	
+	func populateTeamToDropdown (teamID: String, teamName: String, teamEmail: String) {
+		self.teamListModel.append(TeamListModel(teamID: teamID, teamName: teamName, teamEmail: teamEmail))
+		self.teamList.append(teamName)
+	}
     
     
     // populate team list data to dropdown
@@ -136,8 +161,7 @@ extension RegistrationTeamVC {
             print("selected team_id: \(String(describing: teamListModel[index].id))")
 
             self.setTeam(teamId: teamListModel[index].id ?? "", teamName: teamListModel[index].name ?? "", teamEmail: teamListModel[index].email ?? "")
-            self.registerButton.isEnabled = true
-            self.registerButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+				self.enableRegisterButton()
             
         }
     }
@@ -243,20 +267,38 @@ extension RegistrationTeamVC {
 
             } else if let data = response {
                 // save user data and token here
-                let uds = UserDefaults.standard;
-                let prefix = "user-data-"
+//                let uds = UserDefaults.standard;
+//                let prefix = "user-data-"
 
-                let dataObject = data["data"] as? Dictionary<String, Any>
-                let user = dataObject?["user"] as? Dictionary<String, Any>
-                let userId = user?["_id"] as? String
+				let dataObject = data["data"] as? Dictionary<String, Any> ?? [:]
+//                let user = dataObject?["user"] as? Dictionary<String, Any>
+//                let userId = user?["_id"] as? String
+//
+//                uds.set(userId, forKey: prefix + "id")
 
-                uds.set(userId, forKey: prefix + "id")
-
-                let userObject = dataObject?["user"] as? Dictionary <String, Any>
-                let userModel = UserModel(fromLogin: userObject!)
+				let userObject = dataObject["user"] as? Dictionary <String, Any> ?? [:]
+				let settingObject = dataObject["setting"] as? Dictionary <String, Any> ?? [:]
+				let activeDesignObject = dataObject["_activeDesign"] as? Dictionary<String, Any> ?? [:]
+				
+				let teamObject = userObject["_activeTeam"] as? Dictionary <String, Any> ?? [:]
+				let hostObject = userObject["_host"] as? Dictionary<String, Any> ?? [:]
+				
+				
+				let hostId = hostObject["_id"] as? String ?? ""
+				let isVolunteer = userObject["isVolunteer"] as? Bool ?? true
+				
+				let userModel = UserModel(fromLogin: userObject)
+				let userSettingModel = UserModel(fromLoginSetting: settingObject)
+				let userTeamModel = UserModel(fromLoginTeam: teamObject)
+                let userOtherModel = UserModel(fromLoginHostId: hostId, fromLoginIsVolunteer: isVolunteer)
+				let userActiveDesignModel = UserModel(fromLoginActiveDesign: activeDesignObject)
 
                 //saving user model to loca data
                 userModel.saveToLocalData()
+				userSettingModel.saveSettingToLocalData()
+				userTeamModel.saveTeamToLocalData()
+				userOtherModel.saveOtherToLocalData()
+				userActiveDesignModel.saveActiveDesignToLocalData()
                 completion(true, "Success")
 
                 print("response:  \(String(describing: data))")
@@ -304,5 +346,14 @@ extension RegistrationTeamVC {
         
         return userData
     }
-    
+	
+	func disableRegisterButton() {
+		self.registerButton.isEnabled = false
+		self.registerButton.backgroundColor = UIColor.lightGray
+	}
+	
+	func enableRegisterButton() {
+		self.registerButton.isEnabled = true
+		self.registerButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+	}
 }

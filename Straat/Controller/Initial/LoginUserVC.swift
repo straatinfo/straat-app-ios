@@ -146,18 +146,16 @@ extension LoginUserVC : UITextFieldDelegate {
 				let hostObject = userObject["_host"] as? Dictionary<String, Any> ?? [:]
 
 
-				let hostId = hostObject["_id"] as? String
-				let isVolunteer = teamObject["isVolunteer"] as? Bool ?? true
-                
+				let hostId = hostObject["_id"] as? String ?? ""
+				let isVolunteer = userObject["isVolunteer"] as? Bool ?? true
+				
 				let userModel = UserModel(fromLogin: userObject)
 				let userSettingModel = UserModel(fromLoginSetting: settingObject)
 				let userTeamModel = UserModel(fromLoginTeam: teamObject)
-                let userOtherModel = UserModel(fromLoginHostId: hostId!, fromLoginIsVolunteer: isVolunteer)
+                let userOtherModel = UserModel(fromLoginHostId: hostId, fromLoginIsVolunteer: isVolunteer)
 				let userActiveDesignModel = UserModel(fromLoginActiveDesign: activeDesignObject)
                 
                 let profilePicObject = userObject["_profilePic"] as? Dictionary <String, Any> ?? [:]
-                
-                
                 
                 //saving user model to loca data
                 userModel.saveToLocalData()

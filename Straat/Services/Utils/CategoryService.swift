@@ -29,17 +29,24 @@ class CategoryService {
                 
                 let categories = data["data"] as? [[String: Any]]
                 print("TEST: \(String(describing: categories))")
-                for category in categories! {
-                    
-                    let mainCategory = self.parseMainCategory(category: category)
-
+				
+				if categories?.count ?? 0 > 0 {
+					for category in categories! {
+						
+						let mainCategory = self.parseMainCategory(category: category)
 //                    if mainCategory.code != nil && mainCategory.code == "A" {
 //                        mainCategories.append(mainCategory)
 //                    }
-                    mainCategories.append(mainCategory)
-                    print("response: \(category)")
-                }
-                completion(true, "Success", mainCategories)
+						mainCategories.append(mainCategory)
+						print("response: \(category)")
+					}
+					
+                	completion(true, "Success", mainCategories)
+				} else {
+                	completion(false, "No List", [])
+				}
+
+
             }
         }
     }
@@ -58,18 +65,24 @@ class CategoryService {
             } else if let data = response {
                 
                 let categories = data["data"] as? [[String: Any]]
-                for category in categories! {
-                    let reportType = category["_reportType"] as? Dictionary<String, Any>
-                    let code = reportType!["code"] as? String
-                    debugPrint("code: \(code)")
+				
+				if categories?.count ?? 0 > 0 {
+					for category in categories! {
+						let reportType = category["_reportType"] as? Dictionary<String, Any>
+						let code = reportType!["code"] as? String
+						debugPrint("code: \(code)")
+						
+						if code == "B" {
+							let mainCategory = self.parseMainCategory(category: category)
+							mainCategories.append(mainCategory)
+						}
+					}
+					
+					completion(true, "Success", mainCategories)
+				} else {
+					completion(false, "No List", [])
+				}
 
-                    if code == "B" {
-                        let mainCategory = self.parseMainCategory(category: category)
-                        mainCategories.append(mainCategory)
-                    }
-                }
-                
-                completion(true, "Success", mainCategories)
             }
         }
     }

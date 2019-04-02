@@ -29,10 +29,15 @@ class TeamService {
                 var teamModel = [TeamModel]()
                 
                 if dataObject.count > 0 {
-                    
+					
                     for teamModels in dataObject {
-                        let teamModelItem = TeamModel(fromMyTeam: teamModels)
-                        teamModel.append(teamModelItem)
+						let isApproved = teamModels["isApproved"] as? Bool ?? false
+						
+						if isApproved {
+                        	let teamModelItem = TeamModel(fromMyTeam: teamModels)
+                        	teamModel.append(teamModelItem)
+						}
+
                     }
                     
                     completion(true, "Success", teamModel)

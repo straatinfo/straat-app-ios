@@ -65,7 +65,7 @@ class UserService {
             } else if let data = response {
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 
-                if dataObject != nil {
+                if dataObject != nil || dataObject?.count ?? 0 > 0 {
                    
                     completion(true, "Success", dataObject)
                 } else {
@@ -88,7 +88,7 @@ class UserService {
             } else if let data = response {
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 
-                if dataObject != nil {
+                if dataObject != nil || dataObject?.count ?? 0 > 0 {
                     
                     completion(true, "Success")
                 } else {
@@ -111,7 +111,7 @@ class UserService {
             } else if let data = response {
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 
-                if dataObject != nil {
+                if dataObject != nil || dataObject?.count ?? 0 > 0 {
                     let photoMetaData = PhotoModel(photoData: dataObject!)
                     completion(true, "Success")
                 } else {
@@ -133,7 +133,7 @@ class UserService {
             } else if let data = response {
                 let dataObject = data["data"] as? Dictionary <String, Any>
                 
-                if dataObject != nil {
+                if dataObject != nil || dataObject?.count ?? 0 > 0 {
                     
                     completion(true, "Success")
                 } else {

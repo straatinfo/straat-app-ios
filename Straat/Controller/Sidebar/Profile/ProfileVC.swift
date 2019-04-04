@@ -373,12 +373,11 @@ extension ProfileVC : UITextFieldDelegate {
 		]
 		
 		let headers = [
-			"content-type": "application/json",
-			"x-api-key": "gvuwmtomsB8eRf5Zgsfnj7zs8DE2ihC79DlEbQnb"
-			] as! HTTPHeaders
+			"content-type": "application/json"
+        ] as! HTTPHeaders
 		
 		loadingShow(vc: self)
-		apiHandler.executeWithHeaders(URL(string: POST_CODE_API)!, parameters: parameters, method: .get, destination: .queryString, headers: headers) { (response, err) in
+		apiHandler.executeWithHeaders(URL(string: POST_CODE_API_V2)!, parameters: parameters, method: .get, destination: .queryString, headers: headers) { (response, err) in
 			
 			if let error = err {
 				print("error reponse: \(error.localizedDescription)")

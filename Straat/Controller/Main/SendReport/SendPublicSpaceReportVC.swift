@@ -499,7 +499,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
 
-            self.sendReportImage = image.jpegData(compressionQuality: CGFloat.leastNormalMagnitude)!
+            self.sendReportImage = image.jpeg(.lowest)
             
             switch(self.imgViewTag) {
             case 1:
@@ -507,43 +507,48 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
                     
                     if success {
                         self.imageMetaData1 = dataObject
-//                        debugPrint("dataObject: \(String(describing: dataObject))")
+                		self.imgView1.image = image
+						//                        debugPrint("dataObject: \(String(describing: dataObject))")
 //                        print("public_id: \(String(describing: public_id))")
                     } else {
+						defaultDialog(vc: self, title: "Uploading Image", message: "Problem occured when uploading image")
                         print("upload image response: \(message)")
                     }
                     loadingDismiss()
                     
                 }
-                imgView1.image = image
-                break;
+
+                break
             case 2:
                 self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage2") { (success, message, photoModel, dataObject) in
                     
                     if success {
                         self.imageMetaData2 = dataObject
+                		self.imgView2.image = image
                         print("dataObject: \(String(describing: dataObject))")
                     } else {
+						defaultDialog(vc: self, title: "Uploading Image", message: "Problem occured when uploading image")
                         print("upload image response: \(message)")
                     }
                     loadingDismiss()
                     
                 }
-                imgView2.image = image
-                break;
+                break
             case 3:
                 self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage3") { (success, message, photoModel, dataObject) in
                     
                     if success {
                         self.imageMetaData3 = dataObject
+                		self.imgView3.image = image
                         print("dataObject: \(String(describing: dataObject))")
                     } else {
+						defaultDialog(vc: self, title: "Uploading Image", message: "Problem occured when uploading image")
                         print("upload image response: \(message)")
                     }
                     loadingDismiss()
                     
                 }
-                imgView3.image = image
+
                 break
             default:
                 let desc = NSLocalizedString("import-image-error", comment: "")

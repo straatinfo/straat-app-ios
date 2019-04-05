@@ -343,11 +343,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         userLong = reportMapModel?.long
         
         self.setReportImage(reportMapModel: reportMapModel) { (success) in
-            if success {
-                loadingDismiss()
-            } else {
-                loadingDismiss()
-            }
+			loadingDismiss()
         }
         
         debugPrint("report map marker loc: \(String(describing: reportMapModel?.location))")

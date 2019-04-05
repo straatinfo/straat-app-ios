@@ -28,11 +28,11 @@ class ReportMapService {
                 completion(false, error.localizedDescription, [])
                 
             } else if let data = response {
-                let reports = data["data"] as? [[String: Any]]
+                let reports = data["data"] as? [[String: Any]] ?? []
 				
-				if reports?.count ?? 0 > 0 {
+				if reports.count > 0 {
 					
-					for report in reports! {
+					for report in reports {
 //                    let reportCoord = report["reportCoordinate"] as? [String: Any]
 						let reporter = report["_reporter"] as? [String:Any] ?? [:]
 						

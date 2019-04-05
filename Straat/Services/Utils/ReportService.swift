@@ -105,7 +105,7 @@ class ReportService {
             } else if let data = response {
 				let dataObject = data["data"] as? Dictionary <String, Any> ?? [:]
                 
-				if dataObject != nil || dataObject.count ?? 0 > 0 {
+				if dataObject != nil || dataObject.count > 0 {
 					let reportDetails = ReportModel(report: dataObject)
                     completion(true, "Success", reportDetails)
                 } else {

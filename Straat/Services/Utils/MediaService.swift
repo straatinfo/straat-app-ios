@@ -28,7 +28,7 @@ class MediaService {
                 
                 print("uploaded picture: \(String(describing: dataObject))")
                 
-				if dataObject != nil || dataObject.count ?? 0 > 0 {
+				if dataObject != nil || dataObject.count > 0 {
 					let photoMetaData = PhotoModel(photoData: dataObject)
                     completion(true, "Success", photoMetaData, dataObject)
                 } else {

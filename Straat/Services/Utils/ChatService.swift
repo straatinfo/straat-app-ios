@@ -123,10 +123,10 @@ class ChatService {
 				completion(false, error.localizedDescription, nil)
 				
 			} else if let data = response {
-				let dataObject = data["payload"] as? Dictionary<String,Any>
+				let dataObject = data["payload"] as? Dictionary<String,Any> ?? [:]
 				
-				if dataObject?.count ?? 0 > 0 {
-					let conversationId = dataObject?["_id"] as? String? ?? ""
+				if dataObject.count > 0 {
+					let conversationId = dataObject["_id"] as? String? ?? ""
 					completion(true, "Successfully created conversation",conversationId!)
 				} else {
 					completion(false, "Problem in Creating Conversation", nil)

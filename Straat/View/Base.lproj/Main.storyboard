@@ -79,7 +79,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwu-bM-d6f" userLabel="SelectReportTypeView">
-                                <rect key="frame" x="739.5" y="1201" width="345" height="150"/>
+                                <rect key="frame" x="1139.5" y="1201" width="345" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qZt-Z8-IKD">
                                         <rect key="frame" x="10" y="65" width="325" height="65"/>
@@ -218,7 +218,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZs-Kf-oNK" userLabel="MakeNotifView">
-                                <rect key="frame" x="739.5" y="1201" width="345" height="150"/>
+                                <rect key="frame" x="1139.5" y="1201" width="345" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Vn0-iW-2O5">
                                         <rect key="frame" x="10" y="10" width="300" height="67"/>
@@ -366,7 +366,7 @@
                             <constraint firstItem="Zyh-mW-a3J" firstAttribute="leading" secondItem="XaE-Wr-SzA" secondAttribute="leading" id="G36-8W-HaQ"/>
                             <constraint firstItem="XaE-Wr-SzA" firstAttribute="bottom" secondItem="nvi-De-0YS" secondAttribute="bottom" constant="15" id="J6b-Rl-D8R"/>
                             <constraint firstAttribute="bottom" secondItem="xwu-bM-d6f" secondAttribute="bottom" constant="15" id="K3j-XN-ilJ"/>
-                            <constraint firstItem="xwu-bM-d6f" firstAttribute="centerX" secondItem="hLH-bq-Zdp" secondAttribute="centerX" constant="400" id="NeQ-BG-u7X" userLabel="SelectReportTypeConstraint"/>
+                            <constraint firstItem="xwu-bM-d6f" firstAttribute="centerX" secondItem="hLH-bq-Zdp" secondAttribute="centerX" constant="800" id="NeQ-BG-u7X" userLabel="SelectReportTypeConstraint"/>
                             <constraint firstItem="XaE-Wr-SzA" firstAttribute="trailing" secondItem="BLE-H0-uUL" secondAttribute="trailing" constant="15" id="Pqv-bj-7iz"/>
                             <constraint firstItem="XaE-Wr-SzA" firstAttribute="bottom" secondItem="Zyh-mW-a3J" secondAttribute="bottom" id="R9t-qM-gLS"/>
                             <constraint firstAttribute="bottom" secondItem="jZs-Kf-oNK" secondAttribute="bottom" constant="15" id="XHx-tm-FHs"/>
@@ -376,7 +376,7 @@
                             <constraint firstItem="nvi-De-0YS" firstAttribute="centerX" secondItem="hLH-bq-Zdp" secondAttribute="centerX" id="kX0-o8-Nzh"/>
                             <constraint firstItem="nvi-De-0YS" firstAttribute="leading" secondItem="XaE-Wr-SzA" secondAttribute="leading" constant="15" id="lGy-Jl-7XD"/>
                             <constraint firstItem="Zyh-mW-a3J" firstAttribute="top" secondItem="hLH-bq-Zdp" secondAttribute="top" id="lwZ-Bc-DxY"/>
-                            <constraint firstItem="jZs-Kf-oNK" firstAttribute="centerX" secondItem="hLH-bq-Zdp" secondAttribute="centerX" constant="400" id="pu9-MW-Lo5" userLabel="MakeNotifConstraint"/>
+                            <constraint firstItem="jZs-Kf-oNK" firstAttribute="centerX" secondItem="hLH-bq-Zdp" secondAttribute="centerX" constant="800" id="pu9-MW-Lo5" userLabel="MakeNotifConstraint"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XaE-Wr-SzA"/>
                     </view>

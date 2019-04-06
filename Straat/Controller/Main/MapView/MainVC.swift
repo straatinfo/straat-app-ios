@@ -101,7 +101,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func makeNotifDismiss(_ sender: Any) {
-        self.makeNotifConstraint.constant = 400
+        self.makeNotifConstraint.constant = 800
         sendReport.isHidden = false
         
         animateLayout(view: self.view, timeInterval: 0.6)
@@ -114,14 +114,14 @@ class MainVC: UIViewController {
         uds.set(userLat, forKey: user_loc_lat)
         uds.set(userLong, forKey: user_loc_long)
         
-        self.makeNotifConstraint.constant = 400
+        self.makeNotifConstraint.constant = 800
         self.selecReportTypeConstraint.constant = 0
         
         animateLayout(view: self.view, timeInterval: 0.6)
     }
     
     @IBAction func selectReportTypeDismiss(_ sender: UIButton) {
-        self.selecReportTypeConstraint.constant = 400
+        self.selecReportTypeConstraint.constant = 800
         sendReport.isHidden = false
         
         animateLayout(view: self.view, timeInterval: 0.6)

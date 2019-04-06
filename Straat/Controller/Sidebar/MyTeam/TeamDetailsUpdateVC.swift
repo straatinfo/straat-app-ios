@@ -160,7 +160,8 @@ extension TeamDetailsUpdateVC : UINavigationControllerDelegate, UIImagePickerCon
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+		alert.popoverPresentationController?.sourceView = self.view
+		alert.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height * 0.50)
         self.present(alert, animated: true, completion: nil)
         
     }

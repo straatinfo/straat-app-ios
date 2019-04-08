@@ -21,7 +21,7 @@ class ReportModel : SendReportModel {
     var conversationId: String?
     var messages: [String]?
     
-    var reportImage : UIImage?
+    var reportImage : UIImage? = UIImage(named: "AppIcon")
     
     init (report: Dictionary<String, Any>) {
         super.init()
@@ -116,7 +116,7 @@ extension ReportModel {
     }
     
     func getReportImage() -> UIImage{
-        return self.reportImage!
+		return self.reportImage!
     }
     
 }

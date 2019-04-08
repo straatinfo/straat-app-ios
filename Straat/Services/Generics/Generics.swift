@@ -128,3 +128,15 @@ import GameplayKit
 //
 //        }
     }
+
+	extension UIImage {
+		enum JPEGQuality: CGFloat {
+			case lowest  = 0
+			case low     = 0.25
+			case medium  = 0.5
+		}
+		
+		func jpeg(_ jpegQuality: JPEGQuality) -> Data? {
+			return jpegData(compressionQuality: jpegQuality.rawValue)
+		}
+	}

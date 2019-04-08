@@ -27,11 +27,11 @@ class CategoryService {
                 
             } else if let data = response {
                 
-                let categories = data["data"] as? [[String: Any]]
+                let categories = data["data"] as? [[String: Any]] ?? []
                 print("TEST: \(String(describing: categories))")
 				
-				if categories?.count ?? 0 > 0 {
-					for category in categories! {
+				if categories.count > 0 {
+					for category in categories {
 						
 						let mainCategory = self.parseMainCategory(category: category)
 //                    if mainCategory.code != nil && mainCategory.code == "A" {
@@ -64,10 +64,10 @@ class CategoryService {
                 
             } else if let data = response {
                 
-                let categories = data["data"] as? [[String: Any]]
+                let categories = data["data"] as? [[String: Any]] ?? []
 				
-				if categories?.count ?? 0 > 0 {
-					for category in categories! {
+				if categories.count > 0 {
+					for category in categories {
 						let reportType = category["_reportType"] as? Dictionary<String, Any>
 						let code = reportType!["code"] as? String
 						debugPrint("code: \(code)")

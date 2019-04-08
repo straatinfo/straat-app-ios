@@ -101,9 +101,8 @@ class SendSuspiciousReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
-//        self.initKeyBoardToolBar()
         self.initCategories()
-        // Do any additional setup after loading the view.
+
         
         let uds = UserDefaults.standard
         let id = uds.string(forKey: user_id)
@@ -353,9 +352,9 @@ extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
 			
 		}
 		
-		debugPrint("all boolean: \(allBool)")
-		debugPrint("trues: \(numberOfTrue)")
-		debugPrint("falses: \(numberOfFalse)")
+//		debugPrint("all boolean: \(allBool)")
+//		debugPrint("trues: \(numberOfTrue)")
+//		debugPrint("falses: \(numberOfFalse)")
 		if numberOfFalse > 0 {
 			disableSendReportButton()
 			debugPrint("disable")
@@ -451,26 +450,6 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
             }
         }
     }
-    
-    // initialise key board toolbar
-//    func initKeyBoardToolBar() -> Void {
-//        let kbToolBar = UIToolbar()
-//        kbToolBar.sizeToFit()
-//        
-//        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.keyBoardDismiss))
-//        
-//        kbToolBar.setItems([doneBtn], animated: false)
-//        
-////        self.reportDescription.inputAccessoryView = kbToolBar
-////        self.personsInvolvedDescription.inputAccessoryView = kbToolBar
-////        self.vehiclesInvolvedDescription.inputAccessoryView = kbToolBar
-////        self.mainCategoryDropDown.inputAccessoryView = kbToolBar
-//    }
-//    
-//    // dismiss function of keyboard
-//    @objc func keyBoardDismiss() -> Void {
-//        view.endEditing(true)
-//    }
 	
 	func arrangedCateg(categoryName: String) -> [String] {
 		let mainCategTitle = NSLocalizedString("select-main-category", comment: "")
@@ -560,7 +539,8 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+		alert.popoverPresentationController?.sourceView = self.view
+		alert.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height * 0.50)
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -573,7 +553,7 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             
-            self.sendReportImage = image.jpegData(compressionQuality: CGFloat.leastNormalMagnitude)!
+            self.sendReportImage = image.jpeg(.lowest)
             
             switch(self.imgViewTag) {
             case 1:
@@ -582,43 +562,46 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                     if success {
                         
                         self.imageMetaData1 = dataObject
+                		self.imgView1.image = image
 //                        debugPrint("dataObject: \(String(describing: dataObject))")
 //                        print("public_id: \(String(describing: public_id))")
                     } else {
+						defaultDialog(vc: self, title: "Uploading Image", message: "Problem occured when uploading image")
                         print("upload image response: \(message)")
                     }
                     loadingDismiss()
                     
                 }
-                imgView1.image = image
-                break;
+
+                break
             case 2:
                 self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "SuspiciousSituationImage2") { (success, message, photoModel, dataObject) in
                     
                     if success {
                         self.imageMetaData2 = dataObject
+                		self.imgView2.image = image
                         print("dataObject: \(String(describing: dataObject))")
                     } else {
+						defaultDialog(vc: self, title: "Uploading Image", message: "Problem occured when uploading image")
                         print("upload image response: \(message)")
                     }
                     loadingDismiss()
-                    
                 }
-                imgView2.image = image
-                break;
+                break
             case 3:
                 self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "SuspiciousSituationImage3") { (success, message, photoModel, dataObject) in
                     
                     if success {
                         self.imageMetaData3 = dataObject
+                		self.imgView3.image = image
                         print("dataObject: \(String(describing: dataObject))")
                     } else {
+						defaultDialog(vc: self, title: "Uploading Image", message: "Problem occured when uploading image")
                         print("upload image response: \(message)")
                     }
                     loadingDismiss()
                     
                 }
-                imgView3.image = image
                 break
             default:
                 let desc = NSLocalizedString("import-image-error", comment: "")

@@ -12,6 +12,9 @@ PODS:
   - iOSDropDown (0.2.7)
   - IQKeyboardManagerSwift (6.2.1)
   - Kingfisher (5.3.1)
+  - Socket.IO-Client-Swift (13.0.1):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.6)
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
@@ -22,6 +25,7 @@ DEPENDENCIES:
   - iOSDropDown
   - IQKeyboardManagerSwift
   - Kingfisher (~> 5.0)
+  - Socket.IO-Client-Swift (~> 13.0.0)
   - "UITextView+Placeholder"
 
 SPEC REPOS:
@@ -33,6 +37,8 @@ SPEC REPOS:
     - iOSDropDown
     - IQKeyboardManagerSwift
     - Kingfisher
+    - Socket.IO-Client-Swift
+    - Starscream
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
@@ -43,8 +49,10 @@ SPEC CHECKSUMS:
   iOSDropDown: 7a4cfc67d5166f319858747b63cd2f7760c4fb4b
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
+  Socket.IO-Client-Swift: 7055c89b7a9926b343194c4cac75998329c4a95a
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 19253c89146186ed9c7f5975c28890ec0fdca7f8
+PODFILE CHECKSUM: 5c6d02c2b308aac12fbfcdf799a61c5c76e6b42f
 
 COCOAPODS: 1.5.2

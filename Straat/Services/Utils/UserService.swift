@@ -64,7 +64,7 @@ class UserService {
                 completion(false, error.localizedDescription, nil)
             } else if let data = response {
 				let dataObject = data["data"] as? Dictionary <String, Any> ?? [:]
-                
+              
 				if dataObject != nil || dataObject.count > 0 {
                    
                     completion(true, "Success", dataObject)
@@ -133,8 +133,7 @@ class UserService {
             } else if let data = response {
 				let dataObject = data["data"] as? Dictionary <String, Any> ?? [:]
                 
-				if dataObject != nil || dataObject.count > 0 {
-                    
+				if dataObject != nil || dataObject.count > 0 {                    
                     completion(true, "Success")
                 } else {
                     completion(false, "Failed")

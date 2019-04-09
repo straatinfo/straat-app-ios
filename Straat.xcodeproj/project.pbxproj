@@ -72,6 +72,7 @@
 		43EA2B15220B495E0088B5FC /* HostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2B14220B495E0088B5FC /* HostModel.swift */; };
 		5AB30234224639E000C6A038 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AB30236224639E000C6A038 /* Localizable.strings */; };
 		5AB3023C224682D900C6A038 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AB3023E224682D900C6A038 /* InfoPlist.strings */; };
+		757AA91C225A614700E18BF4 /* ChatSocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AA91B225A614700E18BF4 /* ChatSocketViewController.swift */; };
 		830756348BBE455B8F1C2B70 /* Pods_Straat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */; };
 		9B0948BC2212AD47004CE4CB /* UserRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BB2212AD47004CE4CB /* UserRegistrationModel.swift */; };
 		9B0948BE2212BC15004CE4CB /* RegistrationStep2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0948BD2212BC15004CE4CB /* RegistrationStep2VC.swift */; };
@@ -168,6 +169,7 @@
 		5AB30237224639E400C6A038 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5AB3023D224682D900C6A038 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5AB3023F224682DC00C6A038 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		757AA91B225A614700E18BF4 /* ChatSocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSocketViewController.swift; sourceTree = "<group>"; };
 		9B0948BB2212AD47004CE4CB /* UserRegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationModel.swift; sourceTree = "<group>"; };
 		9B0948BD2212BC15004CE4CB /* RegistrationStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStep2VC.swift; sourceTree = "<group>"; };
 		9B0948BF2212D0A8004CE4CB /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				4335FF3122434C1C00A1C6AA /* ChatVC.swift */,
 				4335FF3322434C3B00A1C6AA /* ChatTVC.swift */,
+				757AA91B225A614700E18BF4 /* ChatSocketViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */,
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
 				4335FF382243583D00A1C6AA /* ChatService.swift in Sources */,
+				757AA91C225A614700E18BF4 /* ChatSocketViewController.swift in Sources */,
 				436B4027222A83BD00873C01 /* CreateNewTeamVC.swift in Sources */,
 				9BCA30CD225C6DB700702C1F /* SocketIOManager.swift in Sources */,
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
@@ -1000,7 +1004,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eversun.straatinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eversun.straatinfotest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1023,7 +1027,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eversun.straatinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eversun.straatinfotest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Straat/lib/Straat-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

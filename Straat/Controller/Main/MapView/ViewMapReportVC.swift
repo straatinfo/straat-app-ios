@@ -20,10 +20,13 @@ class ViewMapReportVC: UIViewController {
     @IBOutlet weak var reportBy: UILabel!
     @IBOutlet weak var reportImageView: UIView!
     @IBOutlet weak var reportImageViewConstraint: NSLayoutConstraint!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initReportMapDetails()
+        
+        
         // Do any additional setup after loading the view.
     }
 

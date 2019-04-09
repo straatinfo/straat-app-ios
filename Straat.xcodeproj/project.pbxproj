@@ -86,6 +86,7 @@
 		9BBABAA0221F2E4E00DBC284 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABA9F221F2E4E00DBC284 /* ReportModel.swift */; };
 		9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */; };
 		9BBABAA6221F4AE000DBC284 /* MediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABAA5221F4AE000DBC284 /* MediaService.swift */; };
+		9BCA30CD225C6DB700702C1F /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA30CC225C6DB700702C1F /* SocketIOManager.swift */; };
 		9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE18354220DE74C00981F3F /* Registration.storyboard */; };
 		9BE5D8EB22195A9F0041FE8A /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */; };
 		9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */; };
@@ -186,6 +187,7 @@
 		9BBABA9F221F2E4E00DBC284 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		9BBABAA5221F4AE000DBC284 /* MediaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaService.swift; sourceTree = "<group>"; };
+		9BCA30CC225C6DB700702C1F /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketIOManager.swift; path = Straat/services/Utils/SocketIOManager.swift; sourceTree = SOURCE_ROOT; };
 		9BE18355220DE75B00981F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
 		9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryModel.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				9BECD55C22207A9D004989A2 /* UserService.swift */,
 				9B2EC5352232E1AD00257649 /* TeamService.swift */,
 				4335FF372243583D00A1C6AA /* ChatService.swift */,
+				9BCA30CC225C6DB700702C1F /* SocketIOManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -646,16 +649,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
@@ -670,15 +669,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Straat-checkManifestLockResult.txt",
 			);
@@ -692,25 +687,25 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Straat/Pods-Straat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
@@ -772,6 +767,7 @@
 				43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */,
 				4335FF382243583D00A1C6AA /* ChatService.swift in Sources */,
 				436B4027222A83BD00873C01 /* CreateNewTeamVC.swift in Sources */,
+				9BCA30CD225C6DB700702C1F /* SocketIOManager.swift in Sources */,
 				9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */,
 				432D6607223AA7DC005F382D /* TeamMemberRequestTVC.swift in Sources */,
 				9BECD55D22207A9D004989A2 /* UserService.swift in Sources */,
@@ -997,7 +993,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LY8NRN944A;
+				DEVELOPMENT_TEAM = 9T4YL57C8T;
 				INFOPLIST_FILE = Straat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1020,7 +1016,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LY8NRN944A;
+				DEVELOPMENT_TEAM = 9T4YL57C8T;
 				INFOPLIST_FILE = Straat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -23,6 +23,9 @@ target 'Straat' do
 
   # Pod for UItextview Placeholder (testing)
   pod 'UITextView+Placeholder'
+  
+  pod 'Socket.IO-Client-Swift'
+
 end
 
 post_install do |installer|

@@ -7,10 +7,10 @@
 
 import Foundation
 
-let root = "https://straatinfo-backend-v2.herokuapp.com/v1/api/"
-// let root = "https://straatinfo-backend-v2-prod.herokuapp.com/v1/api/" // production
-let root_v2 = "https://straatinfo-backend-v2.herokuapp.com/v2/api/"
-// let root_v2 = "https://straatinfo-backend-v2-prod.herokuapp.com/v2/api/" // production
+// let root = "https://straatinfo-backend-v2.herokuapp.com/v1/api/"
+let root = "https://straatinfo-backend-v2-prod.herokuapp.com/v1/api/" // production
+// let root_v2 = "https://straatinfo-backend-v2.herokuapp.com/v2/api/"
+let root_v2 = "https://straatinfo-backend-v2-prod.herokuapp.com/v2/api/" // production
 
 let auth = root + "auth/login"
 let request_host = root + "registration/validation/host"
@@ -22,7 +22,7 @@ let get_default_categories = root + "category/app/mainCategory/general"
 
 // postcode
 let POST_CODE_API = "https://api.postcodeapi.nu/v2/addresses"
-let POST_CODE_KEY = "gvuwmtomsB8eRf5Zgsfnj7zs8DE2ihC79DlEbQnb"
+let POST_CODE_API_V2 = "https://straatinfo-backend-v2-prod.herokuapp.com/api/v1/utility/postcode"
 
 let report_map = root + "report/?user_id=5c63e92035086200156f93e0&fbclid=IwAR1AF8aK8tmFpI5RfNYuNfjXoXNoCFdV_U-OcB649R1Y0Ijh-ZqMzCXen9w"
 let send_report = root + "report/V2"

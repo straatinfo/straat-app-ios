@@ -7,10 +7,10 @@
 
 import Foundation
 
-// let root = "https://straatinfo-backend-v2.herokuapp.com/v1/api/"
-let root = "https://straatinfo-backend-v2-prod.herokuapp.com/v1/api/" // production
-// let root_v2 = "https://straatinfo-backend-v2.herokuapp.com/v2/api/"
-let root_v2 = "https://straatinfo-backend-v2-prod.herokuapp.com/v2/api/" // production
+ let root = "https://straatinfo-backend-v2.herokuapp.com/v1/api/"
+//let root = "https://straatinfo-backend-v2-prod.herokuapp.com/v1/api/" // production
+ let root_v2 = "https://straatinfo-backend-v2.herokuapp.com/v2/api/"
+//let root_v2 = "https://straatinfo-backend-v2-prod.herokuapp.com/v2/api/" // production
 
 let auth = root + "auth/login"
 let request_host = root + "registration/validation/host"

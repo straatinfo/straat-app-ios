@@ -32,7 +32,7 @@ import SocketIO
 
 
 class SocketIOManager: NSObject {
-    let manager = SocketManager(socketURL: URL(string: "https://straatinfo-backend-v2-prod.herokuapp.com")!, config: [.log(true), .compress])
+    let manager = SocketManager(socketURL: URL(string: "https://straatinfo-backend-v2.herokuapp.com")!, config: [.log(true), .compress])
     var socket: SocketIOClient!
     
     static let shared = SocketIOManager()
@@ -59,17 +59,27 @@ class SocketIOManager: NSObject {
         }
     }
     
+    // 1) Add callbacks -> ReportService
+    // 2) Add emit per function
+    // 3) Call sendMessage at MainVC.swift
+    
+    
     func onSendMessageSuccess() { // --> add callback function
         socket.on("send-message-v2") { (data, ack) in
-            
-            print("received a message", data)
+            print("received a message", data) // -> completion
             
         }
     }
     
-    func getNewMessage() { // --> add callback function
+    // Compare conversation ID from payload
+    func getNewMessage(completion: @escaping (ChatModel) -> Void) { // --> add callback function
         socket.on("new-message") { (data, ack) in
             print("New message received")
+            
+            var chatModel = [ChatModel]()
+            let id = category["_id"] as? String
+            
+            completion(data)
         }
     }
     

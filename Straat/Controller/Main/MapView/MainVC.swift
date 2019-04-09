@@ -53,7 +53,7 @@ class MainVC: UIViewController {
         self.initMapView(reportType: "All")
         self.initView()
         SocketIOManager.shared.connectSocket() // --> should only called once
-        SocketIOManager.shared.getNewMessage() // --> can add callback
+        // SocketIOManager.shared.getNewMessage() // --> can add callback
         //loadInfo()
     }
     

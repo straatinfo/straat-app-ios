@@ -21,6 +21,11 @@ class ChatVC: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		self.disableSendMessageButton()
+        
+        SocketIOManager.shared.getNewMessage() { (success) in
+            print("Receiving new message")
+            self.initView()
+        }
 		
 //		let queue = DispatchQueue(label: "convo", qos: .userInteractive)
 //		queue.async {
@@ -42,23 +47,39 @@ class ChatVC: UIViewController {
 	}
 	
 	@IBAction func sendMessage(_ sender: UIButton) {
-		self.chatService.sendMessage(authorId: self.userId!, message: self.messageContent.text!, conversationId: self.conversationId!) { (success, message) in
-			if success {
-				let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
-				alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
-						self.navigationController?.popViewController(animated: true)
-							self.removeConvoLocalData()
-					}))
-				self.present(alertController, animated: true, completion: nil)
-			} else {
-				let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
-				alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
-						self.navigationController?.popViewController(animated: true)
-							self.removeConvoLocalData()
-				}))
-				self.present(alertController, animated: true, completion: nil)
-			}
-		}
+//        self.chatService.sendMessage(authorId: self.userId!, message: self.messageContent.text!, conversationId: self.conversationId!) { (success, message) in
+//            if success {
+//                let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
+//                alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+//                        self.navigationController?.popViewController(animated: true)
+//                            self.removeConvoLocalData()
+//                    }))
+//                self.present(alertController, animated: true, completion: nil)
+//            } else {
+//                let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
+//                alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+//                        self.navigationController?.popViewController(animated: true)
+//                            self.removeConvoLocalData()
+//                }))
+//                self.present(alertController, animated: true, completion: nil)
+//            }
+//        }
+        
+        let authorId = self.userId ?? ""
+        let message = self.messageContent.text ?? ""
+        let conversationId = self.conversationId ?? ""
+        
+        SocketIOManager.shared.sendMessage(conversationId: conversationId, userId: authorId, text: message)
+        SocketIOManager.shared.onSendMessageSuccess() { success in
+            let alertController = UIAlertController(title: "Send Message", message: "Success", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+                    // self.navigationController?.popViewController(animated: true)
+                    self.removeConvoLocalData()
+                    self.messageContent.text = ""
+                }))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
 	}
 	
 }

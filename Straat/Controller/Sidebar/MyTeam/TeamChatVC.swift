@@ -22,6 +22,10 @@ class TeamChatVC: UIViewController {
         super.viewDidLoad()
 		self.disableSendMessageButton()
         // Do any additional setup after loading the view.
+        SocketIOManager.shared.getNewMessage() { (success) in
+            print("Receiving new message")
+            self.initView()
+        }
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -29,21 +33,35 @@ class TeamChatVC: UIViewController {
 	}
 	
 	@IBAction func sendMessage(_ sender: UIButton) {
-		self.chatService.sendMessage(authorId: self.userId!, message: self.messageContent.text!, conversationId: self.conversationId!) { (success, message) in
-			if success {
-				let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
-				alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
-					self.navigationController?.popViewController(animated: true)
-				}))
-				self.present(alertController, animated: true, completion: nil)
-			} else {
-				let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
-				alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
-					self.navigationController?.popViewController(animated: true)
-				}))
-				self.present(alertController, animated: true, completion: nil)
-			}
-		}
+//        self.chatService.sendMessage(authorId: self.userId!, message: self.messageContent.text!, conversationId: self.conversationId!) { (success, message) in
+//            if success {
+//                let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
+//                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+//                    self.navigationController?.popViewController(animated: true)
+//                }))
+//                self.present(alertController, animated: true, completion: nil)
+//            } else {
+//                let alertController = UIAlertController(title: "Send Message", message: message, preferredStyle: .alert)
+//                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction) in
+//                    self.navigationController?.popViewController(animated: true)
+//                }))
+//                self.present(alertController, animated: true, completion: nil)
+//            }
+//        }
+        
+        let authorId = self.userId ?? ""
+        let message = self.messageContent.text ?? ""
+        let conversationId = self.conversationId ?? ""
+        
+        SocketIOManager.shared.sendMessage(conversationId: conversationId, userId: authorId, text: message)
+        SocketIOManager.shared.onSendMessageSuccess() { success in
+            let alertController = UIAlertController(title: "Send Message", message: "Success", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+                // self.navigationController?.popViewController(animated: true)
+                self.messageContent.text = ""
+            }))
+            self.present(alertController, animated: true, completion: nil)
+        }
 	}
 	
 }

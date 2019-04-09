@@ -59,17 +59,20 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func onSendMessageSuccess() { // --> add callback function
+    func onSendMessageSuccess(callback: @escaping (Bool) -> Void) { // --> add callback function
         socket.on("send-message-v2") { (data, ack) in
             
             print("received a message", data)
             
+            callback(true)
         }
     }
     
-    func getNewMessage() { // --> add callback function
+    func getNewMessage(callback: @escaping (Bool) -> Void) { // --> @TODO optimize later
         socket.on("new-message") { (data, ack) in
             print("New message received")
+            
+            callback(true)
         }
     }
     
@@ -77,5 +80,14 @@ class SocketIOManager: NSObject {
         socket.on("register") { (date, ack) in
             print("Registration success")
         }
+    }
+    
+    func sendMessage (conversationId: String,  userId: String, text: String) {
+        var data: [String: Any] = [:]
+        data["user"] = userId
+        data["_conversation"] = conversationId
+        data["text"] = text
+        data["_id"] = userId // should be source id
+        socket.emit("send-message-v2", data)
     }
 }

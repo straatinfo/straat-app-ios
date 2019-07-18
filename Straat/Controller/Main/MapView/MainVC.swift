@@ -45,26 +45,57 @@ class MainVC: UIViewController {
 	
 	//user defaults
 	let uds = UserDefaults.standard
+    let authService = AuthService()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createMenu()
         self.navColor()
-        self.initMapView(reportType: "All")
-        self.initView()
         SocketIOManager.shared.connectSocket() // --> should only called once
         // SocketIOManager.shared.getNewMessage() // --> can add callback
         //loadInfo()
+        authService.userRefresh { success in
+            if (success) {
+                self.initMapView(reportType: "All", reportId: nil)
+                self.initView()
+            } else {
+                let alert = UIAlertController(title: "Your token has expired.", message: "Please login again", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    switch action.style{
+                    case .default:
+                        print("default")
+                        
+                    case .cancel:
+                        print("cancel")
+                        
+                    case .destructive:
+                        print("destructive")
+                    }
+                    
+                    // go to login
+                    pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
+                }))
+                
+                self.present(alert, animated: true)
+            }
+        }
     }
     
     @IBAction func showSendReport(_ sender: Any) {
 		let teamId = self.uds.string(forKey: user_team_id) ?? nil
 		let isTeamApproved = self.uds.bool(forKey: user_team_is_approved)
 		let isVolunteer = self.uds.bool(forKey: user_is_volunteer)
+        
+        let hostLong = self.uds.double(forKey: user_host_long)
+        let hostLat = self.uds.double(forKey: user_host_lat)
 
 		let title = NSLocalizedString("send-report", comment: "")
 		let desc = NSLocalizedString("send-report-invalid-approval", comment: "")
 		
+        print("TEAM_ID: \(teamId)")
+        print("TEAM_IS_APPROVED: \(isTeamApproved)")
+        print("TEAM_IS_VOLUNTEER: \(isVolunteer)")
+        
 		if teamId != nil {
 
 			if !isVolunteer && !isTeamApproved {
@@ -85,8 +116,19 @@ class MainVC: UIViewController {
 						animateLayout(view: self.view, timeInterval: 0.6)
 						
 					} else {
-						//                defaultDialog(vc: self, title: "Permission", message: result)
-						self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : "initial address", lat : 52.077646 , long : 4.315667)
+                        self.getAddressFromLatLon(lat: hostLat, long: hostLong) { (success, location) in
+                            // defaultDialog(vc: self, title: "Permission", message: result)
+                            if success {
+                                self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : location, lat : hostLat , long : hostLong)
+                            } else {
+                                self.customMarker (mView : self.mapView, marker: self.marker, title: "Report ", address : "Unknown location", lat : hostLat , long : hostLong)
+                            }
+                            self.initMapRadius(lat: hostLat, long: hostLong)
+                            loadingDismiss()
+                            self.makeNotifConstraint.constant = 0
+                            self.sendReport.isHidden = true
+                            animateLayout(view: self.view, timeInterval: 0.6)
+                        }
 						
 					}
 				}
@@ -180,11 +222,12 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
     func refresh() {
         self.createMenu()
         self.navColor()
-        self.initMapView(reportType: "All")
+        self.initMapView(reportType: "All", reportId: nil)
     }
     
     // textfield delegate
     func textFieldDidEndEditing(_ textField: UITextField) {
+        print("CALLING_THIS")
         
         for markerReport in self.markerReports {
             markerReport.map?.clear()
@@ -193,11 +236,11 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         switch textField {
         case reportTypeTextField:
             if textField.text == "Public Spaces" {
-                self.initMapView(reportType: "A")
+                self.initMapView(reportType: "A", reportId: nil)
             } else if textField.text == "Suspicious Situation" {
-                self.initMapView(reportType: "B")
+                self.initMapView(reportType: "B", reportId: nil)
             } else {
-                self.initMapView(reportType: "All")
+                self.initMapView(reportType: "All", reportId: nil)
             }
         default:
             break
@@ -245,21 +288,21 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
     }
     
     // initialised map view
-    func initMapView(reportType: String) -> Void {
+    func initMapView(reportType: String, reportId: String?) -> Void {
         
         let reportService = ReportService()
         let uds = UserDefaults.standard
         
         let userModel = UserModel()
         let userID = userModel.getDataFromUSD(key: user_id)
-        let hostLat = uds.double(forKey: host_reg_lat)
-        let hostLong = uds.double(forKey: host_reg_long)
+        let hostLat = userModel.host_lat ?? uds.double(forKey: host_reg_lat)
+        let hostLong = userModel.host_long ?? uds.double(forKey: host_reg_long)
         let userRadius : Double = 300
         
         loadingShow(vc: self)
         
-        self.initMapCamera(lat: 52.077646, long: 4.315667)
-        self.initMapRadius(lat: 52.077646, long: 4.315667)
+        self.initMapCamera(lat: hostLat, long: hostLong)
+        self.initMapRadius(lat: hostLat, long: hostLong)
 		
         print("user_id: \(userModel.getDataFromUSD(key: user_id))")
         print("host_lat_mapview: \(hostLat)")
@@ -270,14 +313,15 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
             if success {
                 for reportMap in reportModel! {
                     if reportType == "All" {
-                        self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+                        self.reportMarker(mView: self.mapView, reportMapModel: reportMap, reportId: reportId)
                     } else if reportType == reportMap.reportType?.code {
-                        self.reportMarker(mView: self.mapView, reportMapModel: reportMap)
+                        self.reportMarker(mView: self.mapView, reportMapModel: reportMap, reportId: reportId)
                     } else {
                         loadingDismiss()
                     }
                 }
-                
+                print("REPORTS_LOADED")
+                // self.uds.removeObject(forKey: new_sent_report)
             } else {
                 let title = NSLocalizedString("fetching-near-reports", comment: "")
                 let desc = NSLocalizedString("no-available-reports", comment: "")
@@ -325,28 +369,73 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
     }
     
     // initialise marker dedicated for reports
-    func reportMarker (mView : GMSMapView, reportMapModel : ReportModel?) -> Void {
+    func reportMarker (mView : GMSMapView, reportMapModel : ReportModel?, reportId: String?) -> Void {
         // Creates a marker in the center of the map.
         let markerReport = GMSMarker()
         self.markerReports.append(markerReport)
-        
+
         markerReport.position = CLLocationCoordinate2D(latitude: (reportMapModel?.lat)!, longitude: (reportMapModel?.long)!)
         
-        markerReport.title = reportMapModel?.mainCategory?.name
-        markerReport.snippet = reportMapModel?.location
+        markerReport.title = reportMapModel?.mainCategory?.name?.shorten(limit: 20)
+        markerReport.snippet = NSLocalizedString("view-report", comment: "") // reportMapModel?.location
         markerReport.icon = UIImage(named: "pin-new")
         markerReport.map = mView
-        
         // data for report view
         markerReport.reportModel = reportMapModel!
         
         location.text = reportMapModel?.location
         userLat = reportMapModel?.lat
         userLong = reportMapModel?.long
-        
         self.setReportImage(reportMapModel: reportMapModel) { (success) in
-			loadingDismiss()
+            
+
+            loadingDismiss()
         }
+        
+        let newReportId = self.uds.string(forKey: new_sent_report)
+        // print("IMAGE_HAS_BEEN_LOADED: \(success) + NEW_REPORT_ID: \(newReportId) + REPORT_ID: \(reportMapModel?.id!)")
+        if newReportId != nil && reportMapModel != nil {
+            
+            if (reportMapModel?.attachments?.count)! > 0 {
+                
+                let attachments = reportMapModel!.attachments![0]
+                let imageUrl = attachments["secure_url"] as? String
+                
+                self.getReportImage(imageUrl: imageUrl!) { (success, image) in
+                    
+                    if success {
+                        reportMapModel?.setReportImage(reportImage: image)
+                    } else {
+                        reportMapModel?.setReportImage(reportImage: UIImage(named: "no-photo-" + NSLocalizedString("language", comment: ""))!)
+                    }
+                
+                    
+                    if newReportId! == reportMapModel?.id! {
+                        if reportMapModel?.lat != nil && reportMapModel?.long != nil {
+                            self.initMapCamera(lat: reportMapModel?.lat ?? 0.0, long: reportMapModel?.long ?? 0.0)
+                        }
+                        self.mapView.selectedMarker = markerReport
+                    }
+                    
+                    self.uds.removeObject(forKey: new_sent_report)
+                    
+                }
+                
+            } else {
+                reportMapModel?.setReportImage(reportImage: UIImage(named: "no-photo-" + NSLocalizedString("language", comment: ""))!)
+                if newReportId! == reportMapModel?.id! {
+                    if reportMapModel?.lat != nil && reportMapModel?.long != nil {
+                        self.initMapCamera(lat: reportMapModel?.lat ?? 0.0, long: reportMapModel?.long ?? 0.0)
+                    }
+                    self.mapView.selectedMarker = markerReport
+                }
+                
+                self.uds.removeObject(forKey: new_sent_report)
+                loadingDismiss()
+            }
+            
+        }
+        
         
         debugPrint("report map marker loc: \(String(describing: reportMapModel?.location))")
         
@@ -365,14 +454,14 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
                     reportMapModel?.setReportImage(reportImage: image)
                     completion(true)
                 } else {
-                    reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
+                    reportMapModel?.setReportImage(reportImage: UIImage(named: "no-photo-" + NSLocalizedString("language", comment: ""))!)
                     completion(false)
                 }
                 
             }
             
         } else {
-            reportMapModel?.setReportImage(reportImage: UIImage(named: "AppIcon")!)
+            reportMapModel?.setReportImage(reportImage: UIImage(named: "no-photo-" + NSLocalizedString("language", comment: ""))!)
             loadingDismiss()
         }
     }
@@ -417,14 +506,14 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         })
         
     }
-    
+
     // creating custom marker
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         
         let view = UIView()
         
         if marker != self.marker {
-            view.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.width * 0.70, height: 100)
+            view.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.width * 0.70, height: 120)
             
             view.backgroundColor = UIColor.white
             view.layer.cornerRadius = 6
@@ -439,17 +528,26 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             
             let lbl2 = UILabel(frame: CGRect.init(x: lbl1.frame.origin.x, y: lbl1.frame.origin.y + lbl1.frame.size.height + 3, width: view.frame.size.width * 0.50, height: 20))
             
-            lbl2.text = marker.snippet
+            lbl2.text = marker.reportModel?.createdAt?.toDate(format: nil)
             lbl2.font = UIFont.systemFont(ofSize: 14, weight: .light)
             lbl2.lineBreakMode = .byWordWrapping
             lbl2.numberOfLines = 3
             view.addSubview(lbl2)
             
+            let lbl3 = UILabel(frame: CGRect.init(x: lbl2.frame.origin.x, y: lbl2.frame.origin.y + lbl2.frame.size.height + 3, width: view.frame.size.width * 0.50, height: 20))
+            
+            lbl3.text = marker.snippet
+            lbl3.font = UIFont.systemFont(ofSize: 14, weight: .light)
+            lbl3.lineBreakMode = .byWordWrapping
+            lbl3.numberOfLines = 3
+            view.addSubview(lbl3)
+            
             let img = UIImageView(frame: CGRect.init(x: lbl1.frame.size.width + 20, y: 0, width: view.frame.size.width * 0.40, height: view.frame.height))
             
-            let imgPlaceholder = UIImage(named: "AppIcon")
+            let imgPlaceholder = UIImage(named: "no-photo-" + NSLocalizedString("language", comment: ""))
             
             if marker.reportModel != nil {
+                print("CLICKED")
                 img.image = marker.reportModel!.getReportImage()
             } else {
                 img.image = imgPlaceholder
@@ -458,7 +556,6 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             img.contentMode = .scaleToFill
             img.layer.cornerRadius = 6
             view.addSubview(img)
-            
         }
         
         return view
@@ -468,7 +565,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
         var reportImages = [String]()
-        
+        print("CLICKING_MARKER")
         if marker != self.marker {
             
             if (marker.reportModel?.attachments?.count)! > 0 {
@@ -513,33 +610,42 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                     print("reverse geodcode fail: \(error!.localizedDescription)")
                     completion(false , "reverse geodcode fail: \(error!.localizedDescription)")
                 }
-                let pm = placemarks! as [CLPlacemark]
-                
-                if pm.count > 0 {
-                    let pm = placemarks![0]
-					
-					if pm.subThoroughfare != nil {
-						addressString = addressString + pm.subThoroughfare! + " "
-					}
-                    if pm.thoroughfare != nil {
-                        addressString = addressString + pm.thoroughfare! + ", "
-                    }
-					if pm.subLocality != nil {
-						addressString = addressString + pm.subLocality! + ", "
-					}
-                    if pm.postalCode != nil {
-                        addressString = addressString + pm.postalCode! + " "
-                    }
-					if pm.locality != nil {
-						addressString = addressString + pm.locality! + ", "
-					}
-                    if pm.country != nil {
-                        addressString = addressString + pm.country! + ""
-                    }
+                if placemarks != nil {
+                    debugPrint(placemarks)
+                    let pm = placemarks! as [CLPlacemark]
                     
-                    
-                    completion(true, addressString)
-                    
+                    if pm.count > 0 {
+                        let pm = placemarks![0]
+                        
+//                        if pm.administrativeArea != nil {
+//                            addressString += pm.administrativeArea!
+//                        }
+                        if pm.thoroughfare != nil {
+                            addressString = addressString + pm.thoroughfare! + " "
+                        }
+
+                        if pm.subThoroughfare != nil {
+                            addressString = addressString + pm.subThoroughfare! + ", "
+                            print("SUB_TF: \(pm.subThoroughfare)")
+                        }
+
+                        if pm.subLocality != nil {
+                            addressString = addressString + pm.subLocality! + ", "
+                        }
+                        if pm.postalCode != nil {
+                            addressString = addressString + pm.postalCode! + " "
+                        }
+                        if pm.locality != nil {
+                            addressString = addressString + pm.locality! + ", "
+                        }
+                        if pm.country != nil {
+                            addressString = addressString + pm.country! + ""
+                        }
+                        
+                        
+                        completion(true, addressString)
+                        
+                    }
                 }
         })
         
@@ -551,15 +657,22 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         
         getAddressFromLatLon(lat: locValue.latitude, long: locValue.longitude, completion: { hasAdd , response in
+            let hostLong = self.uds.double(forKey: user_host_long)
+            let hostLat = self.uds.double(forKey: user_host_lat)
             
             
             if hasAdd {
                 self.initMapCamera(lat: locValue.latitude, long: locValue.longitude)
                 self.customMarker (mView : self.mapView, marker: self.marker, title: "Report Category", address : response, lat : locValue.latitude , long : locValue.longitude)
-                self.initMapRadius(lat: locValue.latitude, long: locValue.longitude)
+                self.initMapRadius(lat: hostLat, long: hostLong)
             } else {
                 let desc = NSLocalizedString("unidentified-location", comment: "")
                 defaultDialog(vc: self, title: "Unidentified Location", message: desc)
+                
+//
+//                self.initMapCamera(lat: hostLat, long: hostLong)
+//                self.customMarker (mView : self.mapView, marker: self.marker, title: "Report Category", address : response, lat : hostLat , long : hostLong)
+//                self.initMapRadius(lat: hostLat, long: hostLong)
             }
             
             self.locationManager.stopUpdatingLocation()
@@ -610,6 +723,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
         let uds = UserDefaults.standard
         let fullname = reportMapModel.reporter?.firstname
+        let reporterUsername = reportMapModel.reporter?.username
         
         uds.set(reportMapModel.mainCategory?.name, forKey: report_category)
         uds.set(reportMapModel.status, forKey: report_status_detail_view)
@@ -618,6 +732,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         uds.set(reportMapModel.long, forKey: report_long)
         uds.set(reportMapModel.description, forKey: report_message)
         uds.set(reportMapModel.createdAt, forKey: report_created_at)
+        uds.set(reporterUsername, forKey: report_reporter_username)
         
         
         uds.set(fullname, forKey: report_reporter_fullname)

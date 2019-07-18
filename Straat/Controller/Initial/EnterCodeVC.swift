@@ -86,8 +86,9 @@ extension EnterCodeVC : UITextFieldDelegate {
                 let phoneNumber = dataObject?["phoneNumber"] as? String
                 let isVolunteer = dataObject?["isVolunteer"] as? Bool
                 let language = dataObject?["language"] as? String
+                let isSpecific = dataObject?["isSpecific"] as? String
                 
-                let host = HostModel(hostID: id, hostLat: lat, hostLong: long, hostEmail: email, username: username, streetName: streetName, city: city, country: country, postalCode: postalCode, phoneNumber: phoneNumber, isVolunteer: isVolunteer, language: language)
+                let host = HostModel(hostID: id, hostLat: lat, hostLong: long, hostEmail: email, username: username, streetName: streetName, city: city, country: country, postalCode: postalCode, phoneNumber: phoneNumber, isVolunteer: isVolunteer, language: language, isSpecific: isSpecific)
                 
                 self.saveToLocalData(host: host) {success, message in
                     if success {
@@ -118,6 +119,7 @@ extension EnterCodeVC : UITextFieldDelegate {
         uds.set(host.postalCode, forKey: host_reg_postal_code)
         uds.set(host.phoneNumber, forKey: host_reg_phone_number)
         uds.set(host.language, forKey: host_reg_language)
+        uds.set(host.isSpecific, forKey: host_is_specific)
         
         completion(true, "Success")
     }

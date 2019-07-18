@@ -25,6 +25,8 @@ target 'Straat' do
   pod 'UITextView+Placeholder'
   
   pod 'Socket.IO-Client-Swift'
+  
+  pod 'SwiftyJSON', '~> 4.0'
 
 end
 

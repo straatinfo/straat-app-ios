@@ -137,6 +137,8 @@ extension LoginUserVC : UITextFieldDelegate {
                 
             } else if let data = response {
                 
+                let uds = UserDefaults.standard
+                
 				let dataObject = data["data"] as? Dictionary <String, Any> ?? [:]
 				let userObject = dataObject["user"] as? Dictionary <String, Any> ?? [:]
 				let settingObject = dataObject["setting"] as? Dictionary <String, Any> ?? [:]
@@ -156,6 +158,11 @@ extension LoginUserVC : UITextFieldDelegate {
 				let userActiveDesignModel = UserModel(fromLoginActiveDesign: activeDesignObject)
                 
                 let profilePicObject = userObject["_profilePic"] as? Dictionary <String, Any> ?? [:]
+                
+                let userToken = dataObject["token"] as? String ?? ""
+                print("USER_TOKEN: \(userToken)")
+                uds.set(userToken, forKey: token)
+                print("USER_TOKEN_FROM_UDS: \(uds.string(forKey: token))")
                 
                 //saving user model to loca data
                 userModel.saveToLocalData()

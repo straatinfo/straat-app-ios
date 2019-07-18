@@ -6,6 +6,8 @@
  
  */
 
+"app-test-info" = "we’re still testing and that feedback is welcome. This way I hope to prevent more negative feedback online";
+
 "suspicious-desc" = "Here you're able to share a situation that might be suspicious with other members of your team. At the moment other members agree with you. that is needed looks suspicious call the police or other relevant organisation. Emergency? First call 112 before continuing to use this app!";
 
 "emergency-notif-desc" = "Urgent? First Call 112";
@@ -130,3 +132,8 @@
 
 "send-report-invalid-approval" = "Please wait until the team leader accepts your request before making a notification";
 
+"view-report" = "View Report";
+
+"language" = "en";
+
+"date-locale" = "en_US_POSIX";

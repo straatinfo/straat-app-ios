@@ -58,13 +58,27 @@ extension CreateNewTeamVC : UITextFieldDelegate {
     }
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
+        let authService = AuthService()
 		
 		textField.resignFirstResponder()
 		switch textField {
 		case self.teamName:
 			if textField.text?.isValid() ?? false {
-				self.isTeamNameValid = true
-				checkTextFieldValues()
+				
+                authService.validateRegistrationInput(type: "teamName", value: self.teamName.text ?? "") { (isValid) in
+                    if (isValid) {
+                        self.isTeamNameValid = true
+                        self.checkTextFieldValues()
+                    } else {
+                        let errorTitle = NSLocalizedString("error", comment: "")
+                        let errorMessage = NSLocalizedString("team-name-already-in-use", comment: "")
+                        validationDialog(vc: self, title: errorTitle, message: errorMessage, buttonText: "Ok")
+                        
+                        self.isTeamNameValid = false
+                        self.teamName.becomeFirstResponder()
+                        self.disableCreateTeamButton()
+                    }
+                }
 			} else {
 				self.isTeamNameValid = false
 				self.teamName.becomeFirstResponder()

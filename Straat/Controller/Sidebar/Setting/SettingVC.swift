@@ -53,8 +53,8 @@ extension SettingVC {
     }
     
     func loadSettingDropDown() -> Void {
-        let raduisArr = ["100m", "300m", "600m", "1km", "3km"]
-        let radiusValue = [100, 300, 600, 1000, 3000]
+        let raduisArr = ["100m", "300m", "600m", "1km", "3km", "5km", "10km", ""]
+        let radiusValue = [100, 300, 600, 1000, 3000, 5000, 10000, 10000]
         self.radiusDropDown.optionArray = raduisArr
         self.radiusDropDown.selectedRowColor = UIColor.lightGray
         self.radiusDropDown.didSelect { (selectedItem, index, id) in

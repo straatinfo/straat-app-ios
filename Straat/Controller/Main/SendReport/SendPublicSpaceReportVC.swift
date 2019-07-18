@@ -349,7 +349,7 @@ extension SendPublicSpaceReportVC : UINavigationControllerDelegate, UIImagePicke
         let categoryService = CategoryService()
         let uds = UserDefaults.standard
         let host_id = uds.string(forKey: user_host_id) ?? ""
-        
+        print("HOST_ID: \(host_id)")
         categoryService.getMainCategoryA(hostId: host_id, language: "nl") { (success, message, mainCategories) in
             if success == true {
 

@@ -32,7 +32,7 @@ import SocketIO
 
 
 class SocketIOManager: NSObject {
-    let manager = SocketManager(socketURL: URL(string: "https://straatinfo-backend-v2-prod.herokuapp.com")!, config: [.log(true), .compress])
+    let manager = SocketManager(socketURL: URL(string: baseUrl)!, config: [.log(true), .compress])
     var socket: SocketIOClient!
     
     static let shared = SocketIOManager()

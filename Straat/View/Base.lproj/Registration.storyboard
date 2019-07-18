@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O9O-pR-1m0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O9O-pR-1m0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -291,6 +291,7 @@
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                                 <connections>
+                                                                                    <action selector="houseNumberDidChange:" destination="O9O-pR-1m0" eventType="editingChanged" id="Q9K-v3-2vg"/>
                                                                                     <action selector="sendPostNumber:" destination="O9O-pR-1m0" eventType="editingDidEnd" id="qJ8-0z-RDu"/>
                                                                                     <outlet property="delegate" destination="O9O-pR-1m0" id="OhP-zg-NEd"/>
                                                                                 </connections>
@@ -314,6 +315,11 @@
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
+                                                                                <connections>
+                                                                                    <action selector="streetNameDidTouched:" destination="O9O-pR-1m0" eventType="editingDidEnd" id="o1X-fc-SHC"/>
+                                                                                    <action selector="streetNameDidTouched:" destination="O9O-pR-1m0" eventType="touchDown" id="ttC-Ij-Gbt"/>
+                                                                                    <action selector="streetNameOnClicked:forEvent:" destination="O9O-pR-1m0" eventType="touchDown" id="w8Y-Ag-lbY"/>
+                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -401,6 +407,8 @@
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                                 <connections>
+                                                                                    <action selector="onPasswordDoneEditting:" destination="O9O-pR-1m0" eventType="editingDidEnd" id="Qfo-hR-yE0"/>
+                                                                                    <action selector="onPasswordTextChange:" destination="O9O-pR-1m0" eventType="editingChanged" id="SbM-Fe-Gvs"/>
                                                                                     <outlet property="delegate" destination="O9O-pR-1m0" id="c2V-uw-KlM"/>
                                                                                 </connections>
                                                                             </textField>
@@ -1310,6 +1318,7 @@
                     </view>
                     <connections>
                         <outlet property="imageTeamLogo" destination="yYN-tY-eGh" id="hsI-dM-4Fg"/>
+                        <outlet property="registerButton" destination="Sno-Td-Ecf" id="FfJ-dl-Xql"/>
                         <outlet property="teamEmailTxtBox" destination="pcP-lg-MaR" id="8eq-QC-jlj"/>
                         <outlet property="teamNameTxtBox" destination="vSL-ik-Xk6" id="P7F-pO-kRh"/>
                     </connections>
@@ -1321,16 +1330,15 @@
     </scenes>
     <resources>
         <image name="checkbox" width="24" height="24"/>
-        <image name="info" width="48" height="48"/>
+        <image name="info" width="64" height="64"/>
         <image name="logo" width="88" height="91"/>
         <image name="radio" width="22" height="22"/>
         <image name="selected-checkbox" width="24" height="24"/>
         <image name="selected-radio" width="22" height="22"/>
-        <image name="upload-img" width="192" height="192"/>
+        <image name="upload-img" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CUy-Y3-mFN"/>
         <segue reference="mcr-1N-n6a"/>
-        <segue reference="NUV-xW-xjc"/>
+        <segue reference="gIb-xv-959"/>
     </inferredMetricsTieBreakers>
 </document>

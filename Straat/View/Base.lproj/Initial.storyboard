@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -255,15 +255,25 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="we’re still testing and that feedback is welcome. This way I hope to prevent more negative feedback online " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="380" translatesAutoresizingMaskIntoConstraints="NO" id="f61-fg-H3E" propertyAccessControl="localizable">
+                                        <rect key="frame" x="26" y="480" width="362" height="65"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                        <color key="textColor" red="0.43137254899999999" green="0.52156862749999999" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="03A-Bs-02Z"/>
                                     <constraint firstItem="Lok-h1-my1" firstAttribute="top" secondItem="bhi-bZ-95k" secondAttribute="bottom" constant="30" id="5Ut-vW-G5N"/>
+                                    <constraint firstItem="f61-fg-H3E" firstAttribute="top" secondItem="bGh-CJ-TbB" secondAttribute="top" constant="476" id="AVW-Pp-Xfb"/>
                                     <constraint firstAttribute="trailing" secondItem="Lok-h1-my1" secondAttribute="trailing" constant="16" id="KRA-iB-ETW"/>
                                     <constraint firstItem="bhi-bZ-95k" firstAttribute="centerY" secondItem="bGh-CJ-TbB" secondAttribute="centerY" id="UJF-vh-6iC"/>
                                     <constraint firstAttribute="trailing" secondItem="bhi-bZ-95k" secondAttribute="trailing" constant="16" id="Xak-RV-d7R"/>
+                                    <constraint firstAttribute="trailing" secondItem="f61-fg-H3E" secondAttribute="trailing" constant="26" id="XmR-fu-Q1u"/>
                                     <constraint firstItem="Lok-h1-my1" firstAttribute="leading" secondItem="bGh-CJ-TbB" secondAttribute="leading" constant="16" id="iNV-Hw-AiS"/>
                                     <constraint firstItem="bhi-bZ-95k" firstAttribute="leading" secondItem="bGh-CJ-TbB" secondAttribute="leading" constant="16" id="maM-dj-0me"/>
                                     <constraint firstItem="bhi-bZ-95k" firstAttribute="centerX" secondItem="bGh-CJ-TbB" secondAttribute="centerX" id="nl3-Ib-eeI"/>
+                                    <constraint firstItem="f61-fg-H3E" firstAttribute="leading" secondItem="bGh-CJ-TbB" secondAttribute="leading" constant="26" id="vbA-OA-EWK"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -279,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDH-BY-H1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-735" y="27"/>
+            <point key="canvasLocation" x="-736.23188405797111" y="26.90217391304348"/>
         </scene>
         <!--Login UserVC-->
         <scene sceneID="nZY-J7-8Ff">

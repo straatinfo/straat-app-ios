@@ -45,8 +45,10 @@ class RegistrationTeamVC: UIViewController {
 
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
 					if self.isVolunteer ?? false {
+                        self.removeInputs()
 						pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
 					} else {
+                        self.removeInputs()
                     	pushToNextVC(sbName: "Initial", controllerID: "loginVC", origin: self)
 					}
 
@@ -80,8 +82,9 @@ extension RegistrationTeamVC {
         self.registerButton.backgroundColor = UIColor.lightGray
 		
 		let prefix = "reg-user-data-"
-		let uds = UserDefaults.init()
+		let uds = UserDefaults.standard
 		self.isVolunteer = uds.bool(forKey: prefix + "isVolunteer")
+        print("USER_IS_VOLUNTEER: \(self.isVolunteer)")
 		self.disableRegisterButton()
     }
     
@@ -292,6 +295,10 @@ extension RegistrationTeamVC {
 				let userTeamModel = UserModel(fromLoginTeam: teamObject)
                 let userOtherModel = UserModel(fromLoginHostId: hostId, fromLoginIsVolunteer: isVolunteer)
 				let userActiveDesignModel = UserModel(fromLoginActiveDesign: activeDesignObject)
+                
+                let uds = UserDefaults.standard
+                let userToken = dataObject["token"] as? String ?? ""
+                uds.set(userToken, forKey: token)
 
                 //saving user model to loca data
                 userModel.saveToLocalData()
@@ -356,4 +363,31 @@ extension RegistrationTeamVC {
 		self.registerButton.isEnabled = true
 		self.registerButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
 	}
+    
+    func removeInputs () {
+        let uds = UserDefaults.standard
+        let prefix = "reg-user-data-"
+        
+        uds.removeObject(forKey: prefix + "gender")
+        uds.removeObject(forKey: prefix + "fname")
+        uds.removeObject(forKey: prefix + "lname")
+        
+        uds.removeObject(forKey: prefix + "username")
+        uds.removeObject(forKey: prefix + "userPrefix")
+        
+        uds.removeObject(forKey: prefix + "postalCode")
+        uds.removeObject(forKey: prefix + "postalNumber")
+        uds.removeObject(forKey: prefix + "street")
+        uds.removeObject(forKey: prefix + "town")
+        uds.removeObject(forKey: prefix + "email")
+        uds.removeObject(forKey: prefix + "phoneNumber")
+        uds.removeObject(forKey: prefix + "password")
+        uds.removeObject(forKey: prefix + "tac")
+        
+        uds.removeObject(forKey: prefix + "isVolunteer")
+        
+        uds.removeObject(forKey: prefix + "teamName")
+        uds.removeObject(forKey: prefix + "teamId")
+        uds.removeObject(forKey: prefix + "teamEmail")
+    }
 }

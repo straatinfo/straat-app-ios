@@ -5,6 +5,7 @@
  Created by Jamie Aguinaldo on 3/19/19.
  
  */
+"app-test-info" = "De app straat.info is nog in de testfase en voorlopig alleen toegankelijk met een toegangscode. Als je de code hebt en wilt testen, graag. Geef dan alle feedback zsm aan ons door! Veel dank en test plezier";
 
 "suspicious-desc" = "Hier kunt u een situatie die u verdacht vindt, delen met andere gebruikers in de app. Zodra meer mensen de situatie verdacht vinden, neem dan contact op met de politie of andere relevante instantie (bijv. brandweer). NB bij spoed altijd eerst 112 bellen!";
 
@@ -126,3 +127,9 @@
 "send-report" = "Verzend rapport";
 
 "send-report-invalid-approval" = "Wacht tot de teamleider uw verzoek accepteert voordat u een melding doet";
+
+"view-report" = "Bekijk melding";
+
+"language" = "nl";
+
+"date-locale" = "nl_NL";

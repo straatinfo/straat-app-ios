@@ -15,6 +15,7 @@ PODS:
   - Socket.IO-Client-Swift (13.0.1):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.6)
+  - SwiftyJSON (4.3.0)
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Kingfisher (~> 5.0)
   - Socket.IO-Client-Swift
+  - SwiftyJSON (~> 4.0)
   - "UITextView+Placeholder"
 
 SPEC REPOS:
@@ -39,6 +41,7 @@ SPEC REPOS:
     - Kingfisher
     - Socket.IO-Client-Swift
     - Starscream
+    - SwiftyJSON
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
@@ -51,8 +54,9 @@ SPEC CHECKSUMS:
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   Socket.IO-Client-Swift: 7055c89b7a9926b343194c4cac75998329c4a95a
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: c32fbfb3fdb936ab8b69f74529e048c0e9c146b6
+PODFILE CHECKSUM: 2e5b3c53b5d1b083b4e476b423c794c5e0db315c
 
 COCOAPODS: 1.5.2

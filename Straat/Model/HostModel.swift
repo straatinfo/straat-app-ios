@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class HostModel {
     var id : String?
@@ -17,14 +18,34 @@ class HostModel {
     var streetName: String?
     var city: String?
     var country: String?
+    var houseNumber: String?
     var postalCode: String?
     var phoneNumber: String?
     var isVolunteer: Bool?
     var language: String? = "en"
+    var isSpecific: Bool? = false
     
     
     init() {
         
+    }
+    
+    init (json: JSON) {
+        self.id = json["_id"].string
+        self.hostName = json["hostName"].string
+        self.lat = json["lat"].double
+        self.long = json["long"].double
+        self.email = json["email"].string
+        self.username = json["username"].string
+        self.streetName = json["streetName"].string
+        self.city = json["city"].string
+        self.houseNumber = json["houseNumber"].string
+        self.country = json["country"].string
+        self.postalCode = json["postalCode"].string
+        self.phoneNumber = json["phoneNumber"].string
+        self.isVolunteer = json["isVolunteer"].bool
+        self.language = json["language"].string
+        self.isSpecific = json["isSpecific"].bool
     }
     
     init(
@@ -54,6 +75,78 @@ class HostModel {
         self.phoneNumber = phoneNumber
         self.isVolunteer = isVolunteer
         self.language = language
+    }
+    
+    init(
+        hostID : String?,
+        hostLat : Double?,
+        hostLong : Double?,
+        hostEmail : String?,
+        username: String?,
+        streetName: String?,
+        city: String?,
+        country: String?,
+        postalCode: String?,
+        phoneNumber: String?,
+        isVolunteer: Bool?,
+        language: String?,
+        isSpecific: String?
+        ) {
+        
+        self.id = hostID
+        self.lat = hostLat
+        self.long = hostLong
+        self.email = hostEmail
+        self.username = username
+        self.streetName = streetName
+        self.city = city
+        self.country = country
+        self.postalCode = postalCode
+        self.phoneNumber = phoneNumber
+        self.isVolunteer = isVolunteer
+        self.language = language
+        if (isSpecific == "true") {
+            self.isSpecific = true
+        } else {
+            self.isSpecific = false
+        }
+    }
+    
+    init(
+        hostID : String?,
+        hostName: String?,
+        hostLat : Double?,
+        hostLong : Double?,
+        hostEmail : String?,
+        username: String?,
+        streetName: String?,
+        city: String?,
+        country: String?,
+        postalCode: String?,
+        phoneNumber: String?,
+        isVolunteer: Bool?,
+        language: String?,
+        isSpecific: String?
+        ) {
+        
+        self.id = hostID
+        self.hostName = hostName
+        self.lat = hostLat
+        self.long = hostLong
+        self.email = hostEmail
+        self.username = username
+        self.streetName = streetName
+        self.city = city
+        self.country = country
+        self.postalCode = postalCode
+        self.phoneNumber = phoneNumber
+        self.isVolunteer = isVolunteer
+        self.language = language
+        if (isSpecific == "true") {
+            self.isSpecific = true
+        } else {
+            self.isSpecific = false
+        }
     }
     
     init (hostData: Dictionary<String, Any>) {

@@ -80,6 +80,7 @@
 		9B2F486C221F17A100B2BF91 /* SendReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F486B221F17A100B2BF91 /* SendReportModel.swift */; };
 		9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B69A50722123C95001BBFE8 /* PostalModel.swift */; };
 		9B77016F222076B4004D8CF0 /* ReportTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77016E222076B4004D8CF0 /* ReportTypeModel.swift */; };
+		9B8CB45B22C1421C002B1838 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CB45A22C1421C002B1838 /* AuthService.swift */; };
 		9BA851A72225E11E00E872D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA851A92225E11E00E872D9 /* Main.storyboard */; };
 		9BA851AA2225E12900E872D9 /* Sidebars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA851AC2225E12900E872D9 /* Sidebars.storyboard */; };
 		9BBABA9E221F29B300DBC284 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABA9D221F29B300DBC284 /* ReportService.swift */; };
@@ -87,11 +88,13 @@
 		9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */; };
 		9BBABAA6221F4AE000DBC284 /* MediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABAA5221F4AE000DBC284 /* MediaService.swift */; };
 		9BCA30CD225C6DB700702C1F /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA30CC225C6DB700702C1F /* SocketIOManager.swift */; };
+		9BD812A322CF31C6003A2BDB /* UtilsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD812A222CF31C6003A2BDB /* UtilsService.swift */; };
 		9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE18354220DE74C00981F3F /* Registration.storyboard */; };
 		9BE5D8EB22195A9F0041FE8A /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */; };
 		9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */; };
 		9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */; };
 		9BECD55D22207A9D004989A2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BECD55C22207A9D004989A2 /* UserService.swift */; };
+		9BEEC6EE22E1A5720018D9D2 /* HostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEEC6ED22E1A5720018D9D2 /* HostService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +179,7 @@
 		9B69A50722123C95001BBFE8 /* PostalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalModel.swift; sourceTree = "<group>"; };
 		9B77016E222076B4004D8CF0 /* ReportTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTypeModel.swift; sourceTree = "<group>"; };
 		9B7732B2222FCA9E0099A4D4 /* Straat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Straat.entitlements; sourceTree = "<group>"; };
+		9B8CB45A22C1421C002B1838 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Straat/services/Utils/AuthService.swift; sourceTree = SOURCE_ROOT; };
 		9BA851A52225E10700E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9BA851A62225E10800E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Registration.strings; sourceTree = "<group>"; };
 		9BA851AD2225E13400E872D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -188,11 +192,13 @@
 		9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		9BBABAA5221F4AE000DBC284 /* MediaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaService.swift; sourceTree = "<group>"; };
 		9BCA30CC225C6DB700702C1F /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketIOManager.swift; path = Straat/services/Utils/SocketIOManager.swift; sourceTree = SOURCE_ROOT; };
+		9BD812A222CF31C6003A2BDB /* UtilsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UtilsService.swift; path = Straat/services/Utils/UtilsService.swift; sourceTree = SOURCE_ROOT; };
 		9BE18355220DE75B00981F3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
 		9BE5D8EA22195A9F0041FE8A /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryModel.swift; sourceTree = "<group>"; };
 		9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryModel.swift; sourceTree = "<group>"; };
 		9BECD55C22207A9D004989A2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		9BEEC6ED22E1A5720018D9D2 /* HostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HostService.swift; path = Straat/services/Utils/HostService.swift; sourceTree = SOURCE_ROOT; };
 		D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -550,6 +556,9 @@
 				9B2EC5352232E1AD00257649 /* TeamService.swift */,
 				4335FF372243583D00A1C6AA /* ChatService.swift */,
 				9BCA30CC225C6DB700702C1F /* SocketIOManager.swift */,
+				9B8CB45A22C1421C002B1838 /* AuthService.swift */,
+				9BD812A222CF31C6003A2BDB /* UtilsService.swift */,
+				9BEEC6ED22E1A5720018D9D2 /* HostService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -695,6 +704,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
@@ -706,6 +716,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
@@ -743,6 +754,7 @@
 				9B0948BE2212BC15004CE4CB /* RegistrationStep2VC.swift in Sources */,
 				438B8FC22248100800FFA4B3 /* TeamChatListTVC.swift in Sources */,
 				4335FF3422434C3B00A1C6AA /* ChatTVC.swift in Sources */,
+				9BD812A322CF31C6003A2BDB /* UtilsService.swift in Sources */,
 				43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */,
 				4392B5772221298B0001A7E0 /* ProfileVC.swift in Sources */,
 				432D6605223AA68A005F382D /* TeamMemberVC.swift in Sources */,
@@ -777,6 +789,7 @@
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
 				4335FF3222434C1C00A1C6AA /* ChatVC.swift in Sources */,
 				435E4CB222465DD900A6AAC2 /* TeamChatTVC.swift in Sources */,
+				9BEEC6EE22E1A5720018D9D2 /* HostService.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				43130E262221DB800074AD85 /* SecondScreenVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
@@ -784,6 +797,7 @@
 				43130E242221CB5A0074AD85 /* ViewReportVC.swift in Sources */,
 				438B8FBD2247E56100FFA4B3 /* TextViewPlaceholder.swift in Sources */,
 				4368EB12222973CC00EA03FE /* TeamDetailsVC.swift in Sources */,
+				9B8CB45B22C1421C002B1838 /* AuthService.swift in Sources */,
 				4392B57B222129A80001A7E0 /* FeedbackVC.swift in Sources */,
 				9BBABAA2221F3AAB00DBC284 /* PhotoModel.swift in Sources */,
 				4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */,

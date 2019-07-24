@@ -43,16 +43,17 @@ extension ViewReportVC {
         let message = uds.string(forKey: report_message)
         let imageUrls = uds.array(forKey: report_images) as! [String]
         
-        let fname = uds.string(forKey: user_fname)
-        let lname = uds.string(forKey: user_lname)
-        let fullname = fname! + " " + lname!
+//        let fname = uds.string(forKey: user_fname)
+//        let lname = uds.string(forKey: user_lname)
+        let fullname = uds.string(forKey: report_reporter_fullname)
+        let reporterUsername = uds.string(forKey: report_reporter_username)
         
         self.location.text = address
         self.date.text = date
         self.status.text = status
         self.mainCategoryName.text = category
         self.message.text = message
-        self.reportedBy.text = fullname
+        self.reportedBy.text = reporterUsername
         
         self.initImageViews(imageUrls: imageUrls)
         print("report fullname: \(String(describing: fullname))")

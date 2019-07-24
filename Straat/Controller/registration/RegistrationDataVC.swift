@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class RegistrationDataVC: UIViewController {
     
@@ -126,6 +127,22 @@ class RegistrationDataVC: UIViewController {
         }
     }
     
+    @IBAction func houseNumberDidChange(_ sender: Any) {
+        print("HOUSE_NUMBER: \(self.postNumberTxtBox.text)")
+        let postCode = postCodeTxtBox.text
+        let houseNum = postNumberTxtBox.text
+        
+        if postCode != "" && postCode!.count >= 6 && houseNum != "" {
+            self.callPostCodeApi(postCode: postCode!, number: houseNum!){ (success, postalInfo, message) in
+                if success == true {
+                    self.townTxtBox.text = postalInfo!.city
+                    self.streetTxtBox.text = postalInfo!.street
+                }
+            }
+        }
+    }
+    
+    
     @IBAction func emailTextField(_ sender: UITextField) {
     }
     
@@ -139,10 +156,61 @@ class RegistrationDataVC: UIViewController {
         let desc = NSLocalizedString("username-info", comment: "")
         defaultDialog(vc: self, title: title, message: desc)
     }
+    
+    @IBAction func onPasswordDoneEditting(_ sender: Any) {
+        if !isValidAllDataInputs() {
+            disableNextStepButton()
+        } else {
+            enableNextStepButton()
+        }
+    }
+    
+    @IBAction func onPasswordTextChange(_ sender: Any) {
+        if !isValidAllDataInputs() {
+            disableNextStepButton()
+        } else {
+            enableNextStepButton()
+        }
+    }
 }
 
 //for input validations
 extension RegistrationDataVC {
+    
+    func isValidAllDataInputs () -> Bool {
+        var isValid = false
+        
+        isFnameValid = (firstnameTxtBox?.text!.isValidDescription())!
+        isLnameValid = (lastnameTxtBox?.text!.isValidDescription())!
+        isPostalCodeValid = (postNumberTxtBox?.text!.isValid())!
+        isPostalNumberValid = (postNumberTxtBox?.text!.isValid())!
+        isEmailValid = (emailTxtBox?.text!.isValidEmail())!
+        isNumberValid = (mobileNumberTxtBox?.text!.isMobileNumberValid())!
+        isUserValid = (usernameTxtBox?.text!.isValid())!
+        isPassValid = (passwordTxtBox?.text!.isValidPassword())!
+        if
+            (
+                firstnameTxtBox?.text!.isValidDescription())!
+            && (lastnameTxtBox?.text!.isValidDescription())!
+            && (usernameTxtBox?.text!.isValid())!
+            && (postCodeTxtBox?.text!.isValid())!
+            && (postNumberTxtBox?.text!.isValid())!
+//            && (streetTxtBox?.text!.isValid())!
+//            &&(townTxtBox?.text!.isValid())!
+            && (emailTxtBox?.text!.isValidEmail())!
+            && (mobileNumberTxtBox?.text!.isMobileNumberValid())!
+            && (passwordTxtBox?.text!.isValidPassword())!
+            && self.isTACAccepted != nil && self.isTACAccepted!
+        {
+            
+            
+            isValid = true
+        }
+        print("TAC_VALUE: \(self.isTACAccepted != nil), \(self.isTACAccepted!)")
+        print("PASSWORD_IS_VALID: \((passwordTxtBox?.text!.isValidPassword())!)")
+        print("INPUT_IS_VALID: \(isValid)")
+        return isValid
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
@@ -154,12 +222,13 @@ extension RegistrationDataVC {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        let authService = AuthService()
         
         textField.resignFirstResponder()
         switch textField {
             case firstnameTxtBox:
                 debugPrint("firstname")
-                if textField.text?.isValid() ?? false {
+                if textField.text?.isValidDescription() ?? false {
 					self.isFnameValid = true
                     checkTextFieldValues()
 					
@@ -172,7 +241,7 @@ extension RegistrationDataVC {
                     disableNextStepButton()
                 }
             case lastnameTxtBox:
-                if textField.text?.isValid() ?? false {
+                if textField.text?.isValidDescription() ?? false {
 					self.isLnameValid = true
                     checkTextFieldValues()
                 } else {
@@ -195,8 +264,22 @@ extension RegistrationDataVC {
 						usernameTxtBox.becomeFirstResponder()
 						disableNextStepButton()
 					} else {
-						self.isUserValid = true
-						checkTextFieldValues()
+						
+                        authService.validateRegistrationInput(type: "username", value: usernameTxtBox.text ?? "") { (isValid) in
+                            
+                            if (isValid) {
+                                self.isUserValid = true
+                                self.checkTextFieldValues()
+                            
+                            } else {
+                                self.errorDesc = NSLocalizedString("invalid-username", comment: "")
+                                validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+                                
+                                self.isUserValid = false
+                                self.usernameTxtBox.becomeFirstResponder()
+                                self.disableNextStepButton()
+                            }
+                        }
 					}
 
                 } else {
@@ -234,11 +317,25 @@ extension RegistrationDataVC {
                 }
             case emailTxtBox:
                 if textField.text?.isValidEmail() ?? false {
-                    emailTxtBox.backgroundColor = UIColor .clear
-					self.isEmailValid = true
-                    checkTextFieldValues()
+                    authService.validateRegistrationInput(type: "email", value: emailTxtBox.text ?? "") { (isValid) in
+                        if (isValid) {
+                            self.emailTxtBox.backgroundColor = UIColor .clear
+                            self.isEmailValid = true
+                            self.checkTextFieldValues()
+                        } else {
+                            self.emailTxtBox.backgroundColor = UIColor .red
+                            self.errorDesc = NSLocalizedString("invalid-email-address", comment: "")
+                            validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+                            
+                            self.isEmailValid = false
+                            self.emailTxtBox.becomeFirstResponder()
+                            self.disableNextStepButton()
+                        }
+                    }
                 } else {
-                    emailTxtBox.backgroundColor = UIColor .red
+                    if (emailTxtBox.text != "") {
+                        emailTxtBox.backgroundColor = UIColor .red
+                    }
                     errorDesc = NSLocalizedString("invalid-email-address", comment: "")
                     validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
 					
@@ -251,9 +348,22 @@ extension RegistrationDataVC {
                 if textField.text?.isMobileNumberValid() ?? false {
 					let checkPrefix = textField.text?.prefix(2)
 					if checkPrefix == "06" {
-                        mobileNumberTxtBox.backgroundColor = UIColor .clear
-						self.isNumberValid = true
-						checkTextFieldValues()
+                        
+                        authService.validateRegistrationInput(type: "phoneNumber", value: mobileNumberTxtBox.text ?? "") { (isValid) in
+                            print("MOBILE_IS_VALID: \(isValid)")
+                            if (isValid) {
+                                self.mobileNumberTxtBox.backgroundColor = UIColor .clear
+                                self.isNumberValid = true
+                                self.checkTextFieldValues()
+                            } else {
+                                self.errorDesc = NSLocalizedString("invalid-mobile-number", comment: "")
+                                validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+                                
+                                self.isNumberValid = true
+                                self.mobileNumberTxtBox.becomeFirstResponder()
+                                self.disableNextStepButton()
+                            }
+                        }
 					} else {
                         mobileNumberTxtBox.backgroundColor = UIColor .red
                         let desc = NSLocalizedString("mobile-prefix-error", comment: "")
@@ -264,7 +374,9 @@ extension RegistrationDataVC {
 						disableNextStepButton()
 					}
                 } else {
-                    mobileNumberTxtBox.backgroundColor = UIColor .red
+                    if (mobileNumberTxtBox.text != "") {
+                        mobileNumberTxtBox.backgroundColor = UIColor .red
+                    }
                     if (textField.text?.count)! < 10 {
                         errorDesc = NSLocalizedString("invalid-mobile-number-length", comment: "")
                         validationDialog(vc: self, title: errorTitle, message: errorDesc, buttonText: "Ok")
@@ -341,7 +453,7 @@ extension RegistrationDataVC {
 			}
 		}
 		
-		if numberOfFalse > 0 {
+		if numberOfFalse > 0 || !isValidAllDataInputs() {
 			disableNextStepButton()
 		} else {
 			enableNextStepButton()
@@ -458,28 +570,60 @@ extension RegistrationDataVC {
                 // loadingDismiss()
                 
             } else if let data = response {
-                
+                let json = JSON(response ?? [:])
+                print(json.string ?? "")
 				let dataObject = data["_embedded"] as? Dictionary <String, Any> ?? [:]
                 
 				let addresses = dataObject["addresses"] as? [Dictionary<String, Any>]
-				
-				if addresses?.count ?? 0 > 0 {
-					let postalData = addresses?[0]
-					let postcode = postalData?["postcode"] as? String
-					let municipality = postalData?["municipality"] as? String
-					let city = postalData?["city"] as? Dictionary<String, Any>
-					let cityLabel = city?["label"] as? String
-					let street = postalData?["street"] as? String
-					
-					let postalInfo = PostalModel(postcode: postcode, municipality: municipality, city: cityLabel, street: street)
-					
-					completion(true, postalInfo, "Success")
-				} else {
-					completion(false, nil, "Error in Response")
-				}
                 
-				
-                print("response:  \(String(describing: dataObject))")
+				// update host data here
+                
+                let hostJson = data["_host"] as? Dictionary <String, Any> ?? nil
+                
+                if hostJson != nil {
+                    let id = hostJson?["_id"] as? String
+                    let lat = hostJson?["lat"] as? Double
+                    let long = hostJson?["long"] as? Double
+                    let email = hostJson?["email"] as? String
+                    let hostName = hostJson?["hostName"] as? String
+                    let username = hostJson?["username"] as? String
+                    let streetName = hostJson?["streetName"] as? String
+                    let city = hostJson?["city"] as? String
+                    let country = hostJson?["country"] as? String
+                    let postalCode = hostJson?["postalCode"] as? String
+                    let phoneNumber = hostJson?["phoneNumber"] as? String
+                    let isVolunteer = hostJson?["isVolunteer"] as? Bool
+                    let language = hostJson?["language"] as? String
+                    let isSpecific = hostJson?["isSpecific"] as? String
+                    
+                    let host = HostModel(hostID: id, hostName: hostName, hostLat: lat, hostLong: long, hostEmail: email, username: username, streetName: streetName, city: city, country: country, postalCode: postalCode, phoneNumber: phoneNumber, isVolunteer: isVolunteer, language: language, isSpecific: isSpecific)
+                    
+                    self.saveToLocalData(host: host) {success, message in
+                        if addresses?.count ?? 0 > 0 {
+                            let postalData = addresses?[0]
+                            let postcode = postalData?["postcode"] as? String
+                            let municipality = postalData?["municipality"] as? String
+                            let city = postalData?["city"] as? Dictionary<String, Any>
+                            let cityLabel = city?["label"] as? String
+                            let street = postalData?["street"] as? String
+                            
+                            let postalInfo = PostalModel(postcode: postcode, municipality: municipality, city: cityLabel, street: street)
+                            
+                            completion(true, postalInfo, "Success")
+                        } else {
+                            completion(false, nil, "Error in Response")
+                        }
+                        
+                        
+                        print("response:  \(String(describing: response))")
+                    }
+                } else {
+                    
+                    let title = NSLocalizedString("error-response", comment: "")
+                    let desc = NSLocalizedString("invalid-post-code", comment: "")
+                    defaultDialog(vc: self, title: title, message: desc)
+                }
+                
                 
             }
             loadingDismiss()
@@ -591,6 +735,26 @@ extension RegistrationDataVC {
                 defaultDialog(vc: self, title: "Empty Fields", message: desc)
             }
         }
+    }
+    
+    typealias cb = ( Bool, String?) -> Void
+    func saveToLocalData (host: HostModel, completion: @escaping cb) {
+        let uds = UserDefaults.standard;
+        
+        uds.set(host.id, forKey: host_reg_id)
+        uds.set(host.lat, forKey: host_reg_lat)
+        uds.set(host.long, forKey: host_reg_long)
+        uds.set(host.email, forKey: host_reg_email)
+        uds.set(host.city, forKey: host_reg_city)
+        uds.set(host.country, forKey: host_reg_country)
+        uds.set(host.hostName, forKey: host_reg_host_name)
+        uds.set(host.isVolunteer, forKey: host_reg_is_volunteer)
+        uds.set(host.postalCode, forKey: host_reg_postal_code)
+        uds.set(host.phoneNumber, forKey: host_reg_phone_number)
+        uds.set(host.language, forKey: host_reg_language)
+        uds.set(host.isSpecific, forKey: host_is_specific)
+        
+        completion(true, "Success")
     }
     
 }

@@ -32,7 +32,7 @@ extension RegistrationStep2VC {
     // register functions here
     func goToStep3 (isVolunteer: Bool) -> Void {
         let prefix = "reg-user-data-"
-        let uds = UserDefaults.init()
+        let uds = UserDefaults.standard
         uds.set(isVolunteer, forKey: prefix + "isVolunteer")
         pushToNextVC(sbName: "Registration", controllerID: "step3VC", origin: self)
     }

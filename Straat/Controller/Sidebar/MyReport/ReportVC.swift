@@ -150,6 +150,8 @@ extension ReportVC : UITableViewDelegate, UITableViewDataSource {
         
         let fullname = "\(String(describing: reportModel.reporter?.firstname)) \(String(describing: reportModel.reporter?.lastname))"
         
+        let reporterUsername = reportModel.reporter?.username
+        
         uds.set(reportModel.mainCategory?.name, forKey: report_category)
         uds.set(reportModel.status, forKey: report_status_detail_view)
         uds.set(reportModel.description, forKey: report_message)
@@ -159,6 +161,7 @@ extension ReportVC : UITableViewDelegate, UITableViewDataSource {
         uds.set(reportImages, forKey: report_images)
         uds.set(reportModel.createdAt, forKey: report_created_at)
         uds.set(fullname, forKey: report_reporter_fullname)
+        uds.set(reporterUsername, forKey: report_reporter_username)
         
     }
     

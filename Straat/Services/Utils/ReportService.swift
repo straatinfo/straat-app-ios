@@ -7,8 +7,11 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class ReportService {
+    
+    let uds = UserDefaults.standard
     
     let apiHandler = ApiHandler()
     init () {
@@ -87,8 +90,14 @@ class ReportService {
 
                 completion(false, error.localizedDescription)
             } else if let data = response {
-				debugPrint("report sending: \(data)")
+                let json = JSON(data)
+                let jsonData = json["data"]
+				debugPrint("report sending: \(jsonData)")
                 let desc = NSLocalizedString("send-report-success", comment: "")
+                if let reportId = jsonData["_id"].string {
+                    print("REPORT_ID: \(reportId)")
+                    self.uds.set(reportId, forKey: new_sent_report)
+                }
                 completion(true, desc)
             }
         }
@@ -151,7 +160,7 @@ class ReportService {
         parameters["language"] = "nl"
         parameters["_reporter"] = reporterId
         
-        let url = "\(report_near)/\(long)/\(lat)/\(radius)"
+        let url = "\(report_near)/\(long)/\(lat)/\(10000)"
         
         apiHandler.executeWithHeaders(URL(string: url)!, parameters: parameters, method: .get, destination: .queryString, headers: [:]) { (response, err) in
             

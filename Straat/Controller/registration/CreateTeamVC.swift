@@ -15,6 +15,10 @@ class CreateTeamVC: UIViewController {
     let mediaService = MediaService()
 	var teamLogoMetaData : Dictionary<String,Any>? = [:]
 	var isVolunteer: Bool?
+    
+    @IBOutlet weak var registerButton: UIButton!
+    var isTeamNameValid: Bool = false
+    var isTeamEmailValid: Bool = false
 	
     @IBOutlet weak var teamNameTxtBox: UITextField!
     @IBOutlet weak var teamEmailTxtBox: UITextField!
@@ -25,7 +29,7 @@ class CreateTeamVC: UIViewController {
         super.viewDidLoad()
 		
 		let prefix = "reg-user-data-"
-		let uds = UserDefaults.init()
+		let uds = UserDefaults.standard
 		self.isVolunteer = uds.bool(forKey: prefix + "isVolunteer")
         // Do any additional setup after loading the view.
     }
@@ -44,11 +48,14 @@ class CreateTeamVC: UIViewController {
         loadingShow(vc: self)
         self.register() { (success, message) in
             if success == true {
+    
                 let uds = UserDefaults.standard;
-                let prefix = "user-data-"
-                let userId = uds.object(forKey: prefix + "id") as? String
-
-				if self.isVolunteer == false {
+                let prefix = "reg-user-data-"
+                // let userId = uds.object(forKey: prefix + "id") as? String
+                let userIsVolunteer = uds.bool(forKey: prefix + "isVolunteer")
+                print("USER_IS_VOLUNTEER: \(userIsVolunteer)")
+				if userIsVolunteer == false {
+                    self.removeInputs()
 					let msgTitle = NSLocalizedString("registration-title", comment: "")
 					let msgDesc = NSLocalizedString("registration-message", comment: "")
 					
@@ -60,6 +67,7 @@ class CreateTeamVC: UIViewController {
 					self.present(alertController, animated: true, completion: nil)
 
 				} else {
+                    self.removeInputs()
 					pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
 				}
 
@@ -97,6 +105,45 @@ extension CreateTeamVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let authService = AuthService()
+        textField.resignFirstResponder()
+        switch textField {
+        case self.teamNameTxtBox:
+            if textField.text?.isValidDescription() ?? false {
+                
+                authService.validateRegistrationInput(type: "teamName", value: self.teamNameTxtBox.text ?? "") { (isValid) in
+                    if (isValid) {
+                        self.isTeamNameValid = true
+                        self.checkTextFieldValues()
+                    } else {
+                        let errorTitle = NSLocalizedString("error", comment: "")
+                        let errorMessage = NSLocalizedString("team-name-already-in-use", comment: "")
+                        validationDialog(vc: self, title: errorTitle, message: errorMessage, buttonText: "Ok")
+                        
+                        self.isTeamNameValid = false
+                        self.teamNameTxtBox.becomeFirstResponder()
+                        self.disableCreateTeamButton()
+                    }
+                }
+            } else {
+                self.isTeamNameValid = false
+                self.teamNameTxtBox.becomeFirstResponder()
+                disableCreateTeamButton()
+            }
+        case self.teamEmailTxtBox:
+            if textField.text?.isValidEmail() ?? false {
+                self.isTeamEmailValid = true
+                checkTextFieldValues()
+            } else {
+                self.isTeamEmailValid = false
+                self.teamEmailTxtBox.becomeFirstResponder()
+                disableCreateTeamButton()
+            }
+        default:break
+        }
     }
     
 }
@@ -163,9 +210,45 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
 //        }
 //
 //    }
+    
+    func checkTextFieldValues() {
+        let bools = [self.isTeamNameValid, self.isTeamEmailValid]
+        
+        var numberOfTrue = 0
+        var numberOfFalse = 0
+        
+        for bool in bools {
+            if bool {
+                numberOfTrue += 1
+            } else {
+                numberOfFalse += 1
+            }
+        }
+        
+        if numberOfFalse > 0 {
+            disableCreateTeamButton()
+        } else {
+            enableCreateTeamButton()
+        }
+        
+        debugPrint("nmber of true: \(numberOfTrue)")
+        debugPrint("nmber of flase: \(numberOfFalse)")
+        
+    }
+    
+    func disableCreateTeamButton() {
+        self.registerButton.isEnabled = false
+        self.registerButton.backgroundColor = UIColor.lightGray
+    }
+    
+    func enableCreateTeamButton() {
+        self.registerButton.isEnabled = true
+        self.registerButton.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+        debugPrint("enable next step")
+    }
 
     func getInputs () -> UserRegistrationModel {
-        let uds = UserDefaults.init()
+        let uds = UserDefaults.standard
         let prefix = "reg-user-data-"
         
         let gender = uds.object(forKey: prefix + "gender") as? String? ?? ""
@@ -299,6 +382,11 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
 				userTeamModel.saveTeamToLocalData()
 				userOtherModel.saveOtherToLocalData()
 				userActiveDesignModel.saveActiveDesignToLocalData()
+                
+                let uds = UserDefaults.standard
+                let userToken = dataObject["token"] as? String ?? ""
+                uds.set(userToken, forKey: token)
+                
                 completion(true, "Success")
 
                 print("response:  \(String(describing: data))")
@@ -306,6 +394,33 @@ extension CreateTeamVC : UINavigationControllerDelegate, UIImagePickerController
             }
         }
 		
+    }
+    
+    func removeInputs () {
+        let uds = UserDefaults.standard
+        let prefix = "reg-user-data-"
+        
+        uds.removeObject(forKey: prefix + "gender")
+        uds.removeObject(forKey: prefix + "fname")
+        uds.removeObject(forKey: prefix + "lname")
+        
+        uds.removeObject(forKey: prefix + "username")
+        uds.removeObject(forKey: prefix + "userPrefix")
+        
+        uds.removeObject(forKey: prefix + "postalCode")
+        uds.removeObject(forKey: prefix + "postalNumber")
+        uds.removeObject(forKey: prefix + "street")
+        uds.removeObject(forKey: prefix + "town")
+        uds.removeObject(forKey: prefix + "email")
+        uds.removeObject(forKey: prefix + "phoneNumber")
+        uds.removeObject(forKey: prefix + "password")
+        uds.removeObject(forKey: prefix + "tac")
+        
+        uds.removeObject(forKey: prefix + "isVolunteer")
+        
+        uds.removeObject(forKey: prefix + "teamName")
+        uds.removeObject(forKey: prefix + "teamId")
+        uds.removeObject(forKey: prefix + "teamEmail")
     }
     
 }

@@ -51,7 +51,7 @@ extension ViewMapReportVC {
         
         let fname = uds.string(forKey: user_fname)
         let lname = uds.string(forKey: user_lname)
-        let fullname = fname! + " " + lname!
+        let fullname = uds.string(forKey: report_reporter_username)
         
         // Change "New" to "Nieuw"
         status = status == "NEW" ? "NIEUW" : "NEW"

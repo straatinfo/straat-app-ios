@@ -68,6 +68,12 @@ import GameplayKit
         
     }
 
+    func alertDialogWithPositiveButton (vc: UIViewController, title: String, message: String, positiveBtnName: String, handler: @escaping (UIAlertAction) -> Void) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: positiveBtnName, style: .default, handler: handler))
+        vc.present(alertController, animated: true)
+    }
+
     func validationDialog( vc: UIViewController, title : String? , message : String? , buttonText: String) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

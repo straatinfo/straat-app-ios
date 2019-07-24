@@ -94,6 +94,7 @@
 		9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */; };
 		9BE5D8EF22195B860041FE8A /* SubCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */; };
 		9BECD55D22207A9D004989A2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BECD55C22207A9D004989A2 /* UserService.swift */; };
+		9BEEC6EE22E1A5720018D9D2 /* HostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEEC6ED22E1A5720018D9D2 /* HostService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,6 +198,7 @@
 		9BE5D8EC22195B530041FE8A /* MainCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryModel.swift; sourceTree = "<group>"; };
 		9BE5D8EE22195B860041FE8A /* SubCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryModel.swift; sourceTree = "<group>"; };
 		9BECD55C22207A9D004989A2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		9BEEC6ED22E1A5720018D9D2 /* HostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HostService.swift; path = Straat/services/Utils/HostService.swift; sourceTree = SOURCE_ROOT; };
 		D18593043328EDDCC1CC42BA /* Pods-Straat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Straat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Straat/Pods-Straat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -556,6 +558,7 @@
 				9BCA30CC225C6DB700702C1F /* SocketIOManager.swift */,
 				9B8CB45A22C1421C002B1838 /* AuthService.swift */,
 				9BD812A222CF31C6003A2BDB /* UtilsService.swift */,
+				9BEEC6ED22E1A5720018D9D2 /* HostService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
 				4335FF3222434C1C00A1C6AA /* ChatVC.swift in Sources */,
 				435E4CB222465DD900A6AAC2 /* TeamChatTVC.swift in Sources */,
+				9BEEC6EE22E1A5720018D9D2 /* HostService.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
 				43130E262221DB800074AD85 /* SecondScreenVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,

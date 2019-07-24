@@ -96,3 +96,11 @@ let reporter_id = "reporter_id"
 
 // new report
 let new_sent_report = "new_sent_report"
+
+// report host
+let report_host_id = "report_host_id"
+let report_is_volunteer = "report_is_volunteer"
+let report_host_name = "report_host_name"
+let report_host_email = "report_host_email"
+let report_host_long = "report_host_long"
+let report_host_lat = "report_host_lat"

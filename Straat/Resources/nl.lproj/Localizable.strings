@@ -133,3 +133,7 @@
 "language" = "nl";
 
 "date-locale" = "nl_NL";
+
+"error-reporting-outside-netherlands" = "Je wilde een melding doen buiten Nederland. Op dit moment werkt de app alleen binnen Nederland. De melding wordt gedelete.";
+
+"error-host-not-found" = "Host niet gevonden";

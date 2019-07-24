@@ -42,6 +42,8 @@ class MainVC: UIViewController {
     var userLong : Double!
     var reportTypeArr = ["All", "Public Spaces", "Suspicious Situation"]
     var mapZoom : Float = 16.0
+    
+    var loadFromInit = true
 	
 	//user defaults
 	let uds = UserDefaults.standard
@@ -49,15 +51,17 @@ class MainVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadFromInit = true
         self.createMenu()
         self.navColor()
         SocketIOManager.shared.connectSocket() // --> should only called once
         // SocketIOManager.shared.getNewMessage() // --> can add callback
         //loadInfo()
+        self.initMapView(reportType: "All", reportId: nil)
+        self.initView()
         authService.userRefresh { success in
             if (success) {
-                self.initMapView(reportType: "All", reportId: nil)
-                self.initView()
+  
             } else {
                 let alert = UIAlertController(title: "Your token has expired.", message: "Please login again", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -82,6 +86,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func showSendReport(_ sender: Any) {
+        loadFromInit = false
 		let teamId = self.uds.string(forKey: user_team_id) ?? nil
 		let isTeamApproved = self.uds.bool(forKey: user_team_is_approved)
 		let isVolunteer = self.uds.bool(forKey: user_is_volunteer)
@@ -104,7 +109,6 @@ class MainVC: UIViewController {
 			} else {
 
 				self.requestPermission { (hasGranted, result) in
-					
 					for markerReport in self.markerReports {
 						markerReport.map?.clear()
 					}
@@ -114,7 +118,6 @@ class MainVC: UIViewController {
 						self.makeNotifConstraint.constant = 0
 						self.sendReport.isHidden = true
 						animateLayout(view: self.view, timeInterval: 0.6)
-						
 					} else {
                         self.getAddressFromLatLon(lat: hostLat, long: hostLong) { (success, location) in
                             // defaultDialog(vc: self, title: "Permission", message: result)
@@ -297,13 +300,64 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         let userID = userModel.getDataFromUSD(key: user_id)
         let hostLat = userModel.host_lat ?? uds.double(forKey: host_reg_lat)
         let hostLong = userModel.host_long ?? uds.double(forKey: host_reg_long)
-        let userRadius : Double = 300
-        
+        let userRadius : Double = 10000
+        print("HOST_COORDINATES: (\(hostLong), \(hostLat))")
         loadingShow(vc: self)
         
         self.initMapCamera(lat: hostLat, long: hostLong)
         self.initMapRadius(lat: hostLat, long: hostLong)
 		
+        print("user_id: \(userModel.getDataFromUSD(key: user_id))")
+        print("host_lat_mapview: \(hostLat)")
+        print("host_long_mapview: \(hostLong)")
+        
+        self.requestPermission {
+            (success, string) in
+        }
+        
+        reportService.getReportNear(reporterId: userID, lat: hostLat, long: hostLong, radius: userRadius) { (success, message, reportModel) in
+            
+            if success {
+                for reportMap in reportModel! {
+                    if reportType == "All" {
+                        self.reportMarker(mView: self.mapView, reportMapModel: reportMap, reportId: reportId)
+                    } else if reportType == reportMap.reportType?.code {
+                        self.reportMarker(mView: self.mapView, reportMapModel: reportMap, reportId: reportId)
+                    } else {
+                        loadingDismiss()
+                    }
+                }
+                print("REPORTS_LOADED")
+                // self.uds.removeObject(forKey: new_sent_report)
+            } else {
+                print("ERROR_REPORTS_LOADED")
+                let title = NSLocalizedString("fetching-near-reports", comment: "")
+                let desc = NSLocalizedString("no-available-reports", comment: "")
+                defaultDialog(vc: self, title: title, message: desc)
+                loadingDismiss()
+            }
+        }
+        
+        
+    }
+    
+    // init map view with custome coordinates
+    func initMapViewCustom(lat: Double, long: Double, reportType: String, reportId: String?) -> Void {
+        
+        let reportService = ReportService()
+        let uds = UserDefaults.standard
+        
+        let userModel = UserModel()
+        let userID = userModel.getDataFromUSD(key: user_id)
+        let hostLat = userModel.host_lat ?? uds.double(forKey: host_reg_lat)
+        let hostLong = userModel.host_long ?? uds.double(forKey: host_reg_long)
+        let userRadius : Double = 10000
+        print("HOST_COORDINATES: (\(hostLong), \(hostLat))")
+        loadingShow(vc: self)
+        
+        self.initMapCamera(lat: lat, long: lat)
+        self.initMapRadius(lat: hostLat, long: hostLong)
+        
         print("user_id: \(userModel.getDataFromUSD(key: user_id))")
         print("host_lat_mapview: \(hostLat)")
         print("host_long_mapview: \(hostLong)")
@@ -323,6 +377,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
                 print("REPORTS_LOADED")
                 // self.uds.removeObject(forKey: new_sent_report)
             } else {
+                print("ERROR_REPORTS_LOADED")
                 let title = NSLocalizedString("fetching-near-reports", comment: "")
                 let desc = NSLocalizedString("no-available-reports", comment: "")
                 defaultDialog(vc: self, title: title, message: desc)
@@ -505,6 +560,31 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             
         })
         
+        getHostNameFromGeocode(lat: marker.position.latitude, long: marker.position.longitude) {
+            hostName in
+            
+            let hostService = HostService()
+            
+            hostService.getHostByName(hostName: hostName) {
+                success, host in
+                
+                if success && host != nil {
+                    self.hostSelectionBasedOnLoc(host: host!)
+                    print("HOST_DATA: ID: \(host?.id!), hostName: \(host?.hostName)")
+                } else {
+                    // add alert dialog here
+                    let title = NSLocalizedString("error-host-not-found", comment: "")
+                    let message = NSLocalizedString("error-reporting-outside-netherlands", comment: "")
+                    // defaultDialog(vc: self, title: title, message: message)
+                    alertDialogWithPositiveButton(vc: self, title: title, message: message, positiveBtnName: "OK") { UIAlertAction in
+                        print("RELOADING")
+                        pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+                    }
+                    
+                }
+            }
+        }
+        
     }
 
     // creating custom marker
@@ -651,6 +731,44 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         
     }
     
+    // getting host name from geocode
+    func getHostNameFromGeocode (lat: Double , long: Double, completion: @escaping (String) -> Void) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let lat: Double = lat
+        let lon: Double = long
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = lat
+        center.longitude = lon
+        
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        var hostName: String = ""
+        
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                    completion("")
+                }
+                if placemarks != nil {
+                    debugPrint(placemarks ?? "")
+                    let pm = placemarks! as [CLPlacemark]
+                    
+                    if pm.count > 0 {
+                        let pm = placemarks![0]
+                    
+                        if pm.locality != nil {
+                            hostName = pm.locality!
+                        }
+                        
+                        
+                        completion(hostName)
+                        
+                    }
+                }
+        })
+    }
+    
     //getting user's location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
@@ -665,6 +783,33 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
                 self.initMapCamera(lat: locValue.latitude, long: locValue.longitude)
                 self.customMarker (mView : self.mapView, marker: self.marker, title: "Report Category", address : response, lat : locValue.latitude , long : locValue.longitude)
                 self.initMapRadius(lat: hostLat, long: hostLong)
+                
+                if !self.loadFromInit {
+                    self.getHostNameFromGeocode(lat: locValue.latitude, long: locValue.longitude) {
+                        hostName in
+                        
+                        let hostService = HostService()
+                        
+                        hostService.getHostByName(hostName: hostName) {
+                            success, host in
+                            
+                            if success && host != nil {
+                                self.hostSelectionBasedOnLoc(host: host!)
+                                print("HOST_DATA: ID: \(host?.id!), hostName: \(host?.hostName)")
+                            } else {
+                                // add alert dialog here
+                                let title = NSLocalizedString("error-host-not-found", comment: "")
+                                let message = NSLocalizedString("error-reporting-outside-netherlands", comment: "")
+                                // defaultDialog(vc: self, title: title, message: message)
+                                alertDialogWithPositiveButton(vc: self, title: title, message: message, positiveBtnName: "OK") { UIAlertAction in
+                                    print("RELOADING")
+                                    pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+                                }
+                                
+                            }
+                        }
+                    }
+                }
             } else {
                 let desc = NSLocalizedString("unidentified-location", comment: "")
                 defaultDialog(vc: self, title: "Unidentified Location", message: desc)
@@ -751,6 +896,14 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
 		self.sendReport.isEnabled = true
 		self.sendReport.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
 	}
+    
+    func hostSelectionBasedOnLoc (host: HostModel) -> Void {
+        uds.set(host.id, forKey: report_host_id)
+        uds.set(host.hostName, forKey: report_host_name)
+        uds.set(host.long, forKey: report_host_long)
+        uds.set(host.lat, forKey: report_host_lat)
+        uds.set(host.email, forKey: report_host_email)
+    }
 }
 
 extension GMSMarker {

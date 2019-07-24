@@ -31,6 +31,10 @@ extension String {
         let stringDate = dateFormatter.date(from: self)
         return dateFormat.string(for: stringDate) ?? self
     }
+    
+    func replaceSpace () -> String {
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? self
+    }
 }
 
 class UtilsService {

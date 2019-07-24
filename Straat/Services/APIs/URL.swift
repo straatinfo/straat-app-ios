@@ -7,8 +7,8 @@
 
 import Foundation
 
-let baseUrl = "https://straatinfo-backend-v2-prod.herokuapp.com" // production
-// let baseUrl = "https://straatinfo-backend-v2.herokuapp.com" // testing
+// let baseUrl = "https://straatinfo-backend-v2-prod.herokuapp.com" // production
+let baseUrl = "https://straatinfo-backend-v2.herokuapp.com" // testing
 
 let root = baseUrl + "/v1/api/"
 let root_v2 = baseUrl + "/v2/api/"
@@ -64,6 +64,9 @@ let team_chat_list = root_v2 + "conversation?type=PRIVATE,GROUP,TEAM"
 
 // utilities
 let registration_input_validation = baseUrl + "/v1/api/registration/validation"
+
+// Host
+let get_host_by_name = baseUrl + "/v3/api/hosts/searchByName/" // parameter: hostName
 /*
  REPORT TYPES
  {

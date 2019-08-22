@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class TeamModel {
     var teamId: String?
@@ -21,6 +22,8 @@ class TeamModel {
     var requestUserEmail: String?
     var requestUserFname: String?
     var requestUserLname: String?
+    var conversationId: String?
+    var unreadConversationCount: Int? = 0
     
     init(teamId: String?, teamName: String?, teamEmail: String?) {
         self.teamId = teamId
@@ -54,5 +57,14 @@ class TeamModel {
         self.requestUserId = fromTeamMembers["_id"] as? String
         self.requestUserFname = fromTeamMembers["fname"] as? String
         self.requestUserLname = fromTeamMembers["lname"] as? String
+    }
+    
+    init(json: JSON) {
+        self.teamId = json["_id"].string
+        self.teamName = json["teamName"].string
+        self.teamEmail = json["teamEmail"].string
+        self.profilePic = json["_profilePic"]["secure_url"].string
+        self.conversationId = json["_conversation"]["_id"].string
+        self.unreadConversationCount = json["_conversation"]["unreadMessageCount"].int ?? 0
     }
 }

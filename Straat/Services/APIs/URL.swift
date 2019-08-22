@@ -60,7 +60,8 @@ let chat_list = root_v2 + "message"
 let send_message = root_v2 + "message/?_conversation="
 let create_conversation = root_v2 + "conversation?type=PRIVATE"
 let team_chat_list = root_v2 + "conversation?type=PRIVATE,GROUP,TEAM"
-
+let unread_messages = baseUrl + "/v3/api/message/unread" // params: conversationId, userId
+let get_unread_message_count = baseUrl + "/v3/api/message/unread/all/count" // params: userId
 
 // utilities
 let registration_input_validation = baseUrl + "/v1/api/registration/validation"

@@ -14,8 +14,8 @@
 /* Class = "UILabel"; text = "00-00-0000"; ObjectID = "5ZI-7H-ivp"; */
 "5ZI-7H-ivp.text" = "00-00-0000";
 
-/* Class = "UITabBarItem"; title = "Chat"; ObjectID = "6NA-Mb-UO7"; */
-"6NA-Mb-UO7.title" = "Chat";
+/* Class = "UITabBarItem"; title = "Team"; ObjectID = "6NA-Mb-UO7"; */
+"6NA-Mb-UO7.title" = "Team";
 
 /* Class = "UILabel"; text = "Report Category"; ObjectID = "6bd-Rt-G6N"; */
 "6bd-Rt-G6N.text" = "Rapport Categorie";
@@ -65,8 +65,8 @@
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "HIG-5t-uxD"; */
 "HIG-5t-uxD.title" = "Item";
 
-/* Class = "UITabBarItem"; title = "Messages"; ObjectID = "Hmf-dK-cbB"; */
-"Hmf-dK-cbB.title" = "Berichten";
+/* Class = "UITabBarItem"; title = "Government"; ObjectID = "Hmf-dK-cbB"; */
+"Hmf-dK-cbB.title" = "Overheid";
 
 /* Class = "UILabel"; text = "Report Category"; ObjectID = "MLQ-Gc-ogG"; */
 "MLQ-Gc-ogG.text" = "Rapport categorie";
@@ -110,8 +110,8 @@
 /* Class = "UILabel"; text = "Feedback"; ObjectID = "YF4-qa-cIY"; */
 "YF4-qa-cIY.text" = "Terugkoppeling";
 
-/* Class = "UILabel"; text = "Messages"; ObjectID = "aQ6-vN-yzN"; */
-"aQ6-vN-yzN.text" = "Berichten";
+/* Class = "UILabel"; text = "Government"; ObjectID = "aQ6-vN-yzN"; */
+"aQ6-vN-yzN.text" = "Overheid";
 
 /* Class = "UILabel"; text = "This report is made by:"; ObjectID = "anl-K5-iGo"; */
 "anl-K5-iGo.text" = "Dit rapport is gemaakt door:";
@@ -130,6 +130,9 @@
 
 /* Class = "UIButton"; normalTitle = "Messages"; ObjectID = "cg8-UA-nBt"; */
 "cg8-UA-nBt.normalTitle" = "Berichten";
+
+/* Class = "UIButton"; normalTitle = "Messages"; ObjectID = "8Is-a3-iGP"; */
+"8Is-a3-iGP.text" = "Berichten";
 
 /* Class = "UIButton"; normalTitle = "Make A Notification"; ObjectID = "dk0-vB-j9c"; */
 "dk0-vB-j9c.normalTitle" = "MAAK MELDING AAN";

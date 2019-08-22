@@ -14,34 +14,23 @@ class PublicSpaceVC: UIViewController {
     @IBOutlet weak var publicReportTableView: UITableView!
     
     let reportService = ReportService()
+    let chatService = ChatService()
     var reports = [ReportModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         // Do any additional setup after loading the view.
+        self.onNewMessageReceived()
+        // self.tabBarItem.badgeValue = "10"
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let uds = UserDefaults.standard
-        let userId = uds.string(forKey: user_id) ?? ""
-        
-        loadingShow(vc: self)
         self.reports.removeAll()
-        self.reportService.getPublicReport(reporterId: userId, reportType: "A") { (success, message, reportModels) in
-            
-            if success {
-                for reportModel in reportModels {
-                    self.reports.append(reportModel)
-//                    debugPrint("report description public: \(String(describing: reportModel.description))")
-//                    debugPrint("_conversation: \(String(describing: reportModel.conversationId))")
-//                    debugPrint("messages: \(String(describing: reportModel.messages?.count))")
-                }
-                loadingDismiss()
-                self.publicReportTableView.reloadData()
-            }
-        }
+        self.loadChatRooms()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
 
 
@@ -58,32 +47,39 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let user = UserModel()
         let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! PublicSpaceTVC
         
-		let reports = self.reports[indexPath.row]
-		let mainCategory = reports.mainCategory?.name
-		let date = reports.createdAt
-		let messageCount = reports.messages!.count
-        
-        row.reportId = reports.reporter?.id
-        row.conversationId = reports.conversationId
-        row.reportCategory.text = mainCategory
-        row.dateOfReport.text = date
-        row.messageCount.text = "\(String(describing: messageCount))"
-
-
-        if (self.reports[indexPath.row].attachments?.count)! > 0 {
+        if self.reports.count > 0 && self.reports.count - 1 >= indexPath.row {
+            let report = self.reports[indexPath.row]
+            let mainCategory = report.mainCategory?.name
+            let date = report.createdAt
+            let messageCount = report.unreadConversationCount ?? 0
             
-            let rootImage = self.reports[indexPath.row].attachments![0]
-            let imageUrl = rootImage["secure_url"] as? String
+            row.reportCategory.text = mainCategory
+            row.dateOfReport.text = date?.toDate(format: nil)
+            row.messageCount.text = "\(String(describing: messageCount))"
             
-            self.getReportImage(imageUrl: imageUrl!) { (hasImage, image) in
-                if hasImage {
-                    row.reportImage?.image = image
+            row.reportId = report.id
+            row.conversationId = report.conversationId
+            row.chatTitle = report.mainCategory?.name
+            row.userId = user.id
+            
+            row.isUrgentMarker.isHidden = !(report.isUrgent != nil && report.isUrgent!)
+            
+            
+            if (self.reports[indexPath.row].attachments?.count)! > 0 {
+                
+                let rootImage = self.reports[indexPath.row].attachments![0]
+                let imageUrl = rootImage["secure_url"] as? String
+                
+                self.getReportImage(imageUrl: imageUrl!) { (hasImage, image) in
+                    if hasImage {
+                        row.reportImage?.image = image
+                    }
                 }
+                
             }
-            
         }
 
         
@@ -108,6 +104,7 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
                 reportImageURL.append(image["secure_url"] as! String)
             }
         }
+    
         
         self.saveToUserDefault(reportModel: reportModel, reportImages: reportImageURL)
 //        pushToNextVC(sbName: "Main", controllerID: "ViewReportID", origin: self)        
@@ -149,4 +146,48 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     
+}
+
+// chat functions function
+extension PublicSpaceVC {
+    func updateBadgeValue () {
+        let user = UserModel()
+        
+        self.chatService.getUnreadMessageCount(userId: user.id!) { (success, response) in
+            if success && response != nil {
+                let unreadMessageCount = response!["a"].int
+                if unreadMessageCount != nil && unreadMessageCount! > 0 {
+                    self.tabBarItem.badgeValue = String(unreadMessageCount!)
+                } else {
+                    self.tabBarItem.badgeValue = nil
+                }
+            }
+        }
+    }
+    
+    func loadChatRooms () {
+        let user = UserModel()
+        self.reportService.getPublicReport(reporterId: user.id!, reportType: "A") { (success, message, reportModels) in
+            
+            if success {
+                for reportModel in reportModels {
+                    self.reports.append(reportModel)
+                    //                    debugPrint("report description public: \(String(describing: reportModel.description))")
+                    //                    debugPrint("_conversation: \(String(describing: reportModel.conversationId))")
+                    //                    debugPrint("messages: \(String(describing: reportModel.messages?.count))")
+                }
+                self.publicReportTableView.reloadData()
+            }
+        }
+    }
+}
+
+// socket management
+extension PublicSpaceVC {
+    func onNewMessageReceived () {
+        SocketIOManager.shared.getNewMessage { (success) in
+            self.reports.removeAll()
+            self.loadChatRooms()
+        }
+    }
 }

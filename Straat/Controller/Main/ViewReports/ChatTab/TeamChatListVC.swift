@@ -14,18 +14,28 @@ class TeamChatListVC: UIViewController {
 	let chatService = ChatService()
 	var userId: String?
 	var chatModel = [ChatModel]()
+    var teamList = [TeamModel]()
+    let teamService = TeamService()
 	
 	@IBOutlet weak var teamChatListTableView: UITableView!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+        self.onNewMessageReceived()
+        self.teamList.removeAll()
+        self.loadChatRooms()
 
         // Do any additional setup after loading the view.
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.initView()
+        self.teamList.removeAll()
+        self.loadChatRooms()
 	}
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
 
 }
 
@@ -38,23 +48,9 @@ extension TeamChatListVC {
 		self.userId = userId
 		
 		debugPrint("userId: \(userId)")
-		
-		loadingShow(vc: self)
-			self.chatModel.removeAll()
-		self.chatService.getTeamMemberConversation(userId: userId) { (success, message, chatModels) in
-
-			if success {
-				for chatModelItem in chatModels! {
-//					if chatModelItem.author?.id != userId {
-						self.chatModel.append(chatModelItem)						
-						debugPrint("chatmodeitem: \(chatModelItem.imageUrl)")
-//					}
-				}
-				loadingDismiss()
-				self.teamChatListTableView.reloadData()
-			}
-			
-		}
+    
+        self.teamList.removeAll()
+        self.loadChatRooms()
 	}
 	
 	func getTeamImage(imageUrl: String, completion: @escaping (Bool, UIImage?) -> Void) -> Void {
@@ -76,39 +72,96 @@ extension TeamChatListVC {
 extension TeamChatListVC : UITextViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.chatModel.count
+		return self.teamList.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
-		let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! TeamChatListTVC
-		let teamMember = self.chatModel[indexPath.row]
-		
-		row.reporterId = teamMember.author?.id
-		row.convoId = teamMember.convoId
-		row.teamName.text = teamMember.author?.userName
-		row.teamLatestMessage.text = teamMember.body
-
-		debugPrint("team image url: \(teamMember.imageUrl)")
-		if teamMember.imageUrl != "" {
-
-			self.getTeamImage(imageUrl: (teamMember.imageUrl)!) { (success, image) in
-				if success {
-					row.teamLogo.image = image
-				}
-			}
-		}
+        /*
+         var reporterId: String?
+         var convoId: String?
+         var conversationId: String?
+         var type = "REPORT"
+         var teamId: String?
+         var chatTitle: String?
+         var userId: String?
+         */
+        
+        let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! TeamChatListTVC
+        if self.teamList.count > 0 && self.teamList.count - 1 >= indexPath.row {
+            let user = UserModel()
+            let team = self.teamList[indexPath.row]
+            
+            row.teamName.text = team.teamName
+            row.teamId = team.teamId
+            row.userId = user.id
+            row.chatTitle = "\(team.teamName ?? "TEAM") - Team chat"
+            row.type = "TEAM"
+            row.convoId = team.conversationId
+            row.conversationId = team.conversationId
+            row.reporterId = user.id
+            
+            
+            debugPrint("team image url: \(team.profilePic)")
+            if team.profilePic != "" {
+                
+                self.getTeamImage(imageUrl: (team.profilePic)!) { (success, image) in
+                    if success {
+                        row.teamLogo.image = image
+                        row.messageCounter.text = "\(team.unreadConversationCount ?? 0)"
+                    }
+                }
+            }
+        }
 		
 		return row
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let teamMember = self.chatModel[indexPath.row]
-		let convoId = teamMember.convoId
+		let team = self.teamList[indexPath.row]
+		let convoId = team.conversationId
 		
 	}
 
-	
+}
 
-	
+// chat setup
+extension TeamChatListVC {
+    func updateBadgeValue () {
+        let user = UserModel()
+        
+        self.chatService.getUnreadMessageCount(userId: user.id!) { (success, response) in
+            if success && response != nil {
+                let unreadMessageCount = response!["team"].int
+                if unreadMessageCount != nil && unreadMessageCount! > 0 {
+                    self.tabBarItem.badgeValue = String(unreadMessageCount!)
+                } else {
+                    self.tabBarItem.badgeValue = nil
+                }
+            }
+        }
+    }
+    
+    func loadChatRooms () {
+        let user = UserModel()
+        let userId = user.id
+        teamService.getTeamListByUserId(userId: userId!) { (success, message, teams) in
+            self.teamList.removeAll()
+            if success && teams != nil {
+                for team in teams! {
+                    self.teamList.append(team)
+                }
+                self.teamChatListTableView.reloadData()
+            }
+        }
+    }
+}
+
+
+extension TeamChatListVC {
+    func onNewMessageReceived () {
+        SocketIOManager.shared.getNewMessage { (success) in
+            self.teamList.removeAll()
+            self.loadChatRooms()
+        }
+    }
 }

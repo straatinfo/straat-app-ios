@@ -93,6 +93,13 @@ let team_conversation_id = "team_conversation_id"
 let report_conversation_id = "report_conversation_id"
 let reporter_id = "reporter_id"
 
+let chat_vc_id = "chat_vc_id"
+let chat_vc_conversation_id = "chat_vc_conversation_id"
+let chat_vc_user_id = "chat_vc_user_id"
+let chat_vc_title = "chat_vc_title"
+let chat_vc_type = "chat_vc_type"
+let chat_vc_team_id = "chat_vc_team_id"
+let chat_vc_report_id = "chat_vc_report_id"
 
 // new report
 let new_sent_report = "new_sent_report"

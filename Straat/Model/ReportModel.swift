@@ -20,6 +20,7 @@ class ReportModel : SendReportModel {
     var status : String?
     var conversationId: String?
     var messages: [String]?
+    var unreadConversationCount: Int?
     
     var reportImage : UIImage? = UIImage(named: "AppIcon")
     
@@ -97,6 +98,7 @@ class ReportModel : SendReportModel {
         
         let conversation = report["_conversation"] as? [String:Any] ?? [:]
         self.conversationId = conversation["_id"] as? String? ?? ""
+        self.unreadConversationCount = conversation["unreadMessageCount"] as? Int? ?? 0
         self.messages = conversation["messages"] as? [String] ?? []
 
     }

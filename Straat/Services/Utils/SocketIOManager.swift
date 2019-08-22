@@ -7,6 +7,7 @@
 
 import UIKit
 import SocketIO
+import SwiftyJSON
 
 //let uds = UserDefaults.standard
 //
@@ -88,6 +89,30 @@ class SocketIOManager: NSObject {
         data["_conversation"] = conversationId
         data["text"] = text
         data["_id"] = userId // should be source id
+        socket.emit("send-message-v2", data)
+    }
+    
+    func sendMessage(payload: JSON) {
+        var data: [String: Any] = [:]
+        if let user = payload["user"].string {
+            data["user"] = user
+        }
+        if let id = payload["_id"].string {
+            data["_id"] = id
+        }
+        if let conversationId = payload["_conversation"].string {
+            data["_conversation"] = conversationId
+        }
+        if let text = payload["text"].string {
+            data["text"] = text
+        }
+        if let reportId = payload["reportId"].string {
+            data["_report"] = reportId
+        }
+        if let teamId = payload["_team"].string {
+            data["_team"] = teamId
+        }
+
         socket.emit("send-message-v2", data)
     }
 }

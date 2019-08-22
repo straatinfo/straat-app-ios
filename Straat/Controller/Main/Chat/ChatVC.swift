@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ChatVC: UIViewController {
 
@@ -17,10 +18,16 @@ class ChatVC: UIViewController {
 	var userId: String?
 	var conversationId: String?
 	var chatModel = [ChatModel]()
+    let uds = UserDefaults.standard
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		self.disableSendMessageButton()
+        self.readMessages()
+        
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
+        self.navigationItem.backBarButtonItem?.title = ""
         
         SocketIOManager.shared.getNewMessage() { (success) in
             print("Receiving new message")
@@ -41,10 +48,22 @@ class ChatVC: UIViewController {
 //		}
 
     }
+    
+    
 
 	override func viewWillAppear(_ animated: Bool) {
-		self.initView()
+        self.initView()
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
+        self.navigationItem.backBarButtonItem?.title = ""
 	}
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.readMessages()
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic-map")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic-map")
+        self.navigationItem.backBarButtonItem?.title = ""
+    }
 	
 	@IBAction func sendMessage(_ sender: UIButton) {
 //        self.chatService.sendMessage(authorId: self.userId!, message: self.messageContent.text!, conversationId: self.conversationId!) { (success, message) in
@@ -67,17 +86,41 @@ class ChatVC: UIViewController {
         
         let authorId = self.userId ?? ""
         let message = self.messageContent.text ?? ""
-        let conversationId = self.conversationId ?? ""
+    
+        let userId = uds.string(forKey: user_id) ?? ""
+        let reporterId = uds.string(forKey: reporter_id) ?? ""
+        let conversationId = uds.string(forKey: chat_vc_conversation_id) ?? ""
+        let chatTitle = uds.string(forKey: chat_vc_title) ?? "CHAT"
+        let chatType = uds.string(forKey: chat_vc_type) ?? ""
+        let teamId = uds.string(forKey: chat_vc_team_id)
+        let reportId = uds.string(forKey: chat_vc_report_id)
         
-        SocketIOManager.shared.sendMessage(conversationId: conversationId, userId: authorId, text: message)
-        SocketIOManager.shared.onSendMessageSuccess() { success in
-            let alertController = UIAlertController(title: "Send Message", message: "Success", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
-                    // self.navigationController?.popViewController(animated: true)
-                    self.removeConvoLocalData()
-                    self.messageContent.text = ""
-                }))
-            self.present(alertController, animated: true, completion: nil)
+        self.navigationItem.title = chatTitle
+        
+        switch chatType {
+        case "REPORT":
+            print("CHAT_TYPE: REPORT, conversationID: \(conversationId)")
+            var json = JSON()
+            json["_report"].string = reportId
+            json["text"].string = message
+            json["_conversation"].string = conversationId
+            
+            json["_id"].string = userId
+            json["user"].string = userId
+            json["type"].string = "REPORT"
+            SocketIOManager.shared.sendMessage(payload: json)
+        case "TEAM":
+            print("CHAT_TYPE: REPORT, conversationID: \(conversationId)")
+            var json = JSON()
+            json["_team"].string = teamId
+            json["text"].string = message
+            json["_conversation"].string = conversationId
+            json["_id"].string = userId
+            json["user"].string = userId
+            json["type"].string = "TEAM"
+            SocketIOManager.shared.sendMessage(payload: json)
+        default:
+            SocketIOManager.shared.sendMessage(conversationId: conversationId, userId: authorId, text: message)
         }
         
 	}
@@ -85,33 +128,61 @@ class ChatVC: UIViewController {
 }
 
 extension ChatVC : UITextFieldDelegate {
+
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        // textField.resignFirstResponder()
+        switch textField {
+        case messageContent:
+            if textField.text?.isValidDescription() ?? false {
+                checkTextFieldValues()
+            } else {
+                // messageContent.becomeFirstResponder()
+                //                validationDialog(vc: self, title: "Message content invalid", message: "Please check your message if empty or does have special character", buttonText: "Ok")
+                disableSendMessageButton()
+            }
+        default:
+            break
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.addTarget(self, action: #selector(ChatVC.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+    }
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
-		textField.resignFirstResponder()
+		// textField.resignFirstResponder()
 		switch textField {
 		case messageContent:
 			if textField.text?.isValidDescription() ?? false {
 				checkTextFieldValues()
 			} else {
-				messageContent.becomeFirstResponder()
-				validationDialog(vc: self, title: "Message content invalid", message: "Please check your message if empty or does have special character", buttonText: "Ok")
+				// messageContent.becomeFirstResponder()
+//                validationDialog(vc: self, title: "Message content invalid", message: "Please check your message if empty or does have special character", buttonText: "Ok")
 				disableSendMessageButton()
 			}
 		default:
 		break
 		}
 	}
+
+   
 	
 	
     func initView() -> Void {
-		
+		print("LOADING INIT VIEW")
         let uds = UserDefaults.standard
-        let userId = uds.string(forKey: user_id) ?? ""
-        let reporterId = uds.string(forKey: reporter_id) ?? ""
-        let conversationId = uds.string(forKey: report_conversation_id) ?? ""
-		
+        let userId = uds.string(forKey: chat_vc_user_id) ?? ""
+        let reporterId = uds.string(forKey: chat_vc_user_id) ?? ""
+        let conversationId = uds.string(forKey: chat_vc_conversation_id) ?? ""
+        let chatTitle = uds.string(forKey: chat_vc_title) ?? "CHAT"
+        let chatType = uds.string(forKey: chat_vc_type) ?? ""
+        let teamId = uds.string(forKey: chat_vc_team_id)
+		let reportId = uds.string(forKey: chat_vc_report_id)
 		self.userId = userId
-		self.conversationId = conversationId
+		self.conversationId = uds.string(forKey: chat_vc_conversation_id)
+        
+        self.navigationItem.title = chatTitle
 		
         debugPrint("reporterId: \(reporterId)")
         debugPrint("convoId: \(conversationId)")
@@ -125,6 +196,25 @@ extension ChatVC : UITextFieldDelegate {
             }
             loadingDismiss()
 			self.chatTableView.reloadData()
+            if self.chatModel.count > 1 {
+                let lastIndex = IndexPath(row: self.chatModel.count - 1, section: 0)
+                print("LAST_INDEX: \(lastIndex)")
+                self.chatTableView.scrollToRow(at: lastIndex, at: UITableView.ScrollPosition.bottom, animated: false)
+            }
+            
+        }
+        
+        SocketIOManager.shared.onSendMessageSuccess() { success in
+//            let alertController = UIAlertController(title: "Send Message", message: "Success", preferredStyle: .alert)
+//            alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
+//                // self.navigationController?.popViewController(animated: true)
+//                self.removeConvoLocalData()
+//                self.messageContent.text = ""
+//            }))
+//            self.present(alertController, animated: true, completion: nil)
+            self.removeConvoLocalData()
+            self.messageContent.text = ""
+            self.disableSendMessageButton()
         }
     }
 	
@@ -185,8 +275,7 @@ extension ChatVC : UITableViewDelegate, UITableViewDataSource {
 		if chatModel.author?.id == self.userId {
 			row = tableView.dequeueReusableCell(withIdentifier: "row2", for: indexPath) as? ChatTVC
 			row?.yourMessage.text = chatModel.body ?? ""
-			row?.yourTime.text = chatModel.createdAt ?? ""
-			debugPrint("your message")
+            row?.yourTime.text = chatModel.createdAt?.toDate(format: "d MMM yyyy HH:MM") ?? ""
 //			debugPrint("userid: \(chatModel.author?.id)")
 //			debugPrint("usernmae: \(chatModel.author?.userName)")
 //			debugPrint("message: \(chatModel.body)")
@@ -198,7 +287,7 @@ extension ChatVC : UITableViewDelegate, UITableViewDataSource {
 			row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as? ChatTVC
 			row?.otherUsername.text = chatModel.author?.userName ?? ""
 			row?.otherMessage.text = chatModel.body ?? ""
-			row?.otherTime.text = chatModel.createdAt ?? ""
+            row?.otherTime.text = chatModel.createdAt?.toDate(format: "d MMM yyyy HH:MM") ?? ""
 			debugPrint("row2")
 
 		}
@@ -208,4 +297,16 @@ extension ChatVC : UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	
+}
+
+
+extension ChatVC {
+    func readMessages () {
+        let conversationId = uds.string(forKey: chat_vc_conversation_id) ?? ""
+        let userId = uds.string(forKey: user_id) ?? ""
+        
+        self.chatService.readUnreadMessages(conversationId: conversationId, userId: userId) { (success, message) in
+            
+        }
+    }
 }

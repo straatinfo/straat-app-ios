@@ -141,3 +141,6 @@
 "error-reporting-outside-netherlands" = "You're trying to create a report outside The Netherlands. Currently the app only works within The Netherlands. This report will be deleted.";
 
 "error-host-not-found" = "Host not found";
+
+
+"please-wait" = "Please wait";

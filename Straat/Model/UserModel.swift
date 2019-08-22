@@ -61,7 +61,25 @@ class UserModel {
     let uds = UserDefaults.standard
     
     init() {
-        
+        self.id = uds.string(forKey: user_id)
+        self.firstname = uds.string(forKey: user_fname)
+        self.lastname = uds.string(forKey: user_lname)
+        self.email = uds.string(forKey: user_email)
+        self.username = uds.string(forKey: user_username)
+        self.houseNumber = uds.string(forKey: user_house_number)
+        self.postalCode = uds.string(forKey: user_postal_code)
+        self.phoneNumber = uds.string(forKey: user_phone_number)
+        self.streetName = uds.string(forKey: user_street_name)
+        self.city = uds.string(forKey: user_city)
+        self.gender = uds.string(forKey: user_gender)
+        self.isVolunteer = uds.bool(forKey: user_is_volunteer)
+        self.profileImageUrl = uds.string(forKey: user_actdes_image_url)
+        self.host_id = uds.string(forKey: user_host_id)
+        self.host_name = uds.string(forKey: user_host_name)
+        self.host_email = uds.string(forKey: user_host_email)
+        self.host_long = uds.double(forKey: user_host_long)
+        self.host_lat = uds.double(forKey: user_host_lat)
+        self.userToken = uds.string(forKey: token)
     }
     
     init (fromUds: Bool) {

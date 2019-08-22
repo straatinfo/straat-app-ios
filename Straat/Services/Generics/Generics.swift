@@ -27,13 +27,13 @@ import GameplayKit
         view.alpha = 0.5
         view.tag = 101
         
-        loadingLabel.text = "Please Wait"
+        loadingLabel.text = NSLocalizedString("please-wait", comment: "")// "Please Wait"
         loadingLabel.textColor = UIColor.white
         loadingLabel.font = loadingLabel.font.withSize(15)
         loadingLabel.textAlignment = .center
         
         activityIndicator!.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-        activityIndicator!.center = view.center
+        activityIndicator!.center = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
         activityIndicator!.hidesWhenStopped = true
         activityIndicator!.style = UIActivityIndicatorView.Style.white
         activityIndicator!.isUserInteractionEnabled = false

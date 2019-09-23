@@ -66,7 +66,7 @@ class SendPublicSpaceReportVC: UIViewController {
     var mapViewDelegate : MapViewDelegate?
 	var isMainCategValid: Bool = false
 	var isSubCategValid: Bool = false
-	var isReportDescriptionValid: Bool = false
+	var isReportDescriptionValid: Bool = true
 	var isMainCategHasSubCateg: Bool = false
 	
 	var errorTitle: String? = ""
@@ -179,7 +179,7 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
                     self.mainCategoryId = checkMainCateg.id
 					self.isMainCategValid = true
                     //                    print("selectedItem maincateg: \(checkMainCateg.id)")
-				} else if textField.text == "Select Main Category" {
+				} else if textField.text == "Select Main Category" || textField.text == "Selecteer Hoofdcategorie" {
 					self.isMainCategValid = false
 					self.disableSendReportButton()
 				}
@@ -213,6 +213,7 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
                 self.emergencyNotifConstraint.constant = 20
                 animateLayout(view: self.view, timeInterval: 0.8)
             } else {
+                self.isSubCategValid = true
 				self.isMainCategHasSubCateg = false
 				
                 self.viewAppearance(views: showViews, isHidden: true)
@@ -223,6 +224,7 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
         case subCategDropDown:
             // getting subcategory id
             for subCategory in self.subCategory {
+                print("SUB_CAT_VAL\(textField.text)")
                 for subCateg in subCategory {
                     if textField.text == subCateg.name {
                         self.subCategoryId = subCateg.id
@@ -230,13 +232,14 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
 						self.checkValues()
 						
                         print("selectedItem subcateg: \(String(describing: subCateg.id))" )
-					} else if textField.text == "Select Sub Category" {
+					} else if textField.text == "Select Sub Category" || textField.text == "Selecteer Subcategorie" {
 						self.isSubCategValid = false
 						disableSendReportButton()
 					}
                 }
                 
             }
+            self.checkValues()
         break
         default:
             break
@@ -248,15 +251,15 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
 		switch textView {
 		case self.reportDescription:
 			if textView.text.isValidDescription() {
-				self.isReportDescriptionValid = true
-				self.checkValues()
+//                self.isReportDescriptionValid = true
+//                self.checkValues()
 			} else {
-				self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
-				validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
-				
-				self.isReportDescriptionValid = false
-				self.reportDescription.becomeFirstResponder()
-				disableSendReportButton()
+//                self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
+//                validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+//
+//                self.isReportDescriptionValid = false
+//                self.reportDescription.becomeFirstResponder()
+//                disableSendReportButton()
 			}
 		default:
 			break
@@ -275,7 +278,7 @@ extension SendPublicSpaceReportVC : UITextFieldDelegate, UITextViewDelegate {
 	
 	func checkValues() {
 
-		var allBool = [self.isMainCategValid, self.isReportDescriptionValid]
+		var allBool = [self.isMainCategValid, self.isSubCategValid, true]
 		var numberOfTrue = 0
 		var numberOfFalse = 0
 		

@@ -13,11 +13,14 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         print("Loading ctb")
         // Do any additional setup after loading the view.
-        self.socketSetup()
+        // self.socketSetup()
         self.updateBadgeValue()
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic-map")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic-map")
         self.navigationItem.backBarButtonItem?.title = ""
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.firebaseDelegate = self
     }
     
 //    override func viewWillLayoutSubviews() {
@@ -48,15 +51,23 @@ class CustomTabBarController: UITabBarController {
 }
 
 extension CustomTabBarController {
-    func socketSetup () {
-        SocketIOManager.shared.getNewMessage(callback: { (success) in
-           self.updateBadgeValue()
+//    func socketSetup () {
+//        SocketIOManager.shared.getNewMessage(callback: { (success) in
+//           self.updateBadgeValue()
 //            if self.badgeUpdateDelegate != nil {
 //                self.badgeUpdateDelegate.didBadgeShouldUpdate()
 //            }
-        })
+//        })
+//    }
+}
+
+extension CustomTabBarController: FirebaseDelegate {
+    func newMessageReceived(conversationId: String?) {
+        print("NEWMESSAGE_RECEIVED")
+        self.updateBadgeValue()
     }
 }
+
 
 extension CustomTabBarController {
     func updateBadgeValue () {

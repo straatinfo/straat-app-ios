@@ -57,6 +57,7 @@ class UserModel {
 	var profileImageUrl: String?
     
     var userToken: String?
+    var firebaseToken: String?
 	
     let uds = UserDefaults.standard
     
@@ -80,6 +81,7 @@ class UserModel {
         self.host_long = uds.double(forKey: user_host_long)
         self.host_lat = uds.double(forKey: user_host_lat)
         self.userToken = uds.string(forKey: token)
+        self.firebaseToken = uds.string(forKey: firebase_token)
     }
     
     init (fromUds: Bool) {

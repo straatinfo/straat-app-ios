@@ -18,12 +18,19 @@ class TeamChatListVC: UIViewController {
     let teamService = TeamService()
 	
 	@IBOutlet weak var teamChatListTableView: UITableView!
+    
+    let fcmNotificationName = Notification.Name(rawValue: fcm_new_message)
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-        self.onNewMessageReceived()
+        // self.onNewMessageReceived()
         self.teamList.removeAll()
         self.loadChatRooms()
+        self.createObservers()
 
         // Do any additional setup after loading the view.
     }
@@ -102,7 +109,7 @@ extension TeamChatListVC : UITextViewDelegate, UITableViewDataSource {
             
             
             debugPrint("team image url: \(team.profilePic)")
-            if team.profilePic != "" {
+            if team.profilePic != nil && team.profilePic != "" {
                 
                 self.getTeamImage(imageUrl: (team.profilePic)!) { (success, image) in
                     if success {
@@ -163,5 +170,15 @@ extension TeamChatListVC {
             self.teamList.removeAll()
             self.loadChatRooms()
         }
+    }
+    
+    func createObservers () {
+        NotificationCenter.default.addObserver(self, selector: #selector(TeamChatListVC.getNewMessage(notification:)), name: fcmNotificationName, object: nil)
+    }
+    
+    @objc func getNewMessage (notification: NSNotification) {
+        let userInfo = notification.userInfo
+        self.teamList.removeAll()
+        self.loadChatRooms()
     }
 }

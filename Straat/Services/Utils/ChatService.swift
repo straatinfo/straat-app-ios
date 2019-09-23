@@ -180,4 +180,28 @@ class ChatService {
         }
     }
     
+    func sendMessageV2 (userId: String, text: String, conversationId: String, type: String, reportId: String?, teamId: String?, completion: @escaping(Bool) -> Void) {
+        let url = "\(send_message_v2)"
+        let user = UserModel()
+        var parameters: Parameters = [:]
+        var headers: HTTPHeaders = [:]
+        headers["Authorization"] = "Bearer \(user.userToken ?? "")"
+        parameters["user"] = userId
+        parameters["text"] = text
+        parameters["_conversation"] = conversationId
+        parameters["type"] = type
+        parameters["_report"] = reportId
+        parameters["_team"] = teamId
+        
+        apiHandler.executeWithHeaders(URL(string: url)!, parameters: parameters, method: .post, destination: .httpBody, headers: headers) { (response, err) in
+            
+            if let error = err {
+                completion(false)
+            } else {
+                completion(true)
+            }
+            
+        }
+    }
+    
 }

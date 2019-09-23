@@ -254,7 +254,7 @@ extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
 					self.checkValues()
 					
 					print("selectedItem maincateg: \(String(describing: checkMainCateg.id)) for: \(textField.text)")
-				} else if textField.text == "Select Main Category" {
+				} else if textField.text == "Select Main Category" || textField.text == "Selecteer Hoofdcategorie" {
 					self.isMainCategSelected = false
 					disableSendReportButton()
 				}
@@ -275,14 +275,14 @@ extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
 		switch textView {
 			case self.reportDescription:
 				if textView.text.isValidDescription() {
-					self.isReportDescriptionValid = true
-					self.checkValues()
+//                    self.isReportDescriptionValid = true
+//                    self.checkValues()
 				} else {
-					self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
-					validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
-					self.isReportDescriptionValid = false
-					self.reportDescription.becomeFirstResponder()
-					disableSendReportButton()
+//                    self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
+//                    validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+//                    self.isReportDescriptionValid = false
+//                    self.reportDescription.becomeFirstResponder()
+//                    disableSendReportButton()
 				}
 			case self.personsInvolvedDescription:
 				if self.isPersonInvolved {
@@ -330,7 +330,7 @@ extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
 	}
 	
 	func checkValues() {
-		var allBool = [self.isMainCategSelected, self.isReportDescriptionValid]
+		var allBool = [self.isMainCategSelected, true]
 		var numberOfTrue = 0
 		var numberOfFalse = 0
 		

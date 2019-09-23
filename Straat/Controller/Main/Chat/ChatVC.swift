@@ -19,6 +19,11 @@ class ChatVC: UIViewController {
 	var conversationId: String?
 	var chatModel = [ChatModel]()
     let uds = UserDefaults.standard
+    let fcmNotificationName = Notification.Name(rawValue: fcm_new_message)
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +33,12 @@ class ChatVC: UIViewController {
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
         self.navigationItem.backBarButtonItem?.title = ""
+        self.createObservers()
+//        SocketIOManager.shared.getNewMessage() { (success) in
+//            print("Receiving new message")
+//            self.initView()
+//        }
         
-        SocketIOManager.shared.getNewMessage() { (success) in
-            print("Receiving new message")
-            self.initView()
-        }
 		
 //		let queue = DispatchQueue(label: "convo", qos: .userInteractive)
 //		queue.async {
@@ -99,28 +105,51 @@ class ChatVC: UIViewController {
         
         switch chatType {
         case "REPORT":
-            print("CHAT_TYPE: REPORT, conversationID: \(conversationId)")
-            var json = JSON()
-            json["_report"].string = reportId
-            json["text"].string = message
-            json["_conversation"].string = conversationId
-            
-            json["_id"].string = userId
-            json["user"].string = userId
-            json["type"].string = "REPORT"
-            SocketIOManager.shared.sendMessage(payload: json)
+//            print("CHAT_TYPE: REPORT, conversationID: \(conversationId)")
+//            var json = JSON()
+//            json["_report"].string = reportId
+//            json["text"].string = message
+//            json["_conversation"].string = conversationId
+//
+//            json["_id"].string = userId
+//            json["user"].string = userId
+//            json["type"].string = "REPORT"
+//            SocketIOManager.shared.sendMessage(payload: json)
+            chatService.sendMessageV2(userId: userId, text: message, conversationId: conversationId, type: chatType, reportId: reportId, teamId: nil) { (success) in
+                
+                if success {
+                    self.messageContent.text = ""
+                    self.initView()
+                }
+            }
         case "TEAM":
-            print("CHAT_TYPE: REPORT, conversationID: \(conversationId)")
-            var json = JSON()
-            json["_team"].string = teamId
-            json["text"].string = message
-            json["_conversation"].string = conversationId
-            json["_id"].string = userId
-            json["user"].string = userId
-            json["type"].string = "TEAM"
-            SocketIOManager.shared.sendMessage(payload: json)
+//            print("CHAT_TYPE: REPORT, conversationID: \(conversationId)")
+//            var json = JSON()
+//            json["_team"].string = teamId
+//            json["text"].string = message
+//            json["_conversation"].string = conversationId
+//            json["_id"].string = userId
+//            json["user"].string = userId
+//            json["type"].string = "TEAM"
+//            SocketIOManager.shared.sendMessage(payload: json)
+            chatService.sendMessageV2(userId: userId, text: message, conversationId: conversationId, type: chatType, reportId: nil, teamId: reportId) { (success) in
+                
+                if success {
+                    self.messageContent.text = ""
+                    self.initView()
+                }
+                
+            }
         default:
-            SocketIOManager.shared.sendMessage(conversationId: conversationId, userId: authorId, text: message)
+//            SocketIOManager.shared.sendMessage(conversationId: conversationId, userId: authorId, text: message)
+            chatService.sendMessageV2(userId: userId, text: message, conversationId: conversationId, type: chatType, reportId: reportId, teamId: nil) { (success) in
+                
+                if success {
+                    self.messageContent.text = ""
+                    self.initView()
+                }
+                
+            }
         }
         
 	}
@@ -204,7 +233,7 @@ extension ChatVC : UITextFieldDelegate {
             
         }
         
-        SocketIOManager.shared.onSendMessageSuccess() { success in
+//        SocketIOManager.shared.onSendMessageSuccess() { success in
 //            let alertController = UIAlertController(title: "Send Message", message: "Success", preferredStyle: .alert)
 //            alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action:UIAlertAction) in
 //                // self.navigationController?.popViewController(animated: true)
@@ -212,10 +241,10 @@ extension ChatVC : UITextFieldDelegate {
 //                self.messageContent.text = ""
 //            }))
 //            self.present(alertController, animated: true, completion: nil)
-            self.removeConvoLocalData()
-            self.messageContent.text = ""
-            self.disableSendMessageButton()
-        }
+//            self.removeConvoLocalData()
+//            self.messageContent.text = ""
+//            self.disableSendMessageButton()
+//        }
     }
 	
 	func sendMessage() -> Void {
@@ -307,6 +336,23 @@ extension ChatVC {
         
         self.chatService.readUnreadMessages(conversationId: conversationId, userId: userId) { (success, message) in
             
+        }
+    }
+    
+    func createObservers () {
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.getNewMessage(notification:)), name: fcmNotificationName, object: nil)
+    }
+    
+    @objc func getNewMessage (notification: NSNotification) {
+        let userInfo = notification.userInfo
+        print("AUTHOR: \(userInfo?["_author"] as! String?)")
+        if let conversationId = userInfo?["_conversation"] as! String? {
+            let user = UserModel()
+            let author = userInfo?["_author"] as! String?
+            print("AUTHOR: \(author != userId)")
+            if conversationId == self.conversationId && author != userId {
+                self.initView()
+            }
         }
     }
 }

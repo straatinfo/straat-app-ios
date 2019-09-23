@@ -50,10 +50,13 @@ let user_gender = "user_gender"
 
 // token
 let token = "token"
+let firebase_token = "firebase_token"
 
 
+let report_id = "report_id"
 let report_category = "report_category"
 let report_status_detail_view = "report_status_detail_view"
+let report_status_value = "report_status_value"
 let report_message = "report_message"
 let report_address = "report_address"
 let report_lat = "report_lat"
@@ -61,8 +64,12 @@ let report_long = "report_long"
 let report_images = "report_images"
 let report_reporter_fullname = "report_reporter_fullname"
 let report_reporter_username = "report_reporter_username"
+let report_reporter_id = "report_reporter_id"
 let report_created_at = "report_created_at"
-
+let report_is_public = "report_is_public"
+let report_category_code = "report_category_code"
+let report_category_id = "report_category_id"
+let report_type_code = "report_type_code"
 
 //host
 let host_reg_id = "host_reg_id"
@@ -111,3 +118,7 @@ let report_host_name = "report_host_name"
 let report_host_email = "report_host_email"
 let report_host_long = "report_host_long"
 let report_host_lat = "report_host_lat"
+
+
+// notifications
+let fcm_new_message = "straat.info.fcm_new_message"

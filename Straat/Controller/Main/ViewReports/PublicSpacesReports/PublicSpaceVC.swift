@@ -17,10 +17,17 @@ class PublicSpaceVC: UIViewController {
     let chatService = ChatService()
     var reports = [ReportModel]()
     
+    let fcmNotificationName = Notification.Name(rawValue: fcm_new_message)
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.createObservers()
         // Do any additional setup after loading the view.
-        self.onNewMessageReceived()
+        // self.onNewMessageReceived()
         // self.tabBarItem.badgeValue = "10"
     }
     
@@ -133,16 +140,24 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
         let fullname = "\(String(describing: reportModel.reporter?.firstname)) \(String(describing: reportModel.reporter?.lastname))"
         
         uds.set(reportModel.mainCategory?.name, forKey: report_category)
-        uds.set(reportModel.status, forKey: report_status_detail_view)
+        uds.set(reportModel.getStatus(), forKey: report_status_detail_view)
+        uds.set(reportModel.status, forKey: report_status_value)
         uds.set(reportModel.description, forKey: report_message)
         uds.set(reportModel.location, forKey: report_address)
         uds.set(reportModel.lat, forKey: report_lat)
         uds.set(reportModel.long, forKey: report_long)
         uds.set(reportModel.conversationId, forKey: report_conversation_id)
         uds.set(reportImages, forKey: report_images)
-        uds.set(reportModel.createdAt, forKey: report_created_at)
+        uds.set(reportModel.createdAt?.toDate(format: nil), forKey: report_created_at)
         uds.set(fullname, forKey: report_reporter_fullname)
+        uds.set(reportModel.isPublic, forKey: report_is_public)
+        uds.set(reportModel.mainCategory?.id, forKey: report_category_id)
+        uds.set(reportModel.mainCategory?.code, forKey: report_category_code)
+        uds.set(reportModel.reportTypeCode, forKey: report_type_code)
+        uds.set(reportModel.reporterId, forKey: report_reporter_id)
+        uds.set(reportModel.id, forKey: report_id)
         
+        uds.set(reportModel.reporter?.username, forKey: report_reporter_username)
     }
     
     
@@ -167,6 +182,7 @@ extension PublicSpaceVC {
     
     func loadChatRooms () {
         let user = UserModel()
+        self.reports.removeAll()
         self.reportService.getPublicReport(reporterId: user.id!, reportType: "A") { (success, message, reportModels) in
             
             if success {
@@ -189,5 +205,15 @@ extension PublicSpaceVC {
             self.reports.removeAll()
             self.loadChatRooms()
         }
+    }
+    
+    func createObservers () {
+        NotificationCenter.default.addObserver(self, selector: #selector(PublicSpaceVC.getNewMessage(notification:)), name: fcmNotificationName, object: nil)
+    }
+    
+    @objc func getNewMessage (notification: NSNotification) {
+        let userInfo = notification.userInfo
+        self.reports.removeAll()
+        self.loadChatRooms()
     }
 }

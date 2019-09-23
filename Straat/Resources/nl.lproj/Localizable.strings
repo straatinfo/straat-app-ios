@@ -139,3 +139,26 @@
 "error-host-not-found" = "Host niet gevonden";
 
 "please-wait" = "Het laden";
+
+
+"please-wait" = "Please wait";
+
+"report-status-done" = "Afgerond";
+
+"report-status-inprogress" = "In behandeling";
+
+"report-status-expired" = "Verlopen";
+
+"report-status-new" = "Nieuw";
+
+"no" = "Nee";
+
+"yes" = "Ja";
+
+"report-update-status-notif" = "Wil je de status van deze melding veranderen naar \"afgerond\"?";
+
+"report-update-status-done" = "Je hebt de status van de melding gewijzigd";
+
+"report-make-public-notif" = "Wil je deze melding voor iedereen openbaar maken?";
+
+"report-make-public-done" = "Je hebt de melding openbaar gemaakt.";

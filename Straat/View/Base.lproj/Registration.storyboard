@@ -1079,6 +1079,9 @@
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                 <color key="value" red="0.43137254899999999" green="0.51764705879999995" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="listHeight">
+                                                                <real key="value" value="90"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
@@ -1157,7 +1160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQi-sc-49h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2882" y="45"/>
+            <point key="canvasLocation" x="2705" y="-26"/>
         </scene>
         <!--Create TeamVC-->
         <scene sceneID="5mh-Jo-yj5">
@@ -1338,7 +1341,8 @@
         <image name="upload-img" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="CUy-Y3-mFN"/>
         <segue reference="mcr-1N-n6a"/>
-        <segue reference="gIb-xv-959"/>
+        <segue reference="NUV-xW-xjc"/>
     </inferredMetricsTieBreakers>
 </document>

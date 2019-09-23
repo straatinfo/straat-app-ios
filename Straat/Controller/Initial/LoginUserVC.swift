@@ -7,6 +7,8 @@
 
 import UIKit
 import Alamofire
+import Firebase
+import FirebaseMessaging
 
 class LoginUserVC: UIViewController {
     
@@ -22,6 +24,7 @@ class LoginUserVC: UIViewController {
     override func viewDidLoad() {
         self.userModel.removeFromLocalData()
         self.disableLoginButton()
+        self.deleteFirebaseToken()
         
         errorTitle = NSLocalizedString("wrong-input", comment: "")
     }
@@ -181,4 +184,15 @@ extension LoginUserVC : UITextFieldDelegate {
     }
     
     
+}
+
+extension LoginUserVC {
+   
+    func deleteFirebaseToken () {
+        let fir = InstanceID.instanceID()
+        fir.deleteID { (error) in
+            let uds = UserDefaults.standard
+            uds.set("", forKey: firebase_token)
+        }
+    }
 }

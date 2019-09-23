@@ -144,3 +144,24 @@
 
 
 "please-wait" = "Please wait";
+
+"report-status-done" = "Done";
+
+"report-status-inprogress" = "In Progress";
+
+"report-status-expired" = "Expired";
+
+"report-status-new" = "New";
+
+"no" = "No";
+
+"yes" = "Yes";
+
+"report-update-status-notif" = "Would you like to change status to \"done\"?";
+
+"report-update-status-done" = "You changed the status of the report";
+
+"report-make-public-notif" = "Do you want to make this report public?";
+
+"report-make-public-done" = "You made the report public.";
+

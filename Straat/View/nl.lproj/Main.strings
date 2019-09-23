@@ -243,3 +243,25 @@
 "zfS-Ie-inV.text" = "Dit rapport is gemaakt door:";
 
 "7Si-RX-ovE.text" = "MAP";
+
+/* Class = "UILabel"; text = "Is Public"; ObjectID = "dNb-sL-XqB"; */
+"dNb-sL-XqB.text" = "Openbaar";
+
+/* Class = "UIButton"; text = "Change"; ObjectID = "mZr-SR-nZ0"; */
+"mZr-SR-nZ0.normalTitle" = "WIJZIG";
+
+/* Class = "UIButton"; text = "Change status"; ObjectID = "u2p-PM-T44"; */
+"u2p-PM-T44.normalTitle" = "WIJZIG STATUS";
+
+/* Class = "UIButton"; text = "Change status"; ObjectID = "y6W-HU-Cn1"; */
+"y6W-HU-Cn1.normalTitle" = "WIJZIG STATUS";
+
+/* Class = "UILabel"; text = "Is Public"; ObjectID = "jUd-o1-kj0"; */
+"jUd-o1-kj0.text" = "Openbaar";
+
+/* Class = "UIButton"; text = "Change"; ObjectID = "Qc2-5H-lSk"; */
+"Qc2-5H-lSk.normalTitle" = "WIJZIG";
+
+/* Class = "UIButton"; text = "Change status"; ObjectID = "y6W-HU-Cn1"; */
+"y6W-HU-Cn1.normalTitle" = "WIJZIG STATUS";
+

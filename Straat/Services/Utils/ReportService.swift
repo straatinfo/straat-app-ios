@@ -269,5 +269,35 @@ class ReportService {
         
     }
     
+    func updateReportStatus (reportId: String, status: String, completion: @escaping(Bool) -> Void) {
+        let user = UserModel()
+        var headers: HTTPHeaders = [:]
+        headers["Authorization"] = user.userToken
+        var parameters: Parameters = [:]
+        parameters["status"] = status
+        
+        apiHandler.executeWithHeaders(URL(string: report_api_v1 + "/" + reportId)!, parameters: parameters, method: .put, destination: .httpBody, headers: headers) { (response, err) in
+            if let error = err {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
     
+    func makeReportPublic (reportId: String, completion: @escaping(Bool) -> Void) {
+        let user = UserModel()
+        var headers: HTTPHeaders = [:]
+        headers["Authorization"] = user.userToken
+        var parameters: Parameters = [:]
+        parameters["isPublic"] = true
+        
+        apiHandler.executeWithHeaders(URL(string: report_api_v1 + "/" + reportId)!, parameters: parameters, method: .put, destination: .httpBody, headers: headers) { (response, err) in
+            if let error = err {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
 }

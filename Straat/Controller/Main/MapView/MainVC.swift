@@ -83,6 +83,18 @@ class MainVC: UIViewController {
                 self.present(alert, animated: true)
             }
         }
+        
+        self.refreshFirebaseToken { (success) in
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let parent = view.superview
+        view.removeFromSuperview()
+        view = nil
+        parent?.addSubview(view)
     }
     
     @IBAction func showSendReport(_ sender: Any) {
@@ -413,7 +425,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         marker.title = title!
         marker.snippet = address
         
-        marker.icon = UIImage(named: "pin-new")
+        marker.icon = UIImage(named: "pin-blank")
         marker.isDraggable = true
         marker.map = mView
         
@@ -433,7 +445,21 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         
         markerReport.title = reportMapModel?.mainCategory?.name?.shorten(limit: 20)
         markerReport.snippet = NSLocalizedString("view-report", comment: "") // reportMapModel?.location
-        markerReport.icon = UIImage(named: "pin-new")
+        
+        
+        switch reportMapModel?.status {
+        case "NEW":
+            markerReport.icon = UIImage(named: "pin-new")
+        case "INPROGRESS":
+            markerReport.icon = UIImage(named: "pin-inprogress")
+        case "DONE":
+            markerReport.icon = UIImage(named: "pin-done")
+        case "EXPIRED":
+            markerReport.icon = UIImage(named: "pin-expired")
+        default:
+            markerReport.icon = UIImage(named: "pin-done")
+        }
+        
         markerReport.map = mView
         // data for report view
         markerReport.reportModel = reportMapModel!
@@ -661,6 +687,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             self.saveToUserDefault(reportMapModel: marker.reportModel!, reportImages: reportImages, completion: {success in
                 if success {
                     let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewMapReportVC
+                    viewReportVC.reportDelegate = self
                     self.present(viewReportVC, animated: true, completion: nil)
                 }
             })
@@ -871,7 +898,8 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         let reporterUsername = reportMapModel.reporter?.username
         
         uds.set(reportMapModel.mainCategory?.name, forKey: report_category)
-        uds.set(reportMapModel.status, forKey: report_status_detail_view)
+        uds.set(reportMapModel.getStatus(), forKey: report_status_detail_view)
+        uds.set(reportMapModel.status, forKey: report_status_value)
         uds.set(reportMapModel.location, forKey: report_address)
         uds.set(reportMapModel.lat, forKey: report_lat)
         uds.set(reportMapModel.long, forKey: report_long)
@@ -879,10 +907,17 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         uds.set(reportMapModel.createdAt, forKey: report_created_at)
         uds.set(reporterUsername, forKey: report_reporter_username)
         
+        uds.set(reportMapModel.mainCategory?.id, forKey: report_category_id)
+        uds.set(reportMapModel.mainCategory?.code, forKey: report_category_code)
+        
+        uds.set(reportMapModel.reportTypeCode, forKey: report_type_code)
+        
         
         uds.set(fullname, forKey: report_reporter_fullname)
         uds.set(reportImages, forKey: report_images)
-        
+        uds.set(reportMapModel.reporterId, forKey: report_reporter_id)
+        uds.set(reportMapModel.id, forKey: report_id)
+        uds.set(reportMapModel.isPublic, forKey: report_is_public)
         
         completion(true)
     }
@@ -910,5 +945,31 @@ extension GMSMarker {
     var reportModel : ReportModel? {
         set(reportModel) { self.userData = reportModel }
         get { return self.userData as? ReportModel}
+    }
+}
+
+
+extension MainVC: ReportDelegate {
+    func didReportUpdated (didUpdate: Bool) {
+        if didUpdate {
+            let parent = view.superview
+            view.removeFromSuperview()
+            view = nil
+            parent?.addSubview(view)
+        }
+    }
+}
+
+extension MainVC {
+    func refreshFirebaseToken (completion: @escaping(Bool) -> Void) {
+        let firebaseToken = uds.string(forKey: firebase_token)
+        let user = UserModel()
+        let authService = AuthService()
+        if let userId = user.id, let email = user.email, let fcmToken = firebaseToken {
+            print("REFRESHING_FIREBASE_TOKEN: \(firebaseToken)")
+            if firebaseToken != "" {
+                authService.addUpdateFirebaseToken(userId: userId, email: email, firebaseToken: fcmToken, completion: completion)
+            }
+        }
     }
 }

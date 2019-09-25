@@ -90,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        self.notifyForNewMessage(userInfo: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -123,13 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID2: \(messageID)")
             let conversationId = userInfo["_conversation"] as! String?
-            firebaseDelegate.newMessageReceived(conversationId: conversationId)
+            // firebaseDelegate.newMessageReceived(conversationId: conversationId)
             self.notifyForNewMessage(userInfo: userInfo)
         }
         
         // Print full message.
         print(userInfo)
-        
         completionHandler(UIBackgroundFetchResult.newData)
     }
     // [END receive_message]
@@ -146,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // With swizzling disabled you must set the APNs token here.
         // Messaging.messaging().apnsToken = deviceToken
     }
+
 
 }
 
@@ -174,7 +175,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo["_conversation"])
         
         // Change this to your preferred presentation option
-        completionHandler([.alert, .sound])
+        // completionHandler([.alert, .sound])
     }
     
 }
@@ -216,5 +217,16 @@ extension AppDelegate {
     private func notifyForNewMessage (userInfo: [AnyHashable : Any]?) {
         let name = Notification.Name(rawValue: fcm_new_message)
         NotificationCenter.default.post(name: name, object: nil, userInfo: userInfo)
+    }
+    
+    private func goToReportsPage () {
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let reportsC = storyBoard.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+//        if reportsC != nil {
+//            reportsC.view.frame = (self.window!.frame)
+//            self.window!.addSubview(reportsC.view)
+//            self.window!.bringSubviewToFront(reportsC.view)
+//        }
+    
     }
 }

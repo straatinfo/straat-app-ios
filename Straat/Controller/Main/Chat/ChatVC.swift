@@ -13,8 +13,9 @@ class ChatVC: UIViewController {
     @IBOutlet weak var chatTableView: UITableView!
 	@IBOutlet weak var messageContent: UITextField!
 	@IBOutlet weak var sendMessageButton: UIButton!
-
-	let chatService = ChatService()
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    let chatService = ChatService()
 	var userId: String?
 	var conversationId: String?
 	var chatModel = [ChatModel]()
@@ -176,11 +177,27 @@ extension ChatVC : UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        // scrollView.contentSize.height -= 250
+    
+        
+//        scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
+        
+        chatTableView.contentInset.top += 250
+        chatTableView.contentInset.bottom += 250
+        // scrollView.contentSize.height -= 250
+        scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
+        
         textField.addTarget(self, action: #selector(ChatVC.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
     }
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		// textField.resignFirstResponder()
+        // scrollView.contentSize.height += 250
+        chatTableView.contentInset.top = 0
+        chatTableView.contentInset.bottom = 0
+        // scrollView.contentSize.height += 250
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
 		switch textField {
 		case messageContent:
 			if textField.text?.isValidDescription() ?? false {
@@ -194,6 +211,11 @@ extension ChatVC : UITextFieldDelegate {
 		break
 		}
 	}
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
    
 	

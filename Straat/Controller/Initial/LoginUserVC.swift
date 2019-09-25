@@ -192,7 +192,7 @@ extension LoginUserVC {
         let fir = InstanceID.instanceID()
         fir.deleteID { (error) in
             let uds = UserDefaults.standard
-            uds.set("", forKey: firebase_token)
+            // uds.set("", forKey: firebase_token)
         }
     }
 }

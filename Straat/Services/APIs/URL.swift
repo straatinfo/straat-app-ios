@@ -7,8 +7,8 @@
 
 import Foundation
 
-let baseUrl = "https://straatinfo-backend-v2-prod.herokuapp.com" // production
-// let baseUrl = "https://straatinfo-backend-v2.herokuapp.com" // testing
+// let baseUrl = "https://straatinfo-backend-v2-prod.herokuapp.com" // production
+let baseUrl = "https://straatinfo-backend-v2.herokuapp.com" // testing
 
 let root = baseUrl + "/v1/api/"
 let root_v2 = baseUrl + "/v2/api/"

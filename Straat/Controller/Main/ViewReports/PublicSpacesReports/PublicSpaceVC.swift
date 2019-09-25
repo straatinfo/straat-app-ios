@@ -26,6 +26,7 @@ class PublicSpaceVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createObservers()
+        self.loadChatRooms()
         // Do any additional setup after loading the view.
         // self.onNewMessageReceived()
         // self.tabBarItem.badgeValue = "10"
@@ -39,7 +40,7 @@ class PublicSpaceVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
     }
-
+    
 
 
 }

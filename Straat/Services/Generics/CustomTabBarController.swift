@@ -9,6 +9,11 @@ import UIKit
 
 class CustomTabBarController: UITabBarController {
     let chatService = ChatService()
+    let fcmNotificationName = Notification.Name(rawValue: fcm_new_message)
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Loading ctb")
@@ -21,6 +26,7 @@ class CustomTabBarController: UITabBarController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.firebaseDelegate = self
+        self.createObservers()
     }
     
 //    override func viewWillLayoutSubviews() {
@@ -104,5 +110,13 @@ extension CustomTabBarController {
                 }
             }
         }
+    }
+    
+    func createObservers () {
+        NotificationCenter.default.addObserver(self, selector: #selector(PublicSpaceVC.getNewMessage(notification:)), name: fcmNotificationName, object: nil)
+    }
+    
+    @objc func getNewMessage (notification: NSNotification) {
+        self.updateBadgeValue()
     }
 }

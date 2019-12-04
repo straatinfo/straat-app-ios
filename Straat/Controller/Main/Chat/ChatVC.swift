@@ -164,7 +164,7 @@ extension ChatVC : UITextFieldDelegate {
         // textField.resignFirstResponder()
         switch textField {
         case messageContent:
-            if textField.text?.isValidDescription() ?? false {
+            if textField.text?.hasValue() ?? false {
                 checkTextFieldValues()
             } else {
                 // messageContent.becomeFirstResponder()
@@ -182,10 +182,10 @@ extension ChatVC : UITextFieldDelegate {
         
 //        scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
         
-        chatTableView.contentInset.top += 250
-        chatTableView.contentInset.bottom += 250
+        chatTableView.contentInset.top += 300
+//        chatTableView.contentInset.bottom += 300
         // scrollView.contentSize.height -= 250
-        scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: 300), animated: true)
         
         textField.addTarget(self, action: #selector(ChatVC.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
@@ -195,12 +195,12 @@ extension ChatVC : UITextFieldDelegate {
 		// textField.resignFirstResponder()
         // scrollView.contentSize.height += 250
         chatTableView.contentInset.top = 0
-        chatTableView.contentInset.bottom = 0
+//        chatTableView.contentInset.bottom = 0
         // scrollView.contentSize.height += 250
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
 		switch textField {
 		case messageContent:
-			if textField.text?.isValidDescription() ?? false {
+			if textField.text?.hasValue() ?? false {
 				checkTextFieldValues()
 			} else {
 				// messageContent.becomeFirstResponder()

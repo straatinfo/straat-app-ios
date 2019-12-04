@@ -160,7 +160,7 @@ class ReportService {
         parameters["language"] = "nl"
         parameters["_reporter"] = reporterId
         
-        let url = "\(report_near)/\(long)/\(lat)/\(10000)"
+        let url = "\(report_near)/\(long)/\(lat)/\(100000)"
         
         apiHandler.executeWithHeaders(URL(string: url)!, parameters: parameters, method: .get, destination: .queryString, headers: [:]) { (response, err) in
             

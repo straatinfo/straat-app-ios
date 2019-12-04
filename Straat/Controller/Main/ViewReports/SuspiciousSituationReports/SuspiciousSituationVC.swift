@@ -28,6 +28,8 @@ class SuspiciousSituationVC: UIViewController {
         super.viewDidLoad()
         // self.onNewMessageReceived()
         self.createObservers()
+        self.reports.removeAll()
+        self.loadChatRooms()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +69,7 @@ extension SuspiciousSituationVC : UITableViewDataSource, UITableViewDelegate {
             row.userId = user.id
             row.isUrgentMarker.isHidden = !(report.isUrgent != nil && report.isUrgent!)
             
-            if (self.reports[indexPath.row].attachments?.count)! > 0 {
+            if self.reports[indexPath.row].attachments != nil && (self.reports[indexPath.row].attachments?.count)! > 0 {
                 
                 let rootImage = self.reports[indexPath.row].attachments![0]
                 let imageUrl = rootImage["secure_url"] as? String
@@ -78,6 +80,8 @@ extension SuspiciousSituationVC : UITableViewDataSource, UITableViewDelegate {
                     }
                 }
                 
+            } else {
+                row.reportImage?.image = UIImage(named: "logo")
             }
         }
         
@@ -171,14 +175,18 @@ extension SuspiciousSituationVC {
         let user = UserModel()
         self.reports.removeAll()
         self.reportService.getPublicReport(reporterId: user.id!, reportType: "B") { (success, message, reportModels) in
-            
+        
             if success {
-                for reportModel in reportModels {
-                    self.reports.append(reportModel)
-                    //                    debugPrint("report description suspicious: \(String(describing: reportModel.description))")
-                    //                    debugPrint("_conversation: \(String(describing: reportModel.conversationId))")
-                    //                    debugPrint("messages: \(String(describing: reportModel.messages))")
-                }
+//                for reportModel in reportModels {
+//                    self.reports.append(reportModel)
+//                    //                    debugPrint("report description suspicious: \(String(describing: reportModel.description))")
+//                    //                    debugPrint("_conversation: \(String(describing: reportModel.conversationId))")
+//                    //                    debugPrint("messages: \(String(describing: reportModel.messages))")
+//                }
+                self.reports = reportModels
+//                for i in 0...(reportModels.count - 1) {
+//                    self.reports[i] = reportModels[i]
+//                }
                 self.suspiciousReportTableView.reloadData()
             }
         }
@@ -187,12 +195,12 @@ extension SuspiciousSituationVC {
 
 // socket management
 extension SuspiciousSituationVC {
-    func onNewMessageReceived () {
-        SocketIOManager.shared.getNewMessage { (success) in
-            self.reports.removeAll()
-            self.loadChatRooms()
-        }
-    }
+//    func onNewMessageReceived () {
+//        SocketIOManager.shared.getNewMessage { (success) in
+//            self.reports.removeAll()
+//            self.loadChatRooms()
+//        }
+//    }
     
     func createObservers () {
         NotificationCenter.default.addObserver(self, selector: #selector(SuspiciousSituationVC.getNewMessage(notification:)), name: fcmNotificationName, object: nil)

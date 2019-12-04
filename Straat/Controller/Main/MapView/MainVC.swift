@@ -23,6 +23,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var sendReport: UIButton!
     @IBOutlet weak var reportTypeTextField: UITextField!
+    @IBOutlet weak var chatBarButtonItem: UIBarButtonItem!
     
     // for make notification ui view initialisation
     @IBOutlet weak var location: UILabel!
@@ -48,7 +49,12 @@ class MainVC: UIViewController {
 	//user defaults
 	let uds = UserDefaults.standard
     let authService = AuthService()
-	
+    let chatService = ChatService()
+    let fcmNotificationName = Notification.Name(rawValue: fcm_new_message)
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFromInit = true
@@ -59,8 +65,10 @@ class MainVC: UIViewController {
         //loadInfo()
         self.initMapView(reportType: "All", reportId: nil)
         self.initView()
+        self.createObservers()
         authService.userRefresh { success in
             if (success) {
+                self.updateBadge()
   
             } else {
                 let alert = UIAlertController(title: "Your token has expired.", message: "Please login again", preferredStyle: UIAlertController.Style.alert)
@@ -95,6 +103,7 @@ class MainVC: UIViewController {
         view.removeFromSuperview()
         view = nil
         parent?.addSubview(view)
+        self.updateBadge()
     }
     
     @IBAction func showSendReport(_ sender: Any) {
@@ -971,5 +980,37 @@ extension MainVC {
                 authService.addUpdateFirebaseToken(userId: userId, email: email, firebaseToken: fcmToken, completion: completion)
             }
         }
+    }
+    
+    func updateBadge () {
+        let user = UserModel()
+        self.chatService.getUnreadMessageCount(userId: user.id!) { (success, response) in
+            
+            let a = response!["a"].int
+            let b = response!["b"].int
+            let c = response!["c"].int
+            let team = response!["team"].int
+            
+            var value = a!
+            value += b!
+            value += c!
+            value += team!
+            
+            if value > 0 {
+                self.chatBarButtonItem.addBadge(number: value)
+            } else {
+                self.chatBarButtonItem.removeBadge()
+            }
+            
+            
+        }
+    }
+    
+    func createObservers () {
+        NotificationCenter.default.addObserver(self, selector: #selector(PublicSpaceVC.getNewMessage(notification:)), name: fcmNotificationName, object: nil)
+    }
+    
+    @objc func getNewMessage (notification: NSNotification) {
+        self.updateBadge()
     }
 }

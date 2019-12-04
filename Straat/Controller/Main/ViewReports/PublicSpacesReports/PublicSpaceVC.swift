@@ -26,6 +26,7 @@ class PublicSpaceVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createObservers()
+        self.reports.removeAll()
         self.loadChatRooms()
         // Do any additional setup after loading the view.
         // self.onNewMessageReceived()
@@ -76,17 +77,19 @@ extension PublicSpaceVC : UITableViewDelegate , UITableViewDataSource {
             row.isUrgentMarker.isHidden = !(report.isUrgent != nil && report.isUrgent!)
             
             
-            if (self.reports[indexPath.row].attachments?.count)! > 0 {
-                
+            if self.reports[indexPath.row].attachments != nil && (self.reports[indexPath.row].attachments?.count)! > 0 {
+
                 let rootImage = self.reports[indexPath.row].attachments![0]
                 let imageUrl = rootImage["secure_url"] as? String
-                
+
                 self.getReportImage(imageUrl: imageUrl!) { (hasImage, image) in
                     if hasImage {
                         row.reportImage?.image = image
                     }
                 }
-                
+
+            } else {
+                row.reportImage?.image = UIImage(named: "logo")
             }
         }
 
@@ -184,15 +187,17 @@ extension PublicSpaceVC {
     func loadChatRooms () {
         let user = UserModel()
         self.reports.removeAll()
+        self.reports = [ReportModel]()
         self.reportService.getPublicReport(reporterId: user.id!, reportType: "A") { (success, message, reportModels) in
             
             if success {
-                for reportModel in reportModels {
-                    self.reports.append(reportModel)
-                    //                    debugPrint("report description public: \(String(describing: reportModel.description))")
-                    //                    debugPrint("_conversation: \(String(describing: reportModel.conversationId))")
-                    //                    debugPrint("messages: \(String(describing: reportModel.messages?.count))")
-                }
+//                for reportModel in reportModels {
+//                    self.reports.append(reportModel)
+//                    //                    debugPrint("report description public: \(String(describing: reportModel.description))")
+//                    //                    debugPrint("_conversation: \(String(describing: reportModel.conversationId))")
+//                    //                    debugPrint("messages: \(String(describing: reportModel.messages?.count))")
+//                }
+                self.reports = reportModels
                 self.publicReportTableView.reloadData()
             }
         }
@@ -202,10 +207,10 @@ extension PublicSpaceVC {
 // socket management
 extension PublicSpaceVC {
     func onNewMessageReceived () {
-        SocketIOManager.shared.getNewMessage { (success) in
-            self.reports.removeAll()
-            self.loadChatRooms()
-        }
+//        SocketIOManager.shared.getNewMessage { (success) in
+//            self.reports.removeAll()
+//            self.loadChatRooms()
+//        }
     }
     
     func createObservers () {
@@ -215,6 +220,7 @@ extension PublicSpaceVC {
     @objc func getNewMessage (notification: NSNotification) {
         let userInfo = notification.userInfo
         self.reports.removeAll()
+        self.reports = [ReportModel]()
         self.loadChatRooms()
     }
 }

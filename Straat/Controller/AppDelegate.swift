@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self as! UNUserNotificationCenterDelegate
-            
+
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-        
+
         application.registerForRemoteNotifications()
         
         return true
@@ -86,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -108,6 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID1: \(messageID)")
         }
+
         
         // Print full message.
         print(userInfo)
@@ -125,7 +127,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Message ID2: \(messageID)")
             let conversationId = userInfo["_conversation"] as! String?
             // firebaseDelegate.newMessageReceived(conversationId: conversationId)
-            self.notifyForNewMessage(userInfo: userInfo)
+            
+            
+            let state = application.applicationState
+            switch state {
+                
+            case .inactive:
+                print("Inactive")
+                
+            case .background:
+                let customID = userInfo["customPayloadId"] as? String
+                print("Message ID: \(customID)")
+                UNUserNotificationCenter.current()
+                    .getDeliveredNotifications { notifications in
+                        print("NOTIFICATIONS_: \(notifications)")
+                        let matching = notifications.last(where: { notify in
+                            let existingUserInfo = notify.request.content.userInfo
+                            let id = existingUserInfo["customPayloadId"] as? String
+                            return id == customID
+                        })
+                        
+                        if let matchExists = matching {
+                            if notifications.count > 1 {
+                                UNUserNotificationCenter.current().removeDeliveredNotifications(
+                                    withIdentifiers: [matchExists.request.identifier]
+                                )
+                            }
+                            print("NOTIFICATIONS_ Count: \(notifications.count)")
+                            
+                        }
+                        
+                }
+                
+            case .active:
+                print("Active")
+                self.notifyForNewMessage(userInfo: userInfo)
+            }
         }
         
         // Print full message.
@@ -144,7 +181,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs token retrieved: \(deviceToken)")
         
         // With swizzling disabled you must set the APNs token here.
-        // Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().apnsToken = deviceToken
     }
 
 
@@ -166,7 +203,24 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID3: \(messageID)")
             let conversationId = userInfo["_conversation"] as! String?
-            firebaseDelegate.newMessageReceived(conversationId: conversationId)
+//            firebaseDelegate.newMessageReceived(conversationId: conversationId)
+            let customID = userInfo["customPayloadId"] as? String
+            print("Message ID: \(customID)")
+//            UNUserNotificationCenter.current()
+//                .getDeliveredNotifications { notifications in
+//                    let matching = notifications.first(where: { notify in
+//                        let existingUserInfo = notify.request.content.userInfo
+//                        let id = existingUserInfo["customPayloadId"] as? String
+//                        return id == customID
+//                    })
+//
+//                    if let matchExists = matching {
+//                        UNUserNotificationCenter.current().removeDeliveredNotifications(
+//                            withIdentifiers: [matchExists.request.identifier]
+//                        )
+//                    }
+//
+//            }
             self.notifyForNewMessage(userInfo: userInfo)
         }
         

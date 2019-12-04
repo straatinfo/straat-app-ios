@@ -286,34 +286,34 @@ extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
 				}
 			case self.personsInvolvedDescription:
 				if self.isPersonInvolved {
-					if textView.text.isValidDescription() {
-						self.isPersonInvDescValid = true
-						self.checkValues()
-					} else {
-						self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
-						validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
-						self.isPersonInvDescValid = false
-						self.personsInvolvedDescription.becomeFirstResponder()
-						disableSendReportButton()
-					}
+//                    if textView.text.isValidDescription() {
+//                        self.isPersonInvDescValid = true
+//                        self.checkValues()
+//                    } else {
+//                        self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
+//                        validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+//                        self.isPersonInvDescValid = false
+//                        self.personsInvolvedDescription.becomeFirstResponder()
+//                        disableSendReportButton()
+//                    }
 				} else {
 					self.checkValues()
 				}
 			case self.vehiclesInvolvedDescription:
-				if self.isVehicleInvolved {
-					if textView.text.isValidDescription() {
-						self.isVehicleInvDescValid = true
-						self.checkValues()
-					} else {
-						self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
-						validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
-						self.isVehicleInvDescValid = false
-						self.vehiclesInvolvedDescription.becomeFirstResponder()
-						disableSendReportButton()
-					}
-				} else {
-					self.checkValues()
-				}
+                if self.isVehicleInvolved {
+//                    if textView.text.isValidDescription() {
+//                        self.isVehicleInvDescValid = true
+//                        self.checkValues()
+//                    } else {
+//                        self.errorDesc = NSLocalizedString("invalid-report-desc", comment: "")
+//                        validationDialog(vc: self, title: self.errorTitle, message: self.errorDesc, buttonText: "Ok")
+//                        self.isVehicleInvDescValid = false
+//                        self.vehiclesInvolvedDescription.becomeFirstResponder()
+//                        disableSendReportButton()
+//                    }
+                } else {
+                    self.checkValues()
+                }
 		default:
 			break
 		}
@@ -334,13 +334,13 @@ extension SendSuspiciousReportVC : UITextFieldDelegate, UITextViewDelegate {
 		var numberOfTrue = 0
 		var numberOfFalse = 0
 		
-		if isPersonInvolved {
-			allBool.append(self.isPersonInvDescValid)
-		}
-		
-		if isVehicleInvolved {
-			allBool.append(self.isVehicleInvDescValid)
-		}
+//        if isPersonInvolved {
+//            allBool.append(self.isPersonInvDescValid)
+//        }
+//
+//        if isVehicleInvolved {
+//            allBool.append(self.isVehicleInvDescValid)
+//        }
 		
 		for bools in allBool {
 			

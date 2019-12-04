@@ -154,9 +154,10 @@ extension TeamChatListVC {
         teamService.getTeamListByUserId(userId: userId!) { (success, message, teams) in
             self.teamList.removeAll()
             if success && teams != nil {
-                for team in teams! {
-                    self.teamList.append(team)
-                }
+//                for team in teams! {
+//                    self.teamList.append(team)
+//
+                self.teamList = teams ?? [TeamModel]()
                 self.teamChatListTableView.reloadData()
             }
         }

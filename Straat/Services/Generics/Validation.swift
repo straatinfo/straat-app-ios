@@ -73,7 +73,9 @@ extension String {
         let stringPredicate = NSPredicate(format: "SELF MATCHES %@", stringRegex)
         return stringPredicate.evaluate(with:self)
     }
-	
+    func hasValue () -> Bool {
+        return self != ""
+    }
 	func isValidDescription() -> Bool{
 		let stringRegex = "[A-Za-z0-9 ]+"
 		

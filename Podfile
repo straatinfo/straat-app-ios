@@ -27,6 +27,13 @@ target 'Straat' do
   pod 'Socket.IO-Client-Swift'
   
   pod 'SwiftyJSON', '~> 4.0'
+  
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
 
 end
 

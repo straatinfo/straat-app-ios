@@ -182,7 +182,7 @@ extension RegistrationDataVC {
         
         isFnameValid = (firstnameTxtBox?.text!.isValidDescription())!
         isLnameValid = (lastnameTxtBox?.text!.isValidDescription())!
-        isPostalCodeValid = (postNumberTxtBox?.text!.isValid())!
+        isPostalCodeValid = postCodeTxtBox?.text != nil && postCodeTxtBox?.text != ""
         isPostalNumberValid = (postNumberTxtBox?.text!.isValid())!
         isEmailValid = (emailTxtBox?.text!.isValidEmail())!
         isNumberValid = (mobileNumberTxtBox?.text!.isMobileNumberValid())!
@@ -193,7 +193,7 @@ extension RegistrationDataVC {
                 firstnameTxtBox?.text!.isValidDescription())!
             && (lastnameTxtBox?.text!.isValidDescription())!
             && (usernameTxtBox?.text!.isValid())!
-            && (postCodeTxtBox?.text!.isValid())!
+            && isPostalCodeValid
             && (postNumberTxtBox?.text!.isValid())!
 //            && (streetTxtBox?.text!.isValid())!
 //            &&(townTxtBox?.text!.isValid())!
@@ -291,7 +291,7 @@ extension RegistrationDataVC {
                     disableNextStepButton()
                 }
             case postCodeTxtBox:
-                if textField.text?.isValid() ?? false {
+                if textField.text != nil && textField.text != "" {
 					self.isPostalCodeValid = true
                     checkTextFieldValues()
                 } else {

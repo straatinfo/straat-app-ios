@@ -16,12 +16,16 @@ class ReportModel : SendReportModel {
     var subCategory: SubCategoryModel?
     var parsedUploadedPhotos: [PhotoModel]?
     var reportType: ReportTypeModel?
+    var reportTypeCode: String?
     var createdAt : String?
     var status : String?
     var conversationId: String?
     var messages: [String]?
+    var unreadConversationCount: Int?
     
     var reportImage : UIImage? = UIImage(named: "AppIcon")
+    
+    var isPublic: Bool?
     
     init (report: Dictionary<String, Any>) {
         super.init()
@@ -47,6 +51,7 @@ class ReportModel : SendReportModel {
         let reportTypeData = report["_reportType"] as? Dictionary<String, Any>
         self.reportType = ReportTypeModel(reportTypeData: reportTypeData!)
         self.reportTypeId = self.reportType!.id
+        self.reportTypeCode = self.reportType!.code
 
         // mainCategory Details
         let mainCategoryData = report["_mainCategory"] as? Dictionary<String, Any>
@@ -67,6 +72,7 @@ class ReportModel : SendReportModel {
 
         
         self.isUrgent = report["isUrgent"] as? Bool
+        self.isPublic = report["isPublic"] as? Bool
         self.teamId = report["_team"] as? String
         
         self.reportUploadedPhotos = report["reportUploadedPhotos"] as? [[String: Any]] ?? []
@@ -97,6 +103,7 @@ class ReportModel : SendReportModel {
         
         let conversation = report["_conversation"] as? [String:Any] ?? [:]
         self.conversationId = conversation["_id"] as? String? ?? ""
+        self.unreadConversationCount = conversation["unreadMessageCount"] as? Int? ?? 0
         self.messages = conversation["messages"] as? [String] ?? []
 
     }
@@ -117,6 +124,21 @@ extension ReportModel {
     
     func getReportImage() -> UIImage{
 		return self.reportImage!
+    }
+    
+    func getStatus () -> String {
+        switch self.status {
+        case "NEW":
+            return NSLocalizedString("report-status-new", comment: "")
+        case "INPROGRESS":
+            return NSLocalizedString("report-status-inprogress", comment: "")
+        case "DONE":
+            return NSLocalizedString("report-status-done", comment: "")
+        case "EXPIRED":
+            return NSLocalizedString("report-status-expired", comment: "")
+        default:
+            return NSLocalizedString("report-status-new", comment: "")
+        }
     }
     
 }

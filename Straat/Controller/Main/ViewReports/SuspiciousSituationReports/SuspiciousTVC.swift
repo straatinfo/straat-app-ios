@@ -14,9 +14,13 @@ class SuspiciousTVC: UITableViewCell {
     @IBOutlet weak var dateOfReport: UILabel!
     @IBOutlet weak var messageCount: UILabel!
     @IBOutlet weak var reportImage: UIImageView!
+    @IBOutlet weak var isUrgentMarker: UILabel!
     
-	var reportId: String?
-	var conversationId: String?
+    var reportId: String?
+    var conversationId: String?
+    var type = "REPORT"
+    var chatTitle: String?
+    var userId: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,8 +35,11 @@ class SuspiciousTVC: UITableViewCell {
 
     @IBAction func messageShow(_ sender: Any) {
 		let uds = UserDefaults.standard
-		uds.set(self.reportId, forKey: reporter_id)
-		uds.set(self.conversationId, forKey: report_conversation_id)
+        uds.set(userId, forKey: chat_vc_user_id)
+        uds.set(conversationId, forKey: chat_vc_conversation_id)
+        uds.set(type, forKey: chat_vc_type)
+        uds.set(chatTitle, forKey: chat_vc_title)
+        uds.set(reportId, forKey: chat_vc_report_id)
     }
     
 }

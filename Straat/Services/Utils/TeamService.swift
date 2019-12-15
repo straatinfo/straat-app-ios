@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class TeamService {
     let apiHandler = ApiHandler()
@@ -38,6 +39,35 @@ class TeamService {
                         	teamModel.append(teamModelItem)
 						}
 
+                    }
+                    
+                    completion(true, "Success", teamModel)
+                } else {
+                    completion(false, "Failed", nil)
+                }
+                
+            }
+        }
+    }
+    
+    func getTeamListByUserId (userId: String, completion: @escaping (Bool, String, [TeamModel]?) -> Void) {
+        let url = team_list + userId
+        
+        apiHandler.executeWithHeaders(URL(string: url)!, parameters: [:], method: .get, destination: .queryString, headers: [:]) { (response, err) in
+            
+            if let error = err {
+                print("error reponse: \(error.localizedDescription)")
+                
+                completion(false, error.localizedDescription, nil)
+            } else if let data = response {
+                let dataObject = data["data"] as? [[String:Any]] ?? []
+                var teamModel = [TeamModel]()
+                
+                if dataObject.count > 0 {
+                    
+                    for teamJson in dataObject {
+                        let teamModelItem = TeamModel(json: JSON(teamJson))
+                        teamModel.append(teamModelItem)
                     }
                     
                     completion(true, "Success", teamModel)

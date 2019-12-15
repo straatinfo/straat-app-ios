@@ -153,7 +153,8 @@ extension ReportVC : UITableViewDelegate, UITableViewDataSource {
         let reporterUsername = reportModel.reporter?.username
         
         uds.set(reportModel.mainCategory?.name, forKey: report_category)
-        uds.set(reportModel.status, forKey: report_status_detail_view)
+        uds.set(reportModel.getStatus(), forKey: report_status_detail_view)
+        uds.set(reportModel.status, forKey: report_status_value)
         uds.set(reportModel.description, forKey: report_message)
         uds.set(reportModel.location, forKey: report_address)
         uds.set(reportModel.lat, forKey: report_lat)
@@ -162,7 +163,12 @@ extension ReportVC : UITableViewDelegate, UITableViewDataSource {
         uds.set(reportModel.createdAt, forKey: report_created_at)
         uds.set(fullname, forKey: report_reporter_fullname)
         uds.set(reporterUsername, forKey: report_reporter_username)
-        
+        uds.set(reportModel.mainCategory?.id, forKey: report_category_id)
+        uds.set(reportModel.mainCategory?.code, forKey: report_category_code)
+        uds.set(reportModel.reportTypeCode, forKey: report_type_code)
+        uds.set(reportModel.reporterId, forKey: report_reporter_id)
+        uds.set(reportModel.id, forKey: report_id)
+        uds.set(reportModel.isPublic, forKey: report_is_public)
     }
     
 }

@@ -7,11 +7,12 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class ChatService {
 
     let apiHandler = ApiHandler()
-    
+    let uds = UserDefaults.standard
     init () {
         
     }
@@ -135,5 +136,72 @@ class ChatService {
 			}
 		}
 	}
+    
+    // remove unread messages
+    func readUnreadMessages (conversationId: String, userId: String, completion: @escaping (Bool, String?) -> Void) -> Void {
+        let url = "\(unread_messages)/\(conversationId)/\(userId)"
+        let user = UserModel()
+        var parameters: Parameters = [:]
+        var headers: HTTPHeaders = [:]
+        headers["Authorization"] = "Bearer \(user.userToken ?? "")"
+        
+        apiHandler.executeWithHeaders(URL(string: url)!, parameters: parameters, method: .delete, destination: .queryString, headers: headers) { (response, err) in
+            
+            if let error = err {
+                completion(false, error.localizedDescription)
+            } else if let data = response {
+                completion(true, nil)
+            }
+        }
+    }
+    
+    func getUnreadMessageCount (userId: String, completion: @escaping(Bool, JSON?) -> Void) {
+        let url = "\(get_unread_message_count)/\(userId)"
+        // print("LOADING_GETUNREAD_MSG_COUNT")
+        let user = UserModel()
+        var parameters: Parameters = [:]
+        var headers: HTTPHeaders = [:]
+        headers["Authorization"] = "Bearer \(user.userToken ?? "")"
+        
+        apiHandler.executeWithHeaders(URL(string: url)!, parameters: parameters, method: .get, destination: .queryString, headers: headers) { (response, err) in
+            // print("LOADING_GETUNREAD_MSG_COUNT_DATA: \(response), err: \(err)")
+            if let error = err {
+                completion(false, nil)
+            } else {
+                let data = JSON(response)
+                if data["a"].exists() && data["b"].exists() && data["team"].exists() {
+                    completion(true, data)
+                } else {
+                    completion(false, nil)
+                }
+            }
+            
+            
+        }
+    }
+    
+    func sendMessageV2 (userId: String, text: String, conversationId: String, type: String, reportId: String?, teamId: String?, completion: @escaping(Bool) -> Void) {
+        let url = "\(send_message_v2)"
+        let user = UserModel()
+        var parameters: Parameters = [:]
+        var headers: HTTPHeaders = [:]
+        headers["Authorization"] = "Bearer \(user.userToken ?? "")"
+        parameters["user"] = userId
+        parameters["text"] = text
+        parameters["_conversation"] = conversationId
+        parameters["type"] = type
+        parameters["_report"] = reportId
+        parameters["_team"] = teamId
+        
+        apiHandler.executeWithHeaders(URL(string: url)!, parameters: parameters, method: .post, destination: .httpBody, headers: headers) { (response, err) in
+            
+            if let error = err {
+                completion(false)
+            } else {
+                completion(true)
+            }
+            
+        }
+    }
     
 }

@@ -27,13 +27,13 @@ import GameplayKit
         view.alpha = 0.5
         view.tag = 101
         
-        loadingLabel.text = "Please Wait"
+        loadingLabel.text = NSLocalizedString("please-wait", comment: "")// "Please Wait"
         loadingLabel.textColor = UIColor.white
         loadingLabel.font = loadingLabel.font.withSize(15)
         loadingLabel.textAlignment = .center
         
         activityIndicator!.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-        activityIndicator!.center = view.center
+        activityIndicator!.center = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
         activityIndicator!.hidesWhenStopped = true
         activityIndicator!.style = UIActivityIndicatorView.Style.white
         activityIndicator!.isUserInteractionEnabled = false
@@ -71,6 +71,14 @@ import GameplayKit
     func alertDialogWithPositiveButton (vc: UIViewController, title: String, message: String, positiveBtnName: String, handler: @escaping (UIAlertAction) -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: positiveBtnName, style: .default, handler: handler))
+        vc.present(alertController, animated: true)
+    }
+
+    func alertDialogWithPositiveAndNegativeButton (vc: UIViewController, title: String, message: String, positiveBtnName: String, negativeBtnName: String, positiveHandler: @escaping(UIAlertAction) -> Void, negativeHandler: @escaping(UIAlertAction) -> Void) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: positiveBtnName, style: .default, handler: positiveHandler))
+        alertController.addAction(UIAlertAction(title: negativeBtnName, style: .cancel, handler: negativeHandler))
         vc.present(alertController, animated: true)
     }
 
@@ -146,3 +154,67 @@ import GameplayKit
 			return jpegData(compressionQuality: jpegQuality.rawValue)
 		}
 	}
+
+
+extension CAShapeLayer {
+    func drawCircleAtLocation(location: CGPoint, withRadius radius: CGFloat, andColor color: UIColor, filled: Bool) {
+        fillColor = filled ? color.cgColor : UIColor.white.cgColor
+        strokeColor = color.cgColor
+        let origin = CGPoint(x: location.x - radius, y: location.y - radius)
+        path = UIBezierPath(ovalIn: CGRect(origin: origin, size: CGSize(width: radius * 2, height: radius * 2))).cgPath
+    }
+}
+
+private var handle: UInt8 = 0
+
+extension UIBarButtonItem {
+    private var badgeLayer: CAShapeLayer? {
+        if let b: AnyObject = objc_getAssociatedObject(self, &handle) as AnyObject? {
+            return b as? CAShapeLayer
+        } else {
+            return nil
+        }
+    }
+    
+    func addBadge(number: Int, withOffset offset: CGPoint = CGPoint.zero, andColor color: UIColor = UIColor.red, andFilled filled: Bool = true) {
+        guard let view = self.value(forKey: "view") as? UIView else { return }
+        
+        badgeLayer?.removeFromSuperlayer()
+        
+        // Initialize Badge
+        let badge = CAShapeLayer()
+        let radius = CGFloat(9)
+        let location = CGPoint(x: view.frame.width - (radius + offset.x), y: (radius + offset.y))
+        badge.drawCircleAtLocation(location: location, withRadius: radius, andColor: color, filled: filled)
+        view.layer.addSublayer(badge)
+        
+        // Initialiaze Badge's label
+        let label = CATextLayer()
+        if (number > 9) {
+            label.string = "9+"
+        } else {
+             label.string = "\(number)"
+        }
+        
+        label.alignmentMode = CATextLayerAlignmentMode.center
+        label.fontSize = 12
+        label.frame = CGRect(origin: CGPoint(x: location.x - 10, y: offset.y + 2), size: CGSize(width: 20, height: 16))
+        label.foregroundColor = filled ? UIColor.white.cgColor : color.cgColor
+        label.backgroundColor = UIColor.clear.cgColor
+        label.contentsScale = UIScreen.main.scale
+        badge.addSublayer(label)
+        
+        // Save Badge as UIBarButtonItem property
+        objc_setAssociatedObject(self, &handle, badge, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+    
+    func updateBadge(number: Int) {
+        if let text = badgeLayer?.sublayers?.filter({ $0 is CATextLayer }).first as? CATextLayer {
+            text.string = "\(number)"
+        }
+    }
+    
+    func removeBadge() {
+        badgeLayer?.removeFromSuperlayer()
+    }
+}

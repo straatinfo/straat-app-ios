@@ -116,4 +116,31 @@ class AuthService {
             }
         }
     }
+    
+    func addUpdateFirebaseToken (userId: String, email: String, firebaseToken: String, completion: @escaping(Bool) -> Void) {
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString
+        let url = URL(string: add_update_firebase_token)
+        var parameters: Parameters = [:]
+        var headers: HTTPHeaders = [:]
+        let userToken = uds.string(forKey: token) ?? ""
+    
+        
+        parameters["reporterId"] = userId
+        parameters["email"] = email
+        parameters["deviceId"] = deviceId!
+        parameters["token"] = firebaseToken
+        parameters["platform"] = "IOS"
+        headers["Authorization"] = "Bearer \(userToken)"
+        
+        Alamofire.request(url!, method: .post, parameters: parameters, headers: headers).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+                completion(true)
+            case .failure(let error):
+                print("FCM_TOKEN_UPDATE: \(error.localizedDescription)")
+                completion(false)
+            }
+        }
+    }
 }

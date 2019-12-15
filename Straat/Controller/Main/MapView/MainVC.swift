@@ -23,10 +23,13 @@ class MainVC: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var sendReport: UIButton!
     @IBOutlet weak var reportTypeTextField: UITextField!
+    @IBOutlet weak var chatBarButtonItem: UIBarButtonItem!
     
     // for make notification ui view initialisation
     @IBOutlet weak var location: UILabel!
     
+    @IBOutlet weak var communicationButtonItem: UIButton!
+    @IBOutlet weak var communicationInfoButtonItem: UIButton!
     
     //location manager
     let locationManager = CLLocationManager()
@@ -48,7 +51,12 @@ class MainVC: UIViewController {
 	//user defaults
 	let uds = UserDefaults.standard
     let authService = AuthService()
-	
+    let chatService = ChatService()
+    let fcmNotificationName = Notification.Name(rawValue: fcm_new_message)
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFromInit = true
@@ -59,8 +67,10 @@ class MainVC: UIViewController {
         //loadInfo()
         self.initMapView(reportType: "All", reportId: nil)
         self.initView()
+        self.createObservers()
         authService.userRefresh { success in
             if (success) {
+                self.updateBadge()
   
             } else {
                 let alert = UIAlertController(title: "Your token has expired.", message: "Please login again", preferredStyle: UIAlertController.Style.alert)
@@ -83,6 +93,26 @@ class MainVC: UIViewController {
                 self.present(alert, animated: true)
             }
         }
+        
+        self.refreshFirebaseToken { (success) in
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let parent = view.superview
+        view.removeFromSuperview()
+        view = nil
+        parent?.addSubview(view)
+        self.updateBadge()
+        let isVolunteer = self.uds.bool(forKey: user_is_volunteer)
+
+        self.communicationButtonItem.isHidden = isVolunteer
+        self.communicationButtonItem.isEnabled = !isVolunteer
+        self.communicationInfoButtonItem.isHidden = isVolunteer
+        self.communicationInfoButtonItem.isEnabled = !isVolunteer
+        
     }
     
     @IBAction func showSendReport(_ sender: Any) {
@@ -188,6 +218,17 @@ class MainVC: UIViewController {
         defaultDialog(vc: self, title: title, message: desc)
     }
     
+    @IBAction func communicationInfo(_ sender: Any) {
+        let title = NSLocalizedString("suspicious-situation", comment: "")
+        let desc = NSLocalizedString("suspicious-desc", comment: "")
+        defaultDialog(vc: self, title: title, message: desc)
+    }
+    @IBAction func showCommunicationReport(_ sender: Any) {
+        let communicationReportVC = self.storyboard?.instantiateViewController(withIdentifier: "SendCommunicationReportVC") as! SendCommunicationReportVC
+        
+        communicationReportVC.mapViewDelegate = self
+    }
+    
     @IBAction func showPublicSpaceReport(_ sender: UIButton) {
         let publicSpacesReportVC = self.storyboard?.instantiateViewController(withIdentifier: "SendSuspiciousReportVC") as! SendPublicSpaceReportVC
         publicSpacesReportVC.mapViewDelegate = self
@@ -198,6 +239,8 @@ class MainVC: UIViewController {
         let title = NSLocalizedString("public-space-title", comment: "")
         defaultDialog(vc: self, title: title, message: desc)
     }
+    
+
     
     @IBAction func zoomIn(_ sender: UIButton) {
         self.mapZoom += 1
@@ -413,7 +456,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         marker.title = title!
         marker.snippet = address
         
-        marker.icon = UIImage(named: "pin-new")
+        marker.icon = UIImage(named: "pin-blank")
         marker.isDraggable = true
         marker.map = mView
         
@@ -433,7 +476,21 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         
         markerReport.title = reportMapModel?.mainCategory?.name?.shorten(limit: 20)
         markerReport.snippet = NSLocalizedString("view-report", comment: "") // reportMapModel?.location
-        markerReport.icon = UIImage(named: "pin-new")
+        
+        
+        switch reportMapModel?.status {
+        case "NEW":
+            markerReport.icon = UIImage(named: "pin-new")
+        case "INPROGRESS":
+            markerReport.icon = UIImage(named: "pin-inprogress")
+        case "DONE":
+            markerReport.icon = UIImage(named: "pin-done")
+        case "EXPIRED":
+            markerReport.icon = UIImage(named: "pin-expired")
+        default:
+            markerReport.icon = UIImage(named: "pin-done")
+        }
+        
         markerReport.map = mView
         // data for report view
         markerReport.reportModel = reportMapModel!
@@ -661,6 +718,7 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
             self.saveToUserDefault(reportMapModel: marker.reportModel!, reportImages: reportImages, completion: {success in
                 if success {
                     let viewReportVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewReportVC") as! ViewMapReportVC
+                    viewReportVC.reportDelegate = self
                     self.present(viewReportVC, animated: true, completion: nil)
                 }
             })
@@ -871,7 +929,8 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         let reporterUsername = reportMapModel.reporter?.username
         
         uds.set(reportMapModel.mainCategory?.name, forKey: report_category)
-        uds.set(reportMapModel.status, forKey: report_status_detail_view)
+        uds.set(reportMapModel.getStatus(), forKey: report_status_detail_view)
+        uds.set(reportMapModel.status, forKey: report_status_value)
         uds.set(reportMapModel.location, forKey: report_address)
         uds.set(reportMapModel.lat, forKey: report_lat)
         uds.set(reportMapModel.long, forKey: report_long)
@@ -879,10 +938,17 @@ extension MainVC : GMSMapViewDelegate, CLLocationManagerDelegate {
         uds.set(reportMapModel.createdAt, forKey: report_created_at)
         uds.set(reporterUsername, forKey: report_reporter_username)
         
+        uds.set(reportMapModel.mainCategory?.id, forKey: report_category_id)
+        uds.set(reportMapModel.mainCategory?.code, forKey: report_category_code)
+        
+        uds.set(reportMapModel.reportTypeCode, forKey: report_type_code)
+        
         
         uds.set(fullname, forKey: report_reporter_fullname)
         uds.set(reportImages, forKey: report_images)
-        
+        uds.set(reportMapModel.reporterId, forKey: report_reporter_id)
+        uds.set(reportMapModel.id, forKey: report_id)
+        uds.set(reportMapModel.isPublic, forKey: report_is_public)
         
         completion(true)
     }
@@ -910,5 +976,63 @@ extension GMSMarker {
     var reportModel : ReportModel? {
         set(reportModel) { self.userData = reportModel }
         get { return self.userData as? ReportModel}
+    }
+}
+
+
+extension MainVC: ReportDelegate {
+    func didReportUpdated (didUpdate: Bool) {
+        if didUpdate {
+            let parent = view.superview
+            view.removeFromSuperview()
+            view = nil
+            parent?.addSubview(view)
+        }
+    }
+}
+
+extension MainVC {
+    func refreshFirebaseToken (completion: @escaping(Bool) -> Void) {
+        let firebaseToken = uds.string(forKey: firebase_token)
+        let user = UserModel()
+        let authService = AuthService()
+        if let userId = user.id, let email = user.email, let fcmToken = firebaseToken {
+            print("REFRESHING_FIREBASE_TOKEN: \(firebaseToken)")
+            if firebaseToken != "" {
+                authService.addUpdateFirebaseToken(userId: userId, email: email, firebaseToken: fcmToken, completion: completion)
+            }
+        }
+    }
+    
+    func updateBadge () {
+        let user = UserModel()
+        self.chatService.getUnreadMessageCount(userId: user.id!) { (success, response) in
+            
+            let a = response!["a"].int
+            let b = response!["b"].int
+            let c = response!["c"].int
+            let team = response!["team"].int
+            
+            var value = a!
+            value += b!
+            value += c!
+            value += team!
+            
+            if value > 0 {
+                self.chatBarButtonItem.addBadge(number: value)
+            } else {
+                self.chatBarButtonItem.removeBadge()
+            }
+            
+            
+        }
+    }
+    
+    func createObservers () {
+        NotificationCenter.default.addObserver(self, selector: #selector(PublicSpaceVC.getNewMessage(notification:)), name: fcmNotificationName, object: nil)
+    }
+    
+    @objc func getNewMessage (notification: NSNotification) {
+        self.updateBadge()
     }
 }

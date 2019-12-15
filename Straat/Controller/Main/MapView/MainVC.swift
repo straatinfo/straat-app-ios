@@ -28,6 +28,8 @@ class MainVC: UIViewController {
     // for make notification ui view initialisation
     @IBOutlet weak var location: UILabel!
     
+    @IBOutlet weak var communicationButtonItem: UIButton!
+    @IBOutlet weak var communicationInfoButtonItem: UIButton!
     
     //location manager
     let locationManager = CLLocationManager()
@@ -104,6 +106,13 @@ class MainVC: UIViewController {
         view = nil
         parent?.addSubview(view)
         self.updateBadge()
+        let isVolunteer = self.uds.bool(forKey: user_is_volunteer)
+
+        self.communicationButtonItem.isHidden = isVolunteer
+        self.communicationButtonItem.isEnabled = !isVolunteer
+        self.communicationInfoButtonItem.isHidden = isVolunteer
+        self.communicationInfoButtonItem.isEnabled = !isVolunteer
+        
     }
     
     @IBAction func showSendReport(_ sender: Any) {
@@ -209,6 +218,17 @@ class MainVC: UIViewController {
         defaultDialog(vc: self, title: title, message: desc)
     }
     
+    @IBAction func communicationInfo(_ sender: Any) {
+        let title = NSLocalizedString("suspicious-situation", comment: "")
+        let desc = NSLocalizedString("suspicious-desc", comment: "")
+        defaultDialog(vc: self, title: title, message: desc)
+    }
+    @IBAction func showCommunicationReport(_ sender: Any) {
+        let communicationReportVC = self.storyboard?.instantiateViewController(withIdentifier: "SendCommunicationReportVC") as! SendCommunicationReportVC
+        
+        communicationReportVC.mapViewDelegate = self
+    }
+    
     @IBAction func showPublicSpaceReport(_ sender: UIButton) {
         let publicSpacesReportVC = self.storyboard?.instantiateViewController(withIdentifier: "SendSuspiciousReportVC") as! SendPublicSpaceReportVC
         publicSpacesReportVC.mapViewDelegate = self
@@ -219,6 +239,8 @@ class MainVC: UIViewController {
         let title = NSLocalizedString("public-space-title", comment: "")
         defaultDialog(vc: self, title: title, message: desc)
     }
+    
+
     
     @IBAction func zoomIn(_ sender: UIButton) {
         self.mapZoom += 1

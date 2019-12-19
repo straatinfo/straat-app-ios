@@ -31,4 +31,11 @@ class SendCommunicationReportVC: UIViewController {
         
     
     }
+	
+	
+	@IBAction func goToSelectTeams(_ sender: UIButton) {
+		
+		pushToNextVC(sbName: "Main", controllerID: "SendCommunicationTeamsVC", origin: self)
+		
+	}
 }

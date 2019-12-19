@@ -27,6 +27,8 @@
 		434C3B55220A287800843000 /* ApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B54220A287800843000 /* ApiHandler.swift */; };
 		434C3B57220A2B4D00843000 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B56220A2B4D00843000 /* URL.swift */; };
 		434C3B59220A2DE800843000 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434C3B58220A2DE800843000 /* UserModel.swift */; };
+		434F3E6423ABDD0000E00642 /* SendCommunicationTeamsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F3E6323ABDD0000E00642 /* SendCommunicationTeamsVC.swift */; };
+		434F3E6623ABDDA200E00642 /* SendCommunicationReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F3E6523ABDDA200E00642 /* SendCommunicationReviewVC.swift */; };
 		435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */; };
 		435CCB1E21FF66CB00E87AD6 /* SplashScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435CCB1D21FF66CB00E87AD6 /* SplashScreenVC.swift */; };
 		435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435CCB1F21FF66CB00E87AD6 /* Initial.storyboard */; };
@@ -38,6 +40,7 @@
 		4368EB14222977B500EA03FE /* TeamDetailsUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368EB13222977B500EA03FE /* TeamDetailsUpdateVC.swift */; };
 		436B4027222A83BD00873C01 /* CreateNewTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B4026222A83BD00873C01 /* CreateNewTeamVC.swift */; };
 		436B4029222A95A100873C01 /* TeamMemberTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B4028222A95A100873C01 /* TeamMemberTVC.swift */; };
+		4377E52423A666BB00098F92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4377E52323A666BB00098F92 /* GoogleService-Info.plist */; };
 		437CF0AE2238399E00FC1A86 /* MyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437CF0AD2238399E00FC1A86 /* MyPickerView.swift */; };
 		437DFD372221B1A400D2E662 /* SuspiciousTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437DFD362221B1A400D2E662 /* SuspiciousTVC.swift */; };
 		437DFD392221BB7D00D2E662 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437DFD382221BB7D00D2E662 /* Constants.swift */; };
@@ -82,7 +85,6 @@
 		9B69A50822123C95001BBFE8 /* PostalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B69A50722123C95001BBFE8 /* PostalModel.swift */; };
 		9B77016F222076B4004D8CF0 /* ReportTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77016E222076B4004D8CF0 /* ReportTypeModel.swift */; };
 		9B8CB45B22C1421C002B1838 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CB45A22C1421C002B1838 /* AuthService.swift */; };
-		9B91365D2330297E00DA70C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B91365C2330297D00DA70C5 /* GoogleService-Info.plist */; };
 		9BA851A72225E11E00E872D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA851A92225E11E00E872D9 /* Main.storyboard */; };
 		9BA851AA2225E12900E872D9 /* Sidebars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA851AC2225E12900E872D9 /* Sidebars.storyboard */; };
 		9BBABA9E221F29B300DBC284 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBABA9D221F29B300DBC284 /* ReportService.swift */; };
@@ -122,6 +124,9 @@
 		434C3B54220A287800843000 /* ApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHandler.swift; sourceTree = "<group>"; };
 		434C3B56220A2B4D00843000 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		434C3B58220A2DE800843000 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		434F3E6323ABDD0000E00642 /* SendCommunicationTeamsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommunicationTeamsVC.swift; sourceTree = "<group>"; };
+		434F3E6523ABDDA200E00642 /* SendCommunicationReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommunicationReviewVC.swift; sourceTree = "<group>"; };
+		434F3E6823ABF89000E00642 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Registration.strings; sourceTree = "<group>"; };
 		435CCB1821FF66CB00E87AD6 /* Straat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Straat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435CCB1B21FF66CB00E87AD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		435CCB1D21FF66CB00E87AD6 /* SplashScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenVC.swift; sourceTree = "<group>"; };
@@ -135,11 +140,13 @@
 		4368EB13222977B500EA03FE /* TeamDetailsUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsUpdateVC.swift; sourceTree = "<group>"; };
 		436B4026222A83BD00873C01 /* CreateNewTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTeamVC.swift; sourceTree = "<group>"; };
 		436B4028222A95A100873C01 /* TeamMemberTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberTVC.swift; sourceTree = "<group>"; };
+		4377E52323A666BB00098F92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		437CF0AD2238399E00FC1A86 /* MyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerView.swift; sourceTree = "<group>"; };
 		437DFD362221B1A400D2E662 /* SuspiciousTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspiciousTVC.swift; sourceTree = "<group>"; };
 		437DFD382221BB7D00D2E662 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4386825821FF8C06008F65D0 /* LoginUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserVC.swift; sourceTree = "<group>"; };
 		438A0311221C0B6A00ECE252 /* ReportMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMapModel.swift; sourceTree = "<group>"; };
+		438A5C8123AA439300A44341 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		438B8FBC2247E56100FFA4B3 /* TextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholder.swift; sourceTree = "<group>"; };
 		438B8FBF22480FD300FFA4B3 /* TeamChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatListVC.swift; sourceTree = "<group>"; };
 		438B8FC12248100800FFA4B3 /* TeamChatListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatListTVC.swift; sourceTree = "<group>"; };
@@ -183,7 +190,6 @@
 		9B77016E222076B4004D8CF0 /* ReportTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTypeModel.swift; sourceTree = "<group>"; };
 		9B7732B2222FCA9E0099A4D4 /* Straat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Straat.entitlements; sourceTree = "<group>"; };
 		9B8CB45A22C1421C002B1838 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Straat/services/Utils/AuthService.swift; sourceTree = SOURCE_ROOT; };
-		9B91365C2330297D00DA70C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/ios-apns/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BA851A52225E10700E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9BA851A62225E10800E872D9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Registration.strings; sourceTree = "<group>"; };
 		9BA851AD2225E13400E872D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -310,7 +316,7 @@
 				435CCB2E21FF66DA00E87AD6 /* Model */,
 				435CCB2D21FF66D400E87AD6 /* View */,
 				435CCB2721FF66CD00E87AD6 /* Info.plist */,
-				9B91365C2330297D00DA70C5 /* GoogleService-Info.plist */,
+				4377E52323A666BB00098F92 /* GoogleService-Info.plist */,
 			);
 			path = Straat;
 			sourceTree = "<group>";
@@ -440,6 +446,8 @@
 				4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */,
 				43E7C920220FF747004A9AFD /* SelectReportVC.swift */,
 				9B31006C23999E8B00CA2684 /* SendCommunicationReportVC.swift */,
+				434F3E6323ABDD0000E00642 /* SendCommunicationTeamsVC.swift */,
+				434F3E6523ABDDA200E00642 /* SendCommunicationReviewVC.swift */,
 			);
 			path = SendReport;
 			sourceTree = "<group>";
@@ -654,7 +662,7 @@
 				9BE18352220DE74C00981F3F /* Registration.storyboard in Resources */,
 				5AB30234224639E000C6A038 /* Localizable.strings in Resources */,
 				435CCB2121FF66CB00E87AD6 /* Initial.storyboard in Resources */,
-				9B91365D2330297E00DA70C5 /* GoogleService-Info.plist in Resources */,
+				4377E52423A666BB00098F92 /* GoogleService-Info.plist in Resources */,
 				43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */,
 				9BA851AA2225E12900E872D9 /* Sidebars.storyboard in Resources */,
 			);
@@ -782,10 +790,12 @@
 				4335FF3422434C3B00A1C6AA /* ChatTVC.swift in Sources */,
 				9BD812A322CF31C6003A2BDB /* UtilsService.swift in Sources */,
 				43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */,
+				434F3E6623ABDDA200E00642 /* SendCommunicationReviewVC.swift in Sources */,
 				4392B5772221298B0001A7E0 /* ProfileVC.swift in Sources */,
 				432D6605223AA68A005F382D /* TeamMemberVC.swift in Sources */,
 				4392B57D222129B90001A7E0 /* SettingVC.swift in Sources */,
 				43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */,
+				434F3E6423ABDD0000E00642 /* SendCommunicationTeamsVC.swift in Sources */,
 				9BBABAA6221F4AE000DBC284 /* MediaService.swift in Sources */,
 				9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */,
 				9BBABAA0221F2E4E00DBC284 /* ReportModel.swift in Sources */,
@@ -884,6 +894,7 @@
 			children = (
 				9BA851AD2225E13400E872D9 /* Base */,
 				9BA851B02225E14F00E872D9 /* nl */,
+				438A5C8123AA439300A44341 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -902,6 +913,7 @@
 			children = (
 				9BE18355220DE75B00981F3F /* Base */,
 				9BA851A62225E10800E872D9 /* nl */,
+				434F3E6823ABF89000E00642 /* en */,
 			);
 			name = Registration.storyboard;
 			sourceTree = "<group>";
@@ -1035,7 +1047,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Straat/Straat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9T4YL57C8T;
+				DEVELOPMENT_TEAM = LY8NRN944A;
 				INFOPLIST_FILE = Straat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1059,7 +1071,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Straat/Straat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9T4YL57C8T;
+				DEVELOPMENT_TEAM = LY8NRN944A;
 				INFOPLIST_FILE = Straat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

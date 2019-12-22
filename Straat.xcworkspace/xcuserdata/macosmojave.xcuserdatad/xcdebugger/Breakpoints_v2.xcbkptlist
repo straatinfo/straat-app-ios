@@ -35,5 +35,83 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
+            timestampString = "598742966.34719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "SendPublicSpaceReportVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Straat.SendPublicSpaceReportVC.ImgUIView3.getter : weak Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "Straat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macosmojave/Desktop/straat-app-ios/Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
+                  timestampString = "598742966.7330149"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Straat.SendPublicSpaceReportVC.ImgUIView3.setter : weak Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "Straat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macosmojave/Desktop/straat-app-ios/Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
+                  timestampString = "598742966.736307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Straat.SendPublicSpaceReportVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Straat.SendPublicSpaceReportVC"
+                  moduleName = "Straat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macosmojave/Desktop/straat-app-ios/Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
+                  timestampString = "598742966.739466"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "809">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Straat.SendPublicSpaceReportVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Straat.SendPublicSpaceReportVC&gt;"
+                  moduleName = "Straat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macosmojave/Desktop/straat-app-ios/Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
+                  timestampString = "598742966.7422431"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "774">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -16,7 +16,15 @@ class SendCommunicationTeamsVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+	@IBAction func btnBack(_ sender: UIButton) {
+		
+				pushToNextVC(sbName: "Main", controllerID: "mainID", origin: self)
+	}
+	
+	
 	@IBAction func btnNextStep(_ sender: UIButton) {
+		
+				pushToNextVC(sbName: "Main", controllerID: "SendCommunicationReviewVC", origin: self)
 	}
     /*
     // MARK: - Navigation

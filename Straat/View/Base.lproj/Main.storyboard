@@ -3706,6 +3706,7 @@
                         <outlet property="img3" destination="Nw3-aN-EOt" id="d85-HX-elL"/>
                         <outlet property="mainCategoryDropDown" destination="Zys-cb-uAm" id="wxQ-h1-rW1"/>
                         <outlet property="message" destination="qxF-fd-c1U" id="U0y-fc-qSU"/>
+                        <outlet property="nextBtn" destination="fFL-qQ-7Kl" id="MMZ-7S-huG"/>
                         <outlet property="showInMap" destination="SNX-G9-et7" id="rjF-DX-4nF"/>
                         <outlet property="userLocation" destination="rlN-Tu-s4V" id="rLl-Rl-Gbc"/>
                     </connections>

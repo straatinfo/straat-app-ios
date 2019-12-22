@@ -21,6 +21,7 @@ class SendCommunicationReportVC: UIViewController {
 	@IBOutlet weak var img3: UIImageView!
 	@IBOutlet weak var userLocation: UILabel!
 	
+	@IBOutlet weak var nextBtn: UIButton!
 	
 	var mainCategory = [MainCategoryModel]()
 	var mainCategoryName = [String]() // for dropdown
@@ -77,6 +78,60 @@ class SendCommunicationReportVC: UIViewController {
 
 }
 
+// for form validation
+extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
+	
+	func disableSendReportButton() {
+		self.nextBtn.isEnabled = false
+		self.nextBtn.backgroundColor = UIColor.lightGray
+	}
+	
+	func enableSendReportButton() {
+		self.nextBtn.isEnabled = true
+		self.nextBtn.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+	}
+	
+	func checkValues() {
+		
+		var allBool = [self.isMainCategValid, true]
+		var numberOfTrue = 0
+		var numberOfFalse = 0
+		
+		for bools in allBool {
+			
+			if bools {
+				numberOfTrue += 1
+			} else {
+				numberOfFalse += 1
+			}
+			
+		}
+		
+		debugPrint("all boolean: \(allBool)")
+		debugPrint("trues: \(numberOfTrue)")
+		debugPrint("falses: \(numberOfFalse)")
+		if numberOfFalse > 0 {
+			disableSendReportButton()
+			debugPrint("disable")
+		} else {
+			enableSendReportButton()
+			debugPrint("enable")
+		}
+		
+	}
+	
+	func textFieldHasValues (tf: [UITextField]) -> Bool {
+		
+		if validateTextField(tf: tf) {
+			return true
+		} else {
+			return false
+		}
+	}
+
+}
+
+// image picker and other dependent functions
 extension SendCommunicationReportVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 	
 	

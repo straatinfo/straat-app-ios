@@ -60,6 +60,7 @@
 		439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */; };
 		4397D19A220F6AC8004788B6 /* SelectReportTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */; };
 		4397D19C220F6B26004788B6 /* SendSuspiciousReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D19B220F6B26004788B6 /* SendSuspiciousReportVC.swift */; };
+		439936A523B38AED00BA19EE /* SendCommunicationTeamsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439936A423B38AED00BA19EE /* SendCommunicationTeamsTVC.swift */; };
 		439B1EB1220ACBE1007A6F4E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B1EB0220ACBE1007A6F4E /* Validation.swift */; };
 		43B4BFD62205CA1C004C8EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B4BFD52205CA1B004C8EAD /* Assets.xcassets */; };
 		43BEFB3A220F5D6F00A84E9C /* CreateTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */; };
@@ -162,6 +163,7 @@
 		439470F2220B7A0F00CEC63E /* RegistrationTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTeamVC.swift; sourceTree = "<group>"; };
 		4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectReportTypeVC.swift; sourceTree = "<group>"; };
 		4397D19B220F6B26004788B6 /* SendSuspiciousReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSuspiciousReportVC.swift; sourceTree = "<group>"; };
+		439936A423B38AED00BA19EE /* SendCommunicationTeamsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommunicationTeamsTVC.swift; sourceTree = "<group>"; };
 		439B1EB0220ACBE1007A6F4E /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		43B4BFD52205CA1B004C8EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43BEFB39220F5D6F00A84E9C /* CreateTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamVC.swift; sourceTree = "<group>"; };
@@ -441,13 +443,11 @@
 		437B55A922398DF80022A831 /* SendReport */ = {
 			isa = PBXGroup;
 			children = (
+				439936A623B393D400BA19EE /* Communication */,
 				4397D199220F6AC8004788B6 /* SelectReportTypeVC.swift */,
 				4397D19B220F6B26004788B6 /* SendSuspiciousReportVC.swift */,
 				4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */,
 				43E7C920220FF747004A9AFD /* SelectReportVC.swift */,
-				9B31006C23999E8B00CA2684 /* SendCommunicationReportVC.swift */,
-				434F3E6323ABDD0000E00642 /* SendCommunicationTeamsVC.swift */,
-				434F3E6523ABDDA200E00642 /* SendCommunicationReviewVC.swift */,
 			);
 			path = SendReport;
 			sourceTree = "<group>";
@@ -517,6 +517,17 @@
 				9B0948BD2212BC15004CE4CB /* RegistrationStep2VC.swift */,
 			);
 			path = registration;
+			sourceTree = "<group>";
+		};
+		439936A623B393D400BA19EE /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				9B31006C23999E8B00CA2684 /* SendCommunicationReportVC.swift */,
+				434F3E6323ABDD0000E00642 /* SendCommunicationTeamsVC.swift */,
+				434F3E6523ABDDA200E00642 /* SendCommunicationReviewVC.swift */,
+				439936A423B38AED00BA19EE /* SendCommunicationTeamsTVC.swift */,
+			);
+			path = Communication;
 			sourceTree = "<group>";
 		};
 		439B1EAF220ACBCE007A6F4E /* Generics */ = {
@@ -845,6 +856,7 @@
 				439470F3220B7A0F00CEC63E /* RegistrationTeamVC.swift in Sources */,
 				43440D6D2215C2D7008A777E /* PublicSpaceVC.swift in Sources */,
 				435CCB1C21FF66CB00E87AD6 /* AppDelegate.swift in Sources */,
+				439936A523B38AED00BA19EE /* SendCommunicationTeamsTVC.swift in Sources */,
 				9BE5D8EB22195A9F0041FE8A /* CategoryService.swift in Sources */,
 				43C25145224DF88A0007D711 /* PrototypeViewController.swift in Sources */,
 			);

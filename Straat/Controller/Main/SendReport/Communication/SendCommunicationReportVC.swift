@@ -12,6 +12,7 @@ import UITextView_Placeholder
 
 class SendCommunicationReportVC: UIViewController {
 	
+	// Story board Objects
 	@IBOutlet weak var mainCategoryDropDown: DropDown!
 	@IBOutlet weak var emergencyNotif: UISwitch!
 	@IBOutlet weak var showInMap: UISwitch!
@@ -20,9 +21,10 @@ class SendCommunicationReportVC: UIViewController {
 	@IBOutlet weak var img2: UIImageView!
 	@IBOutlet weak var img3: UIImageView!
 	@IBOutlet weak var userLocation: UILabel!
-	
 	@IBOutlet weak var nextBtn: UIButton!
 	
+	
+	// main Category collection
 	var mainCategory = [MainCategoryModel]()
 	var mainCategoryName = [String]() // for dropdown
 	
@@ -60,19 +62,19 @@ class SendCommunicationReportVC: UIViewController {
 		self.errorTitle = NSLocalizedString("wrong-input", comment: "")
     }
 	
+	@IBAction func dismiss(_ sender: UIButton) {
+		pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+	}
 	
 	@IBAction func emergencyToggle(_ sender: UISwitch) {
-		
 		if sender.isOn {
 			alertDialogWithPositiveButton(vc: self, title: "Emergency Notification", message: "Please call 911", positiveBtnName: "Got it") { (alert) in
 			}
 		}
-		
 	}
+	
 	@IBAction func goToSelectTeams(_ sender: UIButton) {
-		
 		pushToNextVC(sbName: "Main", controllerID: "SendCommunicationTeamsVC", origin: self)
-		
 	}
 	
 
@@ -93,7 +95,7 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 	
 	func checkValues() {
 		
-		var allBool = [self.isMainCategValid, true]
+		let allBool = [self.isMainCategValid, true]
 		var numberOfTrue = 0
 		var numberOfFalse = 0
 		

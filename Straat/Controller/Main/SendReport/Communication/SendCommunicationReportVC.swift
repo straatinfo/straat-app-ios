@@ -60,6 +60,7 @@ class SendCommunicationReportVC: UIViewController {
         super.viewDidLoad()
 		self.setImageTapGestures()
 		self.errorTitle = NSLocalizedString("wrong-input", comment: "")
+		self.userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
     }
 	
 	@IBAction func dismiss(_ sender: UIButton) {
@@ -74,7 +75,12 @@ class SendCommunicationReportVC: UIViewController {
 	}
 	
 	@IBAction func goToSelectTeams(_ sender: UIButton) {
-		pushToNextVC(sbName: "Main", controllerID: "SendCommunicationTeamsVC", origin: self)
+		saveInputs { (success) in
+			if success {
+				pushToNextVC(sbName: "Main", controllerID: "SendCommunicationTeamsVC", origin: self)
+			}
+		}
+
 	}
 	
 
@@ -129,6 +135,17 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 		} else {
 			return false
 		}
+	}
+
+	typealias cb = (Bool) -> Void
+	func saveInputs (completion: @escaping cb) -> Void {
+		let uds = UserDefaults.standard
+		
+		uds.set(mainCategoryDropDown.text, forKey: report_c_category)
+		uds.set(emergencyNotif.isOn, forKey: report_c_is_notif)
+		uds.set(showInMap.isOn, forKey: report_c_show_map)
+		uds.set(message.text, forKey: report_c_message)
+		completion(true)
 	}
 
 }

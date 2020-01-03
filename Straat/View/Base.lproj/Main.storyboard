@@ -1592,6 +1592,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hgj-7F-Nkb"/>
                     </view>
+                    <connections>
+                        <outlet property="cagetory" destination="tcO-EB-dpK" id="tgd-Ur-LK5"/>
+                        <outlet property="message" destination="3RP-oC-GG1" id="B3Z-g9-2Ds"/>
+                        <outlet property="teamList" destination="hoo-Pv-sdQ" id="e0G-dh-Oh3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6L-Hj-Kp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,6 +15,9 @@ class SendCommunicationTeamsVC: UIViewController {
 	
 	var teamList = [TeamModel]()
 	
+	// for user defaults
+	var selectedTeams = [TeamModel]()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -26,7 +29,12 @@ class SendCommunicationTeamsVC: UIViewController {
 	
 	
 	@IBAction func btnNextStep(_ sender: UIButton) {
+		self.saveTeam { (success) in
+			if success {
 				pushToNextVC(sbName: "Main", controllerID: "SendCommunicationReviewVC", origin: self)
+			}
+		}
+
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +53,26 @@ class SendCommunicationTeamsVC: UIViewController {
 
 }
 
-extension SendCommunicationTeamsVC {
+extension SendCommunicationTeamsVC: ItemDelegate {
+	func select(row: Int) {
+		let team: TeamModel = self.teamList[row]
+		self.selectedTeams.append(team)
+//		debugPrint("team selected: \(team)")
+	}
+	
+	func deSelect(row: Int) {
+		let team: TeamModel = self.teamList[row]
+
+		for (index, teamModel) in self.selectedTeams.enumerated() {
+			if (teamModel.teamId == team.teamId) {
+				self.selectedTeams.remove(at: index)
+				break
+			}
+		}
+//		debugPrint("team deselected: \(row)")
+	}
+	
+	
 	func fetchTeams() -> Void {
 		
 		let teamService = TeamService()
@@ -83,6 +110,14 @@ extension SendCommunicationTeamsVC {
 			}
 		}
 	}
+	
+	typealias cb = (Bool) -> Void
+	func saveTeam (completion: @escaping cb) -> Void {
+		let uds = UserDefaults.standard
+		let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.selectedTeams)
+		uds.set(encodedData, forKey: report_c_teams)
+		completion(true)
+	}
 }
 
 extension SendCommunicationTeamsVC: UITableViewDelegate,
@@ -96,8 +131,12 @@ UITableViewDataSource {
 
 		let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! SendCommunicationTeamsTVC
 		
+		row.index = indexPath.row
+		
 		row.teamName.text = self.teamList[indexPath.row].teamName
 		row.teamEmail.text = self.teamList[indexPath.row].teamEmail
+		
+		row.delegate = self
 
 		if self.teamList[indexPath.row].profilePic != nil {
 			let imageUrl = self.teamList[indexPath.row].profilePic!
@@ -117,12 +156,15 @@ UITableViewDataSource {
 		
 		let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! SendCommunicationTeamsTVC
 		
-		if row.isSelected {
-			row.selectTeam.isSelected = false
-		} else {
-			row.selectTeam.isSelected = true
-		}
+		row.selectTeam.isEnabled = true
+		row.selectTeam.isSelected = true
+		
+		debugPrint("team selected: \(String(describing: self.teamList[indexPath.row].teamName))")
+		
+		debugPrint("index \(indexPath.row)")
 	}
+	
+
 
 
 }

@@ -14,6 +14,8 @@ class SendCommunicationTeamsTVC: UITableViewCell {
 	@IBOutlet weak var teamName: UILabel!
 	@IBOutlet weak var teamEmail: UILabel!
 	
+	var index: Int?
+	var delegate : ItemDelegate?
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,13 +32,21 @@ class SendCommunicationTeamsTVC: UITableViewCell {
 		
 		if sender.isSelected {
 			sender.isSelected = false
+			delegate?.deSelect(row: index!)
+
 		} else {
 			sender.isSelected = true
+			delegate?.select(row: index!)
 		}
-
 		
-		debugPrint("team selected")
+		
+
 	}
 	
 	
+}
+
+protocol ItemDelegate {
+	func select (row: Int)
+	func deSelect (row: Int)
 }

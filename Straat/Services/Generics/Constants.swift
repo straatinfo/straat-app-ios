@@ -122,3 +122,14 @@ let report_host_lat = "report_host_lat"
 
 // notifications
 let fcm_new_message = "straat.info.fcm_new_message"
+
+
+// report type c
+let report_c_category = "report_c_category"
+let report_c_is_notif = "report_c_is_notif"
+let report_c_show_map = "report_c_show_map"
+let report_c_message = "report_c_message"
+let report_c_img1 = "report_c_img1"
+let report_c_img2 = "report_c_img2"
+let report_c_img3 = "report_c_img3"
+let report_c_teams = "report_c_teams"

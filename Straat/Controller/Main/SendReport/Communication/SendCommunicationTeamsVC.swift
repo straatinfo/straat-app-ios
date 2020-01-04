@@ -24,17 +24,16 @@ class SendCommunicationTeamsVC: UIViewController {
     }
     
 	@IBAction func btnBack(_ sender: UIButton) {
-				pushToNextVC(sbName: "Main", controllerID: "mainID", origin: self)
+        pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
 	}
 	
 	
 	@IBAction func btnNextStep(_ sender: UIButton) {
-		self.saveTeam { (success) in
-			if success {
-				pushToNextVC(sbName: "Main", controllerID: "SendCommunicationReviewVC", origin: self)
-			}
-		}
 
+		let sendCommReviewVC = storyboard?.instantiateViewController(withIdentifier: "SendCommunicationReviewVC") as! SendCommunicationReviewVC
+		sendCommReviewVC.selectedTeams(teamModels: self.selectedTeams)
+		
+		present(sendCommReviewVC, animated: true, completion: nil)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -113,9 +112,10 @@ extension SendCommunicationTeamsVC: ItemDelegate {
 	
 	typealias cb = (Bool) -> Void
 	func saveTeam (completion: @escaping cb) -> Void {
-		let uds = UserDefaults.standard
-		let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.selectedTeams)
-		uds.set(encodedData, forKey: report_c_teams)
+//		let uds = UserDefaults.standard
+//		let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.selectedTeams)
+//		uds.set(encodedData, forKey: report_c_teams)
+		debugPrint("saving selected teams")
 		completion(true)
 	}
 }

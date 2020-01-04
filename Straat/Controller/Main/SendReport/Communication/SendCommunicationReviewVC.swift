@@ -12,7 +12,7 @@ class SendCommunicationReviewVC: UIViewController {
 
 	@IBOutlet weak var cagetory: UITextField!
 	@IBOutlet weak var message: UITextField!
-	@IBOutlet weak var teamList: DropDown!
+	@IBOutlet weak var teamList: UITextField!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,19 @@ class SendCommunicationReviewVC: UIViewController {
 }
 
 extension SendCommunicationReviewVC {
+	func selectedTeams(teamModels: [TeamModel]) {
+		var teamNames = [String]()
+		DispatchQueue.main.async {
+			for teams in teamModels {
+				teamNames.append(teams.teamName!)
+			}
+			
+			debugPrint("teamName \(teamNames)")
+			self.teamList.loadDropdownData(data: teamNames)
+		}
+
+	}
+	
 	func getInputs() -> Void {
 		let uds = UserDefaults.standard
 		let categoryName = uds.string(forKey: report_c_category)
@@ -47,12 +60,7 @@ extension SendCommunicationReviewVC {
 		let showMap = uds.bool(forKey: report_c_show_map)
 		let message = uds.string(forKey: report_c_message)
 		
-		let decodedData = uds.object(forKey: report_c_teams) as! Data
-		let teams = NSKeyedUnarchiver.unarchiveObject(with: decodedData) as! [TeamModel]
-		
 		self.cagetory.text = categoryName
 		self.message.text = message
-		
-		debugPrint("teams: \(teams)")
 	}
 }

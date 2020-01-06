@@ -99,6 +99,7 @@ extension TeamChatListVC : UITextViewDelegate, UITableViewDataSource {
             let team = self.teamList[indexPath.row]
             
             row.teamName.text = team.teamName
+			row.teamEmail.text = team.teamEmail
             row.teamId = team.teamId
             row.userId = user.id
             row.chatTitle = "\(team.teamName ?? "TEAM") - Team chat"

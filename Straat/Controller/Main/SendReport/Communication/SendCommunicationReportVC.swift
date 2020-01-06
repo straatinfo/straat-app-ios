@@ -13,7 +13,7 @@ import UITextView_Placeholder
 class SendCommunicationReportVC: UIViewController {
 	
 	// Story board Objects
-	@IBOutlet weak var mainCategoryDropDown: DropDown!
+	@IBOutlet weak var mainCategoryDropDown: UITextField!
 	@IBOutlet weak var emergencyNotif: UISwitch!
 	@IBOutlet weak var showInMap: UISwitch!
 	@IBOutlet weak var message: UITextView!

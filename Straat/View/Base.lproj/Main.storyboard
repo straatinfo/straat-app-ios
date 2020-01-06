@@ -3248,36 +3248,46 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="70" id="btN-Af-tRw" customClass="TeamChatListTVC" customModule="Straat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="135" id="btN-Af-tRw" customClass="TeamChatListTVC" customModule="Straat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="btN-Af-tRw" id="bYn-th-mle">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="btN-Af-tRw" id="bYn-th-mle">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bg6-c7-FWG">
-                                                    <rect key="frame" x="5" y="5.5" width="365" height="60"/>
+                                                    <rect key="frame" x="5" y="5" width="365" height="124.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="msK-MS-jvz">
-                                                            <rect key="frame" x="60" y="5" width="91" height="50"/>
+                                                            <rect key="frame" x="105" y="5" width="250" height="114.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPM-r6-eOv">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="91" height="25"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="24.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-4m-zg8">
-                                                                    <rect key="frame" x="0.0" y="25" width="91" height="25"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VS-hc-wON">
+                                                                    <rect key="frame" x="0.0" y="24.5" width="250" height="33"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-4m-zg8">
+                                                                    <rect key="frame" x="0.0" y="57.5" width="250" height="57"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEp-5q-50Q">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="25"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEp-5q-50Q">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="57"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="57" id="4Os-WO-fvH"/>
+                                                                                <constraint firstAttribute="width" constant="40" id="8VC-0R-Ja1"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <color key="textColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Messages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Is-a3-iGP">
-                                                                            <rect key="frame" x="34" y="0.0" width="57" height="25"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Is-a3-iGP">
+                                                                            <rect key="frame" x="48" y="0.0" width="202" height="57"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -3287,19 +3297,19 @@
                                                             </subviews>
                                                         </stackView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Zg8-M0-Xqu">
-                                                            <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                                            <rect key="frame" x="10" y="10" width="85" height="104.5"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="3bX-Xt-9PT"/>
+                                                                <constraint firstAttribute="width" constant="85" id="3bX-Xt-9PT"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="msK-MS-jvz" secondAttribute="trailing" constant="10" id="094-Rd-k82"/>
                                                         <constraint firstItem="Zg8-M0-Xqu" firstAttribute="top" secondItem="bg6-c7-FWG" secondAttribute="top" constant="10" id="4Jw-Cu-Zfg"/>
                                                         <constraint firstItem="msK-MS-jvz" firstAttribute="leading" secondItem="Zg8-M0-Xqu" secondAttribute="trailing" constant="10" id="C90-Pl-gKC"/>
                                                         <constraint firstItem="msK-MS-jvz" firstAttribute="top" secondItem="bg6-c7-FWG" secondAttribute="top" constant="5" id="R9u-Kn-2p8"/>
-                                                        <constraint firstAttribute="height" constant="60" id="WnU-en-YnJ"/>
                                                         <constraint firstAttribute="bottom" secondItem="msK-MS-jvz" secondAttribute="bottom" constant="5" id="aFc-Pt-FxM"/>
                                                         <constraint firstItem="Zg8-M0-Xqu" firstAttribute="leading" secondItem="bg6-c7-FWG" secondAttribute="leading" constant="10" id="bD1-1w-TbZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="Zg8-M0-Xqu" secondAttribute="bottom" constant="10" id="fli-nA-X96"/>
@@ -3321,6 +3331,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageCounter" destination="QEp-5q-50Q" id="iJw-Fr-r37"/>
+                                            <outlet property="teamEmail" destination="2VS-hc-wON" id="wXc-rB-XNz"/>
                                             <outlet property="teamLogo" destination="Zg8-M0-Xqu" id="Xl9-gs-I4x"/>
                                             <outlet property="teamName" destination="jPM-r6-eOv" id="t0J-tF-TLY"/>
                                             <segue destination="UaD-ze-oSy" kind="show" id="hxz-48-UHJ"/>
@@ -3729,7 +3740,7 @@
                         <outlet property="img1" destination="rox-6I-q9C" id="L6U-kj-1UK"/>
                         <outlet property="img2" destination="d8Z-dQ-jPY" id="aI5-EO-MJw"/>
                         <outlet property="img3" destination="Nw3-aN-EOt" id="d85-HX-elL"/>
-                        <outlet property="mainCategoryDropDown" destination="Zys-cb-uAm" id="wxQ-h1-rW1"/>
+                        <outlet property="mainCategoryDropDown" destination="Zys-cb-uAm" id="Mb2-E4-vb6"/>
                         <outlet property="message" destination="qxF-fd-c1U" id="U0y-fc-qSU"/>
                         <outlet property="nextBtn" destination="fFL-qQ-7Kl" id="MMZ-7S-huG"/>
                         <outlet property="showInMap" destination="SNX-G9-et7" id="rjF-DX-4nF"/>
@@ -4240,7 +4251,7 @@
         <image name="upload-img" width="192" height="192"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="01F-Uc-qvo"/>
-        <segue reference="i0W-dx-LxC"/>
+        <segue reference="1sv-mw-XUp"/>
+        <segue reference="hxz-48-UHJ"/>
     </inferredMetricsTieBreakers>
 </document>

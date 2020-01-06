@@ -10,6 +10,7 @@ import UIKit
 class TeamChatListTVC: UITableViewCell {
 
 	@IBOutlet weak var teamName: UILabel!
+	@IBOutlet weak var teamEmail: UILabel!
 	@IBOutlet weak var teamLogo: UIImageView!
     @IBOutlet weak var messageCounter: UILabel!
     

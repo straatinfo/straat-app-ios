@@ -1456,7 +1456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XV5-Vw-tpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3926.0869565217395" y="4792.663043478261"/>
+            <point key="canvasLocation" x="-3954" y="4795"/>
         </scene>
         <!--Send Communication ReviewVC-->
         <scene sceneID="xUS-zm-AH5">
@@ -1603,7 +1603,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6L-Hj-Kp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3926.0869565217395" y="5555.7065217391309"/>
+            <point key="canvasLocation" x="-3954" y="5536"/>
         </scene>
         <!--ChatVC-->
         <scene sceneID="qmc-q1-UNZ">
@@ -3456,6 +3456,9 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="5Fj-LP-oqm" id="dal-OB-myI"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

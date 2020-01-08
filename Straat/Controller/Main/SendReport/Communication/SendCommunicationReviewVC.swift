@@ -14,6 +14,10 @@ class SendCommunicationReviewVC: UIViewController {
 	@IBOutlet weak var message: UITextField!
 	@IBOutlet weak var teamList: UITextField!
 	
+	var imageMetaData1: Dictionary <String, Any>?
+	var imageMetaData2: Dictionary <String, Any>?
+	var imageMetaData3: Dictionary <String, Any>?
+	
 	let reportService = ReportService()
 	
     override func viewDidLoad() {
@@ -24,31 +28,33 @@ class SendCommunicationReviewVC: UIViewController {
     
 	@IBAction func sendReport(_ sender: UIButton) {
 
-//		loadingShow(vc: self)
-//		
-//		var imageMetaDatas = [[String: Any]]()
-//		let uds = UserDefaults.standard
-//		
-//		let id = uds.string(forKey: user_id)
-//		let loc_add = uds.string(forKey: user_loc_address)
-//		let lat = uds.double(forKey: user_loc_lat)
-//		let long = uds.double(forKey: user_loc_long)
-//		let host_id = uds.string(forKey: report_host_id) ?? uds.string(forKey: user_host_id) ?? ""
+		loadingShow(vc: self)
+//
+		var imageMetaDatas = [[String: Any]]()
+		let uds = UserDefaults.standard
+//
+		let id = uds.string(forKey: user_id)
+		let loc_add = uds.string(forKey: user_loc_address)
+		let lat = uds.double(forKey: user_loc_lat)
+		let long = uds.double(forKey: user_loc_long)
+		let host_id = uds.string(forKey: report_host_id) ?? uds.string(forKey: user_host_id) ?? ""
 //		let team_id = uds.string(forKey: user_team_id)
-//		let reportType_id = "5a7888bb04866e4742f74956"
-//		
-//		if self.imageMetaData1 != nil {
-//			imageMetaDatas.append(self.imageMetaData1!)
-//		}
-//		
-//		if self.imageMetaData2 != nil {
-//			imageMetaDatas.append(self.imageMetaData2!)
-//		}
-//		
-//		if self.imageMetaData3 != nil {
-//			imageMetaDatas.append(self.imageMetaData3!)
-//		}
-//		
+
+//
+		if self.imageMetaData1 != nil {
+			imageMetaDatas.append(self.imageMetaData1!)
+		}
+		
+		if self.imageMetaData2 != nil {
+			imageMetaDatas.append(self.imageMetaData2!)
+		}
+		
+		if self.imageMetaData3 != nil {
+			imageMetaDatas.append(self.imageMetaData3!)
+		}
+		
+//		let sendReportModel = SendReportModel(title: <#T##String?#>, description: <#T##String?#>, location: <#T##String?#>, long: <#T##Double?#>, lat: <#T##Double?#>, reporterId: <#T##String?#>, hostId: <#T##String?#>, mainCategoryId: <#T##String?#>, isUrgent: <#T##Bool?#>, isShowToMap: <#T##Bool?#>, teamList: <#T##[String]?#>, reportUploadedPhotos: <#T##[[String : Any]]#>, reportTypeId: <#T##String?#>)
+		
 //		print("image meta datas: \(imageMetaDatas)")
 //		
 //		let sendReportModel = SendReportModel(
@@ -121,13 +127,14 @@ extension SendCommunicationReviewVC {
 	func getInputs() -> Void {
 		let uds = UserDefaults.standard
 		let categoryName = uds.string(forKey: report_c_category)
+		let categoryId = uds.string(forKey: report_c_category_id)
 		let notif = uds.bool(forKey: report_c_is_notif)
 		let showMap = uds.bool(forKey: report_c_show_map)
 		let message = uds.string(forKey: report_c_message)
 		
-		let imgData1 = uds.value(forKey: report_c_img1)
-		let imgData2 = uds.value(forKey: report_c_img2)
-		let imgData3 = uds.value(forKey: report_c_img3)
+		self.imageMetaData1 = uds.value(forKey: report_c_img1) as? Dictionary<String,Any>
+		self.imageMetaData2 = uds.value(forKey: report_c_img2) as? Dictionary<String,Any>
+		self.imageMetaData3 = uds.value(forKey: report_c_img3) as? Dictionary<String,Any>
 		
 		self.cagetory.text = categoryName
 		self.message.text = message
@@ -137,9 +144,9 @@ extension SendCommunicationReviewVC {
 		debugPrint("showmap \(String(describing: showMap))")
 		debugPrint("message \(String(describing: message))")
 
-		debugPrint("imgdata1 \(String(describing: imgData1))")
-		debugPrint("imgdata2 \(String(describing: imgData2))")
-		debugPrint("imgdata3 \(String(describing: imgData3))")
+		debugPrint("imgdata1 \(String(describing: imageMetaData1))")
+		debugPrint("imgdata2 \(String(describing: imageMetaData2))")
+		debugPrint("imgdata3 \(String(describing: imageMetaData3))")
 		
 	}
 }

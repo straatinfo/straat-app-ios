@@ -30,7 +30,10 @@ class SendReportModel {
     var peopleInvolvedDescription: String? // peopleInvolvedDescription
     var reportTypeId: String? // _reportType
     var attachments: [[String: Any]]? // attachments
-    
+	
+	var teamList: [String]? // teamList
+	var isShowToMap: Bool?
+	
     init () {
         
     }
@@ -118,7 +121,38 @@ class SendReportModel {
         self.peopleInvolvedDescription = peopleInvolvedDescription
         self.reportTypeId = reportTypeId
     }
-    
+	
+	// constructor for report type c
+	init (
+		title: String?,
+		description: String?,
+		location: String?,
+		long: Double?,
+		lat: Double?,
+		reporterId: String?,
+		hostId: String?,
+		mainCategoryId: String?,
+		isUrgent: Bool?,
+		isShowToMap: Bool?,
+		teamList: [String]?,
+		reportUploadedPhotos: [[String: Any]],
+		reportTypeId: String?
+		) {
+		self.title = title
+		self.description = description
+		self.location = location
+		self.long = long
+		self.lat = lat
+		self.reporterId = reporterId
+		self.hostId = hostId
+		self.mainCategoryId = mainCategoryId
+		self.isUrgent = isUrgent
+		self.isShowToMap = isShowToMap
+		self.teamList = teamList
+		self.reportUploadedPhotos = reportUploadedPhotos
+		self.reportTypeId = reportTypeId
+	}
+	
 }
 
 extension SendReportModel {
@@ -142,6 +176,12 @@ extension SendReportModel {
         if self.teamId != nil {
             params["_team"] = self.teamId!
         }
+		
+		// for report type c
+		if self.teamList != nil {
+			params["teamList"] = self.teamList
+		}
+		
         if self.isVehicleInvolved != nil {
             params["isVehicleInvolved"] = self.isVehicleInvolved
             params["vehicleInvolvedCount"] = self.vehicleInvolvedCount ?? 1

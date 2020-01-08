@@ -1,0 +1,177 @@
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "0d1-N3-EIk"; */
+"0d1-N3-EIk.normalTitle" = "Accept";
+
+/* Class = "UIButton"; normalTitle = "Data"; ObjectID = "1RP-bb-Yin"; */
+"1RP-bb-Yin.normalTitle" = "Data";
+
+/* Class = "UIButton"; normalTitle = "Next Step"; ObjectID = "2AT-7M-kN7"; */
+"2AT-7M-kN7.normalTitle" = "Next Step";
+
+/* Class = "UIButton"; normalTitle = "Report"; ObjectID = "2Ie-c6-Vhw"; */
+"2Ie-c6-Vhw.normalTitle" = "Report";
+
+/* Class = "UILabel"; text = "Email Address"; ObjectID = "2Ro-mB-nVg"; */
+"2Ro-mB-nVg.text" = "Email Address";
+
+/* Class = "UITextField"; placeholder = "Firstname"; ObjectID = "2y4-9d-kI4"; */
+"2y4-9d-kI4.placeholder" = "Firstname";
+
+/* Class = "UITextField"; text = "Select Team"; ObjectID = "3Kp-7z-kiu"; */
+"3Kp-7z-kiu.text" = "Select Team";
+
+/* Class = "UIButton"; normalTitle = "Team"; ObjectID = "4sF-zU-t34"; */
+"4sF-zU-t34.normalTitle" = "Team";
+
+/* Class = "UILabel"; text = "Lastname"; ObjectID = "6o7-zQ-PcA"; */
+"6o7-zQ-PcA.text" = "Lastname";
+
+/* Class = "UILabel"; text = "Postal Code"; ObjectID = "7rn-Sm-RHh"; */
+"7rn-Sm-RHh.text" = "Postal Code";
+
+/* Class = "UIButton"; normalTitle = "Data"; ObjectID = "AYn-oN-8zV"; */
+"AYn-oN-8zV.normalTitle" = "Data";
+
+/* Class = "UILabel"; text = "Team Email Address"; ObjectID = "DvB-LW-hyj"; */
+"DvB-LW-hyj.text" = "Team Email Address";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "F6J-OK-UsK"; */
+"F6J-OK-UsK.normalTitle" = "Register";
+
+/* Class = "UIButton"; normalTitle = "Report"; ObjectID = "GTJ-Wg-N9w"; */
+"GTJ-Wg-N9w.normalTitle" = "Report";
+
+/* Class = "UITextField"; placeholder = "Num"; ObjectID = "HtW-kA-MhW"; */
+"HtW-kA-MhW.placeholder" = "Num";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "Ik3-JP-kqf"; */
+"Ik3-JP-kqf.text" = "Username";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "Isj-CG-fME"; */
+"Isj-CG-fME.placeholder" = "Username";
+
+/* Class = "UILabel"; text = "Number"; ObjectID = "JPS-bA-G7C"; */
+"JPS-bA-G7C.text" = "Number";
+
+/* Class = "UITextField"; placeholder = "Lastname"; ObjectID = "L8Y-wK-edr"; */
+"L8Y-wK-edr.placeholder" = "Lastname";
+
+/* Class = "UIButton"; normalTitle = "Reporter"; ObjectID = "M2l-mF-Kpj"; */
+"M2l-mF-Kpj.normalTitle" = "Reporter";
+
+/* Class = "UILabel"; text = "Team Name"; ObjectID = "N13-iQ-ZlS"; */
+"N13-iQ-ZlS.text" = "Team Name";
+
+/* Class = "UIButton"; normalTitle = "Terms and Conditions"; ObjectID = "O3f-iw-1Wn"; */
+"O3f-iw-1Wn.normalTitle" = "Terms and Conditions";
+
+/* Class = "UILabel"; text = "Street"; ObjectID = "OAF-D5-bIT"; */
+"OAF-D5-bIT.text" = "Street";
+
+/* Class = "UILabel"; text = "Gender"; ObjectID = "PiQ-1F-7U0"; */
+"PiQ-1F-7U0.text" = "Gender";
+
+/* Class = "UITextField"; placeholder = "Choose Password"; ObjectID = "RHX-1b-msE"; */
+"RHX-1b-msE.placeholder" = "Choose Password";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Sno-Td-Ecf"; */
+"Sno-Td-Ecf.normalTitle" = "Register";
+
+/* Class = "UILabel"; text = "Make choice of the three below:"; ObjectID = "SxU-Rv-3H8"; */
+"SxU-Rv-3H8.text" = "Make choice of the three below:";
+
+/* Class = "UITextField"; placeholder = "Town"; ObjectID = "TAD-eu-Zua"; */
+"TAD-eu-Zua.placeholder" = "Town";
+
+/* Class = "UITextField"; placeholder = "Mobile Number"; ObjectID = "VXz-o9-eil"; */
+"VXz-o9-eil.placeholder" = "Mobile Number";
+
+/* Class = "UIButton"; normalTitle = "Team"; ObjectID = "Vlf-md-wCY"; */
+"Vlf-md-wCY.normalTitle" = "Team";
+
+/* Class = "UIButton"; normalTitle = "Yes"; ObjectID = "XjL-LI-4rU"; */
+"XjL-LI-4rU.normalTitle" = "Yes";
+
+/* Class = "UITextView"; text = "Always call 112 first\n\n\n  The app street.info is intended for supporting neighborhood prevention, among other things, for passing on reports to the municipality. The use of the app for other purposes, which do not fit within the current explanation of neighborhood prevention, is not permitted.\n  \n  The app is emphatically not intended to replace normal communication traffic with agencies such as the police, the fire brigade, ambulance and municipalities.\n  \n  Always call 112 first\n  \n  Seqretary e.g. owns the app straat.info and accepts no liability for damage in any way whatsoever, through the use of the app. Seqretary e.g. can change the terms and conditions.\n  \n  \n  About privacy and your data:\n  \n  To protect your data better, the app street.info uses a chat name. You can decide for yourself which name you use. Your phone number and all your other personal details will not be disclosed to anyone in the public part of the app street.info.\n  \n  If you are a member of a team, your team members will see your name, but not your other details. They do not see your phone number, address etc.\n  \n  The team coordinator of your team does have access to your data. This allows the coordinator to check whether the right person is in the team.\n  \n  On request, the municipality and police can, if necessary, inspect your data and data generated with this street app.\n  \n  \n  The notifications with the corresponding messages that are created with the app straat.info are kept for a limited time. Then they are destroyed. Teams and the municipality receive a copy of the reports.\n  \n  We do not analyze the use of the app, other than to improve our services.\n  \n  We do not sell your data to other organizations.\n  \n  You can terminate the use of the app straat.info and have your data removed from our database by sending us a request via email.\n  \n  By accepting these terms and conditions you agree to the use of your data described here."; ObjectID = "YJL-pf-YaR"; */
+"YJL-pf-YaR.text" = "Always call 112 first\n\n\n  The app street.info is intended for supporting neighborhood prevention, among other things, for passing on reports to the municipality. The use of the app for other purposes, which do not fit within the current explanation of neighborhood prevention, is not permitted.\n  \n  The app is emphatically not intended to replace normal communication traffic with agencies such as the police, the fire brigade, ambulance and municipalities.\n  \n  Always call 112 first\n  \n  Seqretary e.g. owns the app straat.info and accepts no liability for damage in any way whatsoever, through the use of the app. Seqretary e.g. can change the terms and conditions.\n  \n  \n  About privacy and your data:\n  \n  To protect your data better, the app street.info uses a chat name. You can decide for yourself which name you use. Your phone number and all your other personal details will not be disclosed to anyone in the public part of the app street.info.\n  \n  If you are a member of a team, your team members will see your name, but not your other details. They do not see your phone number, address etc.\n  \n  The team coordinator of your team does have access to your data. This allows the coordinator to check whether the right person is in the team.\n  \n  On request, the municipality and police can, if necessary, inspect your data and data generated with this street app.\n  \n  \n  The notifications with the corresponding messages that are created with the app straat.info are kept for a limited time. Then they are destroyed. Teams and the municipality receive a copy of the reports.\n  \n  We do not analyze the use of the app, other than to improve our services.\n  \n  We do not sell your data to other organizations.\n  \n  You can terminate the use of the app straat.info and have your data removed from our database by sending us a request via email.\n  \n  By accepting these terms and conditions you agree to the use of your data described here.";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Yz1-CG-jzK"; */
+"Yz1-CG-jzK.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Team"; ObjectID = "ZCr-vX-naG"; */
+"ZCr-vX-naG.normalTitle" = "Team";
+
+/* Class = "UIButton"; normalTitle = "Data"; ObjectID = "bI6-oy-kyd"; */
+"bI6-oy-kyd.normalTitle" = "Data";
+
+/* Class = "UILabel"; text = "Your Contact details:"; ObjectID = "bRr-Vb-0zm"; */
+"bRr-Vb-0zm.text" = "Your Contact details:";
+
+/* Class = "UIButton"; normalTitle = "I want to start a new team"; ObjectID = "bTH-jF-dCP"; */
+"bTH-jF-dCP.normalTitle" = "I want to start a new team";
+
+/* Class = "UILabel"; text = "_ID:aCsgZ"; ObjectID = "c1S-Ms-L2k"; */
+"c1S-Ms-L2k.text" = "_ID:aCsgZ";
+
+/* Class = "UIButton"; normalTitle = "I am a individual reporter"; ObjectID = "cxO-Cr-wDE"; */
+"cxO-Cr-wDE.normalTitle" = "I am a individual reporter";
+
+/* Class = "UILabel"; text = "Mobile Number"; ObjectID = "d72-iC-8Fa"; */
+"d72-iC-8Fa.text" = "Mobile Number";
+
+/* Class = "UIButton"; normalTitle = "Are you an exisiting User?"; ObjectID = "dfv-RM-8ej"; */
+"dfv-RM-8ej.normalTitle" = "Are you an exisiting User?";
+
+/* Class = "UILabel"; text = "Create New Team"; ObjectID = "fL9-KF-QJ4"; */
+"fL9-KF-QJ4.text" = "Create New Team";
+
+/* Class = "UIButton"; normalTitle = "Select Team Logo"; ObjectID = "h65-mT-bVL"; */
+"h65-mT-bVL.normalTitle" = "Select Team Logo";
+
+/* Class = "UIButton"; normalTitle = "Male"; ObjectID = "j9e-e1-HgV"; */
+"j9e-e1-HgV.normalTitle" = "Male";
+
+/* Class = "UILabel"; text = "Firstname"; ObjectID = "jQ7-E3-G0x"; */
+"jQ7-E3-G0x.text" = "Firstname";
+
+/* Class = "UITextField"; placeholder = "Postal Code"; ObjectID = "nYG-vD-h8Y"; */
+"nYG-vD-h8Y.placeholder" = "Postal Code";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "nkk-2g-jca"; */
+"nkk-2g-jca.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "When you are a volunteer, for example want to join a neighbourhood watch, then choose 'yes'. When you are going to use this app as a professional, please choose 'no'"; ObjectID = "nmo-x8-afL"; */
+"nmo-x8-afL.text" = "When you are a volunteer, for example want to join a neighbourhood watch, then choose 'yes'. When you are going to use this app as a professional, please choose 'no'";
+
+/* Class = "UIButton"; normalTitle = "No"; ObjectID = "oUC-w2-rzj"; */
+"oUC-w2-rzj.normalTitle" = "No";
+
+/* Class = "UITextField"; placeholder = "Team Email Address"; ObjectID = "pcP-lg-MaR"; */
+"pcP-lg-MaR.placeholder" = "Team Email Address";
+
+/* Class = "UILabel"; text = "Read Terms and Condition"; ObjectID = "q9X-nm-tLL"; */
+"q9X-nm-tLL.text" = "Read Terms and Condition";
+
+/* Class = "UIButton"; normalTitle = "Female"; ObjectID = "ssL-JQ-uvh"; */
+"ssL-JQ-uvh.normalTitle" = "Female";
+
+/* Class = "UITextField"; placeholder = "Street"; ObjectID = "uMT-z0-L9r"; */
+"uMT-z0-L9r.placeholder" = "Street";
+
+/* Class = "UILabel"; text = "Choose Password"; ObjectID = "uQd-Yr-XVY"; */
+"uQd-Yr-XVY.text" = "Choose Password";
+
+/* Class = "UIButton"; normalTitle = "I want to join to an existing team"; ObjectID = "vAU-q2-aF1"; */
+"vAU-q2-aF1.normalTitle" = "I want to join to an existing team";
+
+/* Class = "UITextField"; placeholder = "Team Name"; ObjectID = "vSL-ik-Xk6"; */
+"vSL-ik-Xk6.placeholder" = "Team Name";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "vbh-0T-0M0"; */
+"vbh-0T-0M0.placeholder" = "Email Address";
+
+/* Class = "UILabel"; text = "Town"; ObjectID = "wBT-q1-Zea"; */
+"wBT-q1-Zea.text" = "Town";
+
+/* Class = "UILabel"; text = "Are you using straat.info as a volunteer?"; ObjectID = "x66-Mi-Pxo"; */
+"x66-Mi-Pxo.text" = "Are you using straat.info as a volunteer?";

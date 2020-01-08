@@ -13,8 +13,8 @@ class ChatVC: UIViewController {
     @IBOutlet weak var chatTableView: UITableView!
 	@IBOutlet weak var messageContent: UITextField!
 	@IBOutlet weak var sendMessageButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
+//    @IBOutlet weak var scrollView: UIScrollView!
+	
     let chatService = ChatService()
 	var userId: String?
 	var conversationId: String?
@@ -31,8 +31,9 @@ class ChatVC: UIViewController {
 		self.disableSendMessageButton()
         self.readMessages()
         
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")?.stretchableImage(withLeftCapWidth: 10, topCapHeight: 10)
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")?.stretchableImage(withLeftCapWidth: 10, topCapHeight: 10)
+
         self.navigationItem.backBarButtonItem?.title = ""
         self.createObservers()
 //        SocketIOManager.shared.getNewMessage() { (success) in
@@ -60,8 +61,8 @@ class ChatVC: UIViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
         self.initView()
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")?.stretchableImage(withLeftCapWidth: 10, topCapHeight: 10)
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")?.stretchableImage(withLeftCapWidth: 10, topCapHeight: 10)
         self.navigationItem.backBarButtonItem?.title = ""
 	}
     
@@ -175,7 +176,7 @@ extension ChatVC : UITextFieldDelegate {
             break
         }
     }
-    
+	
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // scrollView.contentSize.height -= 250
     
@@ -185,8 +186,8 @@ extension ChatVC : UITextFieldDelegate {
         chatTableView.contentInset.top += 300
 //        chatTableView.contentInset.bottom += 300
         // scrollView.contentSize.height -= 250
-        scrollView.setContentOffset(CGPoint(x: 0, y: 300), animated: true)
-        
+//        scrollView.setContentOffset(CGPoint(x: 0, y: 300), animated: true)
+		
         textField.addTarget(self, action: #selector(ChatVC.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
     }
@@ -197,7 +198,7 @@ extension ChatVC : UITextFieldDelegate {
         chatTableView.contentInset.top = 0
 //        chatTableView.contentInset.bottom = 0
         // scrollView.contentSize.height += 250
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+//        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
 		switch textField {
 		case messageContent:
 			if textField.text?.hasValue() ?? false {

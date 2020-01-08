@@ -7,11 +7,14 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 
 class ApiHandler {
     
     typealias ApiResponse = ( Dictionary <String, Any>?, Error?) -> Void
+	//version 2
+	typealias ApiResponseV2 = (JSON?, Error?) -> Void
     
     
     func execute (_ url: URL, parameters: Parameters?, method: HTTPMethod, destination: URLEncoding.Destination, completion: @escaping ApiResponse) {
@@ -64,7 +67,33 @@ class ApiHandler {
                 debugPrint(response.result.error ?? "No Errors")
         }
     }
-
+	
+	//Version 2
+	func executeWithHeadersV2 (_ url: URL, parameters: Parameters?, method: HTTPMethod, destination: URLEncoding.Destination, headers: HTTPHeaders, completion: @escaping ApiResponseV2) {
+		
+		Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding(destination: destination), headers: headers)
+			.validate().responseJSON
+			{ response in
+				
+				if let error = response.error {
+					completion(nil, error)
+					
+				} else if let jsonArr =  response.result.value {
+					
+					let response = JSON(jsonArr)
+					completion(response, nil)
+					
+				} else if let jsonDict = response.result.value {
+					
+					let response = JSON(jsonDict)
+					completion(response, nil)
+					
+				}
+				
+				debugPrint(response.result.error ?? "No Errors")
+		}
+	}
+	
     func executeMultiPart (_ url: URL, parameters: Parameters?, imageData: Data?, fileName: String?, photoFieldName: String?, pathExtension: String?, method: HTTPMethod, headers: HTTPHeaders?, completion: @escaping ApiResponse) {
         var heads = headers
 

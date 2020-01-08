@@ -59,6 +59,8 @@ class SendCommunicationReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.setImageTapGestures()
+		self.initCategories()
+		
 		self.errorTitle = NSLocalizedString("wrong-input", comment: "")
 		self.userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
     }
@@ -147,6 +149,48 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 		uds.set(message.text, forKey: report_c_message)
 		completion(true)
 	}
+	
+	// initialise categories data
+	func initCategories() -> Void {
+		loadingShow(vc: self)
+		
+		let categoryService = CategoryService()
+//		categoryService.getMainCategoryB(language: "nl") { (success, message, mainCategories) in
+//			if success == true {
+//				print("MAIN CAT B", mainCategories)
+//
+//				for mainCategory in mainCategories {
+//					let mainCateg : MainCategoryModel = mainCategory
+//					let name = mainCateg.name!
+//					let id = mainCategory.id
+//
+//					debugPrint("categ-id: \(id)")
+//					debugPrint("categ-name: \(name)")
+//
+//					self.mainCategory.append(mainCategory)
+//					self.mainCategoryName.append(name)
+//				}
+//
+//				loadingDismiss()
+//			}
+//		}
+		
+		categoryService.getMainCategoryC(language: "nl") { (success, message, mainCat) in
+			if success {
+				self.mainCategory = mainCat
+				for mc in mainCat {
+					let name = mc.name
+					self.mainCategoryName.append(name!)
+					debugPrint("c: \(name)")
+				}
+			} else {
+				debugPrint("empty category list")
+			}
+			
+			self.mainCategoryDropDown.loadDropdownData(data: self.mainCategoryName)
+			loadingDismiss()
+		}
+	}
 
 }
 
@@ -231,7 +275,7 @@ extension SendCommunicationReportVC: UINavigationControllerDelegate, UIImagePick
 
 			switch(self.imgViewTag) {
 			case 1:
-				self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage1") { (success, message, photoMetaData, dataObject) in
+				self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "SuspiciousSituationImage1") { (success, message, photoMetaData, dataObject) in
 
 					if success {
 						self.imageMetaData1 = dataObject
@@ -248,7 +292,7 @@ extension SendCommunicationReportVC: UINavigationControllerDelegate, UIImagePick
 
 				break
 			case 2:
-				self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage2") { (success, message, photoModel, dataObject) in
+				self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "SuspiciousSituationImage2") { (success, message, photoModel, dataObject) in
 
 					if success {
 						self.imageMetaData2 = dataObject
@@ -263,7 +307,7 @@ extension SendCommunicationReportVC: UINavigationControllerDelegate, UIImagePick
 				}
 				break
 			case 3:
-				self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "PublicSpaceImage3") { (success, message, photoModel, dataObject) in
+				self.mediaService.uploadPhoto(image: self.sendReportImage!, fileName: "SuspiciousSituationImage3") { (success, message, photoModel, dataObject) in
 
 					if success {
 						self.imageMetaData3 = dataObject

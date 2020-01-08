@@ -40,6 +40,9 @@ class SendCommunicationReportVC: UIViewController {
 	var imageMetaData2: Dictionary <String, Any>?
 	var imageMetaData3: Dictionary <String, Any>?
 	
+	var isUrgent: Bool = false
+	var isShowInMap: Bool = false
+	
 	//validations
 	var isMainCategValid: Bool = false
 	var isReportDescriptionValid: Bool = true
@@ -73,8 +76,20 @@ class SendCommunicationReportVC: UIViewController {
 		if sender.isOn {
 			alertDialogWithPositiveButton(vc: self, title: "Emergency Notification", message: "Please call 911", positiveBtnName: "Got it") { (alert) in
 			}
+			self.isUrgent = true
+		} else {
+			self.isUrgent = false
 		}
 	}
+	
+	@IBAction func showReportInMapToggle(_ sender: UISwitch) {
+		if sender.isOn {
+			self.isShowInMap = true
+		} else {
+			self.isShowInMap = false
+		}
+	}
+	
 	
 	@IBAction func goToSelectTeams(_ sender: UIButton) {
 		saveInputs { (success) in
@@ -147,6 +162,19 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 		uds.set(emergencyNotif.isOn, forKey: report_c_is_notif)
 		uds.set(showInMap.isOn, forKey: report_c_show_map)
 		uds.set(message.text, forKey: report_c_message)
+		uds.set(imageMetaData1, forKey: report_c_img1)
+		uds.set(imageMetaData2, forKey: report_c_img2)
+		uds.set(imageMetaData3, forKey: report_c_img3)
+
+//		debugPrint("cat \(String(describing: self.mainCategoryDropDown.text))")
+//		debugPrint("notif \(String(describing: self.emergencyNotif.isOn))")
+//		debugPrint("showmap \(String(describing: self.showInMap.isOn))")
+//		debugPrint("message \(String(describing: self.message.text))")
+//
+//		debugPrint("imgdata1 \(String(describing: self.imageMetaData1))")
+//		debugPrint("imgdata2 \(String(describing: self.imageMetaData2))")
+//		debugPrint("imgdata3 \(String(describing: self.imageMetaData3))")
+		
 		completion(true)
 	}
 	
@@ -223,7 +251,7 @@ extension SendCommunicationReportVC: UINavigationControllerDelegate, UIImagePick
 		let alert = UIAlertController(title: "Image Source", message: "Please choose where to take your image", preferredStyle: .actionSheet)
 
 		alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-			//some shitty code
+
 			if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
 				img.sourceType = UIImagePickerController.SourceType.camera
 				self.present(img, animated: true, completion: nil)
@@ -236,7 +264,7 @@ extension SendCommunicationReportVC: UINavigationControllerDelegate, UIImagePick
 		}))
 
 		alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
-			//some shitty code
+
 
 			self.importImagePermission { (hasGranted, result) in
 

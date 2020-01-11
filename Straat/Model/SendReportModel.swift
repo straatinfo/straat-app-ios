@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class SendReportModel {
     
@@ -31,8 +32,11 @@ class SendReportModel {
     var reportTypeId: String? // _reportType
     var attachments: [[String: Any]]? // attachments
 	
+	//new values
 	var teamList: [String]? // teamList
-	var isShowToMap: Bool?
+//	var teamList: [JSON]? // teamList
+	var isInMap: Bool?
+	var userId: String?
 	
     init () {
         
@@ -133,7 +137,8 @@ class SendReportModel {
 		hostId: String?,
 		mainCategoryId: String?,
 		isUrgent: Bool?,
-		isShowToMap: Bool?,
+		isInMap: Bool?,
+//		teamList: [JSON]?,
 		teamList: [String]?,
 		reportUploadedPhotos: [[String: Any]],
 		reportTypeId: String?
@@ -144,10 +149,11 @@ class SendReportModel {
 		self.long = long
 		self.lat = lat
 		self.reporterId = reporterId
+		self.userId = reporterId // new value
 		self.hostId = hostId
 		self.mainCategoryId = mainCategoryId
 		self.isUrgent = isUrgent
-		self.isShowToMap = isShowToMap
+		self.isInMap = isInMap
 		self.teamList = teamList
 		self.reportUploadedPhotos = reportUploadedPhotos
 		self.reportTypeId = reportTypeId
@@ -181,6 +187,9 @@ extension SendReportModel {
 		if self.teamList != nil {
 			params["teamList"] = self.teamList
 		}
+//		if self.isShowToMap != nil {
+//			params[""]
+//		}
 		
         if self.isVehicleInvolved != nil {
             params["isVehicleInvolved"] = self.isVehicleInvolved
@@ -195,5 +204,54 @@ extension SendReportModel {
         
         return params
     }
-    
+	
+	func toHTTPParamsReportC () -> Parameters {
+		var params: Parameters = [:]
+		params["title"] = self.title!
+		params["description"] = self.description!
+		params["location"] = self.location!
+		params["long"] = self.long!
+		params["lat"] = self.lat!
+		params["_reporter"] = self.reporterId!
+        params["_user"] = self.reporterId!
+		params["_host"] = self.hostId!
+		params["_mainCategory"] = self.mainCategoryId!
+		params["isUrgent"] = self.isUrgent!
+		params["isInMap"] = self.isInMap!
+		params["reportUploadedPhotos"] = self.reportUploadedPhotos!
+		params["_reportType"] = self.reportTypeId!
+		params["teamList"] = self.teamList!
+		
+		// for report type c
+//		if self.teamList != nil {
+//
+//		}
+		
+		return params
+	}
+	
+//	func toHTTPParamsReportC () -> Parameters {
+//		var params: Parameters = [:]
+//		params["title"] = JSON(self.title!).stringValue
+//		params["description"] = JSON(self.description!).stringValue
+//		params["location"] = JSON(self.location!).stringValue
+//		params["long"] = JSON(self.long!).doubleValue
+//		params["lat"] = JSON(self.lat!).doubleValue
+//		params["_reporter"] = JSON(self.reporterId!).stringValue
+//		params["_host"] = JSON(self.hostId!).stringValue
+//		params["_mainCategory"] = JSON(self.mainCategoryId!).stringValue
+//		params["isUrgent"] = JSON(self.isUrgent!).boolValue
+//		params["isInMap"] = JSON(self.isInMap!).boolValue
+//		params["reportUploadedPhotos"] = self.reportUploadedPhotos!
+//		params["_reportType"] = JSON(self.reportTypeId!).stringValue
+//		params["teamList"] = JSON(self.teamList!).arrayValue
+//
+//		// for report type c
+//		if self.teamList != nil {
+//
+//		}
+//
+//		return params
+//	}
+	
 }

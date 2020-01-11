@@ -607,6 +607,7 @@ extension SendSuspiciousReportVC : UINavigationControllerDelegate, UIImagePicker
                 let desc = NSLocalizedString("import-image-error", comment: "")
                 defaultDialog(vc: self, title: "Import Image", message: desc)
                 print("error in importing image")
+				loadingDismiss()
                 break
             }
             

@@ -67,7 +67,7 @@ class ReportService {
         
         print("reportUploadedPhotos - data \(parameters["reportUploadedPhotos"])")
         
-        
+		debugPrint("params: \(parameters)")
 //        parameters["reportUploadedPhotos"] = "[{\"fieldname\": \"photo\",\"originalname\": \"AdvancedReactRedux.jpg\",\"encoding\": \"7bit\",\"mimetype\": \"image/jpeg\",\"public_id\": \"reports/AdvancedReactRedux.jpg_Mon Feb 25 2019 01:19:05 GMT+0100 (Central European Standard Time)\",\"version\": 1551053947,\"signature\": \"d73f2f1b12095682ab0801f452ffbeafbaf1adcb\",\"width\": 1600,\"height\": 1194,\"format\": \"jpg\",\"resource_type\": \"image\",\"created_at\": \"2019-02-25T00:19:07Z\",\"tags\": [],\"bytes\": 1115671,\"type\": \"upload\",\"etag\": \"824910d7180cf6a2814dfdddb9b74448\",\"placeholder\": false,\"url\": \"http://res.cloudinary.com/hvina6sjo/image/upload/v1551053947/reports/AdvancedReactRedux.jpg_Mon%20Feb%2025%202019%2001:19:05%20GMT%2B0100%20%28Central%20European%20Standard%20Time%29.jpg\",\"secure_url\": \"https://res.cloudinary.com/hvina6sjo/image/upload/v1551053947/reports/AdvancedReactRedux.jpg_Mon%20Feb%2025%202019%2001:19:05%20GMT%2B0100%20%28Central%20European%20Standard%20Time%29.jpg\",\"original_filename\": \"file\"}]"
         
 //        let dic = reportDetails.reportUploadedPhotos
@@ -87,12 +87,15 @@ class ReportService {
 
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")
-
+				
                 completion(false, error.localizedDescription)
             } else if let data = response {
+				
                 let json = JSON(data)
                 let jsonData = json["data"]
+				
 				debugPrint("report sending: \(jsonData)")
+				
                 let desc = NSLocalizedString("send-report-success", comment: "")
                 if let reportId = jsonData["_id"].string {
                     print("REPORT_ID: \(reportId)")
@@ -102,6 +105,41 @@ class ReportService {
             }
         }
     }
+	
+	// Send Report Type C with implemenation of new apiHandler.executeWithHeadersV3
+	func sendReportTypeC (reportDetails: SendReportModel, completion: @escaping (Bool, String) -> Void) {
+		var parameters = reportDetails.toHTTPParamsReportC()
+		
+		print("reportUploadedPhotos - data \(String(describing: parameters["reportUploadedPhotos"]))")
+		
+
+		if reportDetails.reportUploadedPhotos != nil && reportDetails.reportUploadedPhotos!.count > 0 {
+			parameters["reportUploadedPhotos"] = self.parsePhotos(reportUploadedPhotos: reportDetails.reportUploadedPhotos!)
+		}
+		
+		apiHandler.executeWithHeadersV3(URL(string: send_report)!, parameters: parameters, method: .post, destination: JSONEncoding.default, headers: [:]) { (response, err) in
+			if let error = err {
+				print("error reponse: \(error.localizedDescription)")
+
+				completion(false, error.localizedDescription)
+			} else if let data = response {
+
+				let json = JSON(data)
+				let jsonData = json["data"]
+
+				debugPrint("report sending: \(jsonData)")
+
+				let desc = NSLocalizedString("send-report-success", comment: "")
+				if let reportId = jsonData["_id"].string {
+					print("REPORT_ID: \(reportId)")
+					self.uds.set(reportId, forKey: new_sent_report)
+				}
+				completion(true, desc)
+			}
+		}
+		
+
+	}
     
     func getReportById (reportId: String, completion: @escaping (Bool, String, ReportModel?) -> Void) {
         let parameters: Parameters = ["language": "nl"]

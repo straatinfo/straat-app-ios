@@ -140,4 +140,3 @@ let report_c_teams = "report_c_teams"
 let report_type_a_id = "5a7888bb04866e4742f74955"
 let report_type_b_id = "5a7888bb04866e4742f74956"
 let report_type_c_id = "5a7888bb04866e4742f74957"
-

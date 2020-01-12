@@ -239,13 +239,13 @@ class ReportService {
         var reportTypeId: String;
         
         if reportType == "A" {
-            reportTypeId = A
+            reportTypeId = report_type_a_id
         } else if reportType == "B" {
-            reportTypeId = B
+            reportTypeId = report_type_b_id
         } else if reportType == "C" {
-            reportTypeId = C
+            reportTypeId = report_type_c_id
         } else {
-            reportTypeId = A
+            reportTypeId = report_type_a_id
         }
         
         

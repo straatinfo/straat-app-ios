@@ -49,6 +49,8 @@
 		438B8FBD2247E56100FFA4B3 /* TextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B8FBC2247E56100FFA4B3 /* TextViewPlaceholder.swift */; };
 		438B8FC022480FD300FFA4B3 /* TeamChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B8FBF22480FD300FFA4B3 /* TeamChatListVC.swift */; };
 		438B8FC22248100800FFA4B3 /* TeamChatListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B8FC12248100800FFA4B3 /* TeamChatListTVC.swift */; };
+		438DDBFC23CA46410077C593 /* GovernmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438DDBFB23CA46410077C593 /* GovernmentVC.swift */; };
+		438DDBFE23CA466C0077C593 /* GovernmentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438DDBFD23CA466C0077C593 /* GovernmentTVC.swift */; };
 		43907A322210A5B60063DC16 /* TeamListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43907A312210A5B60063DC16 /* TeamListModel.swift */; };
 		4392B573222129650001A7E0 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B572222129650001A7E0 /* ReportVC.swift */; };
 		4392B575222129760001A7E0 /* TeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392B574222129760001A7E0 /* TeamVC.swift */; };
@@ -151,6 +153,8 @@
 		438B8FBC2247E56100FFA4B3 /* TextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholder.swift; sourceTree = "<group>"; };
 		438B8FBF22480FD300FFA4B3 /* TeamChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatListVC.swift; sourceTree = "<group>"; };
 		438B8FC12248100800FFA4B3 /* TeamChatListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatListTVC.swift; sourceTree = "<group>"; };
+		438DDBFB23CA46410077C593 /* GovernmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovernmentVC.swift; sourceTree = "<group>"; };
+		438DDBFD23CA466C0077C593 /* GovernmentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovernmentTVC.swift; sourceTree = "<group>"; };
 		43907A312210A5B60063DC16 /* TeamListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListModel.swift; sourceTree = "<group>"; };
 		4392B572222129650001A7E0 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		4392B574222129760001A7E0 /* TeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamVC.swift; sourceTree = "<group>"; };
@@ -455,6 +459,7 @@
 		437B55AA22398E570022A831 /* ViewReports */ = {
 			isa = PBXGroup;
 			children = (
+				438DDBFA23CA453A0077C593 /* Government */,
 				438B8FBE22480F6E00FFA4B3 /* ChatTab */,
 				43130E232221CB5A0074AD85 /* ViewReportVC.swift */,
 				436B99CB2217EF2C00881443 /* PublicSpacesReports */,
@@ -491,6 +496,15 @@
 				438B8FC12248100800FFA4B3 /* TeamChatListTVC.swift */,
 			);
 			path = ChatTab;
+			sourceTree = "<group>";
+		};
+		438DDBFA23CA453A0077C593 /* Government */ = {
+			isa = PBXGroup;
+			children = (
+				438DDBFB23CA46410077C593 /* GovernmentVC.swift */,
+				438DDBFD23CA466C0077C593 /* GovernmentTVC.swift */,
+			);
+			path = Government;
 			sourceTree = "<group>";
 		};
 		4392B5712221293F0001A7E0 /* Sidebar */ = {
@@ -797,6 +811,7 @@
 				4368EB14222977B500EA03FE /* TeamDetailsUpdateVC.swift in Sources */,
 				434C3B57220A2B4D00843000 /* URL.swift in Sources */,
 				9B0948BE2212BC15004CE4CB /* RegistrationStep2VC.swift in Sources */,
+				438DDBFE23CA466C0077C593 /* GovernmentTVC.swift in Sources */,
 				438B8FC22248100800FFA4B3 /* TeamChatListTVC.swift in Sources */,
 				4335FF3422434C3B00A1C6AA /* ChatTVC.swift in Sources */,
 				9BD812A322CF31C6003A2BDB /* UtilsService.swift in Sources */,
@@ -839,6 +854,7 @@
 				435E4CB222465DD900A6AAC2 /* TeamChatTVC.swift in Sources */,
 				9BEEC6EE22E1A5720018D9D2 /* HostService.swift in Sources */,
 				4386825921FF8C06008F65D0 /* LoginUserVC.swift in Sources */,
+				438DDBFC23CA46410077C593 /* GovernmentVC.swift in Sources */,
 				43130E262221DB800074AD85 /* SecondScreenVC.swift in Sources */,
 				4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */,
 				9B2F486C221F17A100B2BF91 /* SendReportModel.swift in Sources */,

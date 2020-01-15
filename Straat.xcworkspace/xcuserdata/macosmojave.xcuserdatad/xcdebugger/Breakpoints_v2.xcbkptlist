@@ -38,11 +38,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
-            timestampString = "600095447.327969"
+            timestampString = "600805526.85228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -51,14 +51,14 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Straat.SendPublicSpaceReportVC.ImgUIView3.getter : weak Swift.Optional&lt;__C.UIView&gt;"
                   moduleName = "Straat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macosmojave/Desktop/straat-app-ios/Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
-                  timestampString = "600480632.816193"
+                  timestampString = "600794235.998758"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -66,14 +66,14 @@
                   offsetFromSymbolStart = "86">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Straat.SendPublicSpaceReportVC.ImgUIView3.setter : weak Swift.Optional&lt;__C.UIView&gt;"
                   moduleName = "Straat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macosmojave/Desktop/straat-app-ios/Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
-                  timestampString = "600480632.8186719"
+                  timestampString = "600794236.0028861"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -81,14 +81,14 @@
                   offsetFromSymbolStart = "106">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Straat.SendPublicSpaceReportVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Straat.SendPublicSpaceReportVC"
                   moduleName = "Straat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macosmojave/Desktop/straat-app-ios/Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
-                  timestampString = "600480632.821813"
+                  timestampString = "600794236.006737"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -96,14 +96,14 @@
                   offsetFromSymbolStart = "809">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Straat.SendPublicSpaceReportVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Straat.SendPublicSpaceReportVC&gt;"
                   moduleName = "Straat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macosmojave/Desktop/straat-app-ios/Straat/Controller/Main/SendReport/SendPublicSpaceReportVC.swift"
-                  timestampString = "600480632.8243181"
+                  timestampString = "600794236.010347"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"

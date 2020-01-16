@@ -124,8 +124,9 @@ let report_host_lat = "report_host_lat"
 let fcm_new_message = "straat.info.fcm_new_message"
 
 
-// report type c
+// Report Type C User Defaults
 let report_c_category = "report_c_category"
+let report_c_category_id = "report_c_category_id"
 let report_c_is_notif = "report_c_is_notif"
 let report_c_show_map = "report_c_show_map"
 let report_c_message = "report_c_message"
@@ -133,3 +134,9 @@ let report_c_img1 = "report_c_img1"
 let report_c_img2 = "report_c_img2"
 let report_c_img3 = "report_c_img3"
 let report_c_teams = "report_c_teams"
+
+
+// Report Type Ids
+let report_type_a_id = "5a7888bb04866e4742f74955"
+let report_type_b_id = "5a7888bb04866e4742f74956"
+let report_type_c_id = "5a7888bb04866e4742f74957"

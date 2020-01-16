@@ -106,6 +106,17 @@ class SendCommunicationReportVC: UIViewController {
 // for form validation
 extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		switch textField {
+			case self.mainCategoryDropDown:
+				debugPrint("main categ did end editing")
+			break
+			
+		default:
+			break
+		}
+	}
+	
 	func disableSendReportButton() {
 		self.nextBtn.isEnabled = false
 		self.nextBtn.backgroundColor = UIColor.lightGray
@@ -158,13 +169,26 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 	func saveInputs (completion: @escaping cb) -> Void {
 		let uds = UserDefaults.standard
 		
-		uds.set(mainCategoryDropDown.text, forKey: report_c_category)
-		uds.set(emergencyNotif.isOn, forKey: report_c_is_notif)
-		uds.set(showInMap.isOn, forKey: report_c_show_map)
-		uds.set(message.text, forKey: report_c_message)
-		uds.set(imageMetaData1, forKey: report_c_img1)
-		uds.set(imageMetaData2, forKey: report_c_img2)
-		uds.set(imageMetaData3, forKey: report_c_img3)
+		getMainCategoryId(mainCategory: self.mainCategory, categoryName: self.mainCategoryDropDown.text!) { (success, categoryId) in
+			
+			if success {
+
+				uds.set(self.mainCategoryDropDown.text, forKey: report_c_category)
+				uds.set(categoryId, forKey: report_c_category_id)
+				uds.set(self.isUrgent, forKey: report_c_is_notif)
+				uds.set(self.isShowInMap, forKey: report_c_show_map)
+				uds.set(self.message.text, forKey: report_c_message)
+				uds.set(self.imageMetaData1, forKey: report_c_img1)
+				uds.set(self.imageMetaData2, forKey: report_c_img2)
+				uds.set(self.imageMetaData3, forKey: report_c_img3)
+				
+				completion(true)
+			} else {
+				completion(false)
+			}
+			
+		}
+
 
 //		debugPrint("cat \(String(describing: self.mainCategoryDropDown.text))")
 //		debugPrint("notif \(String(describing: self.emergencyNotif.isOn))")
@@ -175,7 +199,25 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 //		debugPrint("imgdata2 \(String(describing: self.imageMetaData2))")
 //		debugPrint("imgdata3 \(String(describing: self.imageMetaData3))")
 		
-		completion(true)
+
+	}
+	
+	func getMainCategoryId(mainCategory: [MainCategoryModel], categoryName: String, completion: @escaping (Bool, String) -> Void) -> Void {
+		
+		if categoryName.count > 0 {
+			for category in mainCategory {
+				if category.name?.lowercased() == categoryName.lowercased() {
+					completion(true, category.id!)
+				} else {
+					completion(false, "")
+				}
+			}
+			
+		} else {
+			completion(false, "")
+		}
+
+		
 	}
 	
 	// initialise categories data
@@ -183,25 +225,6 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 		loadingShow(vc: self)
 		
 		let categoryService = CategoryService()
-//		categoryService.getMainCategoryB(language: "nl") { (success, message, mainCategories) in
-//			if success == true {
-//				print("MAIN CAT B", mainCategories)
-//
-//				for mainCategory in mainCategories {
-//					let mainCateg : MainCategoryModel = mainCategory
-//					let name = mainCateg.name!
-//					let id = mainCategory.id
-//
-//					debugPrint("categ-id: \(id)")
-//					debugPrint("categ-name: \(name)")
-//
-//					self.mainCategory.append(mainCategory)
-//					self.mainCategoryName.append(name)
-//				}
-//
-//				loadingDismiss()
-//			}
-//		}
 		
 		categoryService.getMainCategoryC(language: "nl") { (success, message, mainCat) in
 			if success {
@@ -209,7 +232,7 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 				for mc in mainCat {
 					let name = mc.name
 					self.mainCategoryName.append(name!)
-					debugPrint("c: \(name)")
+//					debugPrint("c: \(name)")
 				}
 			} else {
 				debugPrint("empty category list")
@@ -354,6 +377,7 @@ extension SendCommunicationReportVC: UINavigationControllerDelegate, UIImagePick
 				let desc = NSLocalizedString("import-image-error", comment: "")
 				defaultDialog(vc: self, title: "Import Image", message: desc)
 				print("error in importing image")
+				loadingDismiss()
 				break
 			}
 

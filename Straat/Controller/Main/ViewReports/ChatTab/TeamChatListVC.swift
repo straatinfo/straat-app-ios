@@ -28,9 +28,10 @@ class TeamChatListVC: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
         // self.onNewMessageReceived()
-        self.teamList.removeAll()
-        self.loadChatRooms()
         self.createObservers()
+		self.teamList.removeAll()
+        self.loadChatRooms()
+
 
         // Do any additional setup after loading the view.
     }
@@ -150,6 +151,7 @@ extension TeamChatListVC {
     }
     
     func loadChatRooms () {
+		loadingShow(vc: self)
         let user = UserModel()
         let userId = user.id
         teamService.getTeamListByUserId(userId: userId!) { (success, message, teams) in
@@ -161,6 +163,7 @@ extension TeamChatListVC {
                 self.teamList = teams ?? [TeamModel]()
                 self.teamChatListTableView.reloadData()
             }
+			loadingDismiss()
         }
     }
 }

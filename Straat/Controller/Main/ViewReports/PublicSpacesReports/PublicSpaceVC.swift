@@ -185,6 +185,7 @@ extension PublicSpaceVC {
     }
     
     func loadChatRooms () {
+		loadingShow(vc: self)
         let user = UserModel()
         self.reports.removeAll()
         self.reports = [ReportModel]()
@@ -200,6 +201,7 @@ extension PublicSpaceVC {
                 self.reports = reportModels
                 self.publicReportTableView.reloadData()
             }
+			loadingDismiss()
         }
     }
 }

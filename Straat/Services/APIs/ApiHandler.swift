@@ -51,7 +51,7 @@ class ApiHandler {
             { response in
                 
                 if let error = response.error {
-                    
+					debugPrint("api handler err: \(response.error)")
                     completion(nil, error)
                     
                 } else if let jsonArr =  response.result.value as? Dictionary <String, Any> {
@@ -93,6 +93,33 @@ class ApiHandler {
 				debugPrint(response.result.error ?? "No Errors")
 		}
 	}
+	
+	//Version 3 with JSONEncoding
+	func executeWithHeadersV3 (_ url: URL, parameters: Parameters?, method: HTTPMethod, destination: JSONEncoding, headers: HTTPHeaders, completion: @escaping ApiResponseV2) {
+		
+		Alamofire.request(url, method: method, parameters: parameters, encoding: destination, headers: headers)
+			.validate().responseJSON
+			{ response in
+				
+				if let error = response.error {
+					completion(nil, error)
+					
+				} else if let jsonArr =  response.result.value {
+					
+					let response = JSON(jsonArr)
+					completion(response, nil)
+					
+				} else if let jsonDict = response.result.value {
+					
+					let response = JSON(jsonDict)
+					completion(response, nil)
+					
+				}
+				
+				debugPrint(response.result.error ?? "No Errors")
+		}
+	}
+	
 	
     func executeMultiPart (_ url: URL, parameters: Parameters?, imageData: Data?, fileName: String?, photoFieldName: String?, pathExtension: String?, method: HTTPMethod, headers: HTTPHeaders?, completion: @escaping ApiResponse) {
         var heads = headers

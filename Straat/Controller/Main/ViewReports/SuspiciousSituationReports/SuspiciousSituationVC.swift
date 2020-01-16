@@ -172,6 +172,7 @@ extension SuspiciousSituationVC {
     }
     
     func loadChatRooms () {
+		loadingShow(vc: self)
         let user = UserModel()
         self.reports.removeAll()
         self.reportService.getPublicReport(reporterId: user.id!, reportType: "B") { (success, message, reportModels) in
@@ -189,6 +190,8 @@ extension SuspiciousSituationVC {
 //                }
                 self.suspiciousReportTableView.reloadData()
             }
+			
+			loadingDismiss()
         }
     }
 }

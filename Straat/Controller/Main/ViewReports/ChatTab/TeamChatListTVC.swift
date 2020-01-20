@@ -21,6 +21,9 @@ class TeamChatListTVC: UITableViewCell {
     var teamId: String?
     var chatTitle: String?
     var userId: String?
+	
+	//new
+	var profilePicUrl: String?
     
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,13 +33,14 @@ class TeamChatListTVC: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-		let uds = UserDefaults.standard
-		
-		uds.set(userId, forKey: chat_vc_user_id)
-		uds.set(conversationId, forKey: chat_vc_conversation_id)
-        uds.set(type, forKey: chat_vc_type)
-        uds.set(chatTitle, forKey: chat_vc_title)
-        uds.set(teamId, forKey: chat_vc_team_id)
+
+//		let uds = UserDefaults.standard
+//		uds.set(userId, forKey: chat_vc_user_id)
+//		uds.set(conversationId, forKey: chat_vc_conversation_id)
+//        uds.set(type, forKey: chat_vc_type)
+//        uds.set(chatTitle, forKey: chat_vc_title)
+//        uds.set(teamId, forKey: chat_vc_team_id)
+		saveDetails()
         // uds.set()
         
         /*
@@ -50,5 +54,32 @@ class TeamChatListTVC: UITableViewCell {
          */
 
     }
+	
+	@IBAction func messages(_ sender: UIButton) {
+		saveDetails()
 
+	}
+	
+	func setTeamId() -> Void {
+		let teamChatListMember = TeamChatListMemberVC()
+		teamChatListMember.getTeamId(teamId: self.teamId!)
+	}
+	
+	func saveDetails() -> Void {
+		let uds = UserDefaults.standard
+		uds.removeObject(forKey: chat_vc_team_id)
+		uds.removeObject(forKey: chat_vc_team_name)
+		uds.removeObject(forKey: chat_vc_type)
+		uds.removeObject(forKey: chat_vc_msg_count)
+		uds.removeObject(forKey: chat_vc_profile_url)
+		uds.removeObject(forKey: chat_vc_conversation_id)
+		
+		uds.set(teamId, forKey: chat_vc_team_id)
+		uds.set(teamName.text, forKey: chat_vc_team_name)
+		uds.set(type, forKey: chat_vc_type)
+		uds.set(messageCounter.text, forKey: chat_vc_msg_count)
+		uds.set(profilePicUrl, forKey: chat_vc_profile_url)
+		uds.set(conversationId, forKey: chat_vc_conversation_id)
+	}
+	
 }

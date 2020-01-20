@@ -108,6 +108,8 @@ extension TeamChatListVC : UITextViewDelegate, UITableViewDataSource {
             row.convoId = team.conversationId
             row.conversationId = team.conversationId
             row.reporterId = user.id
+			
+			row.profilePicUrl = team.profilePic
             
             
             debugPrint("team image url: \(team.profilePic)")
@@ -129,7 +131,9 @@ extension TeamChatListVC : UITextViewDelegate, UITableViewDataSource {
 		let team = self.teamList[indexPath.row]
 		let convoId = team.conversationId
 		
+		debugPrint("selecte team id \(team.teamId)")
 	}
+
 
 }
 

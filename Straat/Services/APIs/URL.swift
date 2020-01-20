@@ -56,6 +56,8 @@ let team_request = root + "teamInvite/teamRequests/"
 let team_info_members = root + "team/info/"
 let team_accept_user = root + "teamInvite/acceptRequest/"
 
+// newly added
+let team_chat_list_member = baseUrl + "/v3/api/teams/chat/"
 
 // chat
 let chat_list = root_v2 + "message"

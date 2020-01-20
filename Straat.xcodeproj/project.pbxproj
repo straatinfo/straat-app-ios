@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4302C1102206085400A9865D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C10F2206085400A9865D /* CustomTabBarController.swift */; };
 		4302C1142206137A00A9865D /* CreateReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4302C1132206137A00A9865D /* CreateReportVC.swift */; };
+		4308135F23D4E0B7000613F4 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4308135E23D4E0B7000613F4 /* Conversation.swift */; };
 		4309F8EE22174B21001C29A9 /* SendPublicSpaceReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */; };
 		43130E242221CB5A0074AD85 /* ViewReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43130E232221CB5A0074AD85 /* ViewReportVC.swift */; };
 		43130E262221DB800074AD85 /* SecondScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43130E252221DB800074AD85 /* SecondScreenVC.swift */; };
@@ -21,6 +22,8 @@
 		4335FF382243583D00A1C6AA /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4335FF372243583D00A1C6AA /* ChatService.swift */; };
 		433DF9C12228665E0091BF8A /* ReportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433DF9C02228665E0091BF8A /* ReportTVC.swift */; };
 		433DF9C3222866710091BF8A /* TeamTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433DF9C2222866710091BF8A /* TeamTVC.swift */; };
+		433FAD6223D105F90002CF04 /* TeamChatListMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FAD6123D105F90002CF04 /* TeamChatListMemberVC.swift */; };
+		433FAD6423D1062B0002CF04 /* TeamChatListMemberTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FAD6323D1062B0002CF04 /* TeamChatListMemberTVC.swift */; };
 		43440D6D2215C2D7008A777E /* PublicSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */; };
 		43440D712215D460008A777E /* PublicSpaceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D702215D460008A777E /* PublicSpaceTVC.swift */; };
 		43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43440D722215DA26008A777E /* SuspiciousSituationVC.swift */; };
@@ -108,6 +111,7 @@
 		3E32E0A82034B122A15F9FE0 /* Pods_Straat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Straat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4302C10F2206085400A9865D /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		4302C1132206137A00A9865D /* CreateReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportVC.swift; sourceTree = "<group>"; };
+		4308135E23D4E0B7000613F4 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		4309F8ED22174B21001C29A9 /* SendPublicSpaceReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPublicSpaceReportVC.swift; sourceTree = "<group>"; };
 		43130E232221CB5A0074AD85 /* ViewReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReportVC.swift; sourceTree = "<group>"; };
 		43130E252221DB800074AD85 /* SecondScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenVC.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 		4335FF372243583D00A1C6AA /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		433DF9C02228665E0091BF8A /* ReportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTVC.swift; sourceTree = "<group>"; };
 		433DF9C2222866710091BF8A /* TeamTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTVC.swift; sourceTree = "<group>"; };
+		433FAD6123D105F90002CF04 /* TeamChatListMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatListMemberVC.swift; sourceTree = "<group>"; };
+		433FAD6323D1062B0002CF04 /* TeamChatListMemberTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamChatListMemberTVC.swift; sourceTree = "<group>"; };
 		43440D6C2215C2D7008A777E /* PublicSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicSpaceVC.swift; sourceTree = "<group>"; };
 		43440D702215D460008A777E /* PublicSpaceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicSpaceTVC.swift; sourceTree = "<group>"; };
 		43440D722215DA26008A777E /* SuspiciousSituationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspiciousSituationVC.swift; sourceTree = "<group>"; };
@@ -357,6 +363,7 @@
 				9BBABAA1221F3AAB00DBC284 /* PhotoModel.swift */,
 				9B77016E222076B4004D8CF0 /* ReportTypeModel.swift */,
 				4335FF3522434E6200A1C6AA /* ChatModel.swift */,
+				4308135E23D4E0B7000613F4 /* Conversation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -494,6 +501,8 @@
 			children = (
 				438B8FBF22480FD300FFA4B3 /* TeamChatListVC.swift */,
 				438B8FC12248100800FFA4B3 /* TeamChatListTVC.swift */,
+				433FAD6123D105F90002CF04 /* TeamChatListMemberVC.swift */,
+				433FAD6323D1062B0002CF04 /* TeamChatListMemberTVC.swift */,
 			);
 			path = ChatTab;
 			sourceTree = "<group>";
@@ -821,6 +830,8 @@
 				432D6605223AA68A005F382D /* TeamMemberVC.swift in Sources */,
 				4392B57D222129B90001A7E0 /* SettingVC.swift in Sources */,
 				43E7C921220FF747004A9AFD /* SelectReportVC.swift in Sources */,
+				433FAD6423D1062B0002CF04 /* TeamChatListMemberTVC.swift in Sources */,
+				433FAD6223D105F90002CF04 /* TeamChatListMemberVC.swift in Sources */,
 				434F3E6423ABDD0000E00642 /* SendCommunicationTeamsVC.swift in Sources */,
 				9BBABAA6221F4AE000DBC284 /* MediaService.swift in Sources */,
 				9B0948C02212D0A8004CE4CB /* TeamModel.swift in Sources */,
@@ -849,6 +860,7 @@
 				434C3B55220A287800843000 /* ApiHandler.swift in Sources */,
 				9B31006D23999E8B00CA2684 /* SendCommunicationReportVC.swift in Sources */,
 				43440D732215DA26008A777E /* SuspiciousSituationVC.swift in Sources */,
+				4308135F23D4E0B7000613F4 /* Conversation.swift in Sources */,
 				9BE5D8ED22195B530041FE8A /* MainCategoryModel.swift in Sources */,
 				4335FF3222434C1C00A1C6AA /* ChatVC.swift in Sources */,
 				435E4CB222465DD900A6AAC2 /* TeamChatTVC.swift in Sources */,

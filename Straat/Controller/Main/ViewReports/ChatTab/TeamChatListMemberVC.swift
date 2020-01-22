@@ -100,10 +100,19 @@ extension TeamChatListMemberVC: UITableViewDataSource, UITableViewDelegate {
 		let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! TeamChatListMemberTVC
 		let convoIndex = self.conversations[indexPath.row]
 		let lastConvo = "\(convoIndex.messagePreview!["author"].stringValue) \(convoIndex.messagePreview!["body"].stringValue)"
+
+		let uds = UserDefaults.standard
+		let userId = uds.string(forKey: user_id) ?? ""
 		
 		row.memberName.text = convoIndex.chatName
 		row.lastConvo.text = lastConvo
-		row.date.text = convoIndex.messagePreview!["createdAt"].stringValue
+		row.date.text = convoIndex.messagePreview!["createdAt"].stringValue.toDate(format: "d MMM yyyy HH:MM")
+		row.teamName = convoIndex.chatName
+		row.type = convoIndex.type!
+		row.conversationId = convoIndex.id
+		row.userId = userId
+
+
 		
 		if convoIndex.profilePicUrl != nil && convoIndex.profilePicUrl != "" {
 			

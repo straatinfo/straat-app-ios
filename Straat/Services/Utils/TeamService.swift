@@ -79,7 +79,6 @@ class TeamService {
         }
     }
 	
-	// to be continue
 	func getTeamChatMemberList (teamId: String, userId: String, completion: @escaping (Bool, String, [Conversation]?, JSON?) -> Void) {
 		let url = team_chat_list_member + teamId + "/" + userId
 		

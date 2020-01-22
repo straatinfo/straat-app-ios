@@ -35,6 +35,12 @@ class SuspiciousTVC: UITableViewCell {
 
     @IBAction func messageShow(_ sender: Any) {
 		let uds = UserDefaults.standard
+		uds.removeObject(forKey: chat_vc_user_id)
+		uds.removeObject(forKey: chat_vc_conversation_id)
+		uds.removeObject(forKey: chat_vc_type)
+		uds.removeObject(forKey: chat_vc_title)
+		uds.removeObject(forKey: chat_vc_report_id)
+		
         uds.set(userId, forKey: chat_vc_user_id)
         uds.set(conversationId, forKey: chat_vc_conversation_id)
         uds.set(type, forKey: chat_vc_type)

@@ -52,6 +52,8 @@ class SendCommunicationTeamsVC: UIViewController {
 
 }
 
+
+
 extension SendCommunicationTeamsVC: ItemDelegate {
 	func select(row: Int) {
 		let team: TeamModel = self.teamList[row]

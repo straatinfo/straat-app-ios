@@ -45,7 +45,7 @@ class SendCommunicationReportVC: UIViewController {
 	
 	//validations
 	var isMainCategValid: Bool = false
-	var isReportDescriptionValid: Bool = true
+	var isReportDescriptionValid: Bool = false
 	
 	//report service
 	let reportService = ReportService()
@@ -66,6 +66,7 @@ class SendCommunicationReportVC: UIViewController {
 		
 		self.errorTitle = NSLocalizedString("wrong-input", comment: "")
 		self.userLocation.text = UserDefaults.standard.string(forKey: "user_loc_address")
+		self.disableSendReportButton()
     }
 	
 	@IBAction func dismiss(_ sender: UIButton) {
@@ -109,9 +110,34 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		switch textField {
 			case self.mainCategoryDropDown:
-				debugPrint("main categ did end editing")
-			break
-			
+				for checkMainCateg in self.mainCategory {
+					if textField.text?.lowercased() == checkMainCateg.name?.lowercased() {
+//						self.mainCategoryId = checkMainCateg.id
+						self.isMainCategValid = true
+						self.checkValues()
+						
+						print("selectedItem maincateg: \(String(describing: checkMainCateg.id)) for: \(textField.text)")
+					} else if textField.text == "Select Main Category" || textField.text == "Selecteer Hoofdcategorie" {
+						self.isMainCategValid = false
+						disableSendReportButton()
+					}
+				}
+				break
+			default:
+				break
+		}
+	}
+	
+	func textViewDidEndEditing(_ textView: UITextView) {
+		switch textView {
+		case self.message:
+			debugPrint("textview")
+			if message.text.count > 0 && message.text.isValidDescription() {
+				self.isReportDescriptionValid = true
+				checkValues()
+			} else {
+				disableSendReportButton()
+			}
 		default:
 			break
 		}
@@ -129,7 +155,7 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 	
 	func checkValues() {
 		
-		let allBool = [self.isMainCategValid, true]
+		let allBool = [self.isMainCategValid, self.isReportDescriptionValid]
 		var numberOfTrue = 0
 		var numberOfFalse = 0
 		

@@ -3750,6 +3750,9 @@
                                                                                         <integer key="value" value="5"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="5Fj-LP-oqm" id="IYE-Nb-lhw"/>
+                                                                                </connections>
                                                                             </textView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

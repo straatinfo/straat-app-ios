@@ -6,11 +6,23 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SecondScreenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+//		let content = UNMutableNotificationContent()
+//		content.title = "straat notif"
+//		content.body = "content"
+//		content.sound = UNNotificationSound.default
+//		
+//		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 6, repeats: false)
+//		
+//		let request = UNNotificationRequest(identifier: "id", content: content, trigger: trigger)
+//		
+//		UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 
         // Do any additional setup after loading the view.
     }

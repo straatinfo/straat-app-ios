@@ -50,27 +50,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = checkCode
         }
         // Override point for customization after application launch.
-       
         FirebaseApp.configure()
         
         Messaging.messaging().delegate = self as! MessagingDelegate
         
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self as! UNUserNotificationCenterDelegate
+//        if #available(iOS 10.0, *) {
+//            // For iOS 10 display notification (sent via APNS)
+//            UNUserNotificationCenter.current().delegate = self as! UNUserNotificationCenterDelegate
+//
+//            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//            UNUserNotificationCenter.current().requestAuthorization(
+//                options: authOptions,
+//                completionHandler: {_, _ in })
+//        } else {
+//            let settings: UIUserNotificationSettings =
+//                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//            application.registerUserNotificationSettings(settings)
+//        }
+//        application.registerForRemoteNotifications()
 
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
+		if #available(iOS 10.0, *) {
+			// For iOS 10 display notification (sent via APNS)
+			UNUserNotificationCenter.current().delegate = self as! UNUserNotificationCenterDelegate
 
-        application.registerForRemoteNotifications()
-        
+			let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//			UNUserNotificationCenter.current().requestAuthorization(
+//				options: authOptions,
+//				completionHandler: {_, _ in })
+			
+			UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { (granted, error) in
+				print("granted \(granted)")
+				print("error \(error)")
+			}
+			
+		} else {
+			let settings: UIUserNotificationSettings =
+				UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+			application.registerUserNotificationSettings(settings)
+		}
+		application.registerForRemoteNotifications()
+
         return true
     }
 
@@ -229,12 +248,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo["_conversation"])
         
         // Change this to your preferred presentation option
-        // completionHandler([.alert, .sound])
+         completionHandler([.alert, .sound])
     }
     
 }
 // [END ios_10_message_handling]
-
 extension AppDelegate : MessagingDelegate {
     // [START refresh_token]
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
@@ -283,4 +301,11 @@ extension AppDelegate {
 //        }
     
     }
+	
+//	private func notificationPermission() -> Void {
+//		UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+//			print("granted \(granted)")
+//
+//		}
+//	}
 }

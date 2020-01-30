@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class ChatModel {
     var convoId: String? // _conversation _id
     var createdAt: String?
     var author: AuthorModel?
     var body: String?
+	
+	var recentMessageAuthorName: String?
 	
 	var imageUrl: String? // for chat tab
 	init() {
@@ -50,7 +53,6 @@ class ChatModel {
 		debugPrint("payload image: \(self.imageUrl)")
 	}
 	
-	
     
     
 }
@@ -85,7 +87,6 @@ class AuthorModel {
 			self.imageUrl = imageUrlObj["secure_url"] as? String ?? ""
 //			debugPrint("profile image obj: \(self.imageUrl)")
 		}
-		
-		
 	}
+	
 }

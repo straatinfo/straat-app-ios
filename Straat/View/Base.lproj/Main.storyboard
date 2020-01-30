@@ -1924,7 +1924,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQM-lg-25g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2052" y="4983"/>
+            <point key="canvasLocation" x="2062" y="5040"/>
         </scene>
         <!--Public Space-->
         <scene sceneID="hY1-q7-ZV2">
@@ -3404,22 +3404,22 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="msK-MS-jvz">
-                                                            <rect key="frame" x="10" y="10" width="238.5" height="88.5"/>
+                                                            <rect key="frame" x="10" y="10" width="250" height="88.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPM-r6-eOv">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="238.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VS-hc-wON">
-                                                                    <rect key="frame" x="0.0" y="25.5" width="238.5" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="25.5" width="250" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-4m-zg8">
-                                                                    <rect key="frame" x="0.0" y="48.5" width="238.5" height="40"/>
+                                                                    <rect key="frame" x="0.0" y="48.5" width="250" height="40"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEp-5q-50Q">
                                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -3431,12 +3431,16 @@
                                                                             <color key="textColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Is-a3-iGP">
-                                                                            <rect key="frame" x="48" y="0.0" width="190.5" height="40"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                            <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2w-m2-ZtC">
+                                                                            <rect key="frame" x="48" y="0.0" width="202" height="40"/>
+                                                                            <state key="normal" title="Messages">
+                                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </state>
+                                                                            <connections>
+                                                                                <action selector="messages:" destination="btN-Af-tRw" eventType="touchUpInside" id="WsU-32-1mB"/>
+                                                                                <segue destination="TTs-vU-VT3" kind="show" id="sEl-Sv-aVh"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="40" id="7Zv-ba-JR3"/>
@@ -3457,6 +3461,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="Zg8-M0-Xqu" secondAttribute="trailing" constant="10" id="Rrk-Ub-GAr"/>
                                                         <constraint firstAttribute="bottom" secondItem="Zg8-M0-Xqu" secondAttribute="bottom" constant="10" id="SI2-0S-lo3"/>
                                                         <constraint firstItem="msK-MS-jvz" firstAttribute="top" secondItem="bg6-c7-FWG" secondAttribute="top" constant="10" id="XHK-gm-2uf"/>
+                                                        <constraint firstItem="Zg8-M0-Xqu" firstAttribute="leading" secondItem="msK-MS-jvz" secondAttribute="trailing" constant="10" id="a9S-Nb-i9W"/>
                                                         <constraint firstAttribute="bottom" secondItem="msK-MS-jvz" secondAttribute="bottom" constant="10" id="ddQ-dr-jwA"/>
                                                         <constraint firstItem="msK-MS-jvz" firstAttribute="leading" secondItem="bg6-c7-FWG" secondAttribute="leading" constant="10" id="ibH-jA-pZR"/>
                                                     </constraints>
@@ -3480,7 +3485,7 @@
                                             <outlet property="teamEmail" destination="2VS-hc-wON" id="wXc-rB-XNz"/>
                                             <outlet property="teamLogo" destination="Zg8-M0-Xqu" id="Xl9-gs-I4x"/>
                                             <outlet property="teamName" destination="jPM-r6-eOv" id="t0J-tF-TLY"/>
-                                            <segue destination="UaD-ze-oSy" kind="show" id="hxz-48-UHJ"/>
+                                            <segue destination="TTs-vU-VT3" kind="show" id="XZ6-cj-yxK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3508,20 +3513,20 @@
             </objects>
             <point key="canvasLocation" x="4116" y="3761"/>
         </scene>
-        <!--View Controller-->
+        <!--Team Chat List MemberVC-->
         <scene sceneID="q5D-oE-atG">
             <objects>
-                <viewController id="TTs-vU-VT3" sceneMemberID="viewController">
+                <viewController id="TTs-vU-VT3" customClass="TeamChatListMemberVC" customModule="Straat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HVa-Bn-dWn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RZw-Vc-eCb">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="100" id="HOr-Ua-jRr" customClass="TeamChatListTVC" customModule="Straat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="100" id="HOr-Ua-jRr" customClass="TeamChatListMemberTVC" customModule="Straat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HOr-Ua-jRr" id="fUz-NP-gqR">
@@ -3529,16 +3534,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tid-fy-aCh">
-                                                    <rect key="frame" x="10" y="10" width="355" height="79.5"/>
+                                                    <rect key="frame" x="10" y="10" width="355" height="66"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-Md-RbA">
-                                                            <rect key="frame" x="10" y="10" width="60" height="59.5"/>
+                                                            <rect key="frame" x="10" y="10" width="60" height="60"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="8Sn-hy-Zi1"/>
+                                                                <constraint firstAttribute="height" constant="60" id="HKn-vN-bxC"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Omf-5a-0Ba"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IyX-fo-XjZ">
-                                                            <rect key="frame" x="80" y="10" width="265" height="53.5"/>
+                                                            <rect key="frame" x="80" y="10" width="265" height="40"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eav-Kh-mx0">
                                                                     <rect key="frame" x="0.0" y="0.0" width="265" height="20.5"/>
@@ -3558,7 +3565,7 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Chat Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fb-MQ-QSw">
-                                                                    <rect key="frame" x="0.0" y="25.5" width="90.5" height="28"/>
+                                                                    <rect key="frame" x="0.0" y="25.5" width="90.5" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -3596,15 +3603,17 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="teamEmail" destination="8Fb-MQ-QSw" id="Aho-bu-Jv4"/>
-                                            <outlet property="teamLogo" destination="vIA-Md-RbA" id="etY-C1-Dgf"/>
-                                            <outlet property="teamName" destination="rGb-xx-beX" id="oOP-IA-ZIV"/>
+                                            <outlet property="date" destination="oIM-mj-3PP" id="WzS-UB-ax7"/>
+                                            <outlet property="lastConvo" destination="8Fb-MQ-QSw" id="rsy-ua-7Jd"/>
+                                            <outlet property="memberImage" destination="vIA-Md-RbA" id="5X7-0k-fXI"/>
+                                            <outlet property="memberName" destination="rGb-xx-beX" id="L1L-VJ-bNr"/>
+                                            <segue destination="UaD-ze-oSy" kind="show" id="xJT-Xm-qTm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="b3N-0M-yRW" id="hxw-NT-NHc"/>
-                                    <outlet property="delegate" destination="b3N-0M-yRW" id="dG6-za-z5D"/>
+                                    <outlet property="dataSource" destination="TTs-vU-VT3" id="glc-o5-2Az"/>
+                                    <outlet property="delegate" destination="TTs-vU-VT3" id="Ho4-FU-jCj"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -3617,6 +3626,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H8w-1F-TcD"/>
                     </view>
+                    <connections>
+                        <outlet property="teamChatListMemberTV" destination="RZw-Vc-eCb" id="AxZ-qk-fQZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Fx-Cy-Ou1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3738,6 +3750,9 @@
                                                                                         <integer key="value" value="5"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="5Fj-LP-oqm" id="IYE-Nb-lhw"/>
+                                                                                </connections>
                                                                             </textView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4517,7 +4532,8 @@
         <image name="upload-img" width="192" height="192"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="XZ6-cj-yxK"/>
         <segue reference="1sv-mw-XUp"/>
-        <segue reference="hxz-48-UHJ"/>
+        <segue reference="xJT-Xm-qTm"/>
     </inferredMetricsTieBreakers>
 </document>

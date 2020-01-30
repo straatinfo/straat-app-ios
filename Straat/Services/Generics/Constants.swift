@@ -108,6 +108,12 @@ let chat_vc_type = "chat_vc_type"
 let chat_vc_team_id = "chat_vc_team_id"
 let chat_vc_report_id = "chat_vc_report_id"
 
+//new
+let chat_vc_team_name = "chat_vc_team_name"
+let chat_vc_msg_count = "chat_vc_msg_count"
+let chat_vc_profile_url = "chat_vc_profile_url"
+
+
 // new report
 let new_sent_report = "new_sent_report"
 

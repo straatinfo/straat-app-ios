@@ -1320,7 +1320,7 @@
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7B-N3-ry3">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of report c" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7B-N3-ry3">
                                                                             <rect key="frame" x="0.0" y="20.5" width="250" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                             <nil key="textColor"/>
@@ -1406,6 +1406,7 @@
                                             <outlet property="messageCount" destination="HY5-Ed-Hsx" id="gWj-LT-Rge"/>
                                             <outlet property="reportCategory" destination="rsm-3T-8eC" id="dQg-XM-zlC"/>
                                             <outlet property="reportImage" destination="jku-xY-8LF" id="0Mg-2n-QHO"/>
+                                            <segue destination="66a-tY-SHk" kind="show" id="0fR-0i-T26"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1924,7 +1925,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQM-lg-25g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2062" y="5040"/>
+            <point key="canvasLocation" x="2084" y="5134"/>
         </scene>
         <!--Public Space-->
         <scene sceneID="hY1-q7-ZV2">
@@ -2484,7 +2485,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1AT-pj-7vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-239.35546874999997" y="4917.2767203513904"/>
+            <point key="canvasLocation" x="1063" y="5535"/>
         </scene>
         <!--View Map ReportVC-->
         <scene sceneID="axd-XL-u8J">
@@ -2908,7 +2909,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxN-E1-Bsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534" y="5251"/>
+            <point key="canvasLocation" x="-324" y="5251"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="l09-LP-Bxs">
@@ -4533,7 +4534,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XZ6-cj-yxK"/>
-        <segue reference="1sv-mw-XUp"/>
-        <segue reference="xJT-Xm-qTm"/>
+        <segue reference="0fR-0i-T26"/>
+        <segue reference="OCP-fR-fSE"/>
     </inferredMetricsTieBreakers>
 </document>

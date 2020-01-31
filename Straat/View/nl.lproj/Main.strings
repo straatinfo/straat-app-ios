@@ -265,3 +265,5 @@
 /* Class = "UIButton"; text = "Change status"; ObjectID = "y6W-HU-Cn1"; */
 "y6W-HU-Cn1.normalTitle" = "WIJZIG STATUS";
 
+/* Class = "UIButton"; normalTitle = "Communication"; ObjectID = "g0G-SU-JZi"; */
+"g0G-SU-JZi.normalTitle" = "Bericht uw groep";

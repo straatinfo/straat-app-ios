@@ -267,3 +267,91 @@
 
 /* Class = "UIButton"; normalTitle = "Communication"; ObjectID = "g0G-SU-JZi"; */
 "g0G-SU-JZi.normalTitle" = "Bericht uw groep";
+
+
+
+
+
+/* Additional Localization */
+
+/* Class = "UILabel"; text = "Report Category Type C"; ObjectID = "rsm-3T-8eC"; */
+"rsm-3T-8eC.text" = "Rapport categorie";
+
+/* Class = "UILabel"; text = "Date of report c"; ObjectID = "F7B-N3-ry3"; */
+"F7B-N3-ry3.text" = "Datum van het rapport";
+
+/* Class = "UILabel"; text = "Location C:"; ObjectID = "rlN-Tu-s4V"; */
+"rlN-Tu-s4V.text" = "plaats";
+
+/* Class = "UILabel"; text = "Choose Main Category C"; ObjectID = "kAo-xS-sDa"; */
+"kAo-xS-sDa.text" = "Kies Hoofd Categorie";
+
+/* Class = "UILabel"; text = "Emergency Notification C"; ObjectID = "Yhb-R4-Z45"; */
+"Yhb-R4-Z45.text" = "Spoed Melding";
+
+/* Class = "UILabel"; text = "Show report in map C?"; ObjectID = "eb6-yV-QTO"; */
+"eb6-yV-QTO.text" = "Rapport weergeven op kaart?";
+
+/* Class = "UILabel"; text = "Your Description C"; ObjectID = "WjO-D4-bXE"; */
+"WjO-D4-bXE.text" = "Vul hier uw tekst in";
+
+/* Class = "UILabel"; text = "Upload/Take Photos C"; ObjectID = "IwY-Bd-Pfb"; */
+"IwY-Bd-Pfb.text" = "Foto's uploaden / maken";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "fFL-qQ-7Kl"; */
+"fFL-qQ-7Kl.normalTitle" = "De volgende";
+
+/* Class = "UIButton"; normalTitle = "Back C"; ObjectID = "oVJ-6r-lja"; */
+"oVJ-6r-lja.normalTitle" = "Terug;
+
+/* Class = "UIButton"; normalTitle = "Back C"; ObjectID = "oZt-ky-h0N"; */
+"oZt-ky-h0N.normalTitle" = "Terug";
+
+/* Class = "UIButton"; normalTitle = "Next Step"; ObjectID = "6Kd-YZ-1Rg"; */
+"6Kd-YZ-1Rg.normalTitle" = "Volgende stap";
+
+"Huj-IN-RLZ.text" = "Dit is een controle pagina. Indien alles akkoord is, kunt u uw bericht verzenden."
+
+/* Class = "UILabel"; text = "General Information"; ObjectID = "8rx-y1-ugm"; */
+"8rx-y1-ugm.text" = "Algemene Informatie";
+
+/* Class = "UILabel"; text = "Message C"; ObjectID = "gzk-Yn-7x5"; */
+"gzk-Yn-7x5.text" = "Berichten";
+
+/* Class = "UILabel"; text = "Your message will be send to the following teams"; ObjectID = "i2O-6f-EhF"; */
+"i2O-6f-EhF.text" = "Het bericht gaat naar de volgende teams:";
+
+/* Class = "UIButton"; normalTitle = "Send Report C"; ObjectID = "WJ7-em-t0C"; */
+"WJ7-em-t0C.normalTitle" = "Geef melding door";
+
+
+/* View Report Type C */
+
+/* Class = "UILabel"; text = "Report Category Type C"; ObjectID = "rsm-3T-8eC"; */
+"rsm-3T-8eC.text" = "Rapportcategorie Type C";
+
+/* Class = "UILabel"; text = "Date of report c"; ObjectID = "F7B-N3-ry3"; */
+"F7B-N3-ry3.text" = "Datum van het rapport";
+
+/* Class = "UILabel"; text = "Check out the report c"; ObjectID = "JVr-95-Cx6"; */
+"JVr-95-Cx6.text" = "Bekijk het rapport c";
+
+/* Class = "UIButton"; normalTitle = "Messages C"; ObjectID = "J2w-m2-ZtC"; */
+"J2w-m2-ZtC.normalTitle" = "berichten";
+
+/* Team List Member Chat Tab */
+/* Class = "UILabel"; text = "Team Name C"; ObjectID = "jPM-r6-eOv"; */
+"jPM-r6-eOv.text" = "Teamnaam";
+
+/* Class = "UILabel"; text = "Team Email C"; ObjectID = "2VS-hc-wON"; */
+"2VS-hc-wON.text" = "Team Email";
+
+/* Class = "UIButton"; normalTitle = "Messages c"; ObjectID = "V9Y-Nu-dJi"; */
+"V9Y-Nu-dJi.normalTitle" = "berichten";
+
+/* line 254 - 255 in english localization */
+/* Class = "UILabel"; text = "Team Name C"; ObjectID = "jPM-r6-eOv"; */
+"jPM-r6-eOv.text" = "Teamnaam";
+
+/* Class = "UILabel"; text = "Last Chat Detail C"; ObjectID = "8Fb-MQ-QSw"; */
+"8Fb-MQ-QSw.text" = "Laatste chatdetail";

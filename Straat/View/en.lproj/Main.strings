@@ -8,11 +8,20 @@
 /* Class = "UILabel"; text = "location"; ObjectID = "1yn-j4-4UF"; */
 "1yn-j4-4UF.text" = "location";
 
+/* Class = "UILabel"; text = "Team Email C"; ObjectID = "2VS-hc-wON"; */
+"2VS-hc-wON.text" = "Team Email C";
+
 /* Class = "UILabel"; text = "You can place the blue pointer on a different spot on the map"; ObjectID = "3Xa-FE-yiE"; */
 "3Xa-FE-yiE.text" = "You can place the blue pointer on a different spot on the map";
 
 /* Class = "UILabel"; text = "00-00-0000"; ObjectID = "5ZI-7H-ivp"; */
 "5ZI-7H-ivp.text" = "00-00-0000";
+
+/* Class = "UILabel"; text = "Team Name"; ObjectID = "5z6-Tn-Mis"; */
+"5z6-Tn-Mis.text" = "Team Name";
+
+/* Class = "UIButton"; normalTitle = "Next Step"; ObjectID = "6Kd-YZ-1Rg"; */
+"6Kd-YZ-1Rg.normalTitle" = "Next Step";
 
 /* Class = "UITabBarItem"; title = "Team"; ObjectID = "6NA-Mb-UO7"; */
 "6NA-Mb-UO7.title" = "Team";
@@ -32,8 +41,8 @@
 /* Class = "UILabel"; text = "main category, sub category, main category, sub category, main category, sub category"; ObjectID = "8Cv-6y-yyU"; */
 "8Cv-6y-yyU.text" = "main category, sub category, main category, sub category, main category, sub category";
 
-/* Class = "UILabel"; text = "Messages"; ObjectID = "8Is-a3-iGP"; */
-"8Is-a3-iGP.text" = "Messages";
+/* Class = "UILabel"; text = "Last Chat Detail C"; ObjectID = "8Fb-MQ-QSw"; */
+"8Fb-MQ-QSw.text" = "Last Chat Detail C";
 
 /* Class = "UILabel"; text = "Notification"; ObjectID = "8aA-px-hkz"; */
 "8aA-px-hkz.text" = "Notification";
@@ -41,8 +50,8 @@
 /* Class = "UILabel"; text = "In progress"; ObjectID = "8qE-NA-W8l"; */
 "8qE-NA-W8l.text" = "In progress";
 
-/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "8yJ-SP-0oS"; */
-"8yJ-SP-0oS.normalTitle" = "Next";
+/* Class = "UILabel"; text = "General Information"; ObjectID = "8rx-y1-ugm"; */
+"8rx-y1-ugm.text" = "General Information";
 
 /* Class = "UIButton"; normalTitle = "Suspicious Situation"; ObjectID = "93L-NP-vek"; */
 "93L-NP-vek.normalTitle" = "Suspicious Situation";
@@ -71,8 +80,8 @@
 /* Class = "UILabel"; text = "This report is made by:"; ObjectID = "D3M-aB-izp"; */
 "D3M-aB-izp.text" = "This report is made by:";
 
-/* Class = "UILabel"; text = "Upload/Take Photos"; ObjectID = "EUV-DK-6Hz"; */
-"EUV-DK-6Hz.text" = "Upload/Take Photos";
+/* Class = "UILabel"; text = "Date of report c"; ObjectID = "F7B-N3-ry3"; */
+"F7B-N3-ry3.text" = "Date of report c";
 
 /* Class = "UILabel"; text = "Status"; ObjectID = "FgM-8v-NNO"; */
 "FgM-8v-NNO.text" = "Status";
@@ -83,8 +92,20 @@
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "HIG-5t-uxD"; */
 "HIG-5t-uxD.title" = "Item";
 
+/* Class = "UILabel"; text = "999"; ObjectID = "HY5-Ed-Hsx"; */
+"HY5-Ed-Hsx.text" = "999";
+
 /* Class = "UITabBarItem"; title = "Government"; ObjectID = "Hmf-dK-cbB"; */
 "Hmf-dK-cbB.title" = "Government";
+
+/* Class = "UILabel"; text = "Upload/Take Photos C"; ObjectID = "IwY-Bd-Pfb"; */
+"IwY-Bd-Pfb.text" = "Upload/Take Photos C";
+
+/* Class = "UIButton"; normalTitle = "Messages C"; ObjectID = "J2w-m2-ZtC"; */
+"J2w-m2-ZtC.normalTitle" = "Messages C";
+
+/* Class = "UILabel"; text = "Check out the report c"; ObjectID = "JVr-95-Cx6"; */
+"JVr-95-Cx6.text" = "Check out the report c";
 
 /* Class = "UILabel"; text = "Report Category"; ObjectID = "MLQ-Gc-ogG"; */
 "MLQ-Gc-ogG.text" = "Report Category";
@@ -128,6 +149,9 @@
 /* Class = "UILabel"; text = "Other Member Message"; ObjectID = "UU2-HX-rTc"; */
 "UU2-HX-rTc.text" = "Other Member Message";
 
+/* Class = "UIButton"; normalTitle = "Messages c"; ObjectID = "V9Y-Nu-dJi"; */
+"V9Y-Nu-dJi.normalTitle" = "Messages c";
+
 /* Class = "UIButton"; normalTitle = "Emergency Notification"; ObjectID = "VKr-Vh-VFa"; */
 "VKr-Vh-VFa.normalTitle" = "Emergency Notification";
 
@@ -137,17 +161,26 @@
 /* Class = "UILabel"; text = "Status:"; ObjectID = "W6x-gf-bsa"; */
 "W6x-gf-bsa.text" = "Status:";
 
+/* Class = "UIButton"; normalTitle = "Send Report C"; ObjectID = "WJ7-em-t0C"; */
+"WJ7-em-t0C.normalTitle" = "Send Report C";
+
+/* Class = "UILabel"; text = "Your Description C"; ObjectID = "WjO-D4-bXE"; */
+"WjO-D4-bXE.text" = "Your Description C";
+
 /* Class = "UILabel"; text = "Feedback"; ObjectID = "YF4-qa-cIY"; */
 "YF4-qa-cIY.text" = "Feedback";
+
+/* Class = "UILabel"; text = "Emergency Notification C"; ObjectID = "Yhb-R4-Z45"; */
+"Yhb-R4-Z45.text" = "Emergency Notification C";
 
 /* Class = "UILabel"; text = "12:00"; ObjectID = "ZJ4-S9-gFC"; */
 "ZJ4-S9-gFC.text" = "12:00";
 
-/* Class = "UILabel"; text = "Government"; ObjectID = "aQ6-vN-yzN"; */
-"aQ6-vN-yzN.text" = "Government";
-
 /* Class = "UILabel"; text = "This report is made by:"; ObjectID = "anl-K5-iGo"; */
 "anl-K5-iGo.text" = "This report is made by:";
+
+/* Class = "UILabel"; text = "Team Email"; ObjectID = "bUE-yH-KES"; */
+"bUE-yH-KES.text" = "Team Email";
 
 /* Class = "UILabel"; text = "Time:"; ObjectID = "bXU-c8-sTw"; */
 "bXU-c8-sTw.text" = "Time:";
@@ -170,8 +203,14 @@
 /* Class = "UILabel"; text = "Time:"; ObjectID = "e1m-51-fJi"; */
 "e1m-51-fJi.text" = "Time:";
 
+/* Class = "UILabel"; text = "Show report in map C?"; ObjectID = "eb6-yV-QTO"; */
+"eb6-yV-QTO.text" = "Show report in map C?";
+
 /* Class = "UILabel"; text = "17:49:26"; ObjectID = "f4m-Tn-oco"; */
 "f4m-Tn-oco.text" = "17:49:26";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "fFL-qQ-7Kl"; */
+"fFL-qQ-7Kl.normalTitle" = "Next";
 
 /* Class = "UILabel"; text = "Profile"; ObjectID = "fjh-8n-RZZ"; */
 "fjh-8n-RZZ.text" = "Profile";
@@ -191,14 +230,17 @@
 /* Class = "UILabel"; text = "location"; ObjectID = "gwx-2F-V8V"; */
 "gwx-2F-V8V.text" = "location";
 
-/* Class = "UILabel"; text = "Your Description"; ObjectID = "h9a-UC-Gt7"; */
-"h9a-UC-Gt7.text" = "Your Description";
+/* Class = "UILabel"; text = "Message C"; ObjectID = "gzk-Yn-7x5"; */
+"gzk-Yn-7x5.text" = "Message C";
 
 /* Class = "UILabel"; text = "Message:"; ObjectID = "heO-Vo-kfE"; */
 "heO-Vo-kfE.text" = "Message:";
 
 /* Class = "UILabel"; text = "Are there any persons involved?"; ObjectID = "hhW-VN-aB2"; */
 "hhW-VN-aB2.text" = "Are there any persons involved?";
+
+/* Class = "UILabel"; text = "Your message will be send to the following teams"; ObjectID = "i2O-6f-EhF"; */
+"i2O-6f-EhF.text" = "Your message will be send to the following teams";
 
 /* Class = "UIButton"; normalTitle = "Emergency Notification"; ObjectID = "j0J-LG-2rh"; */
 "j0J-LG-2rh.normalTitle" = "Emergency Notification";
@@ -209,17 +251,17 @@
 /* Class = "UILabel"; text = "Description"; ObjectID = "j8V-QT-uSI"; */
 "j8V-QT-uSI.text" = "Description";
 
-/* Class = "UILabel"; text = "Team Name"; ObjectID = "jPM-r6-eOv"; */
-"jPM-r6-eOv.text" = "Team Name";
+/* Class = "UILabel"; text = "Team Name C"; ObjectID = "jPM-r6-eOv"; */
+"jPM-r6-eOv.text" = "Team Name C";
 
 /* Class = "UILabel"; text = "Is Public"; ObjectID = "jUd-o1-kj0"; */
 "jUd-o1-kj0.text" = "Is Public";
 
-/* Class = "UILabel"; text = "Show report in map?"; ObjectID = "jZw-1B-kfR"; */
-"jZw-1B-kfR.text" = "Show report in map?";
-
 /* Class = "UILabel"; text = "12:00"; ObjectID = "jlq-gC-Upk"; */
 "jlq-gC-Upk.text" = "12:00";
+
+/* Class = "UILabel"; text = "Choose Main Category C"; ObjectID = "kAo-xS-sDa"; */
+"kAo-xS-sDa.text" = "Choose Main Category C";
 
 /* Class = "UILabel"; text = "999"; ObjectID = "kYt-Ml-bZE"; */
 "kYt-Ml-bZE.text" = "999";
@@ -230,23 +272,14 @@
 /* Class = "UILabel"; text = "Upload/Take Photos"; ObjectID = "kre-dt-0M3"; */
 "kre-dt-0M3.text" = "Upload/Take Photos";
 
-/* Class = "UILabel"; text = "Location:"; ObjectID = "kzs-hB-AE8"; */
-"kzs-hB-AE8.text" = "Location:";
-
 /* Class = "UILabel"; text = "Check out the report"; ObjectID = "lXO-EZ-PWx"; */
 "lXO-EZ-PWx.text" = "Check out the report";
-
-/* Class = "UILabel"; text = "Choose Main Category"; ObjectID = "ldh-oo-y7h"; */
-"ldh-oo-y7h.text" = "Choose Main Category";
 
 /* Class = "UILabel"; text = "Choose Main Category"; ObjectID = "lgP-hm-tx9"; */
 "lgP-hm-tx9.text" = "Choose Main Category";
 
 /* Class = "UIButton"; normalTitle = "Change"; ObjectID = "mZr-SR-nZ0"; */
 "mZr-SR-nZ0.normalTitle" = "Change";
-
-/* Class = "UIButton"; normalTitle = "Emergency Notification"; ObjectID = "n5g-E1-647"; */
-"n5g-E1-647.normalTitle" = "Emergency Notification";
 
 /* Class = "UILabel"; text = "Your Message"; ObjectID = "nVV-Ze-95A"; */
 "nVV-Ze-95A.text" = "Your Message";
@@ -257,8 +290,17 @@
 /* Class = "UIButton"; normalTitle = "Send Request"; ObjectID = "nyp-hP-zFK"; */
 "nyp-hP-zFK.normalTitle" = "Send Request";
 
+/* Class = "UILabel"; text = "23 Aug 2019"; ObjectID = "oIM-mj-3PP"; */
+"oIM-mj-3PP.text" = "23 Aug 2019";
+
 /* Class = "UILabel"; text = "Username"; ObjectID = "oLY-Z9-hZu"; */
 "oLY-Z9-hZu.text" = "Username";
+
+/* Class = "UIButton"; normalTitle = "Back C"; ObjectID = "oVJ-6r-lja"; */
+"oVJ-6r-lja.normalTitle" = "Back C";
+
+/* Class = "UIButton"; normalTitle = "Back C"; ObjectID = "oZt-ky-h0N"; */
+"oZt-ky-h0N.normalTitle" = "Back C";
 
 /* Class = "UILabel"; text = "999"; ObjectID = "p2d-lV-l8v"; */
 "p2d-lV-l8v.text" = "999";
@@ -274,6 +316,15 @@
 
 /* Class = "UILabel"; text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."; ObjectID = "qWk-za-kEB"; */
 "qWk-za-kEB.text" = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+
+/* Class = "UILabel"; text = "Team Name C"; ObjectID = "rGb-xx-beX"; */
+"rGb-xx-beX.text" = "Team Name C";
+
+/* Class = "UILabel"; text = "Location C:"; ObjectID = "rlN-Tu-s4V"; */
+"rlN-Tu-s4V.text" = "Location C:";
+
+/* Class = "UILabel"; text = "Report Category Type C"; ObjectID = "rsm-3T-8eC"; */
+"rsm-3T-8eC.text" = "Report Category Type C";
 
 /* Class = "UIButton"; normalTitle = "Send Request"; ObjectID = "s6k-MG-hvR"; */
 "s6k-MG-hvR.normalTitle" = "Send Request";

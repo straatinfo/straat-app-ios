@@ -316,3 +316,51 @@
 
 /* Class = "UILabel"; text = "This report is made by:"; ObjectID = "zfS-Ie-inV"; */
 "zfS-Ie-inV.text" = "This report is made by:";
+
+/* Class = "UILabel"; text = "Choose Main Category"; ObjectID = "kAo-xS-sDa"; */
+"kAo-xS-sDa.text" = "Choose Main Category";
+
+/* Class = "UILabel"; text = "Emergency Notification"; ObjectID = "Yhb-R4-Z45"; */
+"Yhb-R4-Z45.text" = "Emergency Notification";
+
+/* Class = "UILabel"; text = "Show report in map?"; ObjectID = "eb6-yV-QTO"; */
+"eb6-yV-QTO.text" = "Show report in map?";
+
+/* Class = "UILabel"; text = "Your Description"; ObjectID = "WjO-D4-bXE"; */
+"WjO-D4-bXE.text" = "Your Description";
+
+/* Class = "UILabel"; text = "Upload/Take Photos"; ObjectID = "IwY-Bd-Pfb"; */
+"IwY-Bd-Pfb.text" = "Upload/Take Photos";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "fFL-qQ-7Kl"; */
+"fFL-qQ-7Kl.normalTitle" = "Next";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "oZt-ky-h0N"; */
+"oZt-ky-h0N.normalTitle" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "6Kd-YZ-1Rg"; */
+"6Kd-YZ-1Rg.normalTitle" = "Next";
+
+/* Class = "UILabel"; text = "This is a checking page. When everything is good to you, you can send your message."; ObjectID = "Huj-IN-RLZ"; */
+"Huj-IN-RLZ.text" = "This is a checking page. When everything is good to you, you can send your message.";
+
+/* Class = "UILabel"; text = "General Information"; ObjectID = "8rx-y1-ugm"; */
+"8rx-y1-ugm.text" = "General Information";
+
+/* Class = "UILabel"; text = "Message"; ObjectID = "gzk-Yn-7x5"; */
+"gzk-Yn-7x5.text" = "Message";
+
+/* Class = "UILabel"; text = "Your message will be send to the following teams"; ObjectID = "i2O-6f-EhF"; */
+"i2O-6f-EhF.text" = "Your message will be send to the following teams";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "oVJ-6r-lja"; */
+"oVJ-6r-lja.normalTitle" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Send Report"; ObjectID = "WJ7-em-t0C"; */
+"WJ7-em-t0C.normalTitle" = "Send Report";
+
+/* Class = "UILabel"; text = "Check out the report"; ObjectID = "JVr-95-Cx6"; */
+"JVr-95-Cx6.text" = "Check out the report";
+
+/* Class = "UILabel"; text = "Messages"; ObjectID = "V9Y-Nu-dJi"; */
+"V9Y-Nu-dJi.text" = "Messages";

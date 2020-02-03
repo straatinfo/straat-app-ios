@@ -265,3 +265,55 @@
 /* Class = "UIButton"; text = "Change status"; ObjectID = "y6W-HU-Cn1"; */
 "y6W-HU-Cn1.normalTitle" = "WIJZIG STATUS";
 
+
+/* Class = "UIButton"; normalTitle = "Communication"; ObjectID = "g0G-SU-JZi"; */
+"g0G-SU-JZi.normalTitle" = "Bericht uw groep";
+
+
+/* Class = "UILabel"; text = "Choose Main Category"; ObjectID = "kAo-xS-sDa"; */
+"kAo-xS-sDa.text" = "Kies hoofdcategorie";
+
+/* Class = "UILabel"; text = "Emergency Notification"; ObjectID = "Yhb-R4-Z45"; */
+"Yhb-R4-Z45.text" = "Spoedmelding";
+
+/* Class = "UILabel"; text = "Show report in map?"; ObjectID = "eb6-yV-QTO"; */
+"eb6-yV-QTO.text" = "Bericht met kaart?";
+
+/* Class = "UILabel"; text = "Your Description"; ObjectID = "WjO-D4-bXE"; */
+"WjO-D4-bXE.text" = "Vul hier uw tekst in";
+
+/* Class = "UILabel"; text = "Upload/Take Photos"; ObjectID = "IwY-Bd-Pfb"; */
+"IwY-Bd-Pfb.text" = "Foto's maken uploaden:";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "fFL-qQ-7Kl"; */
+"fFL-qQ-7Kl.normalTitle" = "Volgende stap";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "oZt-ky-h0N"; */
+"oZt-ky-h0N.normalTitle" = "Terug";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "6Kd-YZ-1Rg"; */
+"6Kd-YZ-1Rg.normalTitle" = "Volgende stap";
+
+/* Class = "UILabel"; text = "This is a checking page. When everything is good to you, you can send your message."; ObjectID = "Huj-IN-RLZ"; */
+"Huj-IN-RLZ.text" = "Dit is een controle pagina. Indien alles akkoord is, kunt u uw bericht verzenden.";
+
+/* Class = "UILabel"; text = "General Information"; ObjectID = "8rx-y1-ugm"; */
+"8rx-y1-ugm.text" = "Algemene Informatie";
+
+/* Class = "UILabel"; text = "Message"; ObjectID = "gzk-Yn-7x5"; */
+"gzk-Yn-7x5.text" = "Berichten";
+
+/* Class = "UILabel"; text = "Your message will be send to the following teams"; ObjectID = "i2O-6f-EhF"; */
+"i2O-6f-EhF.text" = "Het bericht gaat naar de vogende teams:";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "oVJ-6r-lja"; */
+"oVJ-6r-lja.normalTitle" = "Terug";
+
+/* Class = "UIButton"; normalTitle = "Send Report"; ObjectID = "WJ7-em-t0C"; */
+"WJ7-em-t0C.normalTitle" = "Geef melding door";
+
+/* Class = "UILabel"; text = "Check out the report"; ObjectID = "JVr-95-Cx6"; */
+"JVr-95-Cx6.text" = "Bekijk het rapport";
+
+/* Class = "UILabel"; text = "Messages"; ObjectID = "V9Y-Nu-dJi"; */
+"V9Y-Nu-dJi.text" = "Berichten";

@@ -263,10 +263,24 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 			} else {
 				debugPrint("empty category list")
 			}
-			
-			self.mainCategoryDropDown.loadDropdownData(data: self.mainCategoryName)
+			let arrangedCategories = self.arrangedCateg(categoryName: "overige")
+			self.mainCategoryDropDown.loadDropdownData(data: arrangedCategories)
 			loadingDismiss()
 		}
+	}
+	
+	func arrangedCateg(categoryName: String) -> [String] {
+		let mainCategTitle = NSLocalizedString("select-main-category", comment: "")
+		var mainCategSorted = self.mainCategoryName.sorted().map {$0.lowercased()}
+		let index = mainCategSorted.lastIndex(of: categoryName) ?? nil
+		
+		if index != nil {
+			mainCategSorted.remove(at: index!)
+			mainCategSorted.append(categoryName)
+		}
+		mainCategSorted.insert(mainCategTitle, at: 0)
+		
+		return mainCategSorted
 	}
 
 }

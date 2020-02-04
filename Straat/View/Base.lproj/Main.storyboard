@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zgL-Gj-VLo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zgL-Gj-VLo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1530,7 +1530,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZt-ky-h0N" userLabel="btnBack">
                                         <rect key="frame" x="0.0" y="0.0" width="357" height="30"/>
-                                        <color key="backgroundColor" red="0.47843137254901957" green="0.68235294117647061" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.43137254901960786" green="0.52156862745098043" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Back"/>
                                         <userDefinedRuntimeAttributes>
@@ -1544,7 +1544,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Kd-YZ-1Rg" userLabel="btnNext">
                                         <rect key="frame" x="0.0" y="36" width="357" height="30"/>
-                                        <color key="backgroundColor" red="0.43137254901960786" green="0.52156862745098043" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.47843137254901957" green="0.68235294117647061" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Next Step"/>
                                         <userDefinedRuntimeAttributes>
@@ -1573,6 +1573,7 @@
                         <viewLayoutGuide key="safeArea" id="ird-QV-ycl"/>
                     </view>
                     <connections>
+                        <outlet property="nextBtn" destination="6Kd-YZ-1Rg" id="l1H-EP-9lG"/>
                         <outlet property="teamListTV" destination="Y61-N5-PaV" id="uf1-eZ-Moc"/>
                     </connections>
                 </viewController>
@@ -4507,29 +4508,29 @@
     </scenes>
     <resources>
         <image name="about" width="6" height="20"/>
-        <image name="add" width="30" height="30"/>
-        <image name="cancel" width="60" height="60"/>
+        <image name="add" width="24" height="24"/>
+        <image name="cancel" width="48" height="48"/>
         <image name="chat" width="20" height="16"/>
-        <image name="chat-tab" width="32" height="32"/>
+        <image name="chat-tab" width="24" height="24"/>
         <image name="checkbox" width="24" height="24"/>
         <image name="exit" width="19" height="19"/>
-        <image name="feedback" width="16" height="16"/>
-        <image name="government-tab" width="32" height="30"/>
-        <image name="info" width="64" height="64"/>
+        <image name="feedback" width="24" height="24"/>
+        <image name="government-tab" width="48" height="45"/>
+        <image name="info" width="48" height="48"/>
         <image name="logo" width="88" height="91"/>
         <image name="menu" width="22" height="15"/>
         <image name="notif" width="22" height="15"/>
-        <image name="pin-new" width="43" height="59"/>
+        <image name="pin-new" width="34.400001525878906" height="47.200000762939453"/>
         <image name="profile" width="21" height="19"/>
-        <image name="public-spaces-tab" width="32" height="32"/>
-        <image name="remove" width="30" height="30"/>
+        <image name="public-spaces-tab" width="48" height="48"/>
+        <image name="remove" width="24" height="24"/>
         <image name="selected-checkbox" width="24" height="24"/>
-        <image name="settings" width="30" height="30"/>
-        <image name="status-inprogress" width="1024" height="1024"/>
+        <image name="settings" width="24" height="24"/>
+        <image name="status-inprogress" width="819.20001220703125" height="819.20001220703125"/>
         <image name="street" width="20" height="19"/>
-        <image name="suspicious-tab" width="30" height="30"/>
+        <image name="suspicious-tab" width="24" height="24"/>
         <image name="team" width="28" height="18"/>
-        <image name="upload-img" width="256" height="256"/>
+        <image name="upload-img" width="192" height="192"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XZ6-cj-yxK"/>

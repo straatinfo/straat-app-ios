@@ -143,8 +143,16 @@ class MainVC: UIViewController {
 						markerReport.map?.clear()
 					}
 					
+					debugPrint("is Volunteer \(isVolunteer)")
+					
+					if isVolunteer {
+						self.communicationButtonItem.isHidden = true
+					}
+					
 					if hasGranted {
 						loadingDismiss()
+						
+						
 						self.makeNotifConstraint.constant = 0
 						self.sendReport.isHidden = true
 						animateLayout(view: self.view, timeInterval: 0.6)

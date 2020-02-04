@@ -12,6 +12,7 @@ import AlamofireImage
 class SendCommunicationTeamsVC: UIViewController {
 
 	@IBOutlet weak var teamListTV: UITableView!
+	@IBOutlet weak var nextBtn: UIButton!
 	
 	var teamList = [TeamModel]()
 	
@@ -20,6 +21,7 @@ class SendCommunicationTeamsVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.disableSendReportButton()
         // Do any additional setup after loading the view.
     }
     
@@ -58,6 +60,7 @@ extension SendCommunicationTeamsVC: ItemDelegate {
 	func select(row: Int) {
 		let team: TeamModel = self.teamList[row]
 		self.selectedTeams.append(team)
+		self.enableSendReportButton()
 //		debugPrint("team selected: \(team)")
 	}
 	
@@ -70,7 +73,11 @@ extension SendCommunicationTeamsVC: ItemDelegate {
 				break
 			}
 		}
-//		debugPrint("team deselected: \(row)")
+		
+		if (row == 0) {
+			self.disableSendReportButton()
+		}
+		debugPrint("team deselected: \(row)")
 	}
 	
 	
@@ -120,6 +127,17 @@ extension SendCommunicationTeamsVC: ItemDelegate {
 		debugPrint("saving selected teams")
 		completion(true)
 	}
+	
+	func disableSendReportButton() {
+		self.nextBtn.isEnabled = false
+		self.nextBtn.backgroundColor = UIColor.lightGray
+	}
+
+	func enableSendReportButton() {
+		self.nextBtn.isEnabled = true
+		self.nextBtn.backgroundColor = UIColor.init(red: 122/255, green: 174/255, blue: 64/255, alpha: 1)
+	}
+
 }
 
 extension SendCommunicationTeamsVC: UITableViewDelegate,

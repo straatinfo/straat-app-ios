@@ -219,6 +219,7 @@ class UserModel {
         self.city = fromLogin["city"] as? String
         self.gender = fromLogin["gender"] as? String
         self.isVolunteer = fromLogin["isVolunteer"] as? Bool
+		debugPrint("is_vol \(isVolunteer)")
         
         let profilePicObject = fromLogin["_profilePic"] as? Dictionary <String, Any> ?? nil
         
@@ -310,7 +311,8 @@ class UserModel {
         uds.set( self.phoneNumber!, forKey: user_phone_number)
         uds.set( self.profileImageUrl, forKey: user_actdes_image_url)
         uds.set( self.isVolunteer, forKey: user_is_volunteer)
-        
+		debugPrint("user_model_is_vol \(isVolunteer)")
+		
         uds.set(self.host_id, forKey: user_host_id)
         uds.set(self.host_name, forKey: user_host_name)
         uds.set(self.host_email, forKey: user_host_email)

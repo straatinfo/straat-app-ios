@@ -198,9 +198,9 @@ class ReportService {
         parameters["language"] = "nl"
         parameters["_reporter"] = reporterId
         
-        let url = "\(report_near)/\(long)/\(lat)/\(100000)"
-        
-        apiHandler.executeWithHeaders(URL(string: url)!, parameters: parameters, method: .get, destination: .queryString, headers: [:]) { (response, err) in
+        let url = "\(report_near)/\(long)/\(lat)/\(radius)/?language=nl&_reporter=\(reporterId)"
+		debugPrint("report near url: \(url)")
+		apiHandler.executeWithHeaders(URL(string: url)!, parameters: [:], method: .get, destination: .queryString, headers: [:]) { (response, err) in
             
             if let error = err {
                 print("error reponse: \(error.localizedDescription)")

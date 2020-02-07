@@ -120,6 +120,7 @@ class UserModel {
         self.streetName = json["streetName"].string
         self.city = json["city"].string
         self.gender = json["gender"].string
+		self.isVolunteer = json["isVolunteer"].bool
         
         let profilePicObject = json["_profilePic"]
         
@@ -219,7 +220,7 @@ class UserModel {
         self.city = fromLogin["city"] as? String
         self.gender = fromLogin["gender"] as? String
         self.isVolunteer = fromLogin["isVolunteer"] as? Bool
-		debugPrint("is_vol \(isVolunteer)")
+
         
         let profilePicObject = fromLogin["_profilePic"] as? Dictionary <String, Any> ?? nil
         
@@ -291,12 +292,14 @@ class UserModel {
     
     // saving users data to local data
 
-    func saveToLocalData() {
-		self.removeFromLocalData()
-		self.removeHost()
-		self.removeTeam()
-		self.removeSetting()
-		self.removeActiveDesign()
+	func saveToLocalData() {
+//		self.removeFromLocalData()
+//		self.removeHost()
+//		self.removeTeam()
+//		self.removeSetting()
+//		self.removeActiveDesign()
+		
+
 		
         uds.set( self.id, forKey: user_id)
         uds.set( self.firstname!, forKey: user_fname)
@@ -311,7 +314,6 @@ class UserModel {
         uds.set( self.phoneNumber!, forKey: user_phone_number)
         uds.set( self.profileImageUrl, forKey: user_actdes_image_url)
         uds.set( self.isVolunteer, forKey: user_is_volunteer)
-		debugPrint("user_model_is_vol \(isVolunteer)")
 		
         uds.set(self.host_id, forKey: user_host_id)
         uds.set(self.host_name, forKey: user_host_name)

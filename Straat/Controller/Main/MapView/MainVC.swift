@@ -147,6 +147,7 @@ class MainVC: UIViewController {
 					
 					if isVolunteer {
 						self.communicationButtonItem.isHidden = true
+						self.communicationInfoButtonItem.isHidden = true
 					}
 					
 					if hasGranted {

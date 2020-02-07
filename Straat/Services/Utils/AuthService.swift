@@ -100,7 +100,8 @@ class AuthService {
                         let userToken = json["token"].string
                         
                         self.uds.set(userToken, forKey: token)
-                        user.saveToLocalData()
+						debugPrint("user refresh \(String(describing: userJson["isVolunteer"].bool))")
+						user.saveToLocalData()
                         
                         print("REFRESH_TOKEN: \(json)")
                         completion(true)

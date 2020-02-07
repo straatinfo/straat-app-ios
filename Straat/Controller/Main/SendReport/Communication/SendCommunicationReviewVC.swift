@@ -71,6 +71,8 @@ extension SendCommunicationReviewVC {
 	
 
 	func getInputs() -> Void {
+	
+		
 		let uds = UserDefaults.standard
 		self.categoryName = uds.string(forKey: report_c_category)
 		self.categoryId = uds.string(forKey: report_c_category_id)
@@ -85,6 +87,7 @@ extension SendCommunicationReviewVC {
 		self.cagetory.text = self.categoryName
 		self.message.text = self.msg
 		
+		debugPrint("show in map \(String(describing: self.isInMap))")
 //		debugPrint("cat \(String(describing: categoryName))")
 //		debugPrint("notif \(String(describing: isUrgent))")
 //		debugPrint("showmap \(String(describing: isShowToMap))")

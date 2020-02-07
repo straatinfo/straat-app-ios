@@ -610,7 +610,7 @@ extension ProfileVC {
                 userData["_id"] = u.getDataFromUSD(key: user_id)
                 
                 let updateUser = UserModel(fromLogin: userData)
-                updateUser.saveToLocalData()
+				updateUser.saveToLocalData()
             }
             
             completion(success, text)

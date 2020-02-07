@@ -301,7 +301,7 @@ extension RegistrationTeamVC {
                 uds.set(userToken, forKey: token)
 
                 //saving user model to loca data
-                userModel.saveToLocalData()
+				userModel.saveToLocalData()
 				userSettingModel.saveSettingToLocalData()
 				userTeamModel.saveTeamToLocalData()
 				userOtherModel.saveOtherToLocalData()

@@ -143,8 +143,17 @@ class MainVC: UIViewController {
 						markerReport.map?.clear()
 					}
 					
+					debugPrint("is Volunteer \(isVolunteer)")
+					
+					if isVolunteer {
+						self.communicationButtonItem.isHidden = true
+						self.communicationInfoButtonItem.isHidden = true
+					}
+					
 					if hasGranted {
 						loadingDismiss()
+						
+						
 						self.makeNotifConstraint.constant = 0
 						self.sendReport.isHidden = true
 						animateLayout(view: self.view, timeInterval: 0.6)
@@ -343,7 +352,7 @@ extension MainVC : MapViewDelegate, UITextFieldDelegate {
         let userID = userModel.getDataFromUSD(key: user_id)
         let hostLat = userModel.host_lat ?? uds.double(forKey: host_reg_lat)
         let hostLong = userModel.host_long ?? uds.double(forKey: host_reg_long)
-        let userRadius : Double = 10000
+        let userRadius : Double = 10000.00
         print("HOST_COORDINATES: (\(hostLong), \(hostLat))")
         loadingShow(vc: self)
         

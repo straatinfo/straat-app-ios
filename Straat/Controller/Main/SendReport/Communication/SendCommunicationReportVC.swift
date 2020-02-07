@@ -198,7 +198,7 @@ extension SendCommunicationReportVC : UITextFieldDelegate, UITextViewDelegate {
 		getMainCategoryId(mainCategory: self.mainCategory, categoryName: self.mainCategoryDropDown.text!) { (success, categoryId) in
 			
 			if success {
-
+				
 				uds.set(self.mainCategoryDropDown.text, forKey: report_c_category)
 				uds.set(categoryId, forKey: report_c_category_id)
 				uds.set(self.isUrgent, forKey: report_c_is_notif)

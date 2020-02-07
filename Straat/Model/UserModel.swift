@@ -120,6 +120,7 @@ class UserModel {
         self.streetName = json["streetName"].string
         self.city = json["city"].string
         self.gender = json["gender"].string
+		self.isVolunteer = json["isVolunteer"].bool
         
         let profilePicObject = json["_profilePic"]
         
@@ -219,6 +220,7 @@ class UserModel {
         self.city = fromLogin["city"] as? String
         self.gender = fromLogin["gender"] as? String
         self.isVolunteer = fromLogin["isVolunteer"] as? Bool
+
         
         let profilePicObject = fromLogin["_profilePic"] as? Dictionary <String, Any> ?? nil
         
@@ -290,8 +292,15 @@ class UserModel {
     
     // saving users data to local data
 
-    func saveToLocalData() {
+	func saveToLocalData() {
+//		self.removeFromLocalData()
+//		self.removeHost()
+//		self.removeTeam()
+//		self.removeSetting()
+//		self.removeActiveDesign()
+		
 
+		
         uds.set( self.id, forKey: user_id)
         uds.set( self.firstname!, forKey: user_fname)
         uds.set( self.lastname!, forKey: user_lname)
@@ -305,7 +314,7 @@ class UserModel {
         uds.set( self.phoneNumber!, forKey: user_phone_number)
         uds.set( self.profileImageUrl, forKey: user_actdes_image_url)
         uds.set( self.isVolunteer, forKey: user_is_volunteer)
-        
+		
         uds.set(self.host_id, forKey: user_host_id)
         uds.set(self.host_name, forKey: user_host_name)
         uds.set(self.host_email, forKey: user_host_email)
@@ -322,9 +331,9 @@ class UserModel {
         uds.set( self.team_email, forKey: user_team_email)
         uds.set( self.team_is_approved, forKey: user_team_is_approved)
         
-        uds.set( self.host_id, forKey: user_host_id)
-        uds.set( self.isVolunteer, forKey: user_is_volunteer)
-        
+//        uds.set( self.host_id, forKey: user_host_id)
+//        uds.set( self.isVolunteer, forKey: user_is_volunteer)
+		
         uds.set( self.colorOne, forKey: user_actdes_color_one)
         uds.set( self.colorTwo, forKey: user_actdes_color_two)
         
@@ -332,6 +341,7 @@ class UserModel {
     }
     
     func saveSettingToLocalData() {
+		self.removeSetting()
         uds.set( self.isNotification, forKey: user_is_notification)
         uds.set( self.vibrate, forKey: user_vibration)
         uds.set( self.sound, forKey: user_sound)
@@ -339,13 +349,14 @@ class UserModel {
     }
     
     func saveTeamToLocalData() {
+		self.removeTeam()
         uds.set( self.team_id, forKey: user_team_id)
         uds.set( self.team_name, forKey: user_team_name)
         uds.set( self.team_email, forKey: user_team_email)
 		uds.set( self.team_is_approved, forKey: user_team_is_approved)
     }
     
-    func saveOtherToLocalData() {
+    func saveOtherToLocalData() {		
         uds.set( self.host_id, forKey: user_host_id)
         uds.set( self.isVolunteer, forKey: user_is_volunteer)
     }
@@ -358,18 +369,61 @@ class UserModel {
     
     func removeFromLocalData() {
 
-        uds.removeObject(forKey: user_id)
-        uds.removeObject(forKey: user_fname)
-        uds.removeObject(forKey: user_lname)
-        uds.removeObject(forKey: user_email)
-        uds.removeObject(forKey: user_username)
-        uds.removeObject(forKey: user_house_number)
-        uds.removeObject(forKey: user_street_name)
-        uds.removeObject(forKey: user_postal_code)
-        uds.removeObject(forKey: user_city)
-        uds.removeObject(forKey: user_gender)
-        uds.removeObject(forKey: user_phone_number)
+//        uds.removeObject(forKey: user_id)
+//        uds.removeObject(forKey: user_fname)
+//        uds.removeObject(forKey: user_lname)
+//        uds.removeObject(forKey: user_email)
+//        uds.removeObject(forKey: user_username)
+//        uds.removeObject(forKey: user_house_number)
+//        uds.removeObject(forKey: user_street_name)
+//        uds.removeObject(forKey: user_postal_code)
+//        uds.removeObject(forKey: user_city)
+//        uds.removeObject(forKey: user_gender)
+//        uds.removeObject(forKey: user_phone_number)
+		
+		uds.removeObject(forKey: user_id)
+		uds.removeObject(forKey: user_fname)
+		uds.removeObject(forKey: user_lname)
+		uds.removeObject(forKey: user_email)
+		uds.removeObject(forKey: user_username)
+		uds.removeObject(forKey: user_house_number)
+		uds.removeObject(forKey: user_street_name)
+		uds.removeObject(forKey: user_postal_code)
+		uds.removeObject(forKey: user_city)
+		uds.removeObject(forKey: user_gender)
+		uds.removeObject(forKey: user_phone_number)
+		uds.removeObject(forKey: user_actdes_image_url)
+		uds.removeObject(forKey: user_is_volunteer)
+		
     }
+	
+	func removeHost() -> Void {
+		uds.removeObject(forKey: user_host_id)
+		uds.removeObject(forKey: user_host_name)
+		uds.removeObject(forKey: user_host_email)
+		uds.removeObject(forKey: user_host_long)
+		uds.removeObject(forKey: user_host_lat)
+	}
+	
+	func removeSetting() -> Void {
+		uds.removeObject(forKey: user_is_notification)
+		uds.removeObject(forKey: user_vibration)
+		uds.removeObject(forKey: user_sound)
+		uds.removeObject(forKey: user_radius)
+	}
+	
+	func removeTeam() -> Void {
+		uds.removeObject(forKey: user_team_id)
+		uds.removeObject(forKey: user_team_name)
+		uds.removeObject(forKey: user_team_email)
+		uds.removeObject(forKey: user_team_is_approved)
+	}
+	
+	func removeActiveDesign() -> Void {
+		uds.removeObject(forKey: user_actdes_color_one)
+		uds.removeObject(forKey: user_actdes_color_two)
+	}
+
     
     func getDataFromUSD(key : String) -> String {
         return uds.string(forKey: key) ?? ""

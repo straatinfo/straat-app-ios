@@ -1406,6 +1406,7 @@
                                             <outlet property="messageCount" destination="HY5-Ed-Hsx" id="gWj-LT-Rge"/>
                                             <outlet property="reportCategory" destination="rsm-3T-8eC" id="dQg-XM-zlC"/>
                                             <outlet property="reportImage" destination="jku-xY-8LF" id="0Mg-2n-QHO"/>
+                                            <segue destination="66a-tY-SHk" kind="show" id="Nxj-sZ-SGd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1467,7 +1468,7 @@
                                                                 <action selector="selected:" destination="6hQ-pQ-mGv" eventType="touchUpInside" id="WGr-6L-peQ"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aZb-vL-IFK">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aZb-vL-IFK">
                                                             <rect key="frame" x="80" y="0.0" width="90" height="94.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="90" id="1LC-J8-8Hl"/>
@@ -4298,6 +4299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YX2-7S-tfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1610" y="134"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ZbT-Lb-iMM">
@@ -4312,6 +4314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spo-rk-siE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="817" y="134"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="MLf-aR-vkX">
@@ -4727,6 +4730,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="XZ6-cj-yxK"/>
         <segue reference="1sv-mw-XUp"/>
-        <segue reference="OCP-fR-fSE"/>
+        <segue reference="xj6-eK-2Wp"/>
     </inferredMetricsTieBreakers>
 </document>

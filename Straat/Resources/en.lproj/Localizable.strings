@@ -165,3 +165,6 @@
 
 "report-make-public-done" = "You made the report public.";
 
+"communication-report-title" = "Communication";
+
+"communication-report-info" = "You can send messages to the teams.";

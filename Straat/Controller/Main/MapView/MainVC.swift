@@ -65,13 +65,13 @@ class MainVC: UIViewController {
         SocketIOManager.shared.connectSocket() // --> should only called once
         // SocketIOManager.shared.getNewMessage() // --> can add callback
         //loadInfo()
-        self.initMapView(reportType: "All", reportId: nil)
-        self.initView()
+
         self.createObservers()
         authService.userRefresh { success in
             if (success) {
                 self.updateBadge()
-  
+				self.initMapView(reportType: "All", reportId: nil)
+				self.initView()
             } else {
                 let alert = UIAlertController(title: "Your token has expired.", message: "Please login again", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -228,8 +228,8 @@ class MainVC: UIViewController {
     }
     
     @IBAction func communicationInfo(_ sender: Any) {
-        let title = NSLocalizedString("suspicious-situation", comment: "")
-        let desc = NSLocalizedString("suspicious-desc", comment: "")
+        let title = NSLocalizedString("communication-report-title", comment: "")
+        let desc = NSLocalizedString("communication-report-desc", comment: "")
         defaultDialog(vc: self, title: title, message: desc)
     }
     @IBAction func showCommunicationReport(_ sender: Any) {

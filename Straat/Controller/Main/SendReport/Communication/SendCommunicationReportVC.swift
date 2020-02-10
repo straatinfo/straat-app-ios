@@ -41,7 +41,7 @@ class SendCommunicationReportVC: UIViewController {
 	var imageMetaData3: Dictionary <String, Any>?
 	
 	var isUrgent: Bool = false
-	var isShowInMap: Bool = false
+	var isShowInMap: Bool = true
 	
 	//validations
 	var isMainCategValid: Bool = false

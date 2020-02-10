@@ -24,6 +24,7 @@ class SendCommunicationReviewVC: UIViewController {
 	var isUrgent: Bool?
 	var isInMap: Bool?
 	var msg: String?
+	var activeTeam: String?
 	
 	var selectedTeamIds = [String]()
 	
@@ -83,10 +84,10 @@ extension SendCommunicationReviewVC {
 		self.imageMetaData1 = uds.value(forKey: report_c_img1) as? Dictionary<String,Any>
 		self.imageMetaData2 = uds.value(forKey: report_c_img2) as? Dictionary<String,Any>
 		self.imageMetaData3 = uds.value(forKey: report_c_img3) as? Dictionary<String,Any>
-		
+			
 		self.cagetory.text = self.categoryName
 		self.message.text = self.msg
-		
+
 		debugPrint("show in map \(String(describing: self.isInMap))")
 //		debugPrint("cat \(String(describing: categoryName))")
 //		debugPrint("notif \(String(describing: isUrgent))")
@@ -111,7 +112,7 @@ extension SendCommunicationReviewVC {
 		let lat = uds.double(forKey: user_loc_lat)
 		let long = uds.double(forKey: user_loc_long)
 		let host_id = uds.string(forKey: report_host_id) ?? uds.string(forKey: user_host_id) ?? ""
-		//		let team_id = uds.string(forKey: user_team_id)
+		let team_id = uds.string(forKey: user_team_id)
 		
 		//
 		if self.imageMetaData1 != nil {
@@ -129,13 +130,29 @@ extension SendCommunicationReviewVC {
 //		let js = JSON(self.selectedTeamIds)
 		
 //		debugPrint("ids: \(js.arrayValue)")
-		
 //		debugPrint("id \(String(describing: id))")
 //		debugPrint("loc \(String(describing: loc_add))")
 //		debugPrint("lat \(lat)")
 //		debugPrint("long \(long)")
 //		debugPrint("host \(host_id)")
 //		debugPrint("teamIds \(selectedTeamIds)")
+//		debugPrint("active_team \(team_id)")
+//		debugPrint("category_name \(self.categoryName)")
+		
+//		let sendReportModel = SendReportModel(
+//			title: "Suspicious Situation",
+//			description: self.msg,
+//			location: loc_add,
+//			long: long,
+//			lat: lat,
+//			reporterId: id,
+//			hostId: host_id,
+//			mainCategoryId: self.categoryId,
+//			isUrgent: self.isUrgent,
+//			isInMap: self.isInMap,
+//			teamList: self.selectedTeamIds,
+//			reportUploadedPhotos: imageMetaDatas,
+//			reportTypeId: report_type_c_id)
 		
 		let sendReportModel = SendReportModel(
 			title: "Suspicious Situation",
@@ -150,7 +167,9 @@ extension SendCommunicationReviewVC {
 			isInMap: self.isInMap,
 			teamList: self.selectedTeamIds,
 			reportUploadedPhotos: imageMetaDatas,
-			reportTypeId: report_type_c_id)
+			reportTypeId: report_type_c_id,
+			mainCategoryName: self.categoryName,
+			teamId: team_id)
 
 			self.reportService.sendReportTypeC(reportDetails: sendReportModel) { (success, message) in
 				if success {

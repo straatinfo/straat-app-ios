@@ -37,6 +37,7 @@ class SendReportModel {
 //	var teamList: [JSON]? // teamList
 	var isInMap: Bool?
 	var userId: String?
+	var mainCategoryName: String?
 	
     init () {
         
@@ -141,7 +142,9 @@ class SendReportModel {
 //		teamList: [JSON]?,
 		teamList: [String]?,
 		reportUploadedPhotos: [[String: Any]],
-		reportTypeId: String?
+		reportTypeId: String?,
+		mainCategoryName: String?,
+		teamId: String?
 		) {
 		self.title = title
 		self.description = description
@@ -157,6 +160,9 @@ class SendReportModel {
 		self.teamList = teamList
 		self.reportUploadedPhotos = reportUploadedPhotos
 		self.reportTypeId = reportTypeId
+		self.mainCategoryName = mainCategoryName
+		self.teamId = teamId
+
 	}
 	
 }
@@ -213,7 +219,7 @@ extension SendReportModel {
 		params["long"] = self.long!
 		params["lat"] = self.lat!
 		params["_reporter"] = self.reporterId!
-        params["_user"] = self.reporterId!
+		params["_user"] = self.reporterId!
 		params["_host"] = self.hostId!
 		params["_mainCategory"] = self.mainCategoryId!
 		params["isUrgent"] = self.isUrgent!
@@ -221,6 +227,8 @@ extension SendReportModel {
 		params["reportUploadedPhotos"] = self.reportUploadedPhotos!
 		params["_reportType"] = self.reportTypeId!
 		params["teamList"] = self.teamList!
+		params["mainCategoryName"] = self.mainCategoryName
+		params["_team"] = self.teamId
 		
 		// for report type c
 //		if self.teamList != nil {

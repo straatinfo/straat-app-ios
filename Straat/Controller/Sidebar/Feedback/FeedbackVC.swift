@@ -47,13 +47,9 @@ class FeedbackVC: UIViewController {
                 defaultDialog2(vc: self, title: "Success", message: desc) {
 					
 					debugPrint("send feedback success")
-					
-//                    pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
-					
-					let viewController:SWRevealViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SWRevealViewControllerID") as! SWRevealViewController
-					self.present(viewController, animated: false, completion: nil)
+					self.performSegue(withIdentifier: "backToMain", sender: nil)
                 }
-//                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+				
             } else {
                 let title = NSLocalizedString("failed", comment: "")
                 desc = NSLocalizedString("feedback-failed", comment: "")

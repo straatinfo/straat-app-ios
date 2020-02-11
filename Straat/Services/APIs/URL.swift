@@ -70,6 +70,7 @@ let send_message_v2 = baseUrl + "/v3/api/message/send"
 
 // utilities
 let registration_input_validation = baseUrl + "/v1/api/registration/validation"
+let send_feedback = baseUrl + "/v3/api/utility/feedback"
 
 // Host
 let get_host_by_name = baseUrl + "/v3/api/hosts/searchByName/" // parameter: hostName

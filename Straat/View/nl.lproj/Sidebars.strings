@@ -136,3 +136,7 @@
 
 /* Class = "UITextField"; placeholder = "Enter Lot Number"; ObjectID = "zK9-dp-Te7"; */
 "zK9-dp-Te7.placeholder" = "Voer het kavelnummer in";
+
+"qkH-zC-bkd.placeholder" = "Schrijf hier uw probleem of tip voor verbetering";
+
+"ovU-Rd-cCw.text" = "Feedback";

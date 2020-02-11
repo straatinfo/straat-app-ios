@@ -144,4 +144,28 @@ class AuthService {
             }
         }
     }
+    
+    func sendFeedback (message: String, completion: @escaping (Bool) -> Void) {
+        var parameters: Parameters = [:]
+        var headers: HTTPHeaders = [:]
+        let userToken = uds.string(forKey: token) ?? ""
+        
+        print("USER_TOKEN_FETCH: \(userToken)")
+        let device = UIDevice.current.modelName
+        
+        parameters["message"] = message
+        parameters["device"] = device
+        headers["Authorization"] = "Bearer \(userToken)"
+        
+        Alamofire.request(URL(string: send_feedback)!, method: .post, parameters: parameters, headers: headers).validate().responseJSON { response in
+            
+            switch response.result {
+            case .success(let value):
+                completion(true)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+    }
 }

@@ -229,7 +229,7 @@ class MainVC: UIViewController {
     
     @IBAction func communicationInfo(_ sender: Any) {
         let title = NSLocalizedString("communication-report-title", comment: "")
-        let desc = NSLocalizedString("communication-report-desc", comment: "")
+        let desc = NSLocalizedString("communication-report-info", comment: "")
         defaultDialog(vc: self, title: title, message: desc)
     }
     @IBAction func showCommunicationReport(_ sender: Any) {

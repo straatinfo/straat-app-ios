@@ -17,6 +17,7 @@ class FeedbackVC: UIViewController {
 	@IBOutlet weak var submitFeedback: UIButton!
 	
     let userService = UserService()
+    let authService = AuthService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,24 +34,26 @@ class FeedbackVC: UIViewController {
         let uds = UserDefaults.standard;
 //        let name = nameInput.text ?? ""
 //        let email = emailInput.text ?? ""
-        let feedback = textInput.text ?? ""
+        let message = textInput.text ?? ""
         let reporterId = uds.string(forKey: user_id)
 		
-//        self.sendFeedback(reporterId: reporterId!, name: name, email: email, feedback: feedback) { (success, text) in
-//            loadingDismiss()
-//            var desc : String? = nil
-//            if success {
-//                self.nameInput.text = ""
-//                self.emailInput.text = ""
-//                self.textInput.text = ""
-//                desc = NSLocalizedString("feedback-success", comment: "")
-//                defaultDialog(vc: self, title: "Success", message: desc)
-//            } else {
-//                let title = NSLocalizedString("failed", comment: "")
-//                desc = NSLocalizedString("feedback-failed", comment: "")
-//                defaultDialog(vc: self, title: title, message: desc)
-//            }
-//        }
+        self.sendFeedbackV2(message: message) { (success, text) in
+            loadingDismiss()
+            var desc : String? = nil
+            if success {
+                self.textInput.text = ""
+                self.disableSubmitButton()
+                desc = NSLocalizedString("feedback-success", comment: "")
+                defaultDialog2(vc: self, title: "Success", message: desc) {
+                    pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+                }
+                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+            } else {
+                let title = NSLocalizedString("failed", comment: "")
+                desc = NSLocalizedString("feedback-failed", comment: "")
+                defaultDialog(vc: self, title: title, message: desc)
+            }
+        }
     }
     
     
@@ -167,14 +170,14 @@ extension FeedbackVC {
 //    }
 	
 	//version 2
-	func sendFeedbackV2 (reporterId: String, feedback: String, completion: @escaping (Bool, String) -> Void) {
-//		self.userService.sendFeedback(reporterId: reporterId, reporterName: name, reporterEmail: email, feedback: feedback, info: "") { (success, message) in
-//			
-//			if success {
-//				completion(true, "Success")
-//			} else {
-//				completion(false, "Failed")
-//			}
-//		}
+	func sendFeedbackV2 (message: String, completion: @escaping (Bool, String) -> Void) {
+
+        self.authService.sendFeedback(message: message) { (success) in
+            if success {
+                completion(true, "Success")
+            } else {
+                completion(false, "Failed")
+            }
+        }
 	}
 }

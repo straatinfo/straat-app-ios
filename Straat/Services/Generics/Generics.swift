@@ -68,6 +68,14 @@ import GameplayKit
         
     }
 
+    func defaultDialog2( vc: UIViewController, title : String? , message : String?, completion: @escaping() -> Void ) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        vc.present(alertController, animated: true, completion: completion)
+        
+    }
+
     func alertDialogWithPositiveButton (vc: UIViewController, title: String, message: String, positiveBtnName: String, handler: @escaping (UIAlertAction) -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: positiveBtnName, style: .default, handler: handler))

@@ -45,9 +45,15 @@ class FeedbackVC: UIViewController {
                 self.disableSubmitButton()
                 desc = NSLocalizedString("feedback-success", comment: "")
                 defaultDialog2(vc: self, title: "Success", message: desc) {
-                    pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+					
+					debugPrint("send feedback success")
+					
+//                    pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+					
+					let viewController:SWRevealViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SWRevealViewControllerID") as! SWRevealViewController
+					self.present(viewController, animated: false, completion: nil)
                 }
-                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
+//                pushToNextVC(sbName: "Main", controllerID: "SWRevealViewControllerID", origin: self)
             } else {
                 let title = NSLocalizedString("failed", comment: "")
                 desc = NSLocalizedString("feedback-failed", comment: "")

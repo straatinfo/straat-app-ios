@@ -3141,7 +3141,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="zfv-XE-Xnz" kind="show" id="Slq-Xt-Zwl"/>
+                                            <segue destination="zfv-XE-Xnz" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="BzJ-vl-hqw"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="c6p-Tm-gYJ" userLabel="LogoutViewCell">

@@ -74,10 +74,44 @@ class TeamService {
                 } else {
                     completion(false, "Failed", nil)
                 }
-                
+				
             }
         }
     }
+	
+	// new function
+	func getTeamListByHost (hostId: String, completion: @escaping (Bool, String, [TeamModel]?) -> Void) {
+		let url = "\(team_list_v2)?hostId=\(hostId)"
+		debugPrint("team list host: \(url)")
+		
+		apiHandler.executeWithHeaders(URL(string: url)!, parameters: [:], method: .get, destination: .queryString, headers: [:]) { (response, err) in
+			
+			if let error = err {
+				print("error reponse: \(error.localizedDescription)")
+				
+				completion(false, error.localizedDescription, nil)
+			} else if let data = response {
+				
+				let dataObject = data["teams"] as? [[String:Any]] ?? []
+				var teamModel = [TeamModel]()
+				
+				if dataObject.count > 0 {
+					
+					for teamJson in dataObject {
+						let teamModelItem = TeamModel(json: JSON(teamJson))
+						teamModel.append(teamModelItem)
+					}
+					
+					completion(true, "Success", teamModel)
+				} else {
+					completion(false, "Failed", nil)
+				}
+				
+			}
+		}
+	}
+	
+	
 	
 	func getTeamChatMemberList (teamId: String, userId: String, completion: @escaping (Bool, String, [Conversation]?, JSON?) -> Void) {
 		let url = team_chat_list_member + teamId + "/" + userId

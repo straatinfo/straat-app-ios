@@ -15,7 +15,7 @@ class SendCommunicationTeamsVC: UIViewController {
 	@IBOutlet weak var nextBtn: UIButton!
 	
 	var teamList = [TeamModel]()
-	
+	var teamListCount: [Int] = []
 	// for user defaults
 	var selectedTeams = [TeamModel]()
 	
@@ -86,17 +86,37 @@ extension SendCommunicationTeamsVC: ItemDelegate {
 		let teamService = TeamService()
 		let uds = UserDefaults.standard
 		let userId = uds.string(forKey: user_id) ?? ""
-		
+		let hostId = uds.string(forKey: user_host_id) ?? ""
 
 		loadingShow(vc: self)
 		self.teamList.removeAll()
 		
-		teamService.getTeamListByUserId(userId: userId) { (success, message, teamModels) in
-			
+		debugPrint("host_id_id \(hostId)")
+//		teamService.getTeamListByUserId(userId: userId) { (success, message, teamModels) in
+//
+//			if success {
+//
+//				if (teamModels?.count ?? 0 > 0) {
+//					self.teamList = teamModels!
+//					self.teamListCount = [Int](repeating: 0, count: self.teamList.count)
+//
+//				debugPrint("teamsss: \(String(describing: self.teamList))")
+//				}
+//			} else {
+//				defaultDialog(vc: self, title: "Fetch Team", message: "No Team Yet")
+//			}
+//			self.teamListTV.reloadData()
+//			loadingDismiss()
+//		}
+		
+		teamService.getTeamListByHost(hostId: hostId) { (success, message, teamModels) in
+
 			if success {
 
 				if (teamModels?.count ?? 0 > 0) {
 					self.teamList = teamModels!
+					self.teamListCount = [Int](repeating: 0, count: self.teamList.count)
+
 				debugPrint("teamsss: \(String(describing: self.teamList))")
 				}
 			} else {
@@ -105,6 +125,7 @@ extension SendCommunicationTeamsVC: ItemDelegate {
 			self.teamListTV.reloadData()
 			loadingDismiss()
 		}
+		
 	}
 	
 	func getImage(imageUrl: String, completion: @escaping (Bool, UIImage?) -> Void) -> Void {
@@ -178,10 +199,37 @@ UITableViewDataSource {
 		
 		row.selectTeam.isEnabled = true
 		row.selectTeam.isSelected = true
+
+//		if self.teamListCount[indexPath.row] == 0 {
+//
+//		} else {
+//
+//		}
+		
+		row.selectTeam.tag = indexPath.row
+		row.selectTeam.addTarget(self, action: #selector(onClicked(_:)), for: .touchUpInside)
+
+		debugPrint("team array with same value: \(String(describing: self.teamListCount[indexPath.row]))")
 		
 		debugPrint("team selected: \(String(describing: self.teamList[indexPath.row].teamName))")
 		
 		debugPrint("index \(indexPath.row)")
+	}
+	
+	// to be continue
+	@objc func onClicked(_ sender: UIButton) {
+		let myIndexPath = IndexPath(row: sender.tag, section: 0)
+		let cell = teamListTV.cellForRow(at: myIndexPath as IndexPath) as! SendCommunicationTeamsTVC
+		
+		if self.teamListCount[sender.tag] == 0 {
+			cell.selectTeam.setImage(UIImage(named: "selected-checkbox"), for: .selected)
+//			debugPrint("select")
+			self.teamListCount[sender.tag] = 1
+		} else {
+//			debugPrint("deselect")
+			self.teamListCount[sender.tag] = 0
+		}
+		debugPrint("selected team clicked")
 	}
 	
 

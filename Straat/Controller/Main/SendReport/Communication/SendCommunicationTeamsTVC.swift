@@ -13,6 +13,7 @@ class SendCommunicationTeamsTVC: UITableViewCell {
 	@IBOutlet weak var teamImg: UIImageView!
 	@IBOutlet weak var teamName: UILabel!
 	@IBOutlet weak var teamEmail: UILabel!
+	var isChecked: Bool = false
 	
 	var index: Int?
 	var delegate : ItemDelegate?

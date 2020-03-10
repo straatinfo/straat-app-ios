@@ -13,7 +13,8 @@ class SendCommunicationTeamsTVC: UITableViewCell {
 	@IBOutlet weak var teamImg: UIImageView!
 	@IBOutlet weak var teamName: UILabel!
 	@IBOutlet weak var teamEmail: UILabel!
-	
+	var isRowSelected: Bool = false
+
 	var index: Int?
 	var delegate : ItemDelegate?
 	
@@ -32,14 +33,14 @@ class SendCommunicationTeamsTVC: UITableViewCell {
 		
 		if sender.isSelected {
 			sender.isSelected = false
+			isRowSelected = true
 			delegate?.deSelect(row: index!)
 
 		} else {
 			sender.isSelected = true
+			isRowSelected = false
 			delegate?.select(row: index!)
 		}
-		
-		
 
 	}
 	

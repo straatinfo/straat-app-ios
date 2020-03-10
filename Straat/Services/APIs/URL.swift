@@ -12,6 +12,7 @@ let baseUrl = "https://straatinfo-backend-v2.herokuapp.com" // testing
 
 let root = baseUrl + "/v1/api/"
 let root_v2 = baseUrl + "/v2/api/"
+let root_v3 = baseUrl + "/v3/api/" //new route
 
 let auth = root + "auth/login"
 let request_host = root + "registration/validation/host"
@@ -58,6 +59,7 @@ let team_accept_user = root + "teamInvite/acceptRequest/"
 
 // newly added
 let team_chat_list_member = baseUrl + "/v3/api/teams/chat/"
+let team_list_v2 = root_v3 + "teams/list"
 
 // chat
 let chat_list = root_v2 + "message"

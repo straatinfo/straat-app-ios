@@ -1446,18 +1446,18 @@
                                 <rect key="frame" x="9" y="29" width="357" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="105" id="6hQ-pQ-mGv" customClass="SendCommunicationTeamsTVC" customModule="Straat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="357" height="105"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="row" rowHeight="80" id="6hQ-pQ-mGv" customClass="SendCommunicationTeamsTVC" customModule="Straat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="357" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6hQ-pQ-mGv" id="BGC-XK-raT">
-                                            <rect key="frame" x="0.0" y="0.0" width="357" height="104.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="357" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="m6u-Op-zLd" userLabel="MainSV">
-                                                    <rect key="frame" x="0.0" y="5" width="357" height="94.5"/>
+                                                    <rect key="frame" x="0.0" y="5" width="357" height="69.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKN-Sw-arx" userLabel="btnSelectTeam">
-                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="94.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="69.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="70" id="P6v-FC-dRZ"/>
                                                             </constraints>
@@ -1469,23 +1469,23 @@
                                                             </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aZb-vL-IFK">
-                                                            <rect key="frame" x="80" y="0.0" width="90" height="94.5"/>
+                                                            <rect key="frame" x="80" y="0.0" width="69" height="69.5"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="90" id="1LC-J8-8Hl"/>
-                                                                <constraint firstAttribute="height" constant="94.5" id="KEH-4t-QDQ"/>
+                                                                <constraint firstAttribute="width" constant="69" id="kgB-fQ-jwh"/>
+                                                                <constraint firstAttribute="height" constant="69.5" id="tQ9-Gs-uFI"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lWq-Ri-deo">
-                                                            <rect key="frame" x="180" y="0.0" width="177" height="94.5"/>
+                                                            <rect key="frame" x="159" y="0.0" width="198" height="69.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5z6-Tn-Mis">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="177" height="40.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="198" height="40.5"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUE-yH-KES">
-                                                                    <rect key="frame" x="0.0" y="20" width="177" height="74.5"/>
+                                                                    <rect key="frame" x="0.0" y="20" width="198" height="49.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>

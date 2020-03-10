@@ -18,6 +18,8 @@ class SendCommunicationTeamsVC: UIViewController {
 	var teamListCount: [Int] = []
 	// for user defaults
 	var selectedTeams = [TeamModel]()
+	var selectedRows: [Int] = []
+
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,15 +63,15 @@ extension SendCommunicationTeamsVC: ItemDelegate {
 		let team: TeamModel = self.teamList[row]
 		self.selectedTeams.append(team)
 		self.enableSendReportButton()
-//		debugPrint("team selected: \(team)")
+		self.selectedRows.append(row)
 	}
 	
 	func deSelect(row: Int) {
 		let team: TeamModel = self.teamList[row]
-
 		for (index, teamModel) in self.selectedTeams.enumerated() {
 			if (teamModel.teamId == team.teamId) {
 				self.selectedTeams.remove(at: index)
+				self.selectedRows.remove(at: index)
 				break
 			}
 		}
@@ -173,64 +175,68 @@ UITableViewDataSource {
 		let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! SendCommunicationTeamsTVC
 		
 		row.index = indexPath.row
-		
 		row.teamName.text = self.teamList[indexPath.row].teamName
 		row.teamEmail.text = self.teamList[indexPath.row].teamEmail
-		
 		row.delegate = self
+		
 
 		if self.teamList[indexPath.row].profilePic != nil {
 			let imageUrl = self.teamList[indexPath.row].profilePic!
-
 			self.getImage(imageUrl: imageUrl) { (success, teamLogo) in
-
 				if success {
 					row.teamImg.image = teamLogo
 				}
-
 			}
 		}
+		
+		debugPrint("team selected row: \(self.selectedRows)")
+		if self.selectedRows.contains(indexPath.row) {
+			row.selectTeam.isSelected = true
+		} else {
+			row.selectTeam.isSelected = false
+		}
+		
+//		row.selectTeam.tag = indexPath.row
+//		row.selectTeam.addTarget(self, action: #selector(onClicked), for: .touchUpInside)
+		
 		return row
+	}
+	
+	// to be continue
+	@objc func onClicked(sender: UIButton) {
+		//		let myIndexPath = IndexPath(row: sender.tag, section: 0)
+		//		let cell = teamListTV.cellForRow(at: myIndexPath as IndexPath) as! SendCommunicationTeamsTVC
+		//
+		//		if self.teamListCount[sender.tag] == 0 {
+		////			cell.selectTeam.setImage(UIImage(named: "selected-checkbox"), for: .selected)
+		//			cell.teamEmail.text = "selected team"
+		////			debugPrint("select")
+		//			self.teamListCount[sender.tag] = 1
+		//		} else {
+		////			debugPrint("deselect")
+		//			self.teamListCount[sender.tag] = 0
+		//		}
+		debugPrint("selected team clicked")
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-		let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! SendCommunicationTeamsTVC
+//		let row = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as! SendCommunicationTeamsTVC
 		
-		row.selectTeam.isEnabled = true
-		row.selectTeam.isSelected = true
+//		row.selectTeam.isEnabled = true
+//		row.selectTeam.isSelected = true
+//		row.teamEmail.text = "selected email"
+//		row.selectTeam.tag = indexPath.row + 1
+//		row.selectTeam.addTarget(row, action: #selector(onClicked(sender:)), for: .touchUpInside)
 
-//		if self.teamListCount[indexPath.row] == 0 {
-//
-//		} else {
-//
-//		}
+//		debugPrint("team array with same value: \(String(describing: self.teamListCount[indexPath.row]))")
+//		debugPrint("\(row.selectTeam.tag)")
+//		debugPrint("index \(indexPath.row)")
 		
-		row.selectTeam.tag = indexPath.row
-		row.selectTeam.addTarget(self, action: #selector(onClicked(_:)), for: .touchUpInside)
-
-		debugPrint("team array with same value: \(String(describing: self.teamListCount[indexPath.row]))")
-		
-		debugPrint("team selected: \(String(describing: self.teamList[indexPath.row].teamName))")
-		
-		debugPrint("index \(indexPath.row)")
+//		debugPrint("team selected: \(String(describing: self.teamList[indexPath.row].teamName))")
 	}
+
 	
-	// to be continue
-	@objc func onClicked(_ sender: UIButton) {
-		let myIndexPath = IndexPath(row: sender.tag, section: 0)
-		let cell = teamListTV.cellForRow(at: myIndexPath as IndexPath) as! SendCommunicationTeamsTVC
-		
-		if self.teamListCount[sender.tag] == 0 {
-			cell.selectTeam.setImage(UIImage(named: "selected-checkbox"), for: .selected)
-//			debugPrint("select")
-			self.teamListCount[sender.tag] = 1
-		} else {
-//			debugPrint("deselect")
-			self.teamListCount[sender.tag] = 0
-		}
-		debugPrint("selected team clicked")
-	}
 	
 
 

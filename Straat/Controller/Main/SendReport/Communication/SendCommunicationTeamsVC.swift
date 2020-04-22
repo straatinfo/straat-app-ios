@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import WXImageCompress
 
 class SendCommunicationTeamsVC: UIViewController {
 
@@ -135,6 +136,7 @@ extension SendCommunicationTeamsVC: ItemDelegate {
 		Alamofire.request(URL(string: imageUrl)!).responseImage { response in
 			
 			if let img = response.result.value {
+				img.jpegData(compressionQuality: 0)
 				completion(true, img)
 			} else {
 				completion(false, nil)

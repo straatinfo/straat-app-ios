@@ -145,6 +145,7 @@ PODS:
   - Starscream (3.0.6)
   - SwiftyJSON (4.3.0)
   - "UITextView+Placeholder (1.2.1)"
+  - WXImageCompress (0.1.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -163,6 +164,7 @@ DEPENDENCIES:
   - Socket.IO-Client-Swift
   - SwiftyJSON (~> 4.0)
   - "UITextView+Placeholder"
+  - WXImageCompress
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -197,6 +199,7 @@ SPEC REPOS:
     - Starscream
     - SwiftyJSON
     - "UITextView+Placeholder"
+    - WXImageCompress
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -230,7 +233,8 @@ SPEC CHECKSUMS:
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
+  WXImageCompress: 86c7a4d028c7fc9c74181468c318a9ec688fcdac
 
-PODFILE CHECKSUM: 7b675d0da71aec692f514b45e6f3762aec1f2a57
+PODFILE CHECKSUM: e0412edc144daffe06ac74d29d097fcf1a3b6cab
 
 COCOAPODS: 1.5.2

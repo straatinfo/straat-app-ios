@@ -35,6 +35,8 @@ target 'Straat' do
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
 
+  pod 'WXImageCompress'
+
 end
 
 post_install do |installer|
